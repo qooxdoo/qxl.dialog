@@ -1,12 +1,12 @@
 {
-  "name": "qx-contrib-dialog",
+  "name": "qxl.dialog",
   "version": "2.1.1",
-  "description": "see http://cboulanger.github.io/qx-contrib-Dialog/",
+  "description": "see http://qooxdoo.github.io/qxl.dialog/",
   "dependencies": {
-    "@qooxdoo/framework": "^6.0.0-alpha-20190511-1022"
+    "@qooxdoo/compiler": "^1.0.0-beta"
   },
   "devDependencies": {
-    "testcafe": "^0.20.5"
+    "testcafe": "^1.4.1"
   },
   "scripts": {
     "test": "npx testcafe chrome,firefox tests/testcafe.js  --app-init-delay 10000",
@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cboulanger/qx-contrib-Dialog.git"
+    "url": "git+https://github.com/qooxdoo/qxl.dialog.git"
   },
   "author": "Christian Boulanger (cboulanger) info@bibliograph.org), Derrell Lipman (derrell) derrell.lipman@unwireduniverse.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cboulanger/qx-contrib-Dialog/issues"
+    "url": "https://github.com/qooxdoo/qxl.dialog/issues"
   },
-  "homepage": "https://github.com/cboulanger/qx-contrib-Dialog"
+  "homepage": "https://github.com/qooxdoo/qxl.dialog"
 }

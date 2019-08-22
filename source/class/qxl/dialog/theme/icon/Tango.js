@@ -18,7 +18,7 @@
 ************************************************************************ */
 /**
  * Tango icons
- * 
+ *
  * @asset(qx/icon/Tango/22/actions/dialog-cancel.png)
  * @asset(qx/icon/Tango/22/actions/dialog-ok.png)
  * @asset(qx/icon/Tango/48/status/dialog-information.png)
@@ -26,15 +26,15 @@
  * @asset(qx/icon/Tango/48/status/dialog-warning.png)
  * @asset(qx/icon/Tango/16/apps/office-calendar.png)
  */
-qx.Theme.define("dialog.theme.icon.Tango",
+qx.Theme.define("qxl.dialog.theme.icon.Tango",
 {
   title : "Tango",
   aliases : {
     "icon" : "qx/icon/Tango",
-    "dialog.icon.cancel" : "qx/icon/Tango/22/actions/dialog-cancel.png",
-    "dialog.icon.ok"     : "qx/icon/Tango/22/actions/dialog-ok.png",
-    "dialog.icon.info"   : "qx/icon/Tango/48/status/dialog-information.png",
-    "dialog.icon.error"  : "qx/icon/Tango/48/status/dialog-error.png",
-    "dialog.icon.warning" : "qx/icon/Tango/48/status/dialog-warning.png"
-  } 
+    "qxl.dialog.icon.cancel" : "qx/icon/Tango/22/actions/dialog-cancel.png",
+    "qxl.dialog.icon.ok"     : "qx/icon/Tango/22/actions/dialog-ok.png",
+    "qxl.dialog.icon.info"   : "qx/icon/Tango/48/status/dialog-information.png",
+    "qxl.dialog.icon.error"  : "qx/icon/Tango/48/status/dialog-error.png",
+    "qxl.dialog.icon.warning" : "qx/icon/Tango/48/status/dialog-warning.png"
+  }
 });

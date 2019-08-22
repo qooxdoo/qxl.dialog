@@ -1,10 +1,10 @@
 /* ************************************************************************
 
    qooxdoo dialog library
-   https://github.com/cboulanger/qx-contrib-Dialog
+   https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2007-2017 Christian Boulanger and others
+     2007-2019 Christian Boulanger and others
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
@@ -12,14 +12,14 @@
      See the LICENSE file in the project's top-level directory for details.
 
 ************************************************************************ */
-/*global qx dialog*/
+
 
 /**
  * This is the main application class of your custom application "dialog"
  * @asset(dialog/*)
- * @require(dialog.Dialog)
+ * @require(qxl.dialog.Dialog)
  */
-qx.Class.define("dialog.demo.Application",
+qx.Class.define("qxl.dialog.demo.Application",
   {
     extend: qx.application.Standalone,
 
@@ -36,7 +36,6 @@ qx.Class.define("dialog.demo.Application",
          * during startup of the application
          */
         main: function () {
-
           this.base(arguments);
           qx.log.appender.Native;
 
@@ -121,7 +120,7 @@ qx.Class.define("dialog.demo.Application",
           // check box
           let blockerCheckBox = new qx.ui.form.CheckBox("Use coloured blocker (like < v.1.3)");
           blockerCheckBox.addListener("changeValue", function (e) {
-            dialog.Dialog.useBlocker(e.getData());
+            qxl.dialog.Dialog.useBlocker(e.getData());
           });
           button_panel.add(blockerCheckBox);
 
@@ -138,15 +137,13 @@ qx.Class.define("dialog.demo.Application",
           });
 
           // icon theme
-          let metathemes = [];
-          let iconthemes = [];
           let themes = qx.Theme.getAll();
           for (let key of Object.getOwnPropertyNames(themes)) {
             let theme = themes[key];
             if (theme.type === "meta") {
               //
             }
-            if (theme.name.indexOf("dialog.theme.icon") !== -1) {
+            if (theme.name.indexOf("qxl.dialog.theme.icon") !== -1) {
               let button = new qx.ui.form.RadioButton(theme.title);
               button.setModel(theme);
               radioButtonGroupHBox.add(button);
@@ -171,7 +168,7 @@ qx.Class.define("dialog.demo.Application",
         },
 
 
-        _replaceOwnedObject: function(owner, obj, id='dialog'){
+        _replaceOwnedObject: function(owner, obj, id="dialog") {
           try {
             owner.removeOwnedQxObject(id);
           } catch (e) {} // ignore error
@@ -180,74 +177,50 @@ qx.Class.define("dialog.demo.Application",
         },
 
         createAlert: function (caption, button) {
-          let dlg = dialog.Dialog
+          let dlg = qxl.dialog.Dialog
             .alert("Hello World!")
             .set({caption});
-
-//    old style:
-//      dialog.Dialog.alert(  "Hello World!", null, null, caption );
-//    or:
-//      (new dialog.Alert({
-//        message: "Hello World!",
-//        caption: caption
-//      })).show();
 
           // next line is for automated UI tests only, not needed for "normal" usage
           this._replaceOwnedObject(button, dlg, "dialog");
         },
 
         createWarning: function (caption, button) {
-          let dlg = dialog.Dialog
+          let dlg = qxl.dialog.Dialog
             .warning("I warned you!")
             .set({caption});
           this._replaceOwnedObject(button, dlg, "dialog");
         },
 
         createError: function (caption, button) {
-          let dlg = dialog.Dialog
+          let dlg = qxl.dialog.Dialog
             .error("Error, error, error, errr....!")
             .set({caption});
           this._replaceOwnedObject(button, dlg, "dialog");
         },
 
         createConfirm: function (caption, button) {
-          let dlg = dialog.Dialog
+          let dlg = qxl.dialog.Dialog
             .confirm("Do you really want to erase your hard drive?")
             .set({caption});
           this._replaceOwnedObject(button, dlg, "dialog1");
 
           dlg.promise()
             .then(result => {
-              let dlg2 = dialog.Dialog.alert("Your answer was: " + result)
+              let dlg2 = qxl.dialog.Dialog.alert("Your answer was: " + result)
                   .set({caption: caption + " 2"});
-              this._replaceOwnedObject(button, dlg, "dialog2");
+              this._replaceOwnedObject(button, dlg2, "dialog2");
             });
-//    old style:
-//      dialog.Dialog.confirm("Do you really want to erase your hard drive?", function(result){
-//        dialog.Dialog.alert("Your answer was: " + result, null, null, caption );
-//      }, this, caption);
-//    or:
-//      (new dialog.Confirm({
-//        message: "Do you really want to erase your hard drive?",
-//        callback: function(result)
-//        {
-//          (new dialog.Alert({
-//            message: "Your answer was:" + result,
-//            caption: caption
-//          })).show();
-//        },
-//        caption: caption
-//      })).show();
         },
 
         createPrompt: function (caption, button) {
-          let dlg = dialog.Dialog
+          let dlg = qxl.dialog.Dialog
             .prompt("Please enter the root password for your server")
             .set({caption});
           this._replaceOwnedObject(button, dlg, "dialog1");
           dlg.promise()
             .then(result => {
-              let dlg2 = dialog.Dialog.alert("Your answer was: " + result)
+              let dlg2 = qxl.dialog.Dialog.alert("Your answer was: " + result)
                 .set({caption: caption + " 2"});
               this._replaceOwnedObject(button, dlg2, "dialog2");
             });
@@ -257,27 +230,27 @@ qx.Class.define("dialog.demo.Application",
          * Example for nested callbacks
          */
         createDialogChain: function (caption, button) {
-          let dlg1 = dialog.Dialog
+          let dlg1 = qxl.dialog.Dialog
             .alert("This demostrates a series of 'nested' dialogs ")
             .set({caption});
           this._replaceOwnedObject(button, dlg1, "dialog1");
           dlg1.promise()
             .then(() => {
-              let dlg2 = dialog.Dialog
+              let dlg2 = qxl.dialog.Dialog
                 .confirm("Do you believe in the Loch Ness monster?")
                 .set({caption: caption + " 2"});
               this._replaceOwnedObject(button, dlg2, "dialog2");
               return dlg2.promise();
             })
             .then(result => {
-              let dlg3 = dialog.Dialog
+              let dlg3 = qxl.dialog.Dialog
                 .confirm("You really " + (result ? "" : "don't ") + "believe in the Loch Ness monster?")
-                .set({caption: caption + " 3",});
+                .set({caption: caption + " 3"});
               this._replaceOwnedObject(button, dlg3, "dialog3");
               return dlg3.promise();
             })
             .then(result => {
-              let dlg4 = dialog.Dialog
+              let dlg4 = qxl.dialog.Dialog
                 .alert(result ? "I tell you a secret: It doesn't exist." : "Good to know.")
                 .set({caption: caption + " 4"});
               this._replaceOwnedObject(button, dlg4, "dialog4");
@@ -289,7 +262,7 @@ qx.Class.define("dialog.demo.Application",
          * Offer a selection of choices to the user
          */
         createSelect: function (caption, button) {
-          let dlg1 = dialog.Dialog
+          let dlg1 = qxl.dialog.Dialog
             .select("Select the type of record to create:")
             .set({
               caption: caption,
@@ -302,75 +275,57 @@ qx.Class.define("dialog.demo.Application",
           this._replaceOwnedObject(button, dlg1, "dialog1");
           dlg1.promise()
             .then(result => {
-              let dlg2 = dialog.Dialog
+              let dlg2 = qxl.dialog.Dialog
                 .alert("You selected: '" + result + "'")
                 .set({caption: caption + " 2"});
               this._replaceOwnedObject(button, dlg2, "dialog2");
               return dlg2.promise();
             });
-
-//    old style:
-//      (new dialog.Select({
-//        message: "Select the type of record to create:",
-//        options: [
-//          { label:"Database record", value:"database" },
-//          { label:"World record", value:"world" },
-//          { label:"Pop record", value:"pop" }
-//        ],
-//        allowCancel: true,
-//        caption: caption,
-//        callback: function(result){
-//          (new dialog.Alert({
-//            message: "You selected: '" + result + "'"
-//          })).show();
-//        }
-//      })).show();
-
         },
 
         createForm: function (caption, button) {
           let formData =
             {
-              'username':
+              "username":
                 {
-                  'type': "TextField",
-                  'label': "User Name",
-                  'value': "",
+                  "type": "TextField",
+                  "label": "User Name",
+                  "value": "",
                   "validation": {
                     "required": true
                   }
                 },
-              'address':
+              "address":
                 {
-                  'type': "TextArea",
-                  'label': "Address",
-                  'lines': 3,
-                  'value': ""
+                  "type": "TextArea",
+                  "label": "Address",
+                  "lines": 3,
+                  "value": ""
                 },
-              'domain':
+              "domain":
                 {
-                  'type': "SelectBox",
-                  'label': "Domain",
-                  'value': 1,
-                  'options': [
-                    {'label': "Company", 'value': 0},
-                    {'label': "Home", 'value': 1}
+                  "type": "SelectBox",
+                  "label": "Domain",
+                  "value": 1,
+                  "options": [
+                    {"label": "Company", "value": 0},
+                    {"label": "Home", "value": 1}
                   ]
                 },
-              'commands':
+              "commands":
                 {
-                  'type': "ComboBox",
-                  'label': "Shell command to execute",
-                  'value': "",
-                  'options': [
-                    {'label': "ln -s *"},
-                    {'label': "rm -Rf /"}
+                  "type": "ComboBox",
+                  "label": "Shell command to execute",
+                  "value": "",
+                  "options": [
+                    {"label": "ln -s *"},
+                    {"label": "rm -Rf /"}
                   ]
                 },
-              'save_details': {
-                'type': "Checkbox",
-                'label': "Save form details",
-                'value': true
+              "save_details": {
+                "type": "Checkbox",
+                "label": "Save form details",
+                "value": true
               },
               "executeDate": {
                 "type": "datefield",
@@ -389,29 +344,17 @@ qx.Class.define("dialog.demo.Application",
               }
             };
 
-          let form = dialog.Dialog.form("Please fill in the form", formData).set({caption});
+          let form = qxl.dialog.Dialog.form("Please fill in the form", formData).set({caption});
           form.setQxObjectId("dialog");
           button.addOwnedQxObject(form);
           form.promise()
           .then(result => {
             this.debug(qx.util.Serializer.toJson(result));
-            return dialog.Dialog
+            return qxl.dialog.Dialog
               .alert("Thank you for your input. See log for result.")
               .set({caption: caption + " 2"})
               .promise();
           });
-
-//    same as:
-//    (new dialog.Form({
-//      message: "Please fill in the form",
-//      formData: formData,
-//      allowCancel: true,
-//      caption: caption,
-//      callback: function( result )
-//      {
-//        dialog.alert("Thank you for your input:" + qx.util.Json.stringify(result).replace(/\\/g,"") );
-//      }
-//    })).show();
         },
 
         createWizard: function (caption) {
@@ -509,13 +452,13 @@ qx.Class.define("dialog.demo.Application",
                 }
               }
             ];
-          let wizard = new dialog.Wizard({
+          let wizard = new qxl.dialog.Wizard({
             width: 500,
             maxWidth: 500,
             pageData: pageData,
             allowCancel: true,
             callback: map => {
-              dialog.Dialog.alert("Thank you for your input. See log for result.");
+              qxl.dialog.Dialog.alert("Thank you for your input. See log for result.");
               this.debug(qx.util.Serializer.toJson(map));
             },
             caption: caption
@@ -527,7 +470,7 @@ qx.Class.define("dialog.demo.Application",
          * Creates a sample login widget
          */
         createLogin: function (caption, button) {
-          let loginWidget = new dialog.Login({
+          let loginWidget = new qxl.dialog.Login({
             image: "dialog/logo.gif",
             text: "Please log in, using 'demo'/'demo'",
             checkCredentials: this.checkCredentials,
@@ -538,7 +481,7 @@ qx.Class.define("dialog.demo.Application",
               window.alert("Too bad. I cannot remember it either.");
             }
           });
-          this._replaceOwnedObject(button,loginWidget,"window");
+          this._replaceOwnedObject(button, loginWidget, "window");
 
           // you can optionally attach event listeners, for example to
           // do some animation (for example, an Mac OS-like "shake" effect)
@@ -579,20 +522,20 @@ qx.Class.define("dialog.demo.Application",
          */
         finalCallback: function (err, data) {
           if (err) {
-            let loginError = dialog.Dialog
+            let loginError = qxl.dialog.Dialog
               .alert(err)
               .set({ caption: "Login Error" });
-            this._replaceOwnedObject(this.__loginWidget,loginError,"error");
+            this._replaceOwnedObject(this.__loginWidget, loginError, "error");
           } else {
-            let loginSuccess = dialog.Dialog
+            let loginSuccess = qxl.dialog.Dialog
               .alert("User '" + data + "' is now logged in.")
               .set({ caption: "Login Success" });
-            this._replaceOwnedObject(this.__loginWidget,loginSuccess,"success");
+            this._replaceOwnedObject(this.__loginWidget, loginSuccess, "success");
           }
         },
 
         createProgress: function (caption) {
-          let progressWidget = new dialog.Progress({
+          let progressWidget = new qxl.dialog.Progress({
             caption: caption,
             allowCancel: true
           });
@@ -609,14 +552,16 @@ qx.Class.define("dialog.demo.Application",
               message: counter + "% completed",
               allowCancel: true
             });
-            if (counter++ === 100) return;
+            if (counter++ === 100) {
+             return;
+            }
             qx.lang.Function.delay(incrementProgress, 100);
           })();
         },
 
         createProgressWithLog: function (caption) {
           let cancelled = false; // used in closures
-          let progressWidget = new dialog.Progress({
+          let progressWidget = new qxl.dialog.Progress({
             showLog: true,
             caption: caption,
             okButtonText: "Continue",
@@ -645,7 +590,6 @@ qx.Class.define("dialog.demo.Application",
                 progressWidget.setNewLogText("Aborting...");
                 abortMessage = true;
               }
-
             } else {
               progressWidget.set({
                 progress: counter,

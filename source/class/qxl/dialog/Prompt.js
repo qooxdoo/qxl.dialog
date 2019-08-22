@@ -1,10 +1,10 @@
 /* ************************************************************************
 
    qooxdoo dialog library
-   https://github.com/cboulanger/qx-contrib-Dialog
+   https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2007-2017 Christian Boulanger and others
+     2007-2019 Christian Boulanger and others
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
@@ -12,15 +12,15 @@
      See the LICENSE file in the project's top-level directory for details.
 
 ************************************************************************ */
-/*global qx dialog*/
+
 
 /**
  * Prompts the user with a question or request for information and a text
  * field in which the user can type something. Similar to window.prompt(),
  * but asyncronous
  */
-qx.Class.define("dialog.Prompt", {
-  extend: dialog.Dialog,
+qx.Class.define("qxl.dialog.Prompt", {
+  extend: qxl.dialog.Dialog,
   properties: {
     /**
      * The default value of the textfield
@@ -94,10 +94,9 @@ qx.Class.define("dialog.Prompt", {
         "keyup",
         function(e) {
           if (e.getKeyCode() === 13) {
-            return this._handleOk();
-          }
-          if (e.getKeyCode() === 27) {
-            return this._handleCancel();
+            this._handleOk();
+          } else if (e.getKeyCode() === 27) {
+            this._handleCancel();
           }
         },
         this
@@ -119,7 +118,7 @@ qx.Class.define("dialog.Prompt", {
         },
         this
       );
-      let buttonPane = this._createButtonPane()
+      let buttonPane = this._createButtonPane();
       buttonPane.add(this._createOkButton());
       buttonPane.add(this._createCancelButton());
       container.add(buttonPane);

@@ -1,9 +1,10 @@
 # Qooxdoo Dialog Widgets
 
-Build Status: Master branch [![Master](https://travis-ci.org/cboulanger/qx-contrib-Dialog.svg?branch=master)](https://travis-ci.org/cboulanger/qx-contrib-Dialog) | Development branch [![Develop](https://travis-ci.org/cboulanger/qx-contrib-Dialog.svg?branch=develop)](https://travis-ci.org/cboulanger/qx-contrib-Dialog)
+Build Status: Master branch [![Master](https://travis-ci.org/qooxdoo/qxl.dialog.svg?branch=master)](https://travis-ci.org/qooxdoo/qxl.dialog) | Development branch [![Develop](https://travis-ci.org/qooxdoo/qxl.dialog.svg?branch=develop)](https://travis-ci.org/qooxdoo/qxl.dialog)
 
->Note: This is version 2 which only works with the new JavaScript compiler and qooxdoo v6. qooxdoo v5 and the 
-python toolchain are no longer supported.
+>Notes: The code has been migrated from the `qooxdoo/qxl.dialog repository
+and has a new namespace `qxl.dialog` . It only works with the new JavaScript 
+compiler and qooxdoo v6. It does not work with qooxdoo v5 and the python toolchain.
 
 A set of often used dialog widgets for the qooxdoo framework.
 
@@ -16,37 +17,40 @@ A set of often used dialog widgets for the qooxdoo framework.
 - Wizard
 - Progress
 
-Demo: http://cboulanger.github.io/qx-contrib-Dialog/dialog.demo/index.html
+Demo: http://qooxdoo.github.io/qxl.dialog/dialog.demo/index.html
 
-API Viewer: http://cboulanger.github.io/qx-contrib-Dialog/apiviewer/index.html#dialog
+API Viewer: http://qooxdoo.github.io/qxl.dialog/apiviewer/index.html#dialog
 
 See [Demo app](source/class/dialog/demo/Application.js) for
 examples how to use the widgets.
 
 ## Installation:
 
-`qx contrib install cboulanger/qx-contrib-Dialog`
+`qx pkg install qooxdoo/qxl.dialog`
 
 ### Install icon theme
 From v1.3.0 on, the contrib allows you to 
 use custom icons for the dialogs. However, this means that the icons will not work out of the box. You must use or 
-extend [one of the shipped icon themes](source/class/dialog/theme/icon) in your application's meta theme 
-(see [this example](source/class/dialog/theme/Theme.js)) or copy the alias definitions from one of them into your own 
+extend [one of the shipped icon themes](source/class/qxl/dialog/theme/icon) in your application's meta theme 
+(see [this example](source/class/qxl/dialog/theme/Theme.js)) or copy the alias definitions from one of them into your own 
 icon theme. You can also use your own choice of icons by writing an icon theme which defines defining the aliases 
 "dialog.icon.(ok|cancel|info|warning|error)" with the paths to the icons. Those paths also need to be put into a 
 `@asset` compiler hint.
-See, for example, [this theme class](source/class/dialog/theme/icon/IcoMoonFree.js).
+See, for example, [this theme class](source/class/qxl/dialog/theme/icon/IcoMoonFree.js).
 
 ## Testing
 ```bash
-npm install -g qxcompiler # must be version >=  v0.2.19
+npm install -g @qooxdoo/compiler
 npm install
 qx serve --target=build
 ```
-Once the message 'Compiled x classes' appears, open a new terminal and start the tests with `tests/run.sh`. 
+Once the message 'Web server started ...' appears, open a new terminal and start the tests with `npm test`. 
 When the tests succeed, you can kill the server process in the first tab. 
 
 ## Changelog
+### v3.0.0
+Moved package from cboulanger/qx-contrib-Dialog and changed namespace to `qxl.dialog`
+
 ### v2.0.0
 - Dropped support for qx v5.0 and the python generator
 - Rewrote tests to make use of the new `qx.core.Id` system

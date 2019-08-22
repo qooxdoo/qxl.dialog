@@ -1,10 +1,10 @@
 /* ************************************************************************
 
    qooxdoo dialog library
-   https://github.com/cboulanger/qx-contrib-Dialog
+   https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2007-2017 Christian Boulanger and others
+     2007-2019 Christian Boulanger and others
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
@@ -12,13 +12,13 @@
      See the LICENSE file in the project's top-level directory for details.
 
 ************************************************************************ */
-/*global qx dialog*/
+
 
 /**
  * A widget with a progress bar and an optional log for messages.
  */
-qx.Class.define("dialog.Progress", {
-  extend: dialog.Dialog,
+qx.Class.define("qxl.dialog.Progress", {
+  extend: qxl.dialog.Dialog,
   properties: {
 
     /**
@@ -158,7 +158,7 @@ qx.Class.define("dialog.Progress", {
     _logView: null,
 
     /**
-     * Create the content of the dialog.
+     * Create the content of the qxl.dialog.
      * Extending classes must implement this method.
      */
     _createWidgetContent: function() {

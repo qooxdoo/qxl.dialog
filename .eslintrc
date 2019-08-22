@@ -1,0 +1,14 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "extends": "@qooxdoo/qx",
+  "globals": {
+    "qxl": true
+  },
+  "rules": {
+    "no-eval": "off",
+    "no-alert": "off",
+    "no-new": "off"
+  }
+}

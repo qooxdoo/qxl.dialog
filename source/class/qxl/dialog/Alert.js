@@ -1,10 +1,10 @@
 /* ************************************************************************
 
    qooxdoo dialog library
-   https://github.com/cboulanger/qx-contrib-Dialog
+   https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2007-2017 Christian Boulanger and others
+     2007-2019 Christian Boulanger and others
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
@@ -12,14 +12,14 @@
      See the LICENSE file in the project's top-level directory for details.
 
 ************************************************************************ */
-/*global qx dialog*/
+
 
 /**
  * A dialog that alerts the user to something.
  *
  */
-qx.Class.define("dialog.Alert", {
-  extend: dialog.Dialog,
+qx.Class.define("qxl.dialog.Alert", {
+  extend: qxl.dialog.Dialog,
   members: {
     /**
      * Create the main content of the widget
@@ -30,7 +30,7 @@ qx.Class.define("dialog.Alert", {
       let hbox = new qx.ui.container.Composite(new qx.ui.layout.HBox(10));
       container.add(hbox);
       this._image = new qx.ui.basic.Image(
-        this.getImage() || "dialog.icon.info"
+        this.getImage() || "qxl.dialog.icon.info"
       ).set({
         scale: true,
         height: 32,

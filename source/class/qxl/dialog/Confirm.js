@@ -1,10 +1,10 @@
 /* ************************************************************************
 
    qooxdoo dialog library
-   https://github.com/cboulanger/qx-contrib-Dialog
+   https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2007-2017 Christian Boulanger and others
+     2007-2019 Christian Boulanger and others
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
@@ -12,13 +12,13 @@
      See the LICENSE file in the project's top-level directory for details.
 
 ************************************************************************ */
-/*global qx dialog*/
+
 
 /**
  * A dialog widget used to confirm a question or proposed course of action
  */
-qx.Class.define("dialog.Confirm", {
-  extend: dialog.Dialog,
+qx.Class.define("qxl.dialog.Confirm", {
+  extend: qxl.dialog.Dialog,
   statics: {
     /**
      * Returns singleton instance of this class. This method has to
@@ -46,7 +46,7 @@ qx.Class.define("dialog.Confirm", {
     yesButtonIcon: {
       check: "String",
       nullable: true,
-      init: "dialog.icon.ok",
+      init: "qxl.dialog.icon.ok",
       event: "changeYesButtonIcon"
     },
 
@@ -66,7 +66,7 @@ qx.Class.define("dialog.Confirm", {
     noButtonIcon: {
       check: "String",
       nullable: true,
-      init: "dialog.icon.cancel",
+      init: "qxl.dialog.icon.cancel",
       event: "changeNoButtonIcon"
     },
 

@@ -1,10 +1,10 @@
 /* ************************************************************************
 
    qooxdoo dialog library
-   https://github.com/cboulanger/qx-contrib-Dialog
+   https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2007-2017 Christian Boulanger and others
+     2007-2019 Christian Boulanger and others
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
@@ -12,21 +12,21 @@
      See the LICENSE file in the project's top-level directory for details.
 
 ************************************************************************ */
-/*global qx dialog*/
+
 
 /**
  * Base class for dialog widgets
- * @ignore(dialog.alert)
- * @ignore(dialog.error)
- * @ignore(dialog.warning)
- * @ignore(dialog.confirm)
- * @ignore(dialog.prompt)
- * @ignore(dialog.form)
- * @ignore(dialog.select)
+ * @ignore(qxl.dialog.alert)
+ * @ignore(qxl.dialog.error)
+ * @ignore(qxl.dialog.warning)
+ * @ignore(qxl.dialog.confirm)
+ * @ignore(qxl.dialog.prompt)
+ * @ignore(qxl.dialog.form)
+ * @ignore(qxl.dialog.select)
  * @ignore(Promise)
  *
  */
-qx.Class.define("dialog.Dialog", {
+qx.Class.define("qxl.dialog.Dialog", {
   extend: qx.ui.window.Window,
   statics: {
     /**
@@ -42,19 +42,19 @@ qx.Class.define("dialog.Dialog", {
      * @return {void}
      */
     useBlocker: function(value) {
-      dialog.Dialog.__useBlocker = value;
+      qxl.dialog.Dialog.__useBlocker = value;
     },
 
     /**
      * Returns a dialog instance by type
      * @param type {String} The dialog type to get
-     * @return {dialog.Dialog}
+     * @return {qxl.dialog.Dialog}
      */
     getInstanceByType: function(type) {
       try {
-        return new (dialog[qx.lang.String.firstUp(type)])();
+        return new (qxl.dialog[qx.lang.String.firstUp(type)])();
       } catch (e) {
-        this.error(type + " is not a valid dialog type");
+        throw new Error(type + " is not a valid dialog type");
       }
     },
     /**
@@ -63,14 +63,14 @@ qx.Class.define("dialog.Dialog", {
      * @param callback {Function} The callback function
      * @param context {Object} The context to use with the callback function
      * @param caption {String} The caption of the dialog window
-     * @return {dialog.Alert} The widget instance
+     * @return {qxl.dialog.Alert} The widget instance
      */
     alert: function(message, callback, context, caption) {
-      return new dialog.Alert({
+      return new qxl.dialog.Alert({
         message: message,
         callback: callback || null,
         context: context || null,
-        image: "dialog.icon.info",
+        image: "qxl.dialog.icon.info",
         caption: caption || ""
       }).show();
     },
@@ -81,14 +81,14 @@ qx.Class.define("dialog.Dialog", {
      * @param callback {Function} The callback function
      * @param context {Object} The context to use with the callback function
      * @param caption {String} The caption of the dialog window
-     * @return {dialog.Alert} The widget instance
+     * @return {qxl.dialog.Alert} The widget instance
      */
     error: function(message, callback, context, caption) {
-      return new dialog.Alert({
+      return new qxl.dialog.Alert({
         message: message,
         callback: callback || null,
         context: context || null,
-        image: "dialog.icon.error",
+        image: "qxl.dialog.icon.error",
         caption: caption || ""
       }).show();
     },
@@ -99,14 +99,14 @@ qx.Class.define("dialog.Dialog", {
      * @param callback {Function} The callback function
      * @param context {Object} The context to use with the callback function
      * @param caption {String} The caption of the dialog window
-     * @return {dialog.Alert} The widget instance
+     * @return {qxl.dialog.Alert} The widget instance
      */
     warning: function(message, callback, context, caption) {
-      return new dialog.Alert({
+      return new qxl.dialog.Alert({
         message: message,
         callback: callback || null,
         context: context || null,
-        image: "dialog.icon.warning",
+        image: "qxl.dialog.icon.warning",
         caption: caption || ""
       }).show();
     },
@@ -117,10 +117,10 @@ qx.Class.define("dialog.Dialog", {
      * @param callback {Function} The callback function
      * @param context {Object} The context to use with the callback function
      * @param caption {String} The caption of the dialog window
-     * @return {dialog.Alert} The widget instance
+     * @return {qxl.dialog.Alert} The widget instance
      */
     confirm: function(message, callback, context, caption) {
-      return new dialog.Confirm({
+      return new qxl.dialog.Confirm({
         message: message,
         callback: callback || null,
         context: context || null,
@@ -129,7 +129,7 @@ qx.Class.define("dialog.Dialog", {
     },
 
     /**
-     * Shortcut for prompt dialog.
+     * Shortcut for prompt qxl.dialog.
      * The value argument was forgotten in the initial implementation and
      * comes last for backwards compatibility. This might change in a future
      * release.
@@ -138,11 +138,11 @@ qx.Class.define("dialog.Dialog", {
      * @param callback {Function} The callback function
      * @param context {Object} The context to use with the callback function
      * @param value {String} The default value of the prompt textfield
-     * @return {dialog.Alert} The widget instance
+     * @return {qxl.dialog.Alert} The widget instance
      *
      */
     prompt: function(message, callback, context, value, caption) {
-      return new dialog.Prompt({
+      return new qxl.dialog.Prompt({
         message: message,
         callback: callback || null,
         context: context || null,
@@ -159,7 +159,7 @@ qx.Class.define("dialog.Dialog", {
      * @param context {Object} The context to use with the callback function
      * @param allowCancel {Boolean} Default: true. If the cancel button is pressed, the result value will be undefined.
      * @param caption {String} The caption of the dialog window
-     * @return {dialog.Alert} The widget instance
+     * @return {qxl.dialog.Alert} The widget instance
      */
     select: function(
       message,
@@ -173,7 +173,7 @@ qx.Class.define("dialog.Dialog", {
         {label: qx.core.Init.getApplication().tr("Yes"), value: true},
         {label: qx.core.Init.getApplication().tr("No"), value: false}
         ];
-      return new dialog.Select({
+      return new qxl.dialog.Select({
         message: message,
         allowCancel: typeof allowCancel == "boolean" ? allowCancel : true,
         options: options || defaultOptions,
@@ -186,14 +186,14 @@ qx.Class.define("dialog.Dialog", {
     /**
      * Shortcut for form dialog
      * @param message {String} The message to display
-     * @param formData {Map} Map of form data. See {@link dialog.Form.formData}
+     * @param formData {Map} Map of form data. See {@link qxl.dialog.Form.formData}
      * @param callback {Function} The callback function
      * @param context {Object} The context to use with the callback function
      * @param caption {String} The caption of the dialog window
-     * @return {dialog.Alert} The widget instance
+     * @return {qxl.dialog.Alert} The widget instance
      */
     form: function(message, formData, callback, context, caption) {
-      return new dialog.Form({
+      return new qxl.dialog.Form({
         message: message,
         formData: formData,
         allowCancel: true,
@@ -275,7 +275,7 @@ qx.Class.define("dialog.Dialog", {
     }
 
     // escape key
-    qx.core.Init.getApplication().getRoot().addListener("keyup",this._handleEscape,this);
+    qx.core.Init.getApplication().getRoot().addListener("keyup", this._handleEscape, this);
   },
 
   properties: {
@@ -429,7 +429,7 @@ qx.Class.define("dialog.Dialog", {
     _cancelButton: null,
 
     /**
-     * Create the content of the dialog.
+     * Create the content of the qxl.dialog.
      * Extending classes must implement this method.
      */
     _createWidgetContent: function() {
@@ -465,7 +465,7 @@ qx.Class.define("dialog.Dialog", {
      */
     _createOkButton: function(noFocus=false) {
       let okButton = (this._okButton = new qx.ui.form.Button(this.tr("OK")));
-      okButton.setIcon("dialog.icon.ok");
+      okButton.setIcon("qxl.dialog.icon.ok");
       okButton.getChildControl("icon").set({
         width: 16,
         height: 16,
@@ -493,7 +493,7 @@ qx.Class.define("dialog.Dialog", {
         this.tr("Cancel")
       ));
       cancelButton.setAllowStretchX(false);
-      cancelButton.setIcon("dialog.icon.cancel");
+      cancelButton.setIcon("qxl.dialog.icon.cancel");
       cancelButton.getChildControl("icon").set({
         width: 16,
         height: 16,
@@ -548,10 +548,10 @@ qx.Class.define("dialog.Dialog", {
     /**
      * Show the widget. Overriding methods must call this parent method.
      * Returns the widget instance for chaining.
-     * @return {dialog.Dialog} The widget instance
+     * @return {qxl.dialog.Dialog} The widget instance
      */
     show: function() {
-      if (this.isUseBlocker() || dialog.Dialog.__useBlocker) {
+      if (this.isUseBlocker() || qxl.dialog.Dialog.__useBlocker) {
         // make sure the dialog is above any opened window
         let root = qx.core.Init.getApplication().getRoot();
         let maxWindowZIndex = root.getZIndex();
@@ -567,10 +567,10 @@ qx.Class.define("dialog.Dialog", {
       this.__previousFocus = qx.ui.core.FocusHandler
         .getInstance()
         .getActiveWidget();
-      if( this.__previousFocus ){
+      if (this.__previousFocus) {
         try {
           this.__previousFocus.blur();
-        } catch(e) {}
+        } catch (e) {}
         //this.__previousFocus.setFocusable(false);
       }
       return this;
@@ -579,10 +579,10 @@ qx.Class.define("dialog.Dialog", {
     /**
      * Hide the widget. Overriding methods must call this parent method.
      * Returns the widget instance for chaining.
-     * @return {dialog.Dialog} The widget instance
+     * @return {qxl.dialog.Dialog} The widget instance
      */
     hide: function() {
-      if (this.isUseBlocker() || dialog.Dialog.__useBlocker) {
+      if (this.isUseBlocker() || qxl.dialog.Dialog.__useBlocker) {
         this.__blocker.unblock();
       }
       if (this.__previousFocus) {
@@ -600,9 +600,9 @@ qx.Class.define("dialog.Dialog", {
      * @return {Promise} A promise that resolves with the result of the dialog
      * action
      */
-    promise: function(){
+    promise: function() {
       return new Promise(function(resolve, reject) {
-        this.setCallback(function(value){
+        this.setCallback(function(value) {
           this.resetCallback();
           resolve(value);
         }.bind(this));

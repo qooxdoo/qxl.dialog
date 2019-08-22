@@ -1,10 +1,10 @@
 /* ************************************************************************
 
    qooxdoo dialog library
-   https://github.com/cboulanger/qx-contrib-Dialog
+   https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2007-2017 Christian Boulanger and others
+     2007-2019 Christian Boulanger and others
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
@@ -12,13 +12,13 @@
      See the LICENSE file in the project's top-level directory for details.
 
 ************************************************************************ */
-/*global qx dialog*/
+
 
 /**
  * Dialog that offers the user a choice of alternative buttons to select from.
  */
-qx.Class.define("dialog.Select", {
-  extend: dialog.Dialog,
+qx.Class.define("qxl.dialog.Select", {
+  extend: qxl.dialog.Dialog,
   properties: {
 
     /**
@@ -49,6 +49,9 @@ qx.Class.define("dialog.Select", {
       });
       let buttonPane = this._createButtonPane();
       this.addListener("changeOptions", function(event) {
+        if (qx.core.Environment.get("module.objectid") === true) {
+          buttonPane.getOwnedQxObjects().map(obj => buttonPane.removeOwnedQxObject(obj));
+        }
         buttonPane.removeAll();
         let options = event.getData();
         options.forEach(function(option) {
@@ -60,11 +63,8 @@ qx.Class.define("dialog.Select", {
           }, this);
           buttonPane.add(button);
           if (qx.core.Environment.get("module.objectid") === true) {
-            try {
-              buttonPane.removeOwnedQxObject(value);
-            } catch (e) {}
             button.setQxObjectId(value);
-            buttonPane.addOwnedQxObject(button);
+            buttonPane.addOwnedQxObject(button, value);
           }
         }, this);
         let cancelButton = this._createCancelButton();

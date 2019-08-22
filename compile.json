@@ -1,10 +1,11 @@
 {
   "applications": [
     {
-      "title": "Dialog Contrib Demo",
-      "class": "dialog.demo.Application",
-      "theme": "dialog.theme.Theme",
-      "name": "dialog.demo"
+      "title": "Dialog Package Demo",
+      "class": "qxl.dialog.demo.Application",
+      "theme": "qxl.dialog.theme.Theme",
+      "name": "qxl.dialog.demo",
+      "default": true
     },
     {
       "class": "qxl.apiviewer.Application",

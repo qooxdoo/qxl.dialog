@@ -1,10 +1,10 @@
 /* ************************************************************************
 
    qooxdoo dialog library
-   https://github.com/cboulanger/qx-contrib-Dialog
+   https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2007-2017 Christian Boulanger and others
+     2007-2019 Christian Boulanger and others
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
@@ -12,15 +12,15 @@
      See the LICENSE file in the project's top-level directory for details.
 
 ************************************************************************ */
-/*global qx dialog*/
+
 
 /**
  * Form renderer renderer for {@link qx.ui.form.Form}. This is a
- * single row renderer adapted for the dialog.Form widget. Main
+ * single row renderer adapted for the qxl.dialog.Form widget. Main
  * difference is that the form allows text-only labels without a corresponding
  * form element which can serve, for example, for explanatory text.
  */
-qx.Class.define("dialog.FormRenderer", {
+qx.Class.define("qxl.dialog.FormRenderer", {
   extend: qx.ui.form.renderer.Single,
   implement: qx.ui.form.renderer.IFormRenderer,
 
@@ -68,7 +68,9 @@ qx.Class.define("dialog.FormRenderer", {
         this._row++;
       }
       for (let i = 0; i < items.length; i++) {
-        let item = items[i],widget,label;
+        let item = items[i];
+        let widget;
+        let label;
         if (item instanceof qx.ui.form.RadioGroup) {
           if (item.getUserData("orientation") === "horizontal") {
             widget = this._createHBoxForRadioGroup(item);

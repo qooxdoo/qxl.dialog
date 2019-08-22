@@ -1,10 +1,10 @@
 /* ************************************************************************
 
    qooxdoo dialog library
-   https://github.com/cboulanger/qx-contrib-Dialog
+   https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2007-2017 Christian Boulanger and others
+     2007-2019 Christian Boulanger and others
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
@@ -12,14 +12,14 @@
      See the LICENSE file in the project's top-level directory for details.
 
 ************************************************************************ */
-/*global qx dialog*/
+
 
 /**
  * A wizard-type widget that constructs the wizard pages on-the-fly, using
- * functionality from dialog.Form.
+ * functionality from qxl.dialog.Form.
  */
-qx.Class.define("dialog.Wizard", {
-  extend: dialog.Form,
+qx.Class.define("qxl.dialog.Wizard", {
+  extend: qxl.dialog.Form,
   properties: {
     /**
      * An array of maps that sets the properties of this widget
@@ -145,12 +145,12 @@ qx.Class.define("dialog.Wizard", {
       let _this = this;
       form.getValidationManager().bind("valid", this._nextButton, "enabled", {
         converter: function(value) {
-          return !!(value && _this.getAllowNext());
+          return Boolean(value && _this.getAllowNext());
         }
       });
       form.getValidationManager().bind("valid", this._finishButton, "enabled", {
         converter: function(value) {
-          return !!(value && _this.getAllowFinish());
+          return Boolean(value && _this.getAllowFinish());
         }
       });
     },

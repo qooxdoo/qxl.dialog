@@ -1,7 +1,7 @@
 import {IdSelector, QxSelector} from "./adapters/TestCafe";
 
 fixture `Testing dialog widgets`
-  .page `http://127.0.0.1:8080/build/dialog.demo/index.html`;
+  .page `http://127.0.0.1:8080`;
 
 const simpleDialogs = ['alert','warning','error'];
 test('Simple dialogs: ' + simpleDialogs.join(', '), async t => {

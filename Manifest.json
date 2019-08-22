@@ -1,27 +1,33 @@
 {
   "info": {
-    "name": "Dialog",
-    "summary": "Dialog Contribution",
+    "name": "qxl.dialog",
+    "summary": "Collection of dialog widgets",
     "description": "The dialog package provides many often-used widgets required in user interaction, such as alert, confirm, prompt, and others that simplify the web developer's daily work.",
-    "homepage": "https://github.com/cboulanger/qx-contrib-Dialog",
+    "homepage": "https://github.com/qooxdoo/qxl.dialog",
     "license": "LGPL/EPL",
     "authors": [
       {
-        "name": "Christian Boulanger (cboulanger)",
-        "email": "info@bibliograph.org"
+        "name": "Christian Boulanger",
+        "email": "info@bibliograph.org",
+        "githubUser": "cboulanger"
+      },
+      {
+        "name": "Derrell Lipman",
+        "email": "derrell.lipman@unwireduniverse.com",
+        "githubUser": "derrell"
       }
     ],
     "version": "2.1.1"
   },
   "provides": {
-    "namespace": "dialog",
+    "namespace": "qxl.dialog",
     "encoding": "utf-8",
     "class": "source/class",
     "resource": "source/resource",
     "translation": "source/translation"
   },
   "requires": {
-    "@qooxdoo/framework": "^6.0.0-alpha",
+    "@qooxdoo/framework": "^6.0.0-beta",
     "@qooxdoo/compiler": "^1.0.0-beta"
   },
   "$schema": "https://raw.githubusercontent.com/qooxdoo/qooxdoo-compiler/master/source/resource/qx/tool/schema/Manifest-1-0-0.json"

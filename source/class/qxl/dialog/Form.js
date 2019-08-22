@@ -1,7 +1,7 @@
 /* ************************************************************************
 
    qooxdoo dialog library
-   https://github.com/cboulanger/qx-contrib-Dialog
+   https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
      2007-2018 Christian Boulanger and others
@@ -13,18 +13,15 @@
 
 ************************************************************************ */
 
-/* global qx dialog*/
-/* eslint-env es4 */
-
 /**
  * A dialog with a form that is constructed on-the-fly
  *
- * @require(dialog.FormRenderer)
+ * @require(qxl.dialog.FormRenderer)
  * @require(qx.util.Serializer)
  * @require(qx.util.Validate)
  */
-qx.Class.define("dialog.Form", {
-  extend: dialog.Dialog,
+qx.Class.define("qxl.dialog.Form", {
+  extend: qxl.dialog.Dialog,
   properties: {
     /**
      * Data to create a form with multiple fields.
@@ -126,11 +123,11 @@ qx.Class.define("dialog.Form", {
         flex: 1
       });
 
-      // wrap fields in form tag to avoid Chrome warnings, see https://github.com/cboulanger/qx-contrib-Dialog/issues/19
-      let formTag = new dialog.FormTag();
+      // wrap fields in form tag to avoid Chrome warnings, see https://github.com/qooxdoo/qxl.dialog/issues/19
+      let formTag = new qxl.dialog.FormTag();
       this._formContainer = new qx.ui.container.Composite();
       this._formContainer.setLayout(new qx.ui.layout.Grow());
-      formTag.add( this._formContainer, {flex: 1} );
+      formTag.add(this._formContainer, {flex: 1});
       container.add(formTag, { flex: 1 });
 
       // buttons
@@ -175,17 +172,19 @@ qx.Class.define("dialog.Form", {
       }
       let modelData = {};
       for (let key of Object.getOwnPropertyNames(formData)) {
-        modelData[key] = formData[key].value !== undefined
-        ? formData[key].value
-        : null;
+        modelData[key] = formData[key].value !== undefined ?
+        formData[key].value :
+        null;
       }
       let model = qx.data.marshal.Json.createModel(modelData);
       this.setModel(model);
       // form
       this._form = new qx.ui.form.Form();
       if (qx.core.Environment.get("module.objectid") === true) {
-        this._form.setQxObjectId("form");
-        this.addOwnedQxObject(this._form);
+        if (this.getQxObject("form")) {
+          this.removeOwnedQxObject("form");
+        }
+        this.addOwnedQxObject(this._form, "form");
       }
       this._formController = new qx.data.controller.Object(this.getModel());
       this._onFormReady(this._form);
@@ -203,8 +202,9 @@ qx.Class.define("dialog.Form", {
             break;
           case "textfield":
             formElement = new qx.ui.form.TextField();
-            if (fieldData.maxLength)
-              formElement.setMaxLength(fieldData.maxLength);
+            if (fieldData.maxLength) {
+             formElement.setMaxLength(fieldData.maxLength);
+            }
             formElement.setLiveUpdate(true);
             break;
           case "datefield":
@@ -263,13 +263,13 @@ qx.Class.define("dialog.Form", {
             if (fieldData.step) {
               formElement.setSingleStep(fieldData.step);
             }
-            if(fieldData.fractionsDigits) {
+            if (fieldData.fractionsDigits) {
               let fd = fieldData.fractionsDigits;
               let nf = new qx.util.format.NumberFormat();
-              if(fd.min) {
+              if (fd.min) {
                 nf.setMinimumFractionDigits(fd.min);
               }
-              if(fd.max) {
+              if (fd.max) {
                 nf.setMaximumFractionDigits(fd.max);
               }
               formElement.setNumberFormat(nf);
@@ -388,19 +388,18 @@ qx.Class.define("dialog.Form", {
             // clean
             let proxy = fieldData.validation.proxy.replace(/;\n/g, "");
             try {
-              eval('proxy = ' + proxy + ';');
+              eval("proxy = " + proxy + ";");
             } catch (e) {
               this.warn("Invalid proxy name");
             }
             if (typeof proxy == "function") {
               let method = fieldData.validation.method;
               let message = fieldData.validation.invalidMessage;
-              let _this = this;
               let validationFunc = function (validatorObj, value) {
                 if (!validatorObj.__asyncInProgress) {
                   validatorObj.__asyncInProgress = true;
                   proxy(method, [value], function (valid) {
-                    validatorObj.setValid(valid, message || this.tr('Value is invalid'));
+                    validatorObj.setValid(valid, message || this.tr("Value is invalid"));
                     validatorObj.__asyncInProgress = false;
                   });
                 }
@@ -451,7 +450,7 @@ qx.Class.define("dialog.Form", {
       }
 
 
-      let view = new dialog.FormRenderer(this._form);
+      let view = new qxl.dialog.FormRenderer(this._form);
       view.getLayout().setColumnFlex(0, 0);
       view.getLayout().setColumnMaxWidth(0, this.getLabelColumnWidth());
       view.getLayout().setColumnFlex(1, 1);
@@ -467,7 +466,7 @@ qx.Class.define("dialog.Form", {
      * @return {qx.ui.form.Button}
      */
     _createOkButton: function () {
-      return this.base(arguments,true);
+      return this.base(arguments, true);
     },
 
     /**

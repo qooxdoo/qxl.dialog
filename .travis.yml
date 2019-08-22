@@ -20,14 +20,13 @@ before_install:
   - stty cols 80
 
 before_script:
+  - qx lint
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3
   - fluxbox >/dev/null 2>&1 &
-  - npm install -g @qooxdoo/compiler
-  - qx contrib update && qx contrib list --quiet && qx contrib install
-  - qx serve --target=build &
-  - sleep 180 # Wait for compilation to finish
+  - qx package install
+  - ( qx serve --target=build & ) | while read output; do echo "$output"; if [[ $output == *"Web server started"* ]]; then break; fi; done;
 
 deploy:
   provider: pages
