@@ -27,6 +27,7 @@ before_script:
   - fluxbox >/dev/null 2>&1 &
   - qx package install
   - ( qx serve --target=build & ) | while read output; do echo "$output"; if [[ $output == *"Web server started"* ]]; then break; fi; done;
+  - echo "Starting tests..."
 
 deploy:
   provider: pages
