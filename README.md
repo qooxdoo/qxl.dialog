@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/qooxdoo/qxl.dialog.svg?branch=master)](https://travis-ci.com/qooxdoo/qxl.dialog)
 
->Notes: The code has been migrated from the `qooxdoo/qxl.dialog repository
+>Notes: The code has been migrated from the [cboulanger/qx-contrib](https://github.com/cboulanger/qx-contrib-Dialog) repository
 and has a new namespace `qxl.dialog` . It only works with the new JavaScript 
 compiler and qooxdoo version 6. 
 
