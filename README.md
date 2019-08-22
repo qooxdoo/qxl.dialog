@@ -4,48 +4,63 @@ Build Status: Master branch [![Master](https://travis-ci.org/qooxdoo/qxl.dialog.
 
 >Notes: The code has been migrated from the `qooxdoo/qxl.dialog repository
 and has a new namespace `qxl.dialog` . It only works with the new JavaScript 
-compiler and qooxdoo v6. It does not work with qooxdoo v5 and the python toolchain.
+compiler and qooxdoo version 6. 
 
 A set of often used dialog widgets for the qooxdoo framework.
 
 - Alert
 - Confirm
-- Form
 - Login
 - Prompt
 - Select
-- Wizard
 - Progress
 
-Demo: http://qooxdoo.github.io/qxl.dialog/dialog.demo/index.html
+The package also provides support for user-defined forms and wizards. These more
+complex widgets, however, are likely to be moved into a separate package
+eventually.
+
+Demo: http://qooxdoo.github.io/qxl.dialog
 
 API Viewer: http://qooxdoo.github.io/qxl.dialog/apiviewer/index.html#dialog
 
-See [Demo app](source/class/dialog/demo/Application.js) for
+See the code of the [Demo app](source/class/dialog/demo/Application.js) for
 examples how to use the widgets.
 
-## Installation:
+## Installation
 
-`qx pkg install qooxdoo/qxl.dialog`
+To install the package into an existing qooxdoo application, execute in its
+root directory:
+
+```
+qx pkg install qooxdoo/qxl.dialog
+```
 
 ### Install icon theme
-From v1.3.0 on, the contrib allows you to 
-use custom icons for the dialogs. However, this means that the icons will not work out of the box. You must use or 
-extend [one of the shipped icon themes](source/class/qxl/dialog/theme/icon) in your application's meta theme 
-(see [this example](source/class/qxl/dialog/theme/Theme.js)) or copy the alias definitions from one of them into your own 
-icon theme. You can also use your own choice of icons by writing an icon theme which defines defining the aliases 
-"dialog.icon.(ok|cancel|info|warning|error)" with the paths to the icons. Those paths also need to be put into a 
-`@asset` compiler hint.
-See, for example, [this theme class](source/class/qxl/dialog/theme/icon/IcoMoonFree.js).
+
+From v1.3.0 on, the contrib allows you to use custom icons for the dialogs.
+However, this means that the icons will not work out of the box. You must use or
+extend [one of the shipped icon themes](source/class/qxl/dialog/theme/icon) in
+your application's meta theme (see [this
+example](source/class/qxl/dialog/theme/Theme.js)) or copy the alias definitions
+from one of them into your own icon theme. 
+
+You can also use your own choice of icons by writing an icon theme which defines
+defining the aliases `dialog.icon.(ok|cancel|info|warning|error)` with the paths
+to the icons. Those paths also need to be put into a `@asset` compiler hint.
+See, for example, [this theme
+class](source/class/qxl/dialog/theme/icon/IcoMoonFree.js).
 
 ## Testing
+
+To run the tests, first start the built-in server with
+
 ```bash
-npm install -g @qooxdoo/compiler
-npm install
 qx serve --target=build
 ```
-Once the message 'Web server started ...' appears, open a new terminal and start the tests with `npm test`. 
-When the tests succeed, you can kill the server process in the first tab. 
+
+Once the message `Web server started` ... appears, open a new terminal and start
+the tests with `npm test`. Once the tests have succeeded, you can kill the
+server process in the first tab.
 
 ## Changelog
 ### v3.0.0
