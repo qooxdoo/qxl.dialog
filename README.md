@@ -1,6 +1,6 @@
 # Qooxdoo Dialog Widgets
 
-Build Status: Master branch [![Master](https://travis-ci.org/qooxdoo/qxl.dialog.svg?branch=master)](https://travis-ci.org/qooxdoo/qxl.dialog) | Development branch [![Develop](https://travis-ci.org/qooxdoo/qxl.dialog.svg?branch=develop)](https://travis-ci.org/qooxdoo/qxl.dialog)
+[![Build Status](https://travis-ci.com/qooxdoo/qxl.dialog.svg?branch=master)](https://travis-ci.com/qooxdoo/qxl.dialog)
 
 >Notes: The code has been migrated from the `qooxdoo/qxl.dialog repository
 and has a new namespace `qxl.dialog` . It only works with the new JavaScript 
