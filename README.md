@@ -2,10 +2,12 @@
 
 [![Build Status](https://travis-ci.com/qooxdoo/qxl.dialog.svg?branch=master)](https://travis-ci.com/qooxdoo/qxl.dialog)
 
->Notes: The code has been migrated from the
+>Notes: The code of this package originates from the
 [cboulanger/qx-contrib](https://github.com/cboulanger/qx-contrib-Dialog)
-repository and has a new namespace `qxl.dialog` . It only works with the new
-JavaScript compiler and qooxdoo version 6. See [below](#) for how to migrate.
+repository and has been moved to the new namespace `qxl.dialog`. It only works
+with the new JavaScript compiler and qooxdoo version 6. See
+[below](#migrating-from-cboulangerqx-contrib-dialog) for instructions how to
+migrate your code.
 
 A set of often used dialog widgets for the qooxdoo framework.
 
