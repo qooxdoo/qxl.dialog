@@ -72,7 +72,7 @@ to do the following steps:
 
 - `qx pkg remove cboulanger/qx-contrib-Dialog`
 - `qx pkg install qooxdoo/qxl.dialog`
-- search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dialog` 
+- search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dialog/` 
 (check each search/replace manually to avoid false positives )
 
 ## Changelog
