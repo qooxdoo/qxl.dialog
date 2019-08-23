@@ -2,9 +2,10 @@
 
 [![Build Status](https://travis-ci.com/qooxdoo/qxl.dialog.svg?branch=master)](https://travis-ci.com/qooxdoo/qxl.dialog)
 
->Notes: The code has been migrated from the [cboulanger/qx-contrib](https://github.com/cboulanger/qx-contrib-Dialog) repository
-and has a new namespace `qxl.dialog` . It only works with the new JavaScript 
-compiler and qooxdoo version 6. 
+>Notes: The code has been migrated from the
+[cboulanger/qx-contrib](https://github.com/cboulanger/qx-contrib-Dialog)
+repository and has a new namespace `qxl.dialog` . It only works with the new
+JavaScript compiler and qooxdoo version 6. See [below](#) for how to migrate.
 
 A set of often used dialog widgets for the qooxdoo framework.
 
@@ -61,6 +62,16 @@ qx serve --target=build
 Once the message `Web server started` ... appears, open a new terminal and start
 the tests with `npm test`. Once the tests have succeeded, you can kill the
 server process in the first tab.
+
+## Migrating from cboulanger/qx-contrib-Dialog
+
+To migrate code that has used the cboulanger/qx-contrib-Dialog package, you need 
+to do the following steps:
+
+- `qx pkg remove cboulanger/qx-contrib-Dialog`
+- `qx pkg install qooxdoo/qxl.dialog`
+- search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dialog` 
+(check each search/replace manually to avoid false positives )
 
 ## Changelog
 ### v3.0.0
