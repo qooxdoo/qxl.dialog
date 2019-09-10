@@ -22,11 +22,11 @@ The package also provides support for user-defined forms and wizards. These more
 complex widgets, however, are likely to be moved into a separate package
 eventually.
 
-Demo: http://qooxdoo.github.io/qxl.dialog
+Demo: https://qooxdoo.github.io/qxl.dialog
 
-API Viewer: http://qooxdoo.github.io/qxl.dialog/apiviewer/index.html#dialog
+API Viewer: https://www.qooxdoo.org/qxl.dialog/apiviewer/index.html#qxl.dialog
 
-See the code of the [Demo app](source/class/dialog/demo/Application.js) for
+See the code of the [Demo app](source/class/qxl/dialog/demo/Application.js) for
 examples how to use the widgets.
 
 ## Installation
