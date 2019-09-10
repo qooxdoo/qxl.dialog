@@ -1,0 +1,35 @@
+{
+  "className": "qx.theme.simple.Color",
+  "packageName": "qx.theme.simple",
+  "name": "Color",
+  "superClass": null,
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 22,
+        "column": 0
+      },
+      "end": {
+        "line": 117,
+        "column": 3
+      }
+    },
+    "jsdoc": {
+      "@description": [
+        {
+          "name": "@description",
+          "body": "***********************************************************************\n\nqooxdoo - the new era of web development\n\nhttp:\n\nCopyright:\n2004-2011 1&1 Internet AG, Germany, http:\n\nLicense:\nMIT: https:\nSee the LICENSE file in the project's top-level directory for details.\n\nAuthors:\nMartin Wittemann (martinwittemann)\n\n***********************************************************************"
+        },
+        {
+          "name": "@description",
+          "body": "Simple color theme"
+        }
+      ]
+    }
+  },
+  "type": "theme",
+  "descendants": []
+}

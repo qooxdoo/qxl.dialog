@@ -1,0 +1,77 @@
+{
+  "className": "qxl.dialog.theme.icon.IcoMoonFree",
+  "packageName": "qxl.dialog.theme.icon",
+  "name": "IcoMoonFree",
+  "superClass": null,
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 19,
+        "column": 0
+      },
+      "end": {
+        "line": 30,
+        "column": 3
+      }
+    },
+    "jsdoc": {
+      "@description": [
+        {
+          "name": "@description",
+          "body": "Icons from the IcoMoon Free Pack\n\nhttps:\nhttps:\n\nDual-licences under CC BY 4.0 or GPL.\nsee https:\nhttp:\nhttp:"
+        }
+      ],
+      "@asset": [
+        {
+          "name": "@asset",
+          "body": "qxl/dialog/icon/IcoMoonFree/272-cross.svg"
+        },
+        {
+          "name": "@asset",
+          "body": "qxl/dialog/icon/IcoMoonFree/273-checkmark.svg"
+        },
+        {
+          "name": "@asset",
+          "body": "qxl/dialog/icon/IcoMoonFree/264-warning.svg"
+        },
+        {
+          "name": "@asset",
+          "body": "qxl/dialog/icon/IcoMoonFree/269-info.svg"
+        },
+        {
+          "name": "@asset",
+          "body": "qxl/dialog/icon/IcoMoonFree/270-cancel-circle.svg"
+        },
+        {
+          "name": "@asset",
+          "body": "qxl/qx/icon/Oxygen/16/apps/office-calendar.png"
+        }
+      ]
+    }
+  },
+  "type": "theme",
+  "aliases": {
+    "location": {
+      "start": {
+        "line": 22,
+        "column": 2
+      },
+      "end": {
+        "line": 29,
+        "column": 3
+      }
+    },
+    "aliasMap": {
+      "icon": "qx/icon/Oxygen",
+      "qxl.dialog.icon.cancel": "qxl/dialog/icon/IcoMoonFree/272-cross.svg",
+      "qxl.dialog.icon.ok": "qxl/dialog/icon/IcoMoonFree/273-checkmark.svg",
+      "qxl.dialog.icon.info": "qxl/dialog/icon/IcoMoonFree/269-info.svg",
+      "qxl.dialog.icon.error": "qxl/dialog/icon/IcoMoonFree/270-cancel-circle.svg",
+      "qxl.dialog.icon.warning": "qxl/dialog/icon/IcoMoonFree/264-warning.svg"
+    }
+  },
+  "descendants": []
+}

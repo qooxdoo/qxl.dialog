@@ -1,0 +1,39 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.dialog/node_modules/@qooxdoo/compiler/node_modules/@qooxdoo/framework/source/class/qx/log/appender/PhoneGap.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "statics",
+    "process",
+    "entry",
+    "args",
+    "log",
+    "appender",
+    "Util",
+    "toText",
+    "level",
+    "debug",
+    "warn",
+    "error",
+    "defer",
+    "register",
+    "window",
+    "Logger",
+    "setTimeout",
+    "core",
+    "Environment",
+    "get",
+    "PhoneGap"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAiCA;;;;;;;AAOAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,0BAAhB,EACA;AACE;;;;;AAMAC,IAAAA,OAAO,EACP;AACE;;;;AAIAC,MAAAA,OAAO,EAAG,iBAASC,KAAT,EACV;AACE,YAAIC,IAAI,GAAGT,EAAE,CAACU,GAAH,CAAOC,QAAP,CAAgBC,IAAhB,CAAqBC,MAArB,CAA4BL,KAA5B,CAAX;AACA,YAAIM,KAAK,GAAGN,KAAK,CAACM,KAAlB;;AACA,YAAIA,KAAK,IAAI,MAAb,EAAqB;AACnBC,UAAAA,KAAK,CAACC,IAAN,CAAWP,IAAX;AACD,SAFD,MAEO,IAAIK,KAAK,IAAI,OAAb,EAAsB;AAC3BC,UAAAA,KAAK,CAACE,KAAN,CAAYR,IAAZ;AACD,SAFM,MAEA;AACLM,UAAAA,KAAK,CAACL,GAAN,CAAUD,IAAV;AACD;AACF;AAhBH,KARF;;AA8BE;;;;;AAMAS,IAAAA,KAAK,EAAG,eAASZ,OAAT,EACR;AACE,eAASa,QAAT,GACA;AACE,YAAIC,MAAM,CAACL,KAAX,EAAkB;AAChBf,UAAAA,EAAE,CAACU,GAAH,CAAOW,MAAP,CAAcF,QAAd,CAAuBb,OAAvB;AACD,SAFD,MAEO;AACLc,UAAAA,MAAM,CAACE,UAAP,CAAkBH,QAAlB,EAA4B,GAA5B;AACD;AACF;;AAED,UAAInB,EAAE,CAACuB,IAAH,CAAQC,WAAR,CAAoBC,GAApB,CAAwB,UAAxB,CAAJ,EAAyC;AACvCN,QAAAA,QAAQ;AACT;AACF;AAlDH,GADA;AAxCAnB,EAAAA,EAAE,CAACU,GAAH,CAAOC,QAAP,CAAgBe,QAAhB,CAAyBvB,aAAzB,GAAyCA,aAAzC",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2009-2010 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   ======================================================================\n\n   This class contains code based on the following work:\n\n   * Unify Project\n\n     Homepage:\n       http://unify-project.org\n\n     Copyright:\n       2009-2010 Deutsche Telekom AG, Germany, http://telekom.com\n\n     License:\n       MIT: http://www.opensource.org/licenses/mit-license.php\n\n     Authors:\n       * Sebastian Werner (wpbasti)\n\n************************************************************************ */\n\n/**\n * Processes the incoming log entry and displays it using the PhoneGap\n * logging capabilities.\n *\n * @require(qx.log.appender.Util)\n * @ignore(debug.*)\n */\nqx.Class.define(\"qx.log.appender.PhoneGap\",\n{\n  /*\n  *****************************************************************************\n     STATICS\n  *****************************************************************************\n  */\n\n  statics :\n  {\n    /**\n     * Processes a single log entry\n     * @param entry {Map} The entry to process\n     */\n    process : function(entry)\n    {\n      var args = qx.log.appender.Util.toText(entry);\n      var level = entry.level;\n      if (level == \"warn\") {\n        debug.warn(args);\n      } else if (level == \"error\") {\n        debug.error(args);\n      } else {\n        debug.log(args);\n      }\n    }\n  },\n\n\n\n\n  /*\n  *****************************************************************************\n     DEFER\n  *****************************************************************************\n  */\n\n  defer : function(statics)\n  {\n    function register()\n    {\n      if (window.debug) {\n        qx.log.Logger.register(statics);\n      } else {\n        window.setTimeout(register, 200);\n      }\n    }\n\n    if (qx.core.Environment.get(\"phonegap\")) {\n      register();\n    }\n  }\n});\n"
+  ]
+}
