@@ -30,5 +30,5 @@
     "@qooxdoo/framework": "^6.0.0-beta",
     "@qooxdoo/compiler": "^1.0.0-beta"
   },
-  "$schema": "https://raw.githubusercontent.com/qooxdoo/qooxdoo-compiler/master/source/resource/qx/tool/schema/Manifest-1-0-0.json"
+  "$schema": "https://qooxdoo.org/schema/Manifest-1-0-0.json"
 }
