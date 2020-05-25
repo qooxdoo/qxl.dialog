@@ -24,7 +24,11 @@
       "environment": {
         "qx.icontheme": "Tango",
         "excludeFromAPIViewer": [
-          "qxl.apiviewer.*"
+          "qxl.apiviewer.*",
+          "qxl.versionlabel.*",
+          "qx.*",
+          "qxWeb"
+				]
         ]
       }
     }
