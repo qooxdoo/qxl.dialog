@@ -28,7 +28,6 @@
           "qxl.versionlabel.*",
           "qx.*",
           "qxWeb"
-				]
         ]
       }
     }
