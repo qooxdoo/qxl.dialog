@@ -1,0 +1,25 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.dialog/qxl.dialog/source/class/qxl/dialog/theme/icon/Tango.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Theme",
+    "define",
+    "title",
+    "aliases",
+    "qxl",
+    "dialog",
+    "theme",
+    "icon",
+    "Tango"
+  ],
+  "mappings": ";;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAkBA;;;;;;;;;;AAUAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,6BAAhB,EACA;AACEC,IAAAA,KAAK,EAAG,OADV;AAEEC,IAAAA,OAAO,EAAG;AACR,cAAS,eADD;AAER,gCAA2B,4CAFnB;AAGR,4BAA2B,wCAHnB;AAIR,8BAA2B,gDAJnB;AAKR,+BAA2B,0CALnB;AAMR,iCAA4B;AANpB;AAFZ,GADA;AA5BAC,EAAAA,GAAG,CAACC,MAAJ,CAAWC,KAAX,CAAiBC,IAAjB,CAAsBC,KAAtB,CAA4BT,aAA5B,GAA4CA,aAA5C",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Andreas Ecker (ecker)\n\n************************************************************************ */\n/**\n * Tango icons\n *\n * @asset(qx/icon/Tango/22/actions/dialog-cancel.png)\n * @asset(qx/icon/Tango/22/actions/dialog-ok.png)\n * @asset(qx/icon/Tango/48/status/dialog-information.png)\n * @asset(qx/icon/Tango/48/status/dialog-error.png)\n * @asset(qx/icon/Tango/48/status/dialog-warning.png)\n * @asset(qx/icon/Tango/16/apps/office-calendar.png)\n */\nqx.Theme.define(\"qxl.dialog.theme.icon.Tango\",\n{\n  title : \"Tango\",\n  aliases : {\n    \"icon\" : \"qx/icon/Tango\",\n    \"qxl.dialog.icon.cancel\" : \"qx/icon/Tango/22/actions/dialog-cancel.png\",\n    \"qxl.dialog.icon.ok\"     : \"qx/icon/Tango/22/actions/dialog-ok.png\",\n    \"qxl.dialog.icon.info\"   : \"qx/icon/Tango/48/status/dialog-information.png\",\n    \"qxl.dialog.icon.error\"  : \"qx/icon/Tango/48/status/dialog-error.png\",\n    \"qxl.dialog.icon.warning\" : \"qx/icon/Tango/48/status/dialog-warning.png\"\n  }\n});\n"
+  ]
+}
