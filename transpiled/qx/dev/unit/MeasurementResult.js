@@ -79,4 +79,4 @@
   qx.dev.unit.MeasurementResult.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MeasurementResult.js.map?dt=1590417417246
+//# sourceMappingURL=MeasurementResult.js.map?dt=1590436472487

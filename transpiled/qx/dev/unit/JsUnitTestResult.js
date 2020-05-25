@@ -86,4 +86,4 @@
   qx.dev.unit.JsUnitTestResult.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=JsUnitTestResult.js.map?dt=1590417417064
+//# sourceMappingURL=JsUnitTestResult.js.map?dt=1590436472291

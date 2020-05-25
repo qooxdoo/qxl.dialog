@@ -116,4 +116,4 @@
   qx.ui.form.MForm.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MForm.js.map?dt=1590417431439
+//# sourceMappingURL=MForm.js.map?dt=1590436486801

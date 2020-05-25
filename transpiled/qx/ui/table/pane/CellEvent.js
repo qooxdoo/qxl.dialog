@@ -106,4 +106,4 @@
   qx.ui.table.pane.CellEvent.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=CellEvent.js.map?dt=1590417439931
+//# sourceMappingURL=CellEvent.js.map?dt=1590436495318

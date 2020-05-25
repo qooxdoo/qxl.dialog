@@ -854,4 +854,4 @@
   qx.ui.menu.Manager.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Manager.js.map?dt=1590417434139
+//# sourceMappingURL=Manager.js.map?dt=1590436489521

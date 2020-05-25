@@ -174,4 +174,4 @@
   qx.bom.client.Transport.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Transport.js.map?dt=1590417413046
+//# sourceMappingURL=Transport.js.map?dt=1590436467926

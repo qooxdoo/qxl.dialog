@@ -52,4 +52,4 @@
   qx.ui.mobile.navigationbar.Button.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Button.js.map?dt=1590417436950
+//# sourceMappingURL=Button.js.map?dt=1590436492149

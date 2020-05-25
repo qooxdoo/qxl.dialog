@@ -305,4 +305,4 @@
   qx.ui.tabview.TabButton.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=TabButton.js.map?dt=1590417440615
+//# sourceMappingURL=TabButton.js.map?dt=1590436496058

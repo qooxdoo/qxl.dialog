@@ -89,4 +89,4 @@
   qx.ui.mobile.form.Row.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Row.js.map?dt=1590417436046
+//# sourceMappingURL=Row.js.map?dt=1590436491374

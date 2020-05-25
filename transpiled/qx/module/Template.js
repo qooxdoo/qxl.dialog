@@ -120,4 +120,4 @@
   qx.module.Template.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Template.js.map?dt=1590417424668
+//# sourceMappingURL=Template.js.map?dt=1590436480036

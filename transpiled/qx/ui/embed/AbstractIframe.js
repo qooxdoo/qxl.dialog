@@ -170,4 +170,4 @@
   qx.ui.embed.AbstractIframe.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=AbstractIframe.js.map?dt=1590417430344
+//# sourceMappingURL=AbstractIframe.js.map?dt=1590436485717

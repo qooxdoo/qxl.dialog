@@ -123,4 +123,4 @@
   qx.application.AbstractGui.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=AbstractGui.js.map?dt=1590417409816
+//# sourceMappingURL=AbstractGui.js.map?dt=1590436464406

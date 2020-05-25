@@ -211,4 +211,4 @@
   qx.ui.mobile.list.provider.Provider.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Provider.js.map?dt=1590417436799
+//# sourceMappingURL=Provider.js.map?dt=1590436492001

@@ -276,4 +276,4 @@
   qx.ui.groupbox.GroupBox.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=GroupBox.js.map?dt=1590417432834
+//# sourceMappingURL=GroupBox.js.map?dt=1590436488207

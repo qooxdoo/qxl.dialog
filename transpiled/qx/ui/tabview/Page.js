@@ -237,4 +237,4 @@
   qx.ui.tabview.Page.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Page.js.map?dt=1590417440576
+//# sourceMappingURL=Page.js.map?dt=1590436496012

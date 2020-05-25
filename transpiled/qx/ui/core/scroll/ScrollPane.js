@@ -483,4 +483,4 @@
   qx.ui.core.scroll.ScrollPane.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ScrollPane.js.map?dt=1590417429620
+//# sourceMappingURL=ScrollPane.js.map?dt=1590436484922

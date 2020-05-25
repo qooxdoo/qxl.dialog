@@ -95,4 +95,4 @@
   qx.ui.mobile.embed.Html.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Html.js.map?dt=1590417435669
+//# sourceMappingURL=Html.js.map?dt=1590436491022

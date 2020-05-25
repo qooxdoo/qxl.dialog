@@ -120,4 +120,4 @@
   qx.log.appender.PhoneGap.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=PhoneGap.js.map?dt=1590417423946
+//# sourceMappingURL=PhoneGap.js.map?dt=1590436479334

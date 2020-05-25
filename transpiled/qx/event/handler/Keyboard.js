@@ -588,4 +588,4 @@
   qx.event.handler.Keyboard.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Keyboard.js.map?dt=1590417419796
+//# sourceMappingURL=Keyboard.js.map?dt=1590436475194

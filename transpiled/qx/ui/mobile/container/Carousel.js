@@ -736,4 +736,4 @@
   qx.ui.mobile.container.Carousel.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Carousel.js.map?dt=1590417434542
+//# sourceMappingURL=Carousel.js.map?dt=1590436489938

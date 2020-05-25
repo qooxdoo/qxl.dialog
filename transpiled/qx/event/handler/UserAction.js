@@ -131,4 +131,4 @@
   qx.event.handler.UserAction.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=UserAction.js.map?dt=1590417420281
+//# sourceMappingURL=UserAction.js.map?dt=1590436475717

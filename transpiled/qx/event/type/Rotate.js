@@ -58,4 +58,4 @@
   qx.event.type.Rotate.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Rotate.js.map?dt=1590417420800
+//# sourceMappingURL=Rotate.js.map?dt=1590436476267
