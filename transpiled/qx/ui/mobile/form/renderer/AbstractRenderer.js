@@ -153,4 +153,4 @@
   qx.ui.mobile.form.renderer.AbstractRenderer.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=AbstractRenderer.js.map?dt=1596060996915
+//# sourceMappingURL=AbstractRenderer.js.map?dt=1596061058854

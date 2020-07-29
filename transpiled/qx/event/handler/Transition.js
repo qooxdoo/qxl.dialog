@@ -343,4 +343,4 @@
   qx.event.handler.Transition.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Transition.js.map?dt=1596060981842
+//# sourceMappingURL=Transition.js.map?dt=1596061040040

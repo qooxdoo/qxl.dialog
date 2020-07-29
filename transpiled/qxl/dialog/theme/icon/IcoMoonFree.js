@@ -40,4 +40,4 @@
   qxl.dialog.theme.icon.IcoMoonFree.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=IcoMoonFree.js.map?dt=1596061006514
+//# sourceMappingURL=IcoMoonFree.js.map?dt=1596061070205
