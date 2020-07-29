@@ -9,7 +9,7 @@
   "compilerVersion": "1.0.0-beta.20200613-2032",
   "classInfo": {
     "qxl.dialog.demo.Application": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.184Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.Dialog": {
@@ -51,7 +51,7 @@
       ]
     },
     "qxl.dialog.theme.Theme": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.184Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.theme.icon.IcoMoonFree": {
@@ -24163,7 +24163,7 @@
       }
     },
     "qxl.dialog.Dialog": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.180Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24223,7 +24223,7 @@
       ]
     },
     "qxl.dialog.Wizard": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.184Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24263,7 +24263,7 @@
       ]
     },
     "qxl.dialog.Login": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.184Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24326,7 +24326,7 @@
       ]
     },
     "qxl.dialog.Progress": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.184Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24367,7 +24367,7 @@
       "hasDefer": null
     },
     "qxl.dialog.theme.icon.IcoMoonFree": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.184Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24396,7 +24396,7 @@
       }
     },
     "qxl.dialog.theme.icon.Oxygen": {
-      "mtime": "2020-07-29T13:00:07.187Z",
+      "mtime": "2020-07-29T13:20:25.184Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24426,7 +24426,7 @@
       }
     },
     "qxl.dialog.theme.icon.Tango": {
-      "mtime": "2020-07-29T13:00:07.187Z",
+      "mtime": "2020-07-29T13:20:25.184Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24713,7 +24713,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Alert": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.180Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24752,7 +24752,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Confirm": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.180Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24802,7 +24802,7 @@
       ]
     },
     "qxl.dialog.Prompt": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.184Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24843,7 +24843,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Select": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.184Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24882,7 +24882,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Form": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.180Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.FormRenderer": {
@@ -24956,7 +24956,7 @@
       ]
     },
     "qxl.dialog.FormTag": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.180Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25299,7 +25299,7 @@
       "hasDefer": null
     },
     "qxl.dialog.FormRenderer": {
-      "mtime": "2020-07-29T13:00:07.183Z",
+      "mtime": "2020-07-29T13:20:25.180Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {

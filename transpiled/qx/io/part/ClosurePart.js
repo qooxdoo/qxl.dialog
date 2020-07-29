@@ -169,4 +169,4 @@
   qx.io.part.ClosurePart.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ClosurePart.js.map?dt=1596027666604
+//# sourceMappingURL=ClosurePart.js.map?dt=1596028884378

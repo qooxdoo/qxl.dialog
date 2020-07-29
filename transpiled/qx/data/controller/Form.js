@@ -374,4 +374,4 @@
   qx.data.controller.Form.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Form.js.map?dt=1596027660933
+//# sourceMappingURL=Form.js.map?dt=1596028877786
