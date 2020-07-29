@@ -9,11 +9,11 @@
   "clazz": {
     "location": {
       "start": {
-        "line": 19,
+        "line": 18,
         "column": 0
       },
       "end": {
-        "line": 30,
+        "line": 29,
         "column": 3
       }
     },
@@ -44,10 +44,6 @@
         {
           "name": "@asset",
           "body": "qxl/dialog/icon/IcoMoonFree/270-cancel-circle.svg"
-        },
-        {
-          "name": "@asset",
-          "body": "qxl/qx/icon/Oxygen/16/apps/office-calendar.png"
         }
       ]
     }
@@ -56,11 +52,11 @@
   "aliases": {
     "location": {
       "start": {
-        "line": 22,
+        "line": 21,
         "column": 2
       },
       "end": {
-        "line": 29,
+        "line": 28,
         "column": 3
       }
     },

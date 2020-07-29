@@ -127,4 +127,4 @@
   qx.ui.command.Group.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Group.js.map?dt=1590436482584
+//# sourceMappingURL=Group.js.map?dt=1596027671936

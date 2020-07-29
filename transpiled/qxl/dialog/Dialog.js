@@ -107,13 +107,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param caption {String} The caption of the dialog window
        * @return {qxl.dialog.Alert} The widget instance
        */
-      alert: function alert(message, callback, context, caption) {
+      alert: function alert() {
+        var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+        var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+        var caption = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
         return new qxl.dialog.Alert({
           message: message,
-          callback: callback || null,
-          context: context || null,
-          image: "qxl.dialog.icon.info",
-          caption: caption || ""
+          callback: callback,
+          context: context,
+          caption: caption,
+          image: "qxl.dialog.icon.info"
         }).show();
       },
 
@@ -125,13 +129,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param caption {String} The caption of the dialog window
        * @return {qxl.dialog.Alert} The widget instance
        */
-      error: function error(message, callback, context, caption) {
+      error: function error() {
+        var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+        var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+        var caption = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
         return new qxl.dialog.Alert({
           message: message,
-          callback: callback || null,
-          context: context || null,
-          image: "qxl.dialog.icon.error",
-          caption: caption || ""
+          callback: callback,
+          context: context,
+          caption: caption,
+          image: "qxl.dialog.icon.error"
         }).show();
       },
 
@@ -143,13 +151,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param caption {String} The caption of the dialog window
        * @return {qxl.dialog.Alert} The widget instance
        */
-      warning: function warning(message, callback, context, caption) {
+      warning: function warning() {
+        var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+        var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+        var caption = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
         return new qxl.dialog.Alert({
           message: message,
-          callback: callback || null,
-          context: context || null,
-          image: "qxl.dialog.icon.warning",
-          caption: caption || ""
+          callback: callback,
+          context: context,
+          caption: caption,
+          image: "qxl.dialog.icon.warning"
         }).show();
       },
 
@@ -161,12 +173,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param caption {String} The caption of the dialog window
        * @return {qxl.dialog.Alert} The widget instance
        */
-      confirm: function confirm(message, callback, context, caption) {
+      confirm: function confirm() {
+        var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+        var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+        var caption = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
         return new qxl.dialog.Confirm({
           message: message,
-          callback: callback || null,
-          context: context || null,
-          caption: caption || ""
+          callback: callback,
+          context: context,
+          caption: caption
         }).show();
       },
 
@@ -687,4 +703,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qxl.dialog.Dialog.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Dialog.js.map?dt=1590436501830
+//# sourceMappingURL=Dialog.js.map?dt=1596027690215

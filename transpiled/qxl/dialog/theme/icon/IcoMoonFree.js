@@ -25,7 +25,6 @@
    * @asset(qxl/dialog/icon/IcoMoonFree/264-warning.svg)
    * @asset(qxl/dialog/icon/IcoMoonFree/269-info.svg)
    * @asset(qxl/dialog/icon/IcoMoonFree/270-cancel-circle.svg)
-   * @asset(qxl/qx/icon/Oxygen/16/apps/office-calendar.png)
    */
   qx.Theme.define("qxl.dialog.theme.icon.IcoMoonFree", {
     title: "IcoMoonFree",
@@ -41,4 +40,4 @@
   qxl.dialog.theme.icon.IcoMoonFree.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=IcoMoonFree.js.map?dt=1590436501993
+//# sourceMappingURL=IcoMoonFree.js.map?dt=1596027690370
