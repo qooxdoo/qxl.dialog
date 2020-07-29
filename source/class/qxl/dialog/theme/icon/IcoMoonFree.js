@@ -14,7 +14,6 @@
  * @asset(qxl/dialog/icon/IcoMoonFree/264-warning.svg)
  * @asset(qxl/dialog/icon/IcoMoonFree/269-info.svg)
  * @asset(qxl/dialog/icon/IcoMoonFree/270-cancel-circle.svg)
- * @asset(qxl/qx/icon/Oxygen/16/apps/office-calendar.png)
  */
 qx.Theme.define("qxl.dialog.theme.icon.IcoMoonFree",
 {

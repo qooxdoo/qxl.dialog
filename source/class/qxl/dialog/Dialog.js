@@ -65,13 +65,9 @@ qx.Class.define("qxl.dialog.Dialog", {
      * @param caption {String} The caption of the dialog window
      * @return {qxl.dialog.Alert} The widget instance
      */
-    alert: function(message, callback, context, caption) {
+    alert: function(message="", callback=null, context=null, caption="") {
       return new qxl.dialog.Alert({
-        message: message,
-        callback: callback || null,
-        context: context || null,
-        image: "qxl.dialog.icon.info",
-        caption: caption || ""
+        message, callback, context, caption, image: "qxl.dialog.icon.info",
       }).show();
     },
 
@@ -83,13 +79,9 @@ qx.Class.define("qxl.dialog.Dialog", {
      * @param caption {String} The caption of the dialog window
      * @return {qxl.dialog.Alert} The widget instance
      */
-    error: function(message, callback, context, caption) {
+    error(message="", callback=null, context=null, caption="") {
       return new qxl.dialog.Alert({
-        message: message,
-        callback: callback || null,
-        context: context || null,
-        image: "qxl.dialog.icon.error",
-        caption: caption || ""
+        message, callback, context, caption, image: "qxl.dialog.icon.error"
       }).show();
     },
 
@@ -101,13 +93,9 @@ qx.Class.define("qxl.dialog.Dialog", {
      * @param caption {String} The caption of the dialog window
      * @return {qxl.dialog.Alert} The widget instance
      */
-    warning: function(message, callback, context, caption) {
+    warning(message="", callback=null, context=null, caption="") {
       return new qxl.dialog.Alert({
-        message: message,
-        callback: callback || null,
-        context: context || null,
-        image: "qxl.dialog.icon.warning",
-        caption: caption || ""
+        message, callback, context, caption, image: "qxl.dialog.icon.warning",
       }).show();
     },
 
@@ -119,13 +107,8 @@ qx.Class.define("qxl.dialog.Dialog", {
      * @param caption {String} The caption of the dialog window
      * @return {qxl.dialog.Alert} The widget instance
      */
-    confirm: function(message, callback, context, caption) {
-      return new qxl.dialog.Confirm({
-        message: message,
-        callback: callback || null,
-        context: context || null,
-        caption: caption || ""
-      }).show();
+    confirm(message="", callback=null, context=null, caption="") {
+      return new qxl.dialog.Confirm({message, callback, context, caption}).show();
     },
 
     /**

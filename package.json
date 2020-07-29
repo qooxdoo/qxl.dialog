@@ -3,10 +3,10 @@
   "version": "3.0.2",
   "description": "see http://qooxdoo.github.io/qxl.dialog/",
   "dependencies": {
-    "@qooxdoo/compiler": "^1.0.0-beta"
+    "@qooxdoo/compiler": "^1.0.0-beta.20200613-2032"
   },
   "devDependencies": {
-    "testcafe": "^1.4.1"
+    "testcafe": "^1.8.8"
   },
   "scripts": {
     "test": "npx testcafe chrome,firefox tests/testcafe.js  --app-init-delay 10000",
