@@ -244,4 +244,4 @@
   qx.core.MEvent.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MEvent.js.map?dt=1596028876822
+//# sourceMappingURL=MEvent.js.map?dt=1596060976624

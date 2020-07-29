@@ -164,4 +164,4 @@
   qx.dev.ObjectSummary.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ObjectSummary.js.map?dt=1596028878747
+//# sourceMappingURL=ObjectSummary.js.map?dt=1596060978350
