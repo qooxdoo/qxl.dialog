@@ -579,7 +579,7 @@ qx.Class.define("qxl.dialog.Dialog", {
      * @param  e {qx.event.type.KeyInput}
      */
     _handleEscape: function(e) {
-      if (this.isSeeable() && this.isCancelOnEscape() && e.getKeyCode() === 27) {
+      if (this.isCancelOnEscape() && e.getKeyCode() === 27 && this.getContentElement() && this.isSeeable()) {
         this._handleCancel();
       }
     }
