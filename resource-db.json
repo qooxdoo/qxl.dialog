@@ -6078,15 +6078,15 @@
         "width": 5,
         "height": 3
       },
-      "qx/decoration/Modern/arrows/down.png": {
-        "resourcePath": "resourcePath",
-        "width": 8,
-        "height": 5
-      },
       "qx/decoration/Modern/arrows/forward.png": {
         "resourcePath": "resourcePath",
         "width": 10,
         "height": 8
+      },
+      "qx/decoration/Modern/arrows/down.png": {
+        "resourcePath": "resourcePath",
+        "width": 8,
+        "height": 5
       },
       "qx/decoration/Modern/arrows/left-invert.png": {
         "resourcePath": "resourcePath",
@@ -8433,17 +8433,17 @@
         "width": 128,
         "height": 128
       },
+      "qx/icon/Oxygen/128/actions/document-new.png": {
+        "resourcePath": "resourcePath",
+        "width": 128,
+        "height": 128
+      },
       "qx/icon/Oxygen/128/actions/document-open-recent.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
       "qx/icon/Oxygen/128/actions/document-open.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Oxygen/128/actions/document-new.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -8588,12 +8588,12 @@
         "width": 128,
         "height": 128
       },
-      "qx/icon/Oxygen/128/actions/format-text-underline.png": {
+      "qx/icon/Oxygen/128/actions/go-bottom.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
-      "qx/icon/Oxygen/128/actions/go-bottom.png": {
+      "qx/icon/Oxygen/128/actions/format-text-underline.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -8968,12 +8968,12 @@
         "width": 128,
         "height": 128
       },
-      "qx/icon/Oxygen/128/apps/office-project.png": {
+      "qx/icon/Oxygen/128/apps/office-spreadsheet.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
-      "qx/icon/Oxygen/128/apps/office-spreadsheet.png": {
+      "qx/icon/Oxygen/128/apps/office-project.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -9083,6 +9083,11 @@
         "width": 128,
         "height": 128
       },
+      "qx/icon/Oxygen/128/apps/utilities-keyring.png": {
+        "resourcePath": "resourcePath",
+        "width": 128,
+        "height": 128
+      },
       "qx/icon/Oxygen/128/apps/utilities-log-viewer.png": {
         "resourcePath": "resourcePath",
         "width": 128,
@@ -9099,11 +9104,6 @@
         "height": 128
       },
       "qx/icon/Oxygen/128/apps/utilities-statistics.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Oxygen/128/apps/utilities-keyring.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -9193,11 +9193,6 @@
         "width": 128,
         "height": 128
       },
-      "qx/icon/Oxygen/128/devices/camera-photo.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
       "qx/icon/Oxygen/128/devices/camera-web.png": {
         "resourcePath": "resourcePath",
         "width": 128,
@@ -9208,12 +9203,17 @@
         "width": 128,
         "height": 128
       },
-      "qx/icon/Oxygen/128/devices/drive-harddisk.png": {
+      "qx/icon/Oxygen/128/devices/camera-photo.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
       "qx/icon/Oxygen/128/devices/display.png": {
+        "resourcePath": "resourcePath",
+        "width": 128,
+        "height": 128
+      },
+      "qx/icon/Oxygen/128/devices/drive-harddisk.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -9723,17 +9723,17 @@
         "width": 16,
         "height": 16
       },
+      "qx/icon/Oxygen/16/actions/go-down.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
       "qx/icon/Oxygen/16/actions/go-first.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
       },
       "qx/icon/Oxygen/16/actions/go-home.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Oxygen/16/actions/go-down.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -9758,12 +9758,12 @@
         "width": 16,
         "height": 16
       },
-      "qx/icon/Oxygen/16/actions/go-up.png": {
+      "qx/icon/Oxygen/16/actions/help-about.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
       },
-      "qx/icon/Oxygen/16/actions/help-about.png": {
+      "qx/icon/Oxygen/16/actions/go-up.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -9903,17 +9903,17 @@
         "width": 16,
         "height": 16
       },
+      "qx/icon/Oxygen/16/actions/object-flip-vertical.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
       "qx/icon/Oxygen/16/actions/object-rotate-left.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
       },
       "qx/icon/Oxygen/16/actions/object-rotate-right.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Oxygen/16/actions/object-flip-vertical.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -9953,6 +9953,11 @@
         "width": 16,
         "height": 16
       },
+      "qx/icon/Oxygen/16/actions/view-restore.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
       "qx/icon/Oxygen/16/actions/view-sort-ascending.png": {
         "resourcePath": "resourcePath",
         "width": 16,
@@ -9964,11 +9969,6 @@
         "height": 16
       },
       "qx/icon/Oxygen/16/actions/window-close.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Oxygen/16/actions/view-restore.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -10358,17 +10358,17 @@
         "width": 16,
         "height": 16
       },
+      "qx/icon/Oxygen/16/devices/media-flash.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
       "qx/icon/Oxygen/16/devices/media-optical.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
       },
       "qx/icon/Oxygen/16/devices/multimedia-player.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Oxygen/16/devices/media-flash.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -10473,12 +10473,12 @@
         "width": 16,
         "height": 16
       },
-      "qx/icon/Oxygen/16/mimetypes/media-image.png": {
+      "qx/icon/Oxygen/16/mimetypes/media-audio.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
       },
-      "qx/icon/Oxygen/16/mimetypes/media-audio.png": {
+      "qx/icon/Oxygen/16/mimetypes/media-image.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -10643,12 +10643,12 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Oxygen/22/actions/bookmark-new.png": {
+      "qx/icon/Oxygen/22/actions/appointment-new.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
-      "qx/icon/Oxygen/22/actions/appointment-new.png": {
+      "qx/icon/Oxygen/22/actions/bookmark-new.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -10698,17 +10698,17 @@
         "width": 22,
         "height": 22
       },
+      "qx/icon/Oxygen/22/actions/document-print-preview.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
       "qx/icon/Oxygen/22/actions/document-print.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
       "qx/icon/Oxygen/22/actions/document-properties.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Oxygen/22/actions/document-print-preview.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -11163,17 +11163,17 @@
         "width": 22,
         "height": 22
       },
+      "qx/icon/Oxygen/22/apps/media-audio-player.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
       "qx/icon/Oxygen/22/apps/media-photo-album.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
       "qx/icon/Oxygen/22/apps/media-video-player.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Oxygen/22/apps/media-audio-player.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -11263,17 +11263,17 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Oxygen/22/apps/preferences-locale.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
       "qx/icon/Oxygen/22/apps/preferences-network.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
       "qx/icon/Oxygen/22/apps/preferences-security.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Oxygen/22/apps/preferences-locale.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -11353,17 +11353,17 @@
         "width": 22,
         "height": 22
       },
+      "qx/icon/Oxygen/22/apps/utilities-statistics.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
       "qx/icon/Oxygen/22/apps/utilities-system-monitor.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
       "qx/icon/Oxygen/22/apps/utilities-terminal.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Oxygen/22/apps/utilities-statistics.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -11603,11 +11603,6 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Oxygen/22/mimetypes/media-image.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
       "qx/icon/Oxygen/22/mimetypes/media-video.png": {
         "resourcePath": "resourcePath",
         "width": 22,
@@ -11649,6 +11644,11 @@
         "height": 22
       },
       "qx/icon/Oxygen/22/mimetypes/text-plain.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Oxygen/22/mimetypes/media-image.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -11883,17 +11883,17 @@
         "width": 32,
         "height": 32
       },
+      "qx/icon/Oxygen/32/actions/edit-paste.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
       "qx/icon/Oxygen/32/actions/edit-redo.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
       },
       "qx/icon/Oxygen/32/actions/edit-select-all.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/actions/edit-paste.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
@@ -12038,6 +12038,11 @@
         "width": 32,
         "height": 32
       },
+      "qx/icon/Oxygen/32/actions/insert-text.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
       "qx/icon/Oxygen/32/actions/list-add.png": {
         "resourcePath": "resourcePath",
         "width": 32,
@@ -12049,11 +12054,6 @@
         "height": 32
       },
       "qx/icon/Oxygen/32/actions/mail-forward.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/actions/insert-text.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
@@ -12088,6 +12088,11 @@
         "width": 32,
         "height": 32
       },
+      "qx/icon/Oxygen/32/actions/mail-reply-all.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
       "qx/icon/Oxygen/32/actions/mail-reply-sender.png": {
         "resourcePath": "resourcePath",
         "width": 32,
@@ -12104,11 +12109,6 @@
         "height": 32
       },
       "qx/icon/Oxygen/32/actions/media-playback-pause.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/actions/mail-reply-all.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
@@ -12244,286 +12244,6 @@
         "height": 32
       },
       "qx/icon/Oxygen/32/actions/zoom-out.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/accessories.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/development.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/engineering.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/games.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/graphics.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/internet.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/multimedia.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/office.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/science.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/system.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/categories/utilities.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/audio-card.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/audio-input-microphone.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/battery.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/camera-photo.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/camera-web.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/computer.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/display.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/drive-harddisk.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/drive-optical.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/input-keyboard.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/input-mouse.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/media-flash.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/media-optical.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/multimedia-player.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/network-wired.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/network-wireless.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/pda.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/phone.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/printer.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/devices/scanner.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emblems/emblem-favorite.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emblems/emblem-important.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emotes/face-angel.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emotes/face-embarrassed.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emotes/face-kiss.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emotes/face-laugh.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emotes/face-plain.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emotes/face-raspberry.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emotes/face-sad.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emotes/face-smile-big.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emotes/face-smile.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/emotes/face-surprise.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/archive.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/executable.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/media-audio.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/media-image.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/media-video.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/office-calendar.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/office-contact.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/office-document.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/office-illustration.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/office-presentation.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/office-spreadsheet.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/text-html.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Oxygen/32/mimetypes/text-plain.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
@@ -12753,6 +12473,11 @@
         "width": 32,
         "height": 32
       },
+      "qx/icon/Oxygen/32/apps/utilities-notes.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
       "qx/icon/Oxygen/32/apps/utilities-statistics.png": {
         "resourcePath": "resourcePath",
         "width": 32,
@@ -12768,12 +12493,187 @@
         "width": 32,
         "height": 32
       },
-      "qx/icon/Oxygen/32/apps/utilities-notes.png": {
+      "qx/icon/Oxygen/32/apps/utilities-text-editor.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
       },
-      "qx/icon/Oxygen/32/apps/utilities-text-editor.png": {
+      "qx/icon/Oxygen/32/categories/accessories.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/categories/development.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/categories/engineering.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/categories/games.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/categories/graphics.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/categories/internet.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/categories/multimedia.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/categories/office.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/categories/science.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/categories/system.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/categories/utilities.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emblems/emblem-favorite.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emblems/emblem-important.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emotes/face-angel.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emotes/face-embarrassed.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emotes/face-kiss.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emotes/face-laugh.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emotes/face-plain.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emotes/face-raspberry.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emotes/face-sad.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emotes/face-smile-big.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emotes/face-smile.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/emotes/face-surprise.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/archive.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/executable.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/media-audio.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/media-image.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/media-video.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/office-calendar.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/office-contact.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/office-document.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/office-illustration.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/office-presentation.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/office-spreadsheet.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/text-html.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/mimetypes/text-plain.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
@@ -12819,6 +12719,106 @@
         "height": 32
       },
       "qx/icon/Oxygen/32/places/user-trash.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/audio-card.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/audio-input-microphone.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/battery.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/camera-photo.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/camera-web.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/computer.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/display.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/drive-harddisk.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/drive-optical.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/input-keyboard.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/input-mouse.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/media-flash.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/media-optical.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/multimedia-player.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/network-wired.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/network-wireless.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/pda.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/phone.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/printer.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Oxygen/32/devices/scanner.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
@@ -13184,6 +13184,106 @@
         "height": 48
       },
       "qx/icon/Oxygen/48/categories/utilities.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/audio-card.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/audio-input-microphone.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/battery.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/camera-photo.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/camera-web.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/computer.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/display.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/drive-harddisk.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/drive-optical.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/input-keyboard.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/input-mouse.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/media-flash.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/media-optical.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/multimedia-player.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/network-wired.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/network-wireless.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/pda.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/phone.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/printer.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Oxygen/48/devices/scanner.png": {
         "resourcePath": "resourcePath",
         "width": 48,
         "height": 48
@@ -13688,106 +13788,6 @@
         "width": 48,
         "height": 48
       },
-      "qx/icon/Oxygen/48/devices/audio-card.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/audio-input-microphone.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/battery.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/camera-photo.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/camera-web.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/computer.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/display.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/drive-harddisk.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/drive-optical.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/input-keyboard.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/input-mouse.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/media-flash.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/media-optical.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/multimedia-player.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/network-wired.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/network-wireless.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/pda.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/phone.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/printer.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
-      "qx/icon/Oxygen/48/devices/scanner.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
       "qx/icon/Oxygen/48/emotes/face-angel.png": {
         "resourcePath": "resourcePath",
         "width": 48,
@@ -13828,12 +13828,12 @@
         "width": 48,
         "height": 48
       },
-      "qx/icon/Oxygen/48/emotes/face-surprise.png": {
+      "qx/icon/Oxygen/48/emotes/face-smile.png": {
         "resourcePath": "resourcePath",
         "width": 48,
         "height": 48
       },
-      "qx/icon/Oxygen/48/emotes/face-smile.png": {
+      "qx/icon/Oxygen/48/emotes/face-surprise.png": {
         "resourcePath": "resourcePath",
         "width": 48,
         "height": 48
@@ -13903,12 +13903,12 @@
         "width": 48,
         "height": 48
       },
-      "qx/icon/Oxygen/48/places/folder-remote.png": {
+      "qx/icon/Oxygen/48/places/folder-open.png": {
         "resourcePath": "resourcePath",
         "width": 48,
         "height": 48
       },
-      "qx/icon/Oxygen/48/places/folder-open.png": {
+      "qx/icon/Oxygen/48/places/folder-remote.png": {
         "resourcePath": "resourcePath",
         "width": 48,
         "height": 48
@@ -14254,6 +14254,61 @@
         "height": 64
       },
       "qx/icon/Oxygen/64/apps/utilities-text-editor.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/accessories.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/development.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/engineering.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/games.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/graphics.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/internet.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/multimedia.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/office.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/science.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/system.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Oxygen/64/categories/utilities.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
@@ -14748,61 +14803,6 @@
         "width": 64,
         "height": 64
       },
-      "qx/icon/Oxygen/64/categories/accessories.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/categories/development.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/categories/engineering.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/categories/games.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/categories/graphics.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/categories/internet.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/categories/multimedia.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/categories/office.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/categories/science.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/categories/system.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/categories/utilities.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
       "qx/icon/Oxygen/64/emblems/emblem-favorite.png": {
         "resourcePath": "resourcePath",
         "width": 64,
@@ -14843,17 +14843,17 @@
         "width": 64,
         "height": 64
       },
+      "qx/icon/Oxygen/64/devices/display.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
       "qx/icon/Oxygen/64/devices/drive-harddisk.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
       },
       "qx/icon/Oxygen/64/devices/drive-optical.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
-      "qx/icon/Oxygen/64/devices/display.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
@@ -15448,17 +15448,17 @@
         "width": 128,
         "height": 128
       },
+      "qx/icon/Tango/128/actions/appointment-new.png": {
+        "resourcePath": "resourcePath",
+        "width": 128,
+        "height": 128
+      },
       "qx/icon/Tango/128/actions/bookmark-new.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
       "qx/icon/Tango/128/actions/check-spelling.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/actions/appointment-new.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -15578,17 +15578,17 @@
         "width": 128,
         "height": 128
       },
+      "qx/icon/Tango/128/actions/edit-undo.png": {
+        "resourcePath": "resourcePath",
+        "width": 128,
+        "height": 128
+      },
       "qx/icon/Tango/128/actions/folder-new.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
       "qx/icon/Tango/128/actions/format-indent-less.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/actions/edit-undo.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -15663,12 +15663,12 @@
         "width": 128,
         "height": 128
       },
-      "qx/icon/Tango/128/actions/go-last.png": {
+      "qx/icon/Tango/128/actions/go-home.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
-      "qx/icon/Tango/128/actions/go-home.png": {
+      "qx/icon/Tango/128/actions/go-last.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -15768,17 +15768,17 @@
         "width": 128,
         "height": 128
       },
+      "qx/icon/Tango/128/actions/mail-reply-all.png": {
+        "resourcePath": "resourcePath",
+        "width": 128,
+        "height": 128
+      },
       "qx/icon/Tango/128/actions/mail-reply-sender.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
       "qx/icon/Tango/128/actions/mail-send.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/actions/mail-reply-all.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -15928,16 +15928,6 @@
         "width": 128,
         "height": 128
       },
-      "qx/icon/Tango/128/emblems/emblem-favorite.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/emblems/emblem-important.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
       "qx/icon/Tango/128/devices/audio-card.png": {
         "resourcePath": "resourcePath",
         "width": 128,
@@ -16038,6 +16028,16 @@
         "width": 128,
         "height": 128
       },
+      "qx/icon/Tango/128/emblems/emblem-favorite.png": {
+        "resourcePath": "resourcePath",
+        "width": 128,
+        "height": 128
+      },
+      "qx/icon/Tango/128/emblems/emblem-important.png": {
+        "resourcePath": "resourcePath",
+        "width": 128,
+        "height": 128
+      },
       "qx/icon/Tango/128/emotes/face-angel.png": {
         "resourcePath": "resourcePath",
         "width": 128,
@@ -16088,77 +16088,12 @@
         "width": 128,
         "height": 128
       },
-      "qx/icon/Tango/128/mimetypes/archive.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/executable.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/media-audio.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/media-image.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/media-video.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/office-calendar.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/office-contact.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/office-document.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/office-illustration.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/office-presentation.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/office-spreadsheet.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/text-html.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/mimetypes/text-plain.png": {
+      "qx/icon/Tango/128/places/folder-open.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
       "qx/icon/Tango/128/places/folder-remote.png": {
-        "resourcePath": "resourcePath",
-        "width": 128,
-        "height": 128
-      },
-      "qx/icon/Tango/128/places/folder-open.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -16258,255 +16193,70 @@
         "width": 128,
         "height": 128
       },
-      "qx/icon/Tango/16/apps/internet-blog.png": {
+      "qx/icon/Tango/128/mimetypes/archive.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/internet-download-manager.png": {
+      "qx/icon/Tango/128/mimetypes/executable.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/internet-feed-reader.png": {
+      "qx/icon/Tango/128/mimetypes/media-audio.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/internet-mail.png": {
+      "qx/icon/Tango/128/mimetypes/media-image.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/internet-messenger.png": {
+      "qx/icon/Tango/128/mimetypes/media-video.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/internet-telephony.png": {
+      "qx/icon/Tango/128/mimetypes/office-calendar.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/internet-transfer.png": {
+      "qx/icon/Tango/128/mimetypes/office-contact.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/internet-web-browser.png": {
+      "qx/icon/Tango/128/mimetypes/office-document.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/media-audio-player.png": {
+      "qx/icon/Tango/128/mimetypes/office-illustration.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/media-photo-album.png": {
+      "qx/icon/Tango/128/mimetypes/office-presentation.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/media-video-player.png": {
+      "qx/icon/Tango/128/mimetypes/office-spreadsheet.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/office-address-book.png": {
+      "qx/icon/Tango/128/mimetypes/text-html.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
-      "qx/icon/Tango/16/apps/office-calendar.png": {
+      "qx/icon/Tango/128/mimetypes/text-plain.png": {
         "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/office-chart.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/office-database.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/office-draw.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/office-graphics.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/office-layout.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/office-presentation.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/office-project.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/office-spreadsheet.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/office-web.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/office-writer.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-accessibility.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-clock.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-display.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-font.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-keyboard.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-locale.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-network.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-security.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-sound.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-theme.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-users.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/preferences-wallpaper.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-archiver.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-calculator.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-character-map.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-color-chooser.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-dictionary.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-graphics-viewer.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-help.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-keyring.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-log-viewer.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-network-manager.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-notes.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-statistics.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-system-monitor.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-terminal.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/apps/utilities-text-editor.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
+        "width": 128,
+        "height": 128
       },
       "qx/icon/Tango/16/actions/address-book-new.png": {
         "resourcePath": "resourcePath",
@@ -16994,6 +16744,256 @@
         "height": 16
       },
       "qx/icon/Tango/16/actions/zoom-out.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/internet-blog.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/internet-download-manager.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/internet-feed-reader.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/internet-mail.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/internet-messenger.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/internet-telephony.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/internet-transfer.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/internet-web-browser.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/media-audio-player.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/media-photo-album.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/media-video-player.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-address-book.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-calendar.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-chart.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-database.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-draw.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-graphics.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-layout.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-presentation.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-project.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-spreadsheet.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-web.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/office-writer.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-accessibility.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-clock.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-display.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-font.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-keyboard.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-locale.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-network.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-security.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-sound.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-theme.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-users.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/preferences-wallpaper.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-archiver.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-calculator.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-character-map.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-color-chooser.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-dictionary.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-graphics-viewer.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-help.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-keyring.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-log-viewer.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-network-manager.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-notes.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-statistics.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-system-monitor.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-terminal.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/apps/utilities-text-editor.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -17683,17 +17683,17 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/actions/address-book-new.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
       "qx/icon/Tango/22/actions/application-exit.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
       "qx/icon/Tango/22/actions/appointment-new.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/actions/address-book-new.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -18333,12 +18333,12 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/mimetypes/archive.png": {
+      "qx/icon/Tango/22/mimetypes/executable.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/mimetypes/executable.png": {
+      "qx/icon/Tango/22/mimetypes/archive.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -18403,11 +18403,6 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/places/folder-remote.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
       "qx/icon/Tango/22/places/folder.png": {
         "resourcePath": "resourcePath",
         "width": 22,
@@ -18429,6 +18424,11 @@
         "height": 22
       },
       "qx/icon/Tango/22/places/user-home.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/places/folder-remote.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -18749,6 +18749,61 @@
         "height": 32
       },
       "qx/icon/Tango/32/apps/utilities-text-editor.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/accessories.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/development.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/engineering.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/graphics.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/internet.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/games.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/multimedia.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/office.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/science.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/system.png": {
+        "resourcePath": "resourcePath",
+        "width": 32,
+        "height": 32
+      },
+      "qx/icon/Tango/32/categories/utilities.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
@@ -19243,61 +19298,6 @@
         "width": 32,
         "height": 32
       },
-      "qx/icon/Tango/32/categories/accessories.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Tango/32/categories/development.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Tango/32/categories/engineering.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Tango/32/categories/games.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Tango/32/categories/graphics.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Tango/32/categories/internet.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Tango/32/categories/multimedia.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Tango/32/categories/office.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Tango/32/categories/science.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Tango/32/categories/system.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
-      "qx/icon/Tango/32/categories/utilities.png": {
-        "resourcePath": "resourcePath",
-        "width": 32,
-        "height": 32
-      },
       "qx/icon/Tango/32/emblems/emblem-favorite.png": {
         "resourcePath": "resourcePath",
         "width": 32,
@@ -19753,11 +19753,6 @@
         "width": 48,
         "height": 48
       },
-      "qx/icon/Tango/48/apps/preferences-display.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
       "qx/icon/Tango/48/apps/preferences-font.png": {
         "resourcePath": "resourcePath",
         "width": 48,
@@ -19804,6 +19799,11 @@
         "height": 48
       },
       "qx/icon/Tango/48/apps/utilities-archiver.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Tango/48/apps/preferences-display.png": {
         "resourcePath": "resourcePath",
         "width": 48,
         "height": 48
@@ -20598,11 +20598,6 @@
         "width": 48,
         "height": 48
       },
-      "qx/icon/Tango/48/mimetypes/media-image.png": {
-        "resourcePath": "resourcePath",
-        "width": 48,
-        "height": 48
-      },
       "qx/icon/Tango/48/mimetypes/media-video.png": {
         "resourcePath": "resourcePath",
         "width": 48,
@@ -20619,6 +20614,11 @@
         "height": 48
       },
       "qx/icon/Tango/48/mimetypes/office-document.png": {
+        "resourcePath": "resourcePath",
+        "width": 48,
+        "height": 48
+      },
+      "qx/icon/Tango/48/mimetypes/media-image.png": {
         "resourcePath": "resourcePath",
         "width": 48,
         "height": 48
@@ -21013,12 +21013,12 @@
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/categories/games.png": {
+      "qx/icon/Tango/64/categories/engineering.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/categories/engineering.png": {
+      "qx/icon/Tango/64/categories/games.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
@@ -21613,12 +21613,12 @@
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/devices/media-flash.png": {
+      "qx/icon/Tango/64/devices/media-optical.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/devices/media-optical.png": {
+      "qx/icon/Tango/64/devices/media-flash.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
@@ -21658,17 +21658,17 @@
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/emotes/face-angel.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
       "qx/icon/Tango/64/emotes/face-embarrassed.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
       },
       "qx/icon/Tango/64/emotes/face-kiss.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Tango/64/emotes/face-angel.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
@@ -21708,12 +21708,12 @@
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/mimetypes/archive.png": {
+      "qx/icon/Tango/64/mimetypes/executable.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/mimetypes/executable.png": {
+      "qx/icon/Tango/64/mimetypes/archive.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
@@ -21773,17 +21773,17 @@
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/places/folder-open.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
       "qx/icon/Tango/64/places/folder-remote.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
       },
       "qx/icon/Tango/64/places/folder.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Tango/64/places/folder-open.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
@@ -21803,12 +21803,12 @@
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/places/user-home.png": {
+      "qx/icon/Tango/64/places/user-trash-full.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/places/user-trash-full.png": {
+      "qx/icon/Tango/64/places/user-home.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64

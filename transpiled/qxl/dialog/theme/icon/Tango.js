@@ -52,4 +52,4 @@
   qxl.dialog.theme.icon.Tango.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Tango.js.map?dt=1603197589782
+//# sourceMappingURL=Tango.js.map?dt=1603197630171
