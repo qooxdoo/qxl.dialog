@@ -306,7 +306,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       format: function format(pattern, args) {
         var str = pattern;
-        var regexp = /%(\d+)|%{(\S*)}/g;
+        var regexp = /%(\d+)|%{(\S[^}\s]*)}/g;
 
         if (!Array.isArray(args)) {
           args = [args];
@@ -399,4 +399,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qx.lang.String.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=String.js.map?dt=1596061043523
+//# sourceMappingURL=String.js.map?dt=1603197348862

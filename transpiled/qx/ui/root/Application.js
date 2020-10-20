@@ -172,7 +172,7 @@
           // contain a body tag explicitly. Unfortunately, it cannot be added
           // here dynamically.
           if (!doc.body) {
-            alert("The application could not be started due to a missing body tag in the HTML file!");
+            window.alert("The application could not be started due to a missing body tag in the HTML file!");
           }
         } // Apply application layout
 
@@ -280,4 +280,4 @@
   qx.ui.root.Application.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Application.js.map?dt=1596061060726
+//# sourceMappingURL=Application.js.map?dt=1603197362000

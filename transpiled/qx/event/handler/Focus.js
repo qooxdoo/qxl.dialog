@@ -844,8 +844,8 @@
                 if (document.selection) {
                   document.selection.empty();
                 }
-              } catch (ex) {} // ignore 'Unknown runtime error'
-              // The unselectable attribute stops focussing as well.
+              } catch (ex) {// ignore 'Unknown runtime error'
+              } // The unselectable attribute stops focussing as well.
               // Do this manually.
 
 
@@ -973,11 +973,13 @@
         if (focusedElement && target != focusedElement) {
           if (focusedElement.nodeName.toLowerCase() === "input" || focusedElement.nodeName.toLowerCase() === "textarea") {
             return focusedElement;
-          } // Check compound widgets
+          }
 
-
-          var widget = qx.ui.core.Widget.getWidgetByElement(focusedElement),
-              textField = widget && widget.getChildControl && widget.getChildControl("textfield", true);
+          if (qx.Class.isClass("qx.ui.core.Widget")) {
+            // Check compound widgets
+            var widget = qx.ui.core.Widget.getWidgetByElement(focusedElement),
+                textField = widget && widget.getChildControl && widget.getChildControl("textfield", true);
+          }
 
           if (textField) {
             return textField.getContentElement().getDomElement();
@@ -1201,4 +1203,4 @@
   qx.event.handler.Focus.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Focus.js.map?dt=1596061039011
+//# sourceMappingURL=Focus.js.map?dt=1603197345661

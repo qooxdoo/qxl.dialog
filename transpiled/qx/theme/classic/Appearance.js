@@ -187,6 +187,7 @@
           };
         }
       },
+      "toggle-button": "button",
       "hover-button": {
         alias: "atom",
         include: "atom",
@@ -2038,4 +2039,4 @@
   qx.theme.classic.Appearance.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Appearance.js.map?dt=1596061046282
+//# sourceMappingURL=Appearance.js.map?dt=1603197351053

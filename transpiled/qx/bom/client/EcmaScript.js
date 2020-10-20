@@ -10,7 +10,7 @@
       }
     },
     "environment": {
-      "provided": ["ecmascript.array.indexof", "ecmascript.array.lastindexof", "ecmascript.array.foreach", "ecmascript.array.filter", "ecmascript.array.map", "ecmascript.array.some", "ecmascript.array.find", "ecmascript.array.findIndex", "ecmascript.array.every", "ecmascript.array.reduce", "ecmascript.array.reduceright", "ecmascript.array.includes", "ecmascript.date.now", "ecmascript.date.parse", "ecmascript.error.toString", "ecmascript.error.stacktrace", "ecmascript.function.bind", "ecmascript.object.keys", "ecmascript.object.values", "ecmascript.object.is", "ecmascript.number.EPSILON", "ecmascript.string.startsWith", "ecmascript.string.endsWith", "ecmascript.string.trim", "ecmascript.function.async", "ecmascript.mutationobserver", "ecmascript.bigint", "ecmascript.bigint.tolocalestring", "ecmascript.promise.native"],
+      "provided": ["ecmascript.array.indexof", "ecmascript.array.lastindexof", "ecmascript.array.foreach", "ecmascript.array.filter", "ecmascript.array.map", "ecmascript.array.some", "ecmascript.array.find", "ecmascript.array.findIndex", "ecmascript.array.every", "ecmascript.array.reduce", "ecmascript.array.reduceright", "ecmascript.array.includes", "ecmascript.date.now", "ecmascript.date.parse", "ecmascript.error.toString", "ecmascript.error.stacktrace", "ecmascript.function.bind", "ecmascript.object.keys", "ecmascript.object.values", "ecmascript.object.is", "ecmascript.object.assign", "ecmascript.number.EPSILON", "ecmascript.string.startsWith", "ecmascript.string.endsWith", "ecmascript.string.trim", "ecmascript.function.async", "ecmascript.mutationobserver", "ecmascript.bigint", "ecmascript.bigint.tolocalestring", "ecmascript.promise.native"],
       "required": {}
     }
   };
@@ -254,6 +254,15 @@
       },
 
       /**
+       * Checks if 'assign' is supported on the Object object.
+       * @internal
+       * @return {Boolean} <code>true</code>, if the method is available.
+       */
+      getObjectAssign: function getObjectAssign() {
+        return !!Object.assign;
+      },
+
+      /**
        * Checks if 'now' is supported on the Date object.
        * @internal
        * @return {Boolean} <code>true</code>, if the method is available.
@@ -368,7 +377,8 @@
 
       qx.core.Environment.add("ecmascript.object.keys", statics.getObjectKeys);
       qx.core.Environment.add("ecmascript.object.values", statics.getObjectValues);
-      qx.core.Environment.add("ecmascript.object.is", statics.getObjectIs); // number polyfill
+      qx.core.Environment.add("ecmascript.object.is", statics.getObjectIs);
+      qx.core.Environment.add("ecmascript.object.assign", statics.getObjectAssign); // number polyfill
 
       qx.core.Environment.add("ecmascript.number.EPSILON", statics.getEpsilon); // string polyfill
 
@@ -389,4 +399,4 @@
   qx.bom.client.EcmaScript.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=EcmaScript.js.map?dt=1596061029940
+//# sourceMappingURL=EcmaScript.js.map?dt=1603197338696

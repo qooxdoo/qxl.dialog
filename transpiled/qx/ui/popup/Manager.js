@@ -15,8 +15,10 @@
       "qx.bom.Element": {
         "construct": true
       },
-      "qx.lang.Array": {},
-      "qx.ui.core.Widget": {}
+      "qx.ui.core.Widget": {
+        "require": true
+      },
+      "qx.lang.Array": {}
     }
   };
   qx.Bootstrap.executePendingDefers($$dbClassInfo);
@@ -61,6 +63,15 @@
       qx.event.Registration.addListener(document.documentElement, "pointerdown", this.__P_321_1, this, true); // Hide all popups on window blur
 
       qx.bom.Element.addListener(window, "blur", this.hideAll, this);
+    },
+    properties: {
+      /**
+       * Function that is used to determine if a widget is contained within another one.
+       **/
+      containsFunction: {
+        check: "Function",
+        init: qx.ui.core.Widget.contains
+      }
     },
 
     /*
@@ -152,7 +163,7 @@
         for (var i = 0; i < reg.length; i++) {
           var obj = reg[i];
 
-          if (!obj.getAutoHide() || target == obj || qx.ui.core.Widget.contains(obj, target)) {
+          if (!obj.getAutoHide() || target == obj || this.getContainsFunction()(obj, target)) {
             continue;
           }
 
@@ -175,4 +186,4 @@
   qx.ui.popup.Manager.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Manager.js.map?dt=1596061059877
+//# sourceMappingURL=Manager.js.map?dt=1603197361401

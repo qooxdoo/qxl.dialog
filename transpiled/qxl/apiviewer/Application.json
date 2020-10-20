@@ -21,14 +21,6 @@
       "@description": [
         {
           "name": "@description",
-          "body": "<pre><code>*****************************************************************\n</code></pre>\n<p>qooxdoo - the new era of web development\n   http://qooxdoo.org\n   Copyright:\n     2004-2008 1&amp;1 Internet AG, Germany, http://www.1und1.de\n     2018 Zenesis Limited, http://www.zenesis.com\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n   Authors:\n John Spackman (johnspackman)\n Til Schneider (til132)\n Sebastian Werner (wpbasti)\n Andreas Ecker (ecker)\n Fabian Jakobs (fjakobs)\n Jonathan Weiß (jonathan_rass)\n    <strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>*</p>"
-        },
-        {
-          "name": "@description",
-          "body": "<pre><code>*****************************************************************\n*****************************************************************\n</code></pre>"
-        },
-        {
-          "name": "@description",
           "body": "<p>Your apiviewer application</p>"
         }
       ],
@@ -66,14 +58,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.application.AbstractGui",
@@ -93,14 +78,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.application.AbstractGui",
@@ -257,14 +235,7 @@
         "column": 5
       }
     },
-    "jsdoc": {
-      "@description": [
-        {
-          "name": "@description",
-          "body": "<pre><code>**********************************************************************\n DESTRUCTOR\n**********************************************************************\n</code></pre>"
-        }
-      ]
-    }
+    "jsdoc": {}
   },
   "descendants": []
 }

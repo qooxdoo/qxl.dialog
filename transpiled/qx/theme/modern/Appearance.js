@@ -258,6 +258,7 @@
           };
         }
       },
+      "toggle-button": "button",
       "hover-button": {
         alias: "atom",
         include: "atom",
@@ -2283,4 +2284,4 @@
   qx.theme.modern.Appearance.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Appearance.js.map?dt=1596061047201
+//# sourceMappingURL=Appearance.js.map?dt=1603197351686

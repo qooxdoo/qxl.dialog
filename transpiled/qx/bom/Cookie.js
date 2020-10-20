@@ -95,8 +95,9 @@
        * @param path {String?null} Path value.
        * @param domain {String?null} Domain value.
        * @param secure {Boolean?null} Secure flag.
+       * @param sameSite {String?null} sameSite value. (Lax, Strict, None)
        */
-      set: function set(key, value, expires, path, domain, secure) {
+      set: function set(key, value, expires, path, domain, secure, sameSite) {
         // Generate cookie
         var cookie = [key, "=", encodeURIComponent(value)];
 
@@ -116,6 +117,10 @@
 
         if (secure) {
           cookie.push(";secure");
+        }
+
+        if (sameSite) {
+          cookie.push(";sameSite=", sameSite);
         } // Store cookie
 
 
@@ -154,4 +159,4 @@
   qx.bom.Cookie.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Cookie.js.map?dt=1596061027112
+//# sourceMappingURL=Cookie.js.map?dt=1603197336613

@@ -256,7 +256,7 @@
 
     /*
     *****************************************************************************
-       PROPERTIES
+       EVENTS
     *****************************************************************************
     */
     events: {
@@ -379,6 +379,15 @@
       },
 
       /**
+       * Whether to reset the selection when the unpopulated table area is tapped.
+       * The default is false which keeps the behaviour as before
+       */
+      resetSelectionOnTapBelowRows: {
+        check: "Boolean",
+        init: false
+      },
+
+      /**
        * Interval time (in milliseconds) for the table update timer.
        * Setting this to 0 clears the timer.
        */
@@ -390,6 +399,15 @@
       appearance: {
         refine: true,
         init: "table-scroller"
+      },
+
+      /**
+       * If set then defines the minimum height of the focus indicator when editing
+       */
+      minCellEditHeight: {
+        check: "Integer",
+        init: null,
+        nullable: true
       }
     },
 
@@ -1459,6 +1477,10 @@
             this.fireEvent("cellTap", qx.ui.table.pane.CellEvent, [this, e, row, col], true);
             this.__P_360_19 = true;
           }
+        } else {
+          if (row == null && this.getResetSelectionOnTapBelowRows()) {
+            table.getSelectionModel().resetSelection();
+          }
         }
       },
 
@@ -1815,6 +1837,8 @@
               e.stopPropagation();
             }, this);
 
+            this._updateFocusIndicator(true);
+
             this.__P_360_7.add(this._cellEditor);
 
             this.__P_360_7.addState("editing");
@@ -1850,8 +1874,8 @@
 
       /**
        * Writes the editor's value to the model
-       * 
-       * @param cancel {Boolean ? false} Whether to also cancel 
+       *
+       * @param cancel {Boolean ? false} Whether to also cancel
        *      editing before firing the 'dateEdited' event.
        */
       flushEditor: function flushEditor(cancel) {
@@ -1892,6 +1916,8 @@
 
               this.__P_360_27 = null;
             }
+
+            this._updateFocusIndicator();
           }
 
           this._cellEditor.destroy();
@@ -2257,15 +2283,16 @@
       /**
        * Updates the location and the visibility of the focus indicator.
        *
+       * @param editing {Boolean ? false} True if editing the cell
        */
-      _updateFocusIndicator: function _updateFocusIndicator() {
+      _updateFocusIndicator: function _updateFocusIndicator(editing) {
         var table = this.getTable();
 
         if (!table.getEnabled()) {
           return;
         }
 
-        this.__P_360_7.moveToCell(this.__P_360_23, this.__P_360_24);
+        this.__P_360_7.moveToCell(this.__P_360_23, this.__P_360_24, editing);
       }
     },
 
@@ -2292,4 +2319,4 @@
   qx.ui.table.pane.Scroller.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Scroller.js.map?dt=1596061063469
+//# sourceMappingURL=Scroller.js.map?dt=1603197364003

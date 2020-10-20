@@ -13,16 +13,12 @@
         "column": 0
       },
       "end": {
-        "line": 782,
+        "line": 785,
         "column": 3
       }
     },
     "jsdoc": {
       "@description": [
-        {
-          "name": "@description",
-          "body": "<pre><code>*****************************************************************\n</code></pre>\n<p>qooxdoo - the new era of web development\n   http://qooxdoo.org\n   Copyright:\n     2006 STZ-IDA, Germany, http://www.stz-ida.de\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n   Authors:\n Til Schneider (til132)\n    <strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>*</p>"
-        },
         {
           "name": "@description",
           "body": "<p>A simple table model that provides an API for changing the model data.</p>"
@@ -413,14 +409,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.ui.table.model.Abstract",
@@ -578,14 +567,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.ui.table.model.Abstract",
@@ -643,14 +625,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.ui.table.model.Abstract",
@@ -670,14 +645,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.ui.table.model.Abstract",
@@ -799,14 +767,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.ui.table.model.Abstract",
@@ -857,14 +818,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.ui.table.model.Abstract",
@@ -915,14 +869,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.ui.table.model.Abstract",
@@ -942,14 +889,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.ui.table.model.Abstract",
@@ -969,14 +909,7 @@
           "column": 5
         }
       },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>overridden</p>"
-          }
-        ]
-      },
+      "jsdoc": {},
       "type": "function",
       "access": "public",
       "overriddenFrom": "qx.ui.table.model.Abstract",
@@ -1218,7 +1151,7 @@
           "column": 4
         },
         "end": {
-          "line": 689,
+          "line": 692,
           "column": 5
         }
       },
@@ -1263,11 +1196,11 @@
     "setRowsAsMapArray": {
       "location": {
         "start": {
-          "line": 706,
+          "line": 709,
           "column": 4
         },
         "end": {
-          "line": 708,
+          "line": 711,
           "column": 5
         }
       },
@@ -1321,11 +1254,11 @@
     "removeRows": {
       "location": {
         "start": {
-          "line": 718,
+          "line": 721,
           "column": 4
         },
         "end": {
-          "line": 737,
+          "line": 740,
           "column": 5
         }
       },
@@ -1368,11 +1301,11 @@
     "_mapArray2RowArr": {
       "location": {
         "start": {
-          "line": 751,
+          "line": 754,
           "column": 4
         },
         "end": {
-          "line": 773,
+          "line": 776,
           "column": 5
         }
       },
@@ -1643,16 +1576,17 @@
   "destruct": {
     "location": {
       "start": {
-        "line": 777,
+        "line": 780,
         "column": 13
       },
       "end": {
-        "line": 781,
+        "line": 784,
         "column": 3
       }
     },
     "jsdoc": {}
   },
+  "events": {},
   "descendants": [
     "qx.ui.table.model.Filtered"
   ]

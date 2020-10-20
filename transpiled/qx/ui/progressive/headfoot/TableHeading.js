@@ -139,7 +139,8 @@
        *
        */
       _resizeColumns: function _resizeColumns(e) {
-        var width = this.getBounds().width - qx.bom.element.Scroll.getScrollbarWidth(); // Compute the column widths
+        var insets = this.getInsets();
+        var width = this.getBounds().width - qx.bom.element.Scroll.getScrollbarWidth() - insets.left - insets.right; // Compute the column widths
 
         this.__P_325_3 = true;
         var padding = {
@@ -171,4 +172,4 @@
   qx.ui.progressive.headfoot.TableHeading.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=TableHeading.js.map?dt=1596061060107
+//# sourceMappingURL=TableHeading.js.map?dt=1603197361558

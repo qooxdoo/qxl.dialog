@@ -92,7 +92,7 @@
    *
    * *External Documentation*
    *
-   * See <a href='http://qooxdoo.org/docs/#layout/box.md'>extended documentation</a>
+   * See <a href='https://qooxdoo.org/documentation/#/desktop/layout/box.md'>extended documentation</a>
    * and links to demos for this layout.
    *
    */
@@ -268,11 +268,12 @@
 
         var spacing = this.getSpacing();
         var separator = this.getSeparator();
+        var gaps;
 
         if (separator) {
-          var gaps = util.computeHorizontalSeparatorGaps(children, spacing, separator);
+          gaps = util.computeHorizontalSeparatorGaps(children, spacing, separator);
         } else {
-          var gaps = util.computeHorizontalGaps(children, spacing, true);
+          gaps = util.computeHorizontalGaps(children, spacing, true);
         } // First run to cache children data and compute allocated width
 
 
@@ -439,11 +440,12 @@
 
         var spacing = this.getSpacing();
         var separator = this.getSeparator();
+        var gaps;
 
         if (separator) {
-          var gaps = util.computeHorizontalSeparatorGaps(children, spacing, separator);
+          gaps = util.computeHorizontalSeparatorGaps(children, spacing, separator);
         } else {
-          var gaps = util.computeHorizontalGaps(children, spacing, true);
+          gaps = util.computeHorizontalGaps(children, spacing, true);
         } // Return hint
 
 
@@ -468,4 +470,4 @@
   qx.ui.layout.HBox.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=HBox.js.map?dt=1596061055620
+//# sourceMappingURL=HBox.js.map?dt=1603197358145

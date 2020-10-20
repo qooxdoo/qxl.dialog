@@ -551,6 +551,26 @@
         apply: "_applyResetSelectionOnHeaderTap"
       },
 
+      /**
+       * Whether to reset the selection when the unpopulated table area is tapped.
+       * The default is false which keeps the behaviour as before
+       */
+      resetSelectionOnTapBelowRows: {
+        check: "Boolean",
+        init: false,
+        apply: "_applyResetSelectionOnTapBelowRows"
+      },
+
+      /**
+       * If set then defines the minimum height of the focus indicator when editing
+       */
+      minCellEditHeight: {
+        check: "Integer",
+        nullable: true,
+        init: null,
+        apply: "_applyMinCellEditHeight"
+      },
+
       /** The renderer to use for styling the rows. */
       dataRowRenderer: {
         check: "qx.ui.table.IRowRenderer",
@@ -775,6 +795,14 @@
 
         for (var i = 0; i < scrollerArr.length; i++) {
           scrollerArr[i].getHeader().setHeight(value);
+        }
+      },
+      // property modifier
+      _applyMinCellEditHeight: function _applyMinCellEditHeight(value) {
+        var scrollerArr = this._getPaneScrollerArr();
+
+        for (var i = 0; i < scrollerArr.length; i++) {
+          scrollerArr[i].setMinCellEditHeight(value);
         }
       },
 
@@ -1041,6 +1069,14 @@
 
         for (var i = 0; i < scrollerArr.length; i++) {
           scrollerArr[i].setResetSelectionOnHeaderTap(value);
+        }
+      },
+      // property modifier
+      _applyResetSelectionOnTapBelowRows: function _applyResetSelectionOnTapBelowRows(value, old) {
+        var scrollerArr = this._getPaneScrollerArr();
+
+        for (var i = 0; i < scrollerArr.length; i++) {
+          scrollerArr[i].setResetSelectionOnTapBelowRows(value);
         }
       },
 
@@ -2033,4 +2069,4 @@
   qx.ui.table.Table.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Table.js.map?dt=1596061061509
+//# sourceMappingURL=Table.js.map?dt=1603197362581

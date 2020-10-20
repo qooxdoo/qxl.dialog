@@ -114,12 +114,6 @@
         this.__P_346_2 = this.__P_346_0.resolve(value);
       },
       // overridden
-      _insetY: 5,
-      // overridden
-      _getCellStyle: function _getCellStyle(cellInfo) {
-        return qx.ui.table.cellrenderer.Boolean.prototype._getCellStyle.base.call(this, cellInfo) + ";padding-top:4px;";
-      },
-      // overridden
       _identifyImage: function _identifyImage(cellInfo) {
         var w;
         var h;
@@ -129,11 +123,19 @@
         var imageHints; // Retrieve the ID
 
         rm = qx.util.ResourceManager.getInstance();
-        ids = rm.getIds(this.__P_346_1); // If ID was found, we'll use its first (likely only) element here.
 
-        if (ids) {
-          id = ids[0]; // Get the natural size of the image
+        if (rm.has(this.__P_346_1)) {
+          id = this.__P_346_1;
+        } else {
+          ids = rm.getIds(this.__P_346_1); // If ID was found, we'll use its first (likely only) element here.
 
+          if (ids) {
+            id = ids[0];
+          }
+        }
+
+        if (id) {
+          // Get the natural size of the image
           w = rm.getImageWidth(id);
           h = rm.getImageHeight(id);
         } // Create the size portion of the hint.
@@ -182,4 +184,4 @@
   qx.ui.table.cellrenderer.Boolean.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Boolean.js.map?dt=1596061061909
+//# sourceMappingURL=Boolean.js.map?dt=1603197362818

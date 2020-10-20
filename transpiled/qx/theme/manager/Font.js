@@ -40,7 +40,7 @@
 
   /**
    * Manager for font themes
-   * 
+   *
    * NOTE: Instances of this class must be disposed of after use
    *
    * @ignore(qx.$$fontBootstrap)
@@ -191,7 +191,7 @@
       },
       // apply method
       _applyTheme: function _applyTheme(value) {
-        var dest = this._dynamic;
+        var dest = this._dynamic = {};
 
         for (var key in dest) {
           if (dest[key].themed) {
@@ -252,4 +252,4 @@
   qx.theme.manager.Font.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Font.js.map?dt=1596061046746
+//# sourceMappingURL=Font.js.map?dt=1603197351421

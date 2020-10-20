@@ -554,10 +554,6 @@
       getLookupTable: function getLookupTable() {
         return this.__P_368_0;
       },
-      // Interface implementation
-      isShowTopLevelOpenCloseIcons: function isShowTopLevelOpenCloseIcons() {
-        return true;
-      },
 
       /**
        * Performs a lookup from model index to row.
@@ -1190,4 +1186,4 @@
   qx.ui.tree.VirtualTree.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=VirtualTree.js.map?dt=1596061064522
+//# sourceMappingURL=VirtualTree.js.map?dt=1603197364724

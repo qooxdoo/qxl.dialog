@@ -433,6 +433,15 @@
           };
         }
       },
+      "treevirtual-node-editor-textfield": {
+        include: "textfield",
+        style: function style(states) {
+          return {
+            decorator: undefined,
+            padding: [2, 2]
+          };
+        }
+      },
 
       /*
       ---------------------------------------------------------------------------
@@ -1231,6 +1240,7 @@
           };
         }
       },
+      "toggle-button": "button",
       "hover-button": {
         alias: "button",
         include: "button",
@@ -2195,4 +2205,4 @@
   qx.theme.simple.Appearance.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Appearance.js.map?dt=1596061047582
+//# sourceMappingURL=Appearance.js.map?dt=1603197352068

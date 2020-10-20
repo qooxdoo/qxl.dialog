@@ -74,7 +74,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         var value = functionMap[name];
 
         if (value instanceof Function) {
-          value.displayName = classname + "." + name + "()";
+          value.displayName = classname + "." + (value.name || name) + "()";
         }
       }
     },
@@ -898,4 +898,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qx.Bootstrap.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Bootstrap.js.map?dt=1596061024665
+//# sourceMappingURL=Bootstrap.js.map?dt=1603197334460

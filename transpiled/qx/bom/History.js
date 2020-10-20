@@ -321,7 +321,7 @@
        */
       navigateBack: function navigateBack() {
         qx.event.Timer.once(function () {
-          history.back();
+          window.history.back();
         }, this, 100);
       },
 
@@ -331,7 +331,7 @@
        */
       navigateForward: function navigateForward() {
         qx.event.Timer.once(function () {
-          history.forward();
+          window.history.forward();
         }, this, 100);
       },
 
@@ -396,4 +396,4 @@
   qx.bom.History.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=History.js.map?dt=1596061027697
+//# sourceMappingURL=History.js.map?dt=1603197337059

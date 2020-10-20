@@ -712,7 +712,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param  e {qx.event.type.KeyInput}
        */
       _handleEscape: function _handleEscape(e) {
-        if (this.isSeeable() && this.isCancelOnEscape() && e.getKeyCode() === 27) {
+        if (this.isCancelOnEscape() && e.getKeyCode() === 27 && this.getContentElement() && this.isSeeable()) {
           this._handleCancel();
         }
       }
@@ -721,4 +721,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qxl.dialog.Dialog.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Dialog.js.map?dt=1596061070031
+//# sourceMappingURL=Dialog.js.map?dt=1603197369201

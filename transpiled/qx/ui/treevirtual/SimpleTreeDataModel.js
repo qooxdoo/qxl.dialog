@@ -16,6 +16,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         "defer": "runtime",
         "require": true
       },
+      "qx.lang.Object": {},
       "qx.lang.Array": {},
       "qx.ui.treevirtual.TreeVirtual": {}
     }
@@ -56,6 +57,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
    *   bSelected      : true,  // true if node is selected; false otherwise.
    *   bOpened        : true,  // true (-), false (+)
    *   bHideOpenClose : false, // whether to hide the open/close button
+   *   bCanEdit       : true,  // true if the node label can be edited, false to prevent edit
    *   icon           : "images/folder.gif",
    *   iconSelected   : "images/folder_selected.gif",
    *
@@ -98,6 +100,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
    *   children       : [ ],  // each value is an index into _nodeArr
    *
    *   level          : 2,    // The indentation level of this tree node
+   *   labelPos       : 40,   // The left position of the label text - stored when the cell is rendered
    *
    *   bFirstChild    : true,
    *   lastChild      : [ false ],  // Array where the index is the column of
@@ -241,9 +244,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       },
       // overridden
       isColumnEditable: function isColumnEditable(columnIndex) {
-        // The tree column is not editable
         if (columnIndex == this._treeColumn) {
-          return false;
+          return this.__P_375_1.getAllowNodeEdit();
         }
 
         return this.__P_375_0 ? this.__P_375_0[columnIndex] == true : false;
@@ -340,27 +342,36 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       },
       // overridden
       setValue: function setValue(columnIndex, rowIndex, value) {
-        if (columnIndex == this._treeColumn) {
-          // Ignore requests to set the tree column data using this method
-          return;
-        } // convert from rowArr to nodeArr, and get the requested node
-
-
+        // convert from rowArr to nodeArr, and get the requested node
         var node = this.getNodeFromRow(rowIndex);
 
-        if (node.columnData[columnIndex] != value) {
-          node.columnData[columnIndex] = value;
-          this.setData(); // Inform the listeners
+        if (columnIndex === this._treeColumn) {
+          if (!this.__P_375_1.getAllowNodeEdit() || value["label"] === undefined) {
+            return;
+          } // only allow to set the node label via this method, clone the original node
 
-          if (this.hasListener("dataChanged")) {
-            var data = {
-              firstRow: rowIndex,
-              lastRow: rowIndex,
-              firstColumn: columnIndex,
-              lastColumn: columnIndex
-            };
-            this.fireDataEvent("dataChanged", data);
+
+          var updatedNode = qx.lang.Object.clone(node);
+          updatedNode.label = value.label;
+          this._nodeArr[node.nodeId] = updatedNode;
+        } else {
+          if (node.columnData[columnIndex] == value) {
+            return;
           }
+
+          node.columnData[columnIndex] = value;
+        }
+
+        this.setData(); // Inform the listeners
+
+        if (this.hasListener("dataChanged")) {
+          var data = {
+            firstRow: rowIndex,
+            lastRow: rowIndex,
+            firstColumn: columnIndex,
+            lastColumn: columnIndex
+          };
+          this.fireDataEvent("dataChanged", data);
         }
       },
 
@@ -882,8 +893,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               break;
 
             case "bOpened":
-              // Don't do anything if the requested state is the same as the
+              // Don't do anything if this is a leaf, leaf has no opened/closed
+              if (node.type === qx.ui.treevirtual.MTreePrimitive.Type.LEAF) {
+                break;
+              } // Don't do anything if the requested state is the same as the
               // current state.
+
+
               if (attributes[attribute] == node.bOpened) {
                 break;
               } // Get the tree to which this data model is attached
@@ -1001,6 +1017,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       // property apply
       _applyFilter: function _applyFilter(value, old) {
         this.setData();
+      },
+
+      /**
+       * This checks whether a node label is editable
+       * Used in the NodeEditor to check if edit is permitted
+       *
+       * @param rowIndex {Integer} zero-based row index.
+       * @return {Boolean} If the node has edit permitted
+       */
+      isNodeEditable: function isNodeEditable(rowIndex) {
+        return this.__P_375_1.getAllowNodeEdit() && this.getNodeFromRow(rowIndex).bCanEdit;
       }
     },
     destruct: function destruct() {
@@ -1015,4 +1042,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qx.ui.treevirtual.SimpleTreeDataModel.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=SimpleTreeDataModel.js.map?dt=1596061065372
+//# sourceMappingURL=SimpleTreeDataModel.js.map?dt=1603197365376

@@ -30,6 +30,7 @@
       "qx.lang.Function": {},
       "qx.bom.client.Browser": {},
       "qx.bom.Event": {},
+      "qx.bom.client.Runtime": {},
       "qx.event.GlobalError": {}
     },
     "environment": {
@@ -40,6 +41,9 @@
         },
         "browser.documentmode": {
           "className": "qx.bom.client.Browser"
+        },
+        "runtime.name": {
+          "className": "qx.bom.client.Runtime"
         },
         "qx.globalErrorHandling": {
           "className": "qx.event.GlobalError"
@@ -286,6 +290,10 @@
           qx.bom.Event.addNativeListener(this._window, "load", this._onNativeLoadWrapped);
         }
 
+        if (qx.core.Environment.get("runtime.name") == "rhino" || qx.core.Environment.get("runtime.name") == "node.js") {
+          return;
+        }
+
         this._onNativeUnloadWrapped = qx.lang.Function.bind(this._onNativeUnload, this);
         qx.bom.Event.addNativeListener(this._window, "unload", this._onNativeUnloadWrapped);
       },
@@ -382,4 +390,4 @@
   qx.event.handler.Application.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Application.js.map?dt=1596061038524
+//# sourceMappingURL=Application.js.map?dt=1603197345341

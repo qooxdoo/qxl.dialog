@@ -3,13 +3,13 @@
     "qxl.dialog": "3.0.3",
     "qxl.apiviewer": "1.0.4",
     "qxl.versionlabel": "1.0.1",
-    "qx": "6.0.0-beta-20200515-0957"
+    "qx": "6.0.0-beta-20201003-1033"
   },
-  "environmentHash": "7d73ca86a04337a37b77119c7d8c83077539f96d",
-  "compilerVersion": "1.0.0-beta.20200613-2032",
+  "environmentHash": "0cb4794f90e7692662b58b38a795b3d3ddea285f",
+  "compilerVersion": "1.0.0-beta-20201003-1033",
   "classInfo": {
     "qxl.dialog.demo.Application": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.Dialog": {
@@ -51,7 +51,7 @@
       ]
     },
     "qxl.dialog.theme.Theme": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.theme.icon.IcoMoonFree": {
@@ -1933,6 +1933,7 @@
           "ecmascript.object.keys",
           "ecmascript.object.values",
           "ecmascript.object.is",
+          "ecmascript.object.assign",
           "ecmascript.number.EPSILON",
           "ecmascript.string.startsWith",
           "ecmascript.string.endsWith",
@@ -2181,39 +2182,8 @@
       "include": [],
       "implement": [],
       "hasDefer": true,
-      "unresolved": [
-        {
-          "name": "$.browser",
-          "locations": [
-            {
-              "start": {
-                "line": 399,
-                "column": 18
-              },
-              "end": {
-                "line": 399,
-                "column": 27
-              }
-            }
-          ]
-        }
-      ],
       "assets": [
         "qx/static/empty.pdf"
-      ],
-      "markers": [
-        {
-          "msgId": "qx.tool.compiler.symbol.unresolved",
-          "pos": {
-            "start": {
-              "line": 399,
-              "column": 18
-            }
-          },
-          "args": [
-            "$.browser"
-          ]
-        }
       ]
     },
     "qx.bom.client.PhoneGap": {
@@ -3736,6 +3706,7 @@
         "qx.event.Registration": {
           "load": true
         },
+        "qx.Promise": {},
         "qx.event.type.Data": {}
       },
       "extends": null,
@@ -5611,6 +5582,7 @@
         "qx.lang.Function": {},
         "qx.bom.client.Browser": {},
         "qx.bom.Event": {},
+        "qx.bom.client.Runtime": {},
         "qx.event.GlobalError": {}
       },
       "extends": "qx.core.Object",
@@ -5627,6 +5599,9 @@
           },
           "browser.documentmode": {
             "className": "qx.bom.client.Browser"
+          },
+          "runtime.name": {
+            "className": "qx.bom.client.Runtime"
           },
           "qx.globalErrorHandling": {
             "className": "qx.event.GlobalError"
@@ -8669,6 +8644,9 @@
           },
           "ecmascript.object.is": {
             "defer": true
+          },
+          "ecmascript.object.assign": {
+            "defer": true
           }
         }
       },
@@ -10314,6 +10292,78 @@
         "icon": "qx.theme.icon.Tango"
       }
     },
+    "qx.theme.TangibleDark": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Theme": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qx.theme.tangible.ColorDark": {
+          "load": true
+        },
+        "qx.theme.tangible.Decoration": {
+          "load": true
+        },
+        "qx.theme.tangible.Font": {
+          "load": true
+        },
+        "qx.theme.tangible.Appearance": {
+          "load": true
+        },
+        "qx.theme.icon.Tango": {
+          "load": true
+        }
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "themeMeta": {
+        "color": "qx.theme.tangible.ColorDark",
+        "decoration": "qx.theme.tangible.Decoration",
+        "font": "qx.theme.tangible.Font",
+        "appearance": "qx.theme.tangible.Appearance",
+        "icon": "qx.theme.icon.Tango"
+      }
+    },
+    "qx.theme.TangibleLight": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Theme": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qx.theme.tangible.ColorLight": {
+          "load": true
+        },
+        "qx.theme.tangible.Decoration": {
+          "load": true
+        },
+        "qx.theme.tangible.Font": {
+          "load": true
+        },
+        "qx.theme.tangible.Appearance": {
+          "load": true
+        },
+        "qx.theme.icon.Tango": {
+          "load": true
+        }
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "themeMeta": {
+        "color": "qx.theme.tangible.ColorLight",
+        "decoration": "qx.theme.tangible.Decoration",
+        "font": "qx.theme.tangible.Font",
+        "appearance": "qx.theme.tangible.Appearance",
+        "icon": "qx.theme.icon.Tango"
+      }
+    },
     "qx.theme.classic.Appearance": {
       "mtime": "1985-10-26T08:15:00.000Z",
       "libraryName": "qx",
@@ -10434,6 +10484,106 @@
       "aliases": {
         "icon": "qx/icon/Tango"
       }
+    },
+    "qx.theme.iconfont.LoadMaterialIcons": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        }
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "assets": [
+        "qx/iconfont/MaterialIcons/materialicons-v50.ttf",
+        "qx/iconfont/MaterialIcons/materialicons-v50.woff2",
+        "qx/iconfont/MaterialIcons/materialicons-v50.woff",
+        "qx/iconfont/MaterialIcons/materialicons-v50.eot"
+      ]
+    },
+    "qx.theme.iconfont.LoadMaterialIconsOutlined": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        }
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "assets": [
+        "qx/iconfont/MaterialIcons/materialiconsoutlined-v18.otf",
+        "qx/iconfont/MaterialIcons/materialiconsoutlined-v18.woff2",
+        "qx/iconfont/MaterialIcons/materialiconsoutlined-v18.woff",
+        "qx/iconfont/MaterialIcons/materialiconsoutlined-v18.eot"
+      ]
+    },
+    "qx.theme.iconfont.LoadMaterialIconsRound": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        }
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "assets": [
+        "qx/iconfont/MaterialIcons/materialiconsround-v18.otf",
+        "qx/iconfont/MaterialIcons/materialiconsround-v18.woff2",
+        "qx/iconfont/MaterialIcons/materialiconsround-v18.woff",
+        "qx/iconfont/MaterialIcons/materialiconsround-v18.eot"
+      ]
+    },
+    "qx.theme.iconfont.LoadMaterialIconsSharp": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        }
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "assets": [
+        "qx/iconfont/MaterialIcons/materialiconssharp-v19.otf",
+        "qx/iconfont/MaterialIcons/materialiconssharp-v19.woff2",
+        "qx/iconfont/MaterialIcons/materialiconssharp-v19.woff",
+        "qx/iconfont/MaterialIcons/materialiconssharp-v19.eot"
+      ]
+    },
+    "qx.theme.iconfont.LoadMaterialIconsTwoTone": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        }
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "assets": [
+        "qx/iconfont/MaterialIcons/materialiconstwotone-v17.otf",
+        "qx/iconfont/MaterialIcons/materialiconstwotone-v17.woff2",
+        "qx/iconfont/MaterialIcons/materialiconstwotone-v17.woff",
+        "qx/iconfont/MaterialIcons/materialiconstwotone-v17.eot"
+      ]
     },
     "qx.theme.indigo.Appearance": {
       "mtime": "1985-10-26T08:15:00.000Z",
@@ -10970,6 +11120,141 @@
       "hasDefer": null,
       "assets": [
         "qx/decoration/Simple/*",
+        "qx/static/blank.png"
+      ]
+    },
+    "qx.theme.tangible.Appearance": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Theme": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qx.theme.tangible.Image": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "assets": [
+        "qx/icon/Tango/16/apps/office-calendar.png",
+        "qx/icon/Tango/16/places/folder-open.png",
+        "qx/icon/Tango/16/places/folder.png",
+        "qx/icon/Tango/16/mimetypes/text-plain.png",
+        "qx/icon/Tango/16/actions/view-refresh.png",
+        "qx/icon/Tango/16/actions/window-close.png",
+        "qx/icon/Tango/16/actions/dialog-cancel.png",
+        "qx/icon/Tango/16/actions/dialog-ok.png"
+      ]
+    },
+    "qx.theme.tangible.ColorDark": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Theme": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qx.theme.tangible.ColorEngine": {
+          "load": true
+        }
+      },
+      "extends": "qx.theme.tangible.ColorEngine",
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qx.theme.tangible.ColorEngine": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.util.ColorUtil": {},
+        "qx.Theme": {
+          "load": true,
+          "usage": "dynamic"
+        }
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qx.theme.tangible.ColorLight": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Theme": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qx.theme.tangible.ColorEngine": {
+          "load": true
+        }
+      },
+      "extends": "qx.theme.tangible.ColorEngine",
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qx.theme.tangible.Decoration": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Theme": {
+          "load": true,
+          "usage": "dynamic"
+        }
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "aliases": {
+        "decoration": "qx/decoration/Simple"
+      }
+    },
+    "qx.theme.tangible.Font": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Theme": {
+          "load": true,
+          "usage": "dynamic"
+        }
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "assets": [
+        "qx/font/Roboto/*.woff",
+        "qx/font/Roboto/*.woff2",
+        "qx/font/Roboto/*.eot",
+        "qx/font/Roboto/*.ttf"
+      ]
+    },
+    "qx.theme.tangible.Image": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qx.core.Object": {
+          "load": true
+        }
+      },
+      "extends": "qx.core.Object",
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "assets": [
+        "qx/iconfont/MaterialIcons/materialicons-v50.ttf",
+        "qx/iconfont/MaterialIcons/materialicons-v50.woff2",
+        "qx/iconfont/MaterialIcons/materialicons-v50.woff",
+        "qx/iconfont/MaterialIcons/materialicons-v50.eot",
         "qx/static/blank.png"
       ]
     },
@@ -13359,8 +13644,8 @@
         "qx.html.Element": {},
         "qx.bom.Label": {},
         "qx.ui.core.queue.Layout": {},
-        "qx.event.type.Data": {},
         "qx.lang.Type": {},
+        "qx.event.type.Data": {},
         "qx.html.Label": {},
         "qx.bom.Stylesheet": {},
         "qx.ui.core.LayoutItem": {
@@ -18259,8 +18544,13 @@
         "qx.bom.Element": {
           "construct": true
         },
+        "qx.ui.core.Widget": {
+          "load": true
+        },
         "qx.lang.Array": {},
-        "qx.ui.core.Widget": {}
+        "qx.ui.core.LayoutItem": {
+          "load": true
+        }
       },
       "extends": "qx.core.Object",
       "include": [],
@@ -19470,12 +19760,12 @@
         {
           "msgid": "one row",
           "msgid_plural": "%1 rows",
-          "lineNo": 1987
+          "lineNo": 2030
         },
         {
           "msgid": "one of one row",
           "msgid_plural": "%1 of %2 rows",
-          "lineNo": 1989
+          "lineNo": 2032
         }
       ]
     },
@@ -20371,6 +20661,7 @@
         "qx.ui.layout.Grow": {
           "construct": true
         },
+        "qx.theme.manager.Decoration": {},
         "qx.ui.core.Widget": {
           "load": true
         }
@@ -21509,8 +21800,8 @@
           "construct": true
         },
         "qx.event.type.Mouse": {},
-        "qx.bom.element.Location": {},
         "qx.ui.treevirtual.SimpleTreeDataModel": {},
+        "qx.bom.element.Location": {},
         "qx.core.Object": {
           "load": true
         }
@@ -21586,6 +21877,7 @@
           "construct": true,
           "defer": "runtime"
         },
+        "qx.lang.Object": {},
         "qx.lang.Array": {},
         "qx.ui.treevirtual.TreeVirtual": {},
         "qx.core.Object": {
@@ -21653,12 +21945,19 @@
         "qx.ui.table.columnmodel.Resize": {
           "construct": true
         },
+        "qx.ui.treevirtual.pane.Scroller": {
+          "construct": true
+        },
         "qx.lang.Type": {
+          "construct": true
+        },
+        "qx.ui.treevirtual.celleditor.NodeEditor": {
           "construct": true
         },
         "qx.ui.table.selection.Model": {
           "load": true
         },
+        "qx.bom.element.Location": {},
         "qx.event.type.Dom": {},
         "qx.ui.core.Widget": {
           "load": true
@@ -21684,6 +21983,75 @@
       },
       "extends": "qx.ui.table.Table",
       "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qx.ui.treevirtual.celleditor.NodeEditor": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qx.ui.table.celleditor.TextField": {
+          "load": true
+        },
+        "qx.lang.Object": {},
+        "qx.ui.form.TextField": {}
+      },
+      "extends": "qx.ui.table.celleditor.TextField",
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qx.ui.treevirtual.pane.Scroller": {
+      "mtime": "1985-10-26T08:15:00.000Z",
+      "libraryName": "qx",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qx.ui.table.pane.Scroller": {
+          "load": true
+        },
+        "qx.ui.core.scroll.MScrollBarFactory": {
+          "load": true
+        },
+        "qx.ui.treevirtual.SimpleTreeDataModel": {},
+        "qx.core.Environment": {
+          "load": true
+        },
+        "qx.ui.core.Widget": {
+          "load": true
+        },
+        "qx.ui.layout.Grid": {
+          "load": true
+        },
+        "qx.ui.container.Composite": {
+          "load": true
+        },
+        "qx.ui.layout.HBox": {
+          "load": true
+        },
+        "qx.bom.client.Device": {
+          "load": true
+        },
+        "qx.bom.client.Scroll": {
+          "load": true
+        },
+        "qx.ui.layout.Canvas": {
+          "load": true
+        },
+        "qx.event.Timer": {
+          "load": true
+        }
+      },
+      "extends": "qx.ui.table.pane.Scroller",
+      "include": [
+        "qx.ui.core.scroll.MScrollBarFactory"
+      ],
       "implement": [],
       "hasDefer": null
     },
@@ -24163,7 +24531,7 @@
       }
     },
     "qxl.dialog.Dialog": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24224,7 +24592,7 @@
       ]
     },
     "qxl.dialog.Wizard": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24264,7 +24632,7 @@
       ]
     },
     "qxl.dialog.Login": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24327,7 +24695,7 @@
       ]
     },
     "qxl.dialog.Progress": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24368,7 +24736,7 @@
       "hasDefer": null
     },
     "qxl.dialog.theme.icon.IcoMoonFree": {
-      "mtime": "2020-07-29T22:16:17.664Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24397,7 +24765,7 @@
       }
     },
     "qxl.dialog.theme.icon.Oxygen": {
-      "mtime": "2020-07-29T22:16:17.664Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24427,7 +24795,7 @@
       }
     },
     "qxl.dialog.theme.icon.Tango": {
-      "mtime": "2020-07-29T22:16:17.664Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24694,7 +25062,58 @@
       "extends": "qx.core.Object",
       "include": [],
       "implement": [],
-      "hasDefer": null
+      "hasDefer": null,
+      "unresolved": [
+        {
+          "name": "qx.$$appRoot",
+          "locations": [
+            {
+              "start": {
+                "line": 54,
+                "column": 41
+              },
+              "end": {
+                "line": 54,
+                "column": 53
+              }
+            },
+            {
+              "start": {
+                "line": 54,
+                "column": 41
+              },
+              "end": {
+                "line": 54,
+                "column": 53
+              }
+            },
+            {
+              "start": {
+                "line": 54,
+                "column": 41
+              },
+              "end": {
+                "line": 54,
+                "column": 53
+              }
+            }
+          ]
+        }
+      ],
+      "markers": [
+        {
+          "msgId": "qx.tool.compiler.symbol.unresolved",
+          "pos": {
+            "start": {
+              "line": 54,
+              "column": 41
+            }
+          },
+          "args": [
+            "qx.$$appRoot"
+          ]
+        }
+      ]
     },
     "qxl.apiviewer.Appearance": {
       "mtime": "2020-05-22T06:57:28.000Z",
@@ -24714,7 +25133,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Alert": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24753,7 +25172,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Confirm": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24803,7 +25222,7 @@
       ]
     },
     "qxl.dialog.Prompt": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24844,7 +25263,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Select": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24883,7 +25302,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Form": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.FormRenderer": {
@@ -24957,7 +25376,7 @@
       ]
     },
     "qxl.dialog.FormTag": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25300,7 +25719,7 @@
       "hasDefer": null
     },
     "qxl.dialog.FormRenderer": {
-      "mtime": "2020-07-29T22:16:17.660Z",
+      "mtime": "2020-10-20T12:34:57.277Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {

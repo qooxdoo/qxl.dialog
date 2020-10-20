@@ -179,19 +179,9 @@
           return null;
         }
 
-        var ids = [];
-
-        for (var id in registry) {
-          if (registry.hasOwnProperty(id)) {
-            if (pathfragment && id.indexOf(pathfragment) == -1) {
-              continue;
-            }
-
-            ids.push(id);
-          }
-        }
-
-        return ids;
+        return Object.keys(registry).filter(function (key) {
+          return !pathfragment || key.indexOf(pathfragment) != -1;
+        });
       },
 
       /**
@@ -450,4 +440,4 @@
   qx.util.ResourceManager.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ResourceManager.js.map?dt=1596061068694
+//# sourceMappingURL=ResourceManager.js.map?dt=1603197368101
