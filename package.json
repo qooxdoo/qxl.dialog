@@ -1,6 +1,6 @@
 {
   "name": "qxl.dialog",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "see http://qooxdoo.github.io/qxl.dialog/",
   "dependencies": {
     "@qooxdoo/compiler": "^1.0.0-beta"
