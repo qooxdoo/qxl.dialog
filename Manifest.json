@@ -17,7 +17,7 @@
         "githubUser": "derrell"
       }
     ],
-    "version": "3.0.2"
+    "version": "3.0.4"
   },
   "provides": {
     "namespace": "qxl.dialog",

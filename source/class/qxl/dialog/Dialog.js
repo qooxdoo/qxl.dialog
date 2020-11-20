@@ -60,147 +60,104 @@ qx.Class.define("qxl.dialog.Dialog", {
     /**
      * Shortcut for alert dialog
      * @param message {String} The message to display
-     * @param callback {Function} The callback function
-     * @param context {Object} The context to use with the callback function
-     * @param caption {String} The caption of the dialog window
+     * @param callback {Function?} The callback function
+     * @param context {Object?} The context to use with the callback function
+     * @param caption {String?} The caption of the dialog window
      * @return {qxl.dialog.Alert} The widget instance
      */
-    alert: function(message, callback, context, caption) {
+    alert: function(message="", callback=null, context=null, caption="") {
       return new qxl.dialog.Alert({
-        message: message,
-        callback: callback || null,
-        context: context || null,
-        image: "qxl.dialog.icon.info",
-        caption: caption || ""
+        message, callback, context, caption, image: "qxl.dialog.icon.info",
       }).show();
     },
 
     /**
      * Shortcut for error dialog
      * @param message {String} The message to display
-     * @param callback {Function} The callback function
-     * @param context {Object} The context to use with the callback function
-     * @param caption {String} The caption of the dialog window
+     * @param callback {Function?} The callback function
+     * @param context {Object?} The context to use with the callback function
+     * @param caption {String?} The caption of the dialog window
      * @return {qxl.dialog.Alert} The widget instance
      */
-    error: function(message, callback, context, caption) {
+    error(message="", callback=null, context=null, caption="") {
       return new qxl.dialog.Alert({
-        message: message,
-        callback: callback || null,
-        context: context || null,
-        image: "qxl.dialog.icon.error",
-        caption: caption || ""
+        message, callback, context, caption, image: "qxl.dialog.icon.error"
       }).show();
     },
 
     /**
      * Shortcut for warning dialog
      * @param message {String} The message to display
-     * @param callback {Function} The callback function
-     * @param context {Object} The context to use with the callback function
-     * @param caption {String} The caption of the dialog window
+     * @param callback {Function?} The callback function
+     * @param context {Object?} The context to use with the callback function
+     * @param caption {String?} The caption of the dialog window
      * @return {qxl.dialog.Alert} The widget instance
      */
-    warning: function(message, callback, context, caption) {
+    warning(message="", callback=null, context=null, caption="") {
       return new qxl.dialog.Alert({
-        message: message,
-        callback: callback || null,
-        context: context || null,
-        image: "qxl.dialog.icon.warning",
-        caption: caption || ""
+        message, callback, context, caption, image: "qxl.dialog.icon.warning",
       }).show();
     },
 
     /**
      * Shortcut for confirm dialog
      * @param message {String} The message to display
-     * @param callback {Function} The callback function
-     * @param context {Object} The context to use with the callback function
-     * @param caption {String} The caption of the dialog window
-     * @return {qxl.dialog.Alert} The widget instance
+     * @param callback {Function?} The callback function
+     * @param context {Object?} The context to use with the callback function
+     * @param caption {String?} The caption of the dialog window
+     * @return {qxl.dialog.Confirm} The widget instance
      */
-    confirm: function(message, callback, context, caption) {
-      return new qxl.dialog.Confirm({
-        message: message,
-        callback: callback || null,
-        context: context || null,
-        caption: caption || ""
-      }).show();
+    confirm(message="", callback=null, context=null, caption="") {
+      return new qxl.dialog.Confirm({message, callback, context, caption}).show();
     },
 
     /**
-     * Shortcut for prompt qxl.dialog.
-     * The value argument was forgotten in the initial implementation and
-     * comes last for backwards compatibility. This might change in a future
-     * release.
+     * Shortcut for prompt dialog
      * @param caption {String} The caption of the dialog window
      * @param message {String} The message to display
      * @param callback {Function} The callback function
      * @param context {Object} The context to use with the callback function
      * @param value {String} The default value of the prompt textfield
-     * @return {qxl.dialog.Alert} The widget instance
+     * @param caption {String?} The caption of the dialog window
+     * @return {qxl.dialog.Prompt} The widget instance
      *
      */
-    prompt: function(message, callback, context, value, caption) {
-      return new qxl.dialog.Prompt({
-        message: message,
-        callback: callback || null,
-        context: context || null,
-        value: value || null,
-        caption: caption || ""
-      }).show();
+    prompt(message="", callback=null, context=null, value="", caption="") {
+      return new qxl.dialog.Prompt({message, callback, context, value, caption}).show();
     },
 
     /**
      * Shortcut for select dialog
      * @param message {String} The message to display
-     * @param options {Array} Options to select from. If omitted, "Yes" (true) or "No" (false) will be used.
-     * @param callback {Function} The callback function
-     * @param context {Object} The context to use with the callback function
-     * @param allowCancel {Boolean} Default: true. If the cancel button is pressed, the result value will be undefined.
-     * @param caption {String} The caption of the dialog window
-     * @return {qxl.dialog.Alert} The widget instance
+     * @param options {Array?} Options to select from. If omitted, "Yes" (true) or "No" (false) will be used.
+     * @param callback {Function?} The callback function
+     * @param context {Object?} The context to use with the callback function
+     * @param allowCancel {Boolean?} Default: true. If the cancel button is pressed, the result value will be undefined.
+     * @param caption {String?} The caption of the dialog window
+     * @return {qxl.dialog.Select} The widget instance
      */
-    select: function(
-      message,
-      options,
-      callback,
-      context,
-      allowCancel,
-      caption
-    ) {
+    select(message="", options=null,callback=null, context=null,allowCancel=true, caption="") {
       let defaultOptions = [
         {label: qx.core.Init.getApplication().tr("Yes"), value: true},
         {label: qx.core.Init.getApplication().tr("No"), value: false}
-        ];
+      ];
       return new qxl.dialog.Select({
-        message: message,
-        allowCancel: typeof allowCancel == "boolean" ? allowCancel : true,
-        options: options || defaultOptions,
-        callback: callback || null,
-        context: context || null,
-        caption: caption || ""
+        message, allowCancel, options: options || defaultOptions, callback, context, caption
       }).show();
     },
 
     /**
-     * Shortcut for form dialog
+     * Shortcut for form dialog. Cannot be reused.
      * @param message {String} The message to display
      * @param formData {Map} Map of form data. See {@link qxl.dialog.Form.formData}
-     * @param callback {Function} The callback function
-     * @param context {Object} The context to use with the callback function
-     * @param caption {String} The caption of the dialog window
-     * @return {qxl.dialog.Alert} The widget instance
+     * @param callback {Function?} The callback function
+     * @param context {Object?} The context to use with the callback function
+     * @param caption {String?} The caption of the dialog window
+     * @return {qxl.dialog.Form} The widget instance
      */
-    form: function(message, formData, callback, context, caption) {
-      return new qxl.dialog.Form({
-        message: message,
-        formData: formData,
-        allowCancel: true,
-        callback: callback || null,
-        context: context || null,
-        caption: caption || ""
-      }).show();
+    form: function(message, formData, callback=null, context=null, caption="") {
+      qx.core.Assert.assertMap(formData);
+      return new qxl.dialog.Form({message, formData, allowCancel: true, callback, context, caption}).show();
     }
   },
 
@@ -236,36 +193,20 @@ qx.Class.define("qxl.dialog.Dialog", {
     // handle focus
     qx.ui.core.FocusHandler.getInstance().addRoot(this);
     // resize the window when viewport size changes
-    root.addListener(
-      "resize",
-      function(e) {
-        let bounds = this.getBounds();
-        this.set({
-          marginTop: Math.round(
-            (qx.bom.Document.getHeight() - bounds.height) / 2
-          ),
-          marginLeft: Math.round(
-            (qx.bom.Document.getWidth() - bounds.width) / 2
-          )
-        });
-      },
-      this
-    );
-    this.addListener(
-      "appear",
-      function(e) {
-        let bounds = this.getBounds();
-        this.set({
-          marginTop: Math.round(
-            (qx.bom.Document.getHeight() - bounds.height) / 2
-          ),
-          marginLeft: Math.round(
-            (qx.bom.Document.getWidth() - bounds.width) / 2
-          )
-        });
-      },
-      this
-    );
+    root.addListener("resize", () => {
+      let bounds = this.getBounds();
+      this.set({
+        marginTop: Math.round((qx.bom.Document.getHeight() - bounds.height)/2),
+        marginLeft: Math.round((qx.bom.Document.getWidth() - bounds.width)/2)
+      });
+    });
+    this.addListener("appear", () => {
+      let bounds = this.getBounds();
+      this.set({
+        marginTop: Math.round((qx.bom.Document.getHeight() - bounds.height)/2),
+        marginLeft: Math.round( (qx.bom.Document.getWidth() - bounds.width)/2)
+      });
+    });
     this._createWidgetContent();
     // set properties from constructor param
     if (typeof properties == "object") {
@@ -273,7 +214,6 @@ qx.Class.define("qxl.dialog.Dialog", {
     } else if (typeof properties == "string") {
       this.setMessage(properties);
     }
-
     // escape key
     qx.core.Init.getApplication().getRoot().addListener("keyup", this._handleEscape, this);
   },
@@ -548,7 +488,7 @@ qx.Class.define("qxl.dialog.Dialog", {
     /**
      * Show the widget. Overriding methods must call this parent method.
      * Returns the widget instance for chaining.
-     * @return {qxl.dialog.Dialog} The widget instance
+     * @return {this} The widget instance
      */
     show: function() {
       if (this.isUseBlocker() || qxl.dialog.Dialog.__useBlocker) {
@@ -639,7 +579,7 @@ qx.Class.define("qxl.dialog.Dialog", {
      * @param  e {qx.event.type.KeyInput}
      */
     _handleEscape: function(e) {
-      if (this.isSeeable() && this.isCancelOnEscape() && e.getKeyCode() == 27) {
+      if (this.isCancelOnEscape() && e.getKeyCode() === 27 && this.getContentElement() && this.isSeeable()) {
         this._handleCancel();
       }
     }
