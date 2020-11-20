@@ -76,6 +76,12 @@
           }
         }
 
+        if (obj1 == null && obj2 !== null) {
+          return -1;
+        } else if (obj2 == null && obj1 !== null) {
+          return 1;
+        }
+
         return obj1 > obj2 ? 1 : obj1 == obj2 ? 0 : -1;
       },
 
@@ -97,6 +103,12 @@
           if (result != null) {
             return result;
           }
+        }
+
+        if (obj1 == null && obj2 !== null) {
+          return -1;
+        } else if (obj2 == null && obj1 !== null) {
+          return 1;
         }
 
         return obj1 > obj2 ? 1 : obj1 == obj2 ? 0 : -1;
@@ -123,6 +135,12 @@
           }
         }
 
+        if (obj1 == null && obj2 !== null) {
+          return 1;
+        } else if (obj2 == null && obj1 !== null) {
+          return -1;
+        }
+
         return obj1 < obj2 ? 1 : obj1 == obj2 ? 0 : -1;
       },
 
@@ -144,6 +162,12 @@
           if (result != null) {
             return result;
           }
+        }
+
+        if (obj1 == null && obj2 !== null) {
+          return 1;
+        } else if (obj2 == null && obj1 !== null) {
+          return -1;
         }
 
         return obj1 < obj2 ? 1 : obj1 == obj2 ? 0 : -1;
@@ -690,4 +714,4 @@
   qx.ui.table.model.Simple.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Simple.js.map?dt=1603197623811
+//# sourceMappingURL=Simple.js.map?dt=1605898674814

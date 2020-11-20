@@ -549,6 +549,12 @@
       focus: function focus() {
         qx.ui.form.DateField.prototype.focus.base.call(this);
         this.getChildControl("textfield").getFocusElement().focus();
+      },
+      // overridden
+      tabFocus: function tabFocus() {
+        var field = this.getChildControl("textfield");
+        field.getFocusElement().focus();
+        field.selectAllText();
       }
     },
     destruct: function destruct() {
@@ -563,4 +569,4 @@
   qx.ui.form.DateField.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=DateField.js.map?dt=1603197615998
+//# sourceMappingURL=DateField.js.map?dt=1605898668393
