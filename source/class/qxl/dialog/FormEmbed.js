@@ -16,8 +16,8 @@
 /**
  * A dialog with a form that is constructed on-the-fly
  */
-qx.Class.define("qxl.dialog.Form", {
-  extend: qxl.dialog.Dialog,
+qx.Class.define("qxl.dialog.FormEmbed", {
+  extend: qxl.dialog.DialogEmbed,
   include: [ qxl.dialog.MForm ],
 
   members :
