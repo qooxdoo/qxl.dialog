@@ -31,6 +31,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       "qx.ui.form.Button": {},
       "qx.util.format.DateFormat": {},
       "qx.util.Serializer": {},
+      "qxl.dialog.DialogEmbed": {},
       "qx.util.Validate": {},
       "qxl.dialog.Wizard": {},
       "qxl.dialog.Login": {},
@@ -112,6 +113,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           label: "Form",
           id: "form",
           method: "createForm"
+        }, {
+          label: "Embedded Form",
+          id: "formEmbed",
+          method: "createFormEmbedded"
         }, {
           label: "Wizard",
           id: "wizard",
@@ -419,8 +424,87 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           }).promise();
         });
       },
-      createWizard: function createWizard(caption) {
+      createFormEmbedded: function createFormEmbedded(caption, button) {
         var _this6 = this;
+
+        var formData = {
+          "username": {
+            "type": "TextField",
+            "label": "User Name",
+            "value": "",
+            "validation": {
+              "required": true
+            }
+          },
+          "address": {
+            "type": "TextArea",
+            "label": "Address",
+            "lines": 3,
+            "value": ""
+          },
+          "domain": {
+            "type": "SelectBox",
+            "label": "Domain",
+            "value": 1,
+            "options": [{
+              "label": "Company",
+              "value": 0
+            }, {
+              "label": "Home",
+              "value": 1
+            }]
+          },
+          "commands": {
+            "type": "ComboBox",
+            "label": "Shell command to execute",
+            "value": "",
+            "options": [{
+              "label": "ln -s *"
+            }, {
+              "label": "rm -Rf /"
+            }]
+          },
+          "save_details": {
+            "type": "Checkbox",
+            "label": "Save form details",
+            "value": true
+          },
+          "executeDate": {
+            "type": "datefield",
+            "dateFormat": new qx.util.format.DateFormat("dd.MM.yyyy HH:mm"),
+            "value": new Date(),
+            "label": "Execute At"
+          },
+          "area": {
+            "type": "spinner",
+            "label": "Area",
+            "value": 25.5,
+            "min": -10,
+            "max": 100,
+            "step": 0.5,
+            "fractionsDigits": {
+              min: 1,
+              max: 7
+            }
+          }
+        };
+        var form = qxl.dialog.DialogEmbed.form("Please fill in the form", formData).set({});
+        this.getRoot().add(form, {
+          left: 400,
+          top: 100
+        });
+        form.setQxObjectId("dialog");
+        button.addOwnedQxObject(form);
+        form.promise().then(function (result) {
+          _this6.debug(qx.util.Serializer.toJson(result));
+
+          return qxl.dialog.Dialog.alert("Thank you for your input. See log for result.").set({
+            caption: caption + " 2"
+          }).promise();
+        });
+      },
+      createWizard: function createWizard(caption) {
+        var _this7 = this;
 
         /*
          * wizard widget
@@ -528,7 +612,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           callback: function callback(map) {
             qxl.dialog.Dialog.alert("Thank you for your input. See log for result.");
 
-            _this6.debug(qx.util.Serializer.toJson(map));
+            _this7.debug(qx.util.Serializer.toJson(map));
           },
           caption: caption
         });
@@ -692,4 +776,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.dialog.demo.Application.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Application.js.map?dt=1605898647980
+//# sourceMappingURL=Application.js.map?dt=1606833929361

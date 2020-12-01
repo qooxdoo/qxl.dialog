@@ -360,9 +360,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           }
 
           node.columnData[columnIndex] = value;
-        }
+          this._rowArr[rowIndex][columnIndex] = value;
+        } // Inform the listeners
 
-        this.setData(); // Inform the listeners
 
         if (this.hasListener("dataChanged")) {
           var data = {
@@ -1042,4 +1042,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qx.ui.treevirtual.SimpleTreeDataModel.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=SimpleTreeDataModel.js.map?dt=1605898676410
+//# sourceMappingURL=SimpleTreeDataModel.js.map?dt=1606833969899

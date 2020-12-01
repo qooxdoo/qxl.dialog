@@ -4,7 +4,9 @@
   "name": "Dialog",
   "superClass": "qx.ui.window.Window",
   "interfaces": [],
-  "mixins": [],
+  "mixins": [
+    "qxl.dialog.MDialog"
+  ],
   "functionName": null,
   "clazz": {
     "location": {
@@ -13,7 +15,7 @@
         "column": 0
       },
       "end": {
-        "line": 587,
+        "line": 312,
         "column": 3
       }
     },
@@ -65,11 +67,11 @@
     "__useBlocker": {
       "location": {
         "start": {
-          "line": 36,
+          "line": 38,
           "column": 4
         },
         "end": {
-          "line": 36,
+          "line": 38,
           "column": 23
         }
       },
@@ -93,11 +95,11 @@
     "useBlocker": {
       "location": {
         "start": {
-          "line": 44,
+          "line": 46,
           "column": 4
         },
         "end": {
-          "line": 46,
+          "line": 48,
           "column": 5
         }
       },
@@ -129,12 +131,12 @@
     "getInstanceByType": {
       "location": {
         "start": {
-          "line": 53,
+          "line": 55,
           "column": 4
         },
         "end": {
-          "line": 59,
-          "column": 5
+          "line": 55,
+          "column": 59
         }
       },
       "jsdoc": {
@@ -162,17 +164,17 @@
           }
         ]
       },
-      "type": "function",
+      "type": "variable",
       "access": "public"
     },
     "alert": {
       "location": {
         "start": {
-          "line": 68,
+          "line": 65,
           "column": 4
         },
         "end": {
-          "line": 72,
+          "line": 69,
           "column": 5
         }
       },
@@ -231,11 +233,11 @@
     "error": {
       "location": {
         "start": {
-          "line": 82,
+          "line": 79,
           "column": 4
         },
         "end": {
-          "line": 86,
+          "line": 83,
           "column": 5
         }
       },
@@ -294,11 +296,11 @@
     "warning": {
       "location": {
         "start": {
-          "line": 96,
+          "line": 93,
           "column": 4
         },
         "end": {
-          "line": 100,
+          "line": 97,
           "column": 5
         }
       },
@@ -357,11 +359,11 @@
     "confirm": {
       "location": {
         "start": {
-          "line": 110,
+          "line": 107,
           "column": 4
         },
         "end": {
-          "line": 112,
+          "line": 109,
           "column": 5
         }
       },
@@ -420,11 +422,11 @@
     "prompt": {
       "location": {
         "start": {
-          "line": 125,
+          "line": 122,
           "column": 4
         },
         "end": {
-          "line": 127,
+          "line": 124,
           "column": 5
         }
       },
@@ -495,11 +497,11 @@
     "select": {
       "location": {
         "start": {
-          "line": 139,
+          "line": 136,
           "column": 4
         },
         "end": {
-          "line": 147,
+          "line": 144,
           "column": 5
         }
       },
@@ -574,11 +576,11 @@
     "form": {
       "location": {
         "start": {
-          "line": 158,
+          "line": 155,
           "column": 4
         },
         "end": {
-          "line": 161,
+          "line": 158,
           "column": 5
         }
       },
@@ -645,11 +647,11 @@
   "construct": {
     "location": {
       "start": {
-        "line": 170,
+        "line": 167,
         "column": 13
       },
       "end": {
-        "line": 219,
+        "line": 216,
         "column": 3
       }
     },
@@ -676,167 +678,14 @@
     }
   },
   "properties": {
-    "callback": {
-      "location": {
-        "start": {
-          "line": 228,
-          "column": 4
-        },
-        "end": {
-          "line": 231,
-          "column": 5
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Callback function that will be called when the user\n has interacted with the widget. See sample callback\n method supplied in the source code of each dialog\n widget.</p>"
-          }
-        ]
-      },
-      "name": "callback",
-      "propertyType": "new",
-      "nullable": true,
-      "allowNull": true,
-      "check": "Function"
-    },
-    "context": {
-      "location": {
-        "start": {
-          "line": 236,
-          "column": 4
-        },
-        "end": {
-          "line": 239,
-          "column": 5
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>The context for the callback function</p>"
-          }
-        ]
-      },
-      "name": "context",
-      "propertyType": "new",
-      "nullable": true,
-      "allowNull": true,
-      "check": "Object"
-    },
-    "image": {
-      "location": {
-        "start": {
-          "line": 245,
-          "column": 4
-        },
-        "end": {
-          "line": 249,
-          "column": 5
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>A banner image/logo that is displayed on the widget,\n if applicable</p>"
-          }
-        ]
-      },
-      "name": "image",
-      "propertyType": "new",
-      "apply": "_applyImage",
-      "nullable": true,
-      "allowNull": true,
-      "check": "String"
-    },
-    "message": {
-      "location": {
-        "start": {
-          "line": 254,
-          "column": 4
-        },
-        "end": {
-          "line": 258,
-          "column": 5
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>The message that is displayed</p>"
-          }
-        ]
-      },
-      "name": "message",
-      "propertyType": "new",
-      "apply": "_applyMessage",
-      "nullable": true,
-      "allowNull": true,
-      "check": "String"
-    },
-    "allowCancel": {
-      "location": {
-        "start": {
-          "line": 263,
-          "column": 4
-        },
-        "end": {
-          "line": 267,
-          "column": 5
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Whether to allow cancelling the dialog</p>"
-          }
-        ]
-      },
-      "name": "allowCancel",
-      "propertyType": "new",
-      "event": "changeAllowCancel",
-      "init": true,
-      "check": "Boolean",
-      "defaultValue": true
-    },
-    "cancelOnEscape": {
-      "location": {
-        "start": {
-          "line": 273,
-          "column": 4
-        },
-        "end": {
-          "line": 276,
-          "column": 5
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Whether to triger the cancel button on pressing the \"escape\" key\n (default: true). Depends on the 'allowCancel' property.</p>"
-          }
-        ]
-      },
-      "name": "cancelOnEscape",
-      "propertyType": "new",
-      "init": true,
-      "check": "Boolean",
-      "defaultValue": true
-    },
     "show": {
       "location": {
         "start": {
-          "line": 282,
+          "line": 223,
           "column": 4
         },
         "end": {
-          "line": 287,
+          "line": 228,
           "column": 5
         }
       },
@@ -859,11 +708,11 @@
     "useBlocker": {
       "location": {
         "start": {
-          "line": 292,
+          "line": 233,
           "column": 4
         },
         "end": {
-          "line": 295,
+          "line": 236,
           "column": 5
         }
       },
@@ -884,11 +733,11 @@
     "blockerColor": {
       "location": {
         "start": {
-          "line": 300,
+          "line": 241,
           "column": 4
         },
         "end": {
-          "line": 303,
+          "line": 244,
           "column": 5
         }
       },
@@ -909,11 +758,11 @@
     "blockerOpacity": {
       "location": {
         "start": {
-          "line": 308,
+          "line": 249,
           "column": 4
         },
         "end": {
-          "line": 311,
+          "line": 252,
           "column": 5
         }
       },
@@ -930,75 +779,114 @@
       "init": 0.5,
       "check": "Number",
       "defaultValue": 0.5
-    }
-  },
-  "events": {
-    "ok": {
-      "location": {
-        "start": {
-          "line": 319,
-          "column": 4
-        },
-        "end": {
-          "line": 319,
-          "column": 29
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Dispatched when user clicks on the \"OK\" Button</p>"
-          }
-        ],
-        "@type": [
-          {
-            "name": "@type",
-            "body": "{String}"
-          }
-        ]
-      },
-      "name": "ok",
-      "type": "qx.event.type.Event"
     },
-    "cancel": {
-      "location": {
-        "start": {
-          "line": 325,
-          "column": 4
-        },
-        "end": {
-          "line": 325,
-          "column": 33
-        }
-      },
+    "callback": {
+      "type": "property",
+      "name": "callback",
+      "abstract": false,
+      "mixin": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
             "name": "@description",
-            "body": "<p>Dispatched when user clicks on the \"Cancel\" Button</p>"
-          }
-        ],
-        "@type": [
-          {
-            "name": "@type",
-            "body": "{String}"
+            "body": "<p>Callback function that will be called when the user\n has interacted with the widget. See sample callback\n method supplied in the source code of each dialog\n widget.</p>"
           }
         ]
-      },
-      "name": "cancel",
-      "type": "qx.event.type.Event"
+      }
+    },
+    "context": {
+      "type": "property",
+      "name": "context",
+      "abstract": false,
+      "mixin": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MDialog",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>The context for the callback function</p>"
+          }
+        ]
+      }
+    },
+    "image": {
+      "type": "property",
+      "name": "image",
+      "abstract": false,
+      "mixin": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MDialog",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>A banner image/logo that is displayed on the widget,\n if applicable</p>"
+          }
+        ]
+      }
+    },
+    "message": {
+      "type": "property",
+      "name": "message",
+      "abstract": false,
+      "mixin": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MDialog",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>The message that is displayed</p>"
+          }
+        ]
+      }
+    },
+    "allowCancel": {
+      "type": "property",
+      "name": "allowCancel",
+      "abstract": false,
+      "mixin": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MDialog",
+      "event": "changeAllowCancel",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Whether to allow cancelling the dialog</p>"
+          }
+        ]
+      }
+    },
+    "cancelOnEscape": {
+      "type": "property",
+      "name": "cancelOnEscape",
+      "abstract": false,
+      "mixin": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MDialog",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Whether to triger the cancel button on pressing the \"escape\" key\n (default: true). Depends on the 'allowCancel' property.</p>"
+          }
+        ]
+      }
     }
   },
   "members": {
     "__previousFocus": {
       "location": {
         "start": {
-          "line": 333,
+          "line": 260,
           "column": 4
         },
         "end": {
-          "line": 333,
+          "line": 260,
           "column": 25
         }
       },
@@ -1013,185 +901,82 @@
       "type": "variable",
       "access": "private"
     },
-    "_container": {
+    "show": {
       "location": {
         "start": {
-          "line": 339,
+          "line": 267,
           "column": 4
         },
         "end": {
-          "line": 339,
-          "column": 20
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>The container widget</p>"
-          }
-        ],
-        "@var": [
-          {
-            "name": "@var",
-            "body": "{qx.ui.container.Composite}"
-          }
-        ]
-      },
-      "type": "variable",
-      "access": "protected"
-    },
-    "_buttons": {
-      "location": {
-        "start": {
-          "line": 345,
-          "column": 4
-        },
-        "end": {
-          "line": 345,
-          "column": 18
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>The button pane</p>"
-          }
-        ],
-        "@var": [
-          {
-            "name": "@var",
-            "body": "{qx.ui.basic.Label}"
-          }
-        ]
-      },
-      "type": "variable",
-      "access": "protected"
-    },
-    "_image": {
-      "location": {
-        "start": {
-          "line": 351,
-          "column": 4
-        },
-        "end": {
-          "line": 351,
-          "column": 16
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>The dialog image</p>"
-          }
-        ],
-        "@var": [
-          {
-            "name": "@var",
-            "body": "{qx.ui.basic.Image}"
-          }
-        ]
-      },
-      "type": "variable",
-      "access": "protected"
-    },
-    "_message": {
-      "location": {
-        "start": {
-          "line": 357,
-          "column": 4
-        },
-        "end": {
-          "line": 357,
-          "column": 18
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>The dialog message</p>"
-          }
-        ],
-        "@var": [
-          {
-            "name": "@var",
-            "body": "{qx.ui.basic.Label}"
-          }
-        ]
-      },
-      "type": "variable",
-      "access": "protected"
-    },
-    "_okButton": {
-      "location": {
-        "start": {
-          "line": 363,
-          "column": 4
-        },
-        "end": {
-          "line": 363,
-          "column": 19
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>The OK Button</p>"
-          }
-        ],
-        "@var": [
-          {
-            "name": "@var",
-            "body": "{qx.ui.form.Button}"
-          }
-        ]
-      },
-      "type": "variable",
-      "access": "protected"
-    },
-    "_cancelButton": {
-      "location": {
-        "start": {
-          "line": 369,
-          "column": 4
-        },
-        "end": {
-          "line": 369,
-          "column": 23
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>The cancel button</p>"
-          }
-        ],
-        "@var": [
-          {
-            "name": "@var",
-            "body": "{qx.ui.form.Button}"
-          }
-        ]
-      },
-      "type": "variable",
-      "access": "protected"
-    },
-    "_createWidgetContent": {
-      "location": {
-        "start": {
-          "line": 375,
-          "column": 4
-        },
-        "end": {
-          "line": 377,
+          "line": 291,
           "column": 5
         }
       },
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Show the widget. Overriding methods must call this parent method.\n Returns the widget instance for chaining.</p>"
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "body": "{this} The widget instance",
+            "type": "this",
+            "description": " The widget instance"
+          }
+        ]
+      },
+      "type": "function",
+      "access": "public",
+      "overriddenFrom": "qx.ui.core.Widget",
+      "appearsIn": [
+        "qx.ui.core.Widget"
+      ]
+    },
+    "hide": {
+      "location": {
+        "start": {
+          "line": 298,
+          "column": 4
+        },
+        "end": {
+          "line": 310,
+          "column": 5
+        }
+      },
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Hide the widget. Overriding methods must call this parent method.\n Returns the widget instance for chaining.</p>"
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "body": "{qxl.dialog.Dialog} The widget instance",
+            "type": "qxl.dialog.Dialog",
+            "description": " The widget instance"
+          }
+        ]
+      },
+      "type": "function",
+      "access": "public",
+      "overriddenFrom": "qx.ui.core.Widget",
+      "appearsIn": [
+        "qx.ui.core.Widget"
+      ]
+    },
+    "_createWidgetContent": {
+      "type": "function",
+      "name": "_createWidgetContent",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "protected",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1199,21 +984,16 @@
             "body": "<p>Create the content of the qxl.dialog.\n Extending classes must implement this method.</p>"
           }
         ]
-      },
-      "type": "function",
-      "access": "protected"
+      }
     },
     "_createDialogContainer": {
-      "location": {
-        "start": {
-          "line": 383,
-          "column": 4
-        },
-        "end": {
-          "line": 386,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "_createDialogContainer",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "protected",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1229,21 +1009,16 @@
             "description": ""
           }
         ]
-      },
-      "type": "function",
-      "access": "protected"
+      }
     },
     "_createButtonPane": {
-      "location": {
-        "start": {
-          "line": 392,
-          "column": 4
-        },
-        "end": {
-          "line": 400,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "_createButtonPane",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "protected",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1259,21 +1034,16 @@
             "description": ""
           }
         ]
-      },
-      "type": "function",
-      "access": "protected"
+      }
     },
     "_createOkButton": {
-      "location": {
-        "start": {
-          "line": 406,
-          "column": 4
-        },
-        "end": {
-          "line": 424,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "_createOkButton",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "protected",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1289,21 +1059,16 @@
             "description": ""
           }
         ]
-      },
-      "type": "function",
-      "access": "protected"
+      }
     },
     "_createCancelButton": {
-      "location": {
-        "start": {
-          "line": 431,
-          "column": 4
-        },
-        "end": {
-          "line": 453,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "_createCancelButton",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "protected",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1319,21 +1084,16 @@
             "description": ""
           }
         ]
-      },
-      "type": "function",
-      "access": "protected"
+      }
     },
     "_applyImage": {
-      "location": {
-        "start": {
-          "line": 461,
-          "column": 4
-        },
-        "end": {
-          "line": 464,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "_applyImage",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "protected",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1368,24 +1128,16 @@
             "description": ""
           }
         ]
-      },
-      "type": "function",
-      "access": "protected",
-      "applyFor": [
-        "image"
-      ]
+      }
     },
     "_applyMessage": {
-      "location": {
-        "start": {
-          "line": 472,
-          "column": 4
-        },
-        "end": {
-          "line": 475,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "_applyMessage",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "protected",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1420,24 +1172,16 @@
             "description": ""
           }
         ]
-      },
-      "type": "function",
-      "access": "protected",
-      "applyFor": [
-        "message"
-      ]
+      }
     },
     "getDialogContainer": {
-      "location": {
-        "start": {
-          "line": 481,
-          "column": 4
-        },
-        "end": {
-          "line": 486,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "getDialogContainer",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1453,89 +1197,16 @@
             "description": ""
           }
         ]
-      },
-      "type": "function",
-      "access": "public"
-    },
-    "show": {
-      "location": {
-        "start": {
-          "line": 493,
-          "column": 4
-        },
-        "end": {
-          "line": 517,
-          "column": 5
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Show the widget. Overriding methods must call this parent method.\n Returns the widget instance for chaining.</p>"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{this} The widget instance",
-            "type": "this",
-            "description": " The widget instance"
-          }
-        ]
-      },
-      "type": "function",
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
-      "appearsIn": [
-        "qx.ui.core.Widget"
-      ]
-    },
-    "hide": {
-      "location": {
-        "start": {
-          "line": 524,
-          "column": 4
-        },
-        "end": {
-          "line": 536,
-          "column": 5
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Hide the widget. Overriding methods must call this parent method.\n Returns the widget instance for chaining.</p>"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{qxl.dialog.Dialog} The widget instance",
-            "type": "qxl.dialog.Dialog",
-            "description": " The widget instance"
-          }
-        ]
-      },
-      "type": "function",
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
-      "appearsIn": [
-        "qx.ui.core.Widget"
-      ]
+      }
     },
     "promise": {
-      "location": {
-        "start": {
-          "line": 543,
-          "column": 4
-        },
-        "end": {
-          "line": 550,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "promise",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1551,21 +1222,16 @@
             "description": " A promise that resolves with the result of the dialog\n action"
           }
         ]
-      },
-      "type": "function",
-      "access": "public"
+      }
     },
     "_handleOk": {
-      "location": {
-        "start": {
-          "line": 555,
-          "column": 4
-        },
-        "end": {
-          "line": 562,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "_handleOk",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "protected",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1573,21 +1239,16 @@
             "body": "<p>Handle click on ok button. Calls callback with a \"true\" argument</p>"
           }
         ]
-      },
-      "type": "function",
-      "access": "protected"
+      }
     },
     "_handleCancel": {
-      "location": {
-        "start": {
-          "line": 568,
-          "column": 4
-        },
-        "end": {
-          "line": 575,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "_handleCancel",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "protected",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1595,21 +1256,16 @@
             "body": "<p>Handle click on cancel button. Calls callback with\n an \"undefined\" argument</p>"
           }
         ]
-      },
-      "type": "function",
-      "access": "protected"
+      }
     },
     "_handleEscape": {
-      "location": {
-        "start": {
-          "line": 581,
-          "column": 4
-        },
-        "end": {
-          "line": 585,
-          "column": 5
-        }
-      },
+      "type": "function",
+      "name": "_handleEscape",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "protected",
+      "overriddenFrom": "qxl.dialog.MDialog",
       "jsdoc": {
         "@description": [
           {
@@ -1623,9 +1279,451 @@
             "body": "e {qx.event.type.KeyInput}"
           }
         ]
-      },
+      }
+    },
+    "getCallback": {
       "type": "function",
-      "access": "protected"
+      "name": "getCallback",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>callback</code>.\n\nFor further details take a look at the property definition: {@link #callback}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Function",
+            "desc": "Returns the value for callback"
+          }
+        ]
+      }
+    },
+    "setCallback": {
+      "type": "function",
+      "name": "setCallback",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>callback</code>.\n\nFor further details take a look at the property definition: {@link #callback}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Function",
+            "paramName": "value",
+            "desc": "Value for callback"
+          }
+        ]
+      }
+    },
+    "resetCallback": {
+      "type": "function",
+      "name": "resetCallback",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>callback</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #callback}."
+          }
+        ]
+      }
+    },
+    "getContext": {
+      "type": "function",
+      "name": "getContext",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>context</code>.\n\nFor further details take a look at the property definition: {@link #context}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Object",
+            "desc": "Returns the value for context"
+          }
+        ]
+      }
+    },
+    "setContext": {
+      "type": "function",
+      "name": "setContext",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>context</code>.\n\nFor further details take a look at the property definition: {@link #context}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Object",
+            "paramName": "value",
+            "desc": "Value for context"
+          }
+        ]
+      }
+    },
+    "resetContext": {
+      "type": "function",
+      "name": "resetContext",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>context</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #context}."
+          }
+        ]
+      }
+    },
+    "getImage": {
+      "type": "function",
+      "name": "getImage",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>image</code>.\n\nFor further details take a look at the property definition: {@link #image}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "String",
+            "desc": "Returns the value for image"
+          }
+        ]
+      }
+    },
+    "setImage": {
+      "type": "function",
+      "name": "setImage",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>image</code>.\n\nFor further details take a look at the property definition: {@link #image}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "String",
+            "paramName": "value",
+            "desc": "Value for image"
+          }
+        ]
+      }
+    },
+    "resetImage": {
+      "type": "function",
+      "name": "resetImage",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>image</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #image}."
+          }
+        ]
+      }
+    },
+    "getMessage": {
+      "type": "function",
+      "name": "getMessage",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>message</code>.\n\nFor further details take a look at the property definition: {@link #message}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "String",
+            "desc": "Returns the value for message"
+          }
+        ]
+      }
+    },
+    "setMessage": {
+      "type": "function",
+      "name": "setMessage",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>message</code>.\n\nFor further details take a look at the property definition: {@link #message}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "String",
+            "paramName": "value",
+            "desc": "Value for message"
+          }
+        ]
+      }
+    },
+    "resetMessage": {
+      "type": "function",
+      "name": "resetMessage",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>message</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #message}."
+          }
+        ]
+      }
+    },
+    "getAllowCancel": {
+      "type": "function",
+      "name": "getAllowCancel",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>allowCancel</code>.\n\nFor further details take a look at the property definition: {@link #allowCancel}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Boolean",
+            "desc": "Returns the value for allowCancel"
+          }
+        ]
+      }
+    },
+    "isAllowCancel": {
+      "type": "function",
+      "name": "isAllowCancel",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "is",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>allowCancel</code>.\n\nFor further details take a look at the property definition: {@link #allowCancel}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Boolean",
+            "desc": "Returns the value for allowCancel"
+          }
+        ]
+      }
+    },
+    "setAllowCancel": {
+      "type": "function",
+      "name": "setAllowCancel",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>allowCancel</code>.\n\nFor further details take a look at the property definition: {@link #allowCancel}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Boolean",
+            "paramName": "value",
+            "desc": "Value for allowCancel"
+          }
+        ]
+      }
+    },
+    "resetAllowCancel": {
+      "type": "function",
+      "name": "resetAllowCancel",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>allowCancel</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #allowCancel}."
+          }
+        ]
+      }
+    },
+    "getCancelOnEscape": {
+      "type": "function",
+      "name": "getCancelOnEscape",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>cancelOnEscape</code>.\n\nFor further details take a look at the property definition: {@link #cancelOnEscape}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Boolean",
+            "desc": "Returns the value for cancelOnEscape"
+          }
+        ]
+      }
+    },
+    "isCancelOnEscape": {
+      "type": "function",
+      "name": "isCancelOnEscape",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "is",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>cancelOnEscape</code>.\n\nFor further details take a look at the property definition: {@link #cancelOnEscape}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Boolean",
+            "desc": "Returns the value for cancelOnEscape"
+          }
+        ]
+      }
+    },
+    "setCancelOnEscape": {
+      "type": "function",
+      "name": "setCancelOnEscape",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>cancelOnEscape</code>.\n\nFor further details take a look at the property definition: {@link #cancelOnEscape}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Boolean",
+            "paramName": "value",
+            "desc": "Value for cancelOnEscape"
+          }
+        ]
+      }
+    },
+    "resetCancelOnEscape": {
+      "type": "function",
+      "name": "resetCancelOnEscape",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>cancelOnEscape</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #cancelOnEscape}."
+          }
+        ]
+      }
     },
     "getResizableTop": {
       "type": "function",
@@ -7987,450 +8085,6 @@
         ]
       }
     },
-    "getCallback": {
-      "type": "function",
-      "name": "getCallback",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "get",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Gets the (computed) value of the property <code>callback</code>.\n\nFor further details take a look at the property definition: {@link #callback}."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "type": "Function",
-            "desc": "Returns the value for callback"
-          }
-        ]
-      }
-    },
-    "setCallback": {
-      "type": "function",
-      "name": "setCallback",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "set",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Sets the user value of the property <code>callback</code>.\n\nFor further details take a look at the property definition: {@link #callback}."
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "type": "Function",
-            "paramName": "value",
-            "desc": "Value for callback"
-          }
-        ]
-      }
-    },
-    "resetCallback": {
-      "type": "function",
-      "name": "resetCallback",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "reset",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Resets the user value of the property <code>callback</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #callback}."
-          }
-        ]
-      }
-    },
-    "getContext": {
-      "type": "function",
-      "name": "getContext",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "get",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Gets the (computed) value of the property <code>context</code>.\n\nFor further details take a look at the property definition: {@link #context}."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "type": "Object",
-            "desc": "Returns the value for context"
-          }
-        ]
-      }
-    },
-    "setContext": {
-      "type": "function",
-      "name": "setContext",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "set",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Sets the user value of the property <code>context</code>.\n\nFor further details take a look at the property definition: {@link #context}."
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "type": "Object",
-            "paramName": "value",
-            "desc": "Value for context"
-          }
-        ]
-      }
-    },
-    "resetContext": {
-      "type": "function",
-      "name": "resetContext",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "reset",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Resets the user value of the property <code>context</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #context}."
-          }
-        ]
-      }
-    },
-    "getImage": {
-      "type": "function",
-      "name": "getImage",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "get",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Gets the (computed) value of the property <code>image</code>.\n\nFor further details take a look at the property definition: {@link #image}."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "type": "String",
-            "desc": "Returns the value for image"
-          }
-        ]
-      }
-    },
-    "setImage": {
-      "type": "function",
-      "name": "setImage",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "set",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Sets the user value of the property <code>image</code>.\n\nFor further details take a look at the property definition: {@link #image}."
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "type": "String",
-            "paramName": "value",
-            "desc": "Value for image"
-          }
-        ]
-      }
-    },
-    "resetImage": {
-      "type": "function",
-      "name": "resetImage",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "reset",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Resets the user value of the property <code>image</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #image}."
-          }
-        ]
-      }
-    },
-    "getMessage": {
-      "type": "function",
-      "name": "getMessage",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "get",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Gets the (computed) value of the property <code>message</code>.\n\nFor further details take a look at the property definition: {@link #message}."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "type": "String",
-            "desc": "Returns the value for message"
-          }
-        ]
-      }
-    },
-    "setMessage": {
-      "type": "function",
-      "name": "setMessage",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "set",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Sets the user value of the property <code>message</code>.\n\nFor further details take a look at the property definition: {@link #message}."
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "type": "String",
-            "paramName": "value",
-            "desc": "Value for message"
-          }
-        ]
-      }
-    },
-    "resetMessage": {
-      "type": "function",
-      "name": "resetMessage",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "reset",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Resets the user value of the property <code>message</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #message}."
-          }
-        ]
-      }
-    },
-    "getAllowCancel": {
-      "type": "function",
-      "name": "getAllowCancel",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "get",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Gets the (computed) value of the property <code>allowCancel</code>.\n\nFor further details take a look at the property definition: {@link #allowCancel}."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "type": "Boolean",
-            "desc": "Returns the value for allowCancel"
-          }
-        ]
-      }
-    },
-    "isAllowCancel": {
-      "type": "function",
-      "name": "isAllowCancel",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "is",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Gets the (computed) value of the property <code>allowCancel</code>.\n\nFor further details take a look at the property definition: {@link #allowCancel}."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "type": "Boolean",
-            "desc": "Returns the value for allowCancel"
-          }
-        ]
-      }
-    },
-    "setAllowCancel": {
-      "type": "function",
-      "name": "setAllowCancel",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "set",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Sets the user value of the property <code>allowCancel</code>.\n\nFor further details take a look at the property definition: {@link #allowCancel}."
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "type": "Boolean",
-            "paramName": "value",
-            "desc": "Value for allowCancel"
-          }
-        ]
-      }
-    },
-    "resetAllowCancel": {
-      "type": "function",
-      "name": "resetAllowCancel",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "reset",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Resets the user value of the property <code>allowCancel</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #allowCancel}."
-          }
-        ]
-      }
-    },
-    "getCancelOnEscape": {
-      "type": "function",
-      "name": "getCancelOnEscape",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "get",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Gets the (computed) value of the property <code>cancelOnEscape</code>.\n\nFor further details take a look at the property definition: {@link #cancelOnEscape}."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "type": "Boolean",
-            "desc": "Returns the value for cancelOnEscape"
-          }
-        ]
-      }
-    },
-    "isCancelOnEscape": {
-      "type": "function",
-      "name": "isCancelOnEscape",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "is",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Gets the (computed) value of the property <code>cancelOnEscape</code>.\n\nFor further details take a look at the property definition: {@link #cancelOnEscape}."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "type": "Boolean",
-            "desc": "Returns the value for cancelOnEscape"
-          }
-        ]
-      }
-    },
-    "setCancelOnEscape": {
-      "type": "function",
-      "name": "setCancelOnEscape",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "set",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Sets the user value of the property <code>cancelOnEscape</code>.\n\nFor further details take a look at the property definition: {@link #cancelOnEscape}."
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "type": "Boolean",
-            "paramName": "value",
-            "desc": "Value for cancelOnEscape"
-          }
-        ]
-      }
-    },
-    "resetCancelOnEscape": {
-      "type": "function",
-      "name": "resetCancelOnEscape",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "reset",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Resets the user value of the property <code>cancelOnEscape</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #cancelOnEscape}."
-          }
-        ]
-      }
-    },
     "getShow": {
       "type": "function",
       "name": "getShow",
@@ -8739,6 +8393,52 @@
           {
             "name": "@description",
             "body": "Resets the user value of the property <code>blockerOpacity</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #blockerOpacity}."
+          }
+        ]
+      }
+    }
+  },
+  "events": {
+    "ok": {
+      "type": "event",
+      "name": "ok",
+      "abstract": false,
+      "mixin": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MDialog",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Dispatched when user clicks on the \"OK\" Button</p>"
+          }
+        ],
+        "@type": [
+          {
+            "name": "@type",
+            "body": "{String}"
+          }
+        ]
+      }
+    },
+    "cancel": {
+      "type": "event",
+      "name": "cancel",
+      "abstract": false,
+      "mixin": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MDialog",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Dispatched when user clicks on the \"Cancel\" Button</p>"
+          }
+        ],
+        "@type": [
+          {
+            "name": "@type",
+            "body": "{String}"
           }
         ]
       }

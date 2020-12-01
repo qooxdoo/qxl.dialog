@@ -3,13 +3,13 @@
     "qxl.dialog": "3.0.4",
     "qxl.apiviewer": "1.0.4",
     "qxl.versionlabel": "1.0.1",
-    "qx": "6.0.0-beta-20201119-2000"
+    "qx": "6.0.0-beta-20201130-0808"
   },
-  "environmentHash": "ebe6a7ca5fce522624e4c84254658725e55a8ee6",
-  "compilerVersion": "1.0.0-beta-20201119-2000",
+  "environmentHash": "69ca5695b1c4d8489f686ce66891818c85e698ff",
+  "compilerVersion": "1.0.0-beta-20201130-0808",
   "classInfo": {
     "qxl.dialog.demo.Application": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.Dialog": {
@@ -36,6 +36,7 @@
         "qx.ui.form.Button": {},
         "qx.util.format.DateFormat": {},
         "qx.util.Serializer": {},
+        "qxl.dialog.DialogEmbed": {},
         "qx.util.Validate": {},
         "qxl.dialog.Wizard": {},
         "qxl.dialog.Login": {},
@@ -51,7 +52,7 @@
       ]
     },
     "qxl.dialog.theme.Theme": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.theme.icon.IcoMoonFree": {
@@ -24539,7 +24540,7 @@
       }
     },
     "qxl.dialog.Dialog": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24550,7 +24551,9 @@
           "load": true,
           "construct": true
         },
-        "qx.lang.String": {},
+        "qxl.dialog.MDialog": {
+          "load": true
+        },
         "qxl.dialog.Alert": {},
         "qxl.dialog.Confirm": {},
         "qxl.dialog.Prompt": {},
@@ -24574,33 +24577,56 @@
         "qx.bom.Document": {
           "construct": true
         },
-        "qx.ui.container.Composite": {},
-        "qx.ui.layout.VBox": {
+        "qx.ui.core.Widget": {
           "load": true
         },
-        "qx.ui.layout.HBox": {},
-        "qx.ui.form.Button": {},
-        "qx.ui.core.Widget": {
+        "qx.ui.layout.VBox": {
           "load": true
         }
       },
       "extends": "qx.ui.window.Window",
-      "include": [],
+      "include": [
+        "qxl.dialog.MDialog"
+      ],
       "implement": [],
-      "hasDefer": null,
-      "translations": [
-        {
-          "msgid": "OK",
-          "lineNo": 407
+      "hasDefer": null
+    },
+    "qxl.dialog.DialogEmbed": {
+      "mtime": "2020-12-01T14:44:41.589Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
         },
-        {
-          "msgid": "Cancel",
-          "lineNo": 433
+        "qx.ui.container.Composite": {
+          "load": true,
+          "construct": true
+        },
+        "qxl.dialog.MDialog": {
+          "load": true
+        },
+        "qx.ui.layout.Grow": {
+          "construct": true
+        },
+        "qx.core.Init": {
+          "construct": true
+        },
+        "qx.core.Assert": {},
+        "qxl.dialog.FormEmbed": {},
+        "qx.ui.core.Widget": {
+          "load": true
         }
-      ]
+      },
+      "extends": "qx.ui.container.Composite",
+      "include": [
+        "qxl.dialog.MDialog"
+      ],
+      "implement": [],
+      "hasDefer": null
     },
     "qxl.dialog.Wizard": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24640,7 +24666,7 @@
       ]
     },
     "qxl.dialog.Login": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24703,7 +24729,7 @@
       ]
     },
     "qxl.dialog.Progress": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24744,7 +24770,7 @@
       "hasDefer": null
     },
     "qxl.dialog.theme.icon.IcoMoonFree": {
-      "mtime": "2020-11-20T18:56:52.262Z",
+      "mtime": "2020-12-01T14:44:41.593Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24773,7 +24799,7 @@
       }
     },
     "qxl.dialog.theme.icon.Oxygen": {
-      "mtime": "2020-11-20T18:56:52.262Z",
+      "mtime": "2020-12-01T14:44:41.593Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24803,7 +24829,7 @@
       }
     },
     "qxl.dialog.theme.icon.Tango": {
-      "mtime": "2020-11-20T18:56:52.262Z",
+      "mtime": "2020-12-01T14:44:41.593Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -25140,8 +25166,37 @@
       "implement": [],
       "hasDefer": null
     },
+    "qxl.dialog.MDialog": {
+      "mtime": "2020-12-01T14:44:41.589Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Mixin": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qx.lang.String": {},
+        "qx.ui.container.Composite": {},
+        "qx.ui.layout.VBox": {},
+        "qx.ui.layout.HBox": {},
+        "qx.ui.form.Button": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "translations": [
+        {
+          "msgid": "OK",
+          "lineNo": 190
+        },
+        {
+          "msgid": "Cancel",
+          "lineNo": 216
+        }
+      ]
+    },
     "qxl.dialog.Alert": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25180,7 +25235,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Confirm": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25230,7 +25285,7 @@
       ]
     },
     "qxl.dialog.Prompt": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25271,7 +25326,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Select": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25310,18 +25365,9 @@
       "hasDefer": null
     },
     "qxl.dialog.Form": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
-        "qxl.dialog.FormRenderer": {
-          "require": true
-        },
-        "qx.util.Serializer": {
-          "require": true
-        },
-        "qx.util.Validate": {
-          "require": true
-        },
         "qx.Class": {
           "load": true,
           "usage": "dynamic"
@@ -25329,37 +25375,16 @@
         "qxl.dialog.Dialog": {
           "load": true
         },
-        "qx.ui.container.Composite": {},
-        "qx.ui.layout.VBox": {},
-        "qx.ui.layout.HBox": {},
-        "qx.ui.basic.Label": {},
-        "qxl.dialog.FormTag": {},
-        "qx.ui.layout.Grow": {
+        "qxl.dialog.MForm": {
           "load": true
         },
-        "qx.data.marshal.Json": {},
-        "qx.ui.form.Form": {},
-        "qx.data.controller.Object": {},
-        "qx.ui.form.TextArea": {},
-        "qx.ui.form.TextField": {},
-        "qx.ui.form.DateField": {},
-        "qx.ui.form.PasswordField": {},
-        "qx.ui.form.ComboBox": {},
-        "qx.ui.form.ListItem": {},
-        "qx.ui.form.SelectBox": {},
-        "qx.data.controller.List": {},
-        "qx.ui.form.RadioGroup": {},
-        "qx.ui.form.RadioButton": {},
-        "qx.ui.form.CheckBox": {},
-        "qx.ui.form.Spinner": {},
-        "qx.util.format.NumberFormat": {},
-        "qx.lang.Function": {},
-        "qx.ui.form.validation.AsyncValidator": {},
-        "qx.lang.Type": {},
         "qx.ui.window.Window": {
           "load": true
         },
         "qx.core.Init": {
+          "load": true
+        },
+        "qx.ui.layout.Grow": {
           "load": true
         },
         "qx.ui.core.Blocker": {
@@ -25373,18 +25398,45 @@
         }
       },
       "extends": "qxl.dialog.Dialog",
-      "include": [],
+      "include": [
+        "qxl.dialog.MForm"
+      ],
       "implement": [],
-      "hasDefer": null,
-      "translations": [
-        {
-          "msgid": "Value is invalid",
-          "lineNo": 402
+      "hasDefer": null
+    },
+    "qxl.dialog.FormEmbed": {
+      "mtime": "2020-12-01T14:44:41.589Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.DialogEmbed": {
+          "load": true
+        },
+        "qxl.dialog.MForm": {
+          "load": true
+        },
+        "qx.ui.container.Composite": {
+          "load": true
+        },
+        "qx.ui.layout.Grow": {
+          "load": true
+        },
+        "qx.core.Init": {
+          "load": true
         }
-      ]
+      },
+      "extends": "qxl.dialog.DialogEmbed",
+      "include": [
+        "qxl.dialog.MForm"
+      ],
+      "implement": [],
+      "hasDefer": null
     },
     "qxl.dialog.FormTag": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25726,39 +25778,59 @@
       "implement": [],
       "hasDefer": null
     },
-    "qxl.dialog.FormRenderer": {
-      "mtime": "2020-11-20T18:56:52.258Z",
+    "qxl.dialog.MForm": {
+      "mtime": "2020-12-01T14:44:41.589Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
-        "qx.Class": {
+        "qxl.dialog.FormRenderer": {
+          "require": true
+        },
+        "qx.util.Serializer": {
+          "require": true
+        },
+        "qx.util.Validate": {
+          "require": true
+        },
+        "qx.Mixin": {
           "load": true,
           "usage": "dynamic"
         },
-        "qx.ui.form.renderer.Single": {
-          "load": true
-        },
-        "qx.ui.form.renderer.IFormRenderer": {
-          "load": true
-        },
-        "qx.ui.form.RadioGroup": {},
-        "qx.ui.basic.Label": {},
-        "qx.ui.form.CheckBox": {},
         "qx.ui.container.Composite": {},
         "qx.ui.layout.VBox": {},
         "qx.ui.layout.HBox": {},
-        "qx.ui.form.renderer.AbstractRenderer": {
-          "load": true
-        },
-        "qx.ui.layout.Grid": {
-          "load": true
-        }
+        "qx.ui.basic.Label": {},
+        "qxl.dialog.FormTag": {},
+        "qx.ui.layout.Grow": {},
+        "qx.data.marshal.Json": {},
+        "qx.ui.form.Form": {},
+        "qx.data.controller.Object": {},
+        "qx.ui.form.TextArea": {},
+        "qx.ui.form.TextField": {},
+        "qx.ui.form.DateField": {},
+        "qx.ui.form.PasswordField": {},
+        "qx.ui.form.ComboBox": {},
+        "qx.ui.form.ListItem": {},
+        "qx.ui.form.SelectBox": {},
+        "qx.data.controller.List": {},
+        "qx.ui.form.RadioGroup": {},
+        "qx.ui.form.RadioButton": {},
+        "qx.ui.form.CheckBox": {},
+        "qx.ui.form.Spinner": {},
+        "qx.util.format.NumberFormat": {},
+        "qx.lang.Function": {},
+        "qx.ui.form.validation.AsyncValidator": {},
+        "qx.lang.Type": {}
       },
-      "extends": "qx.ui.form.renderer.Single",
+      "extends": null,
       "include": [],
-      "implement": [
-        "qx.ui.form.renderer.IFormRenderer"
-      ],
-      "hasDefer": null
+      "implement": [],
+      "hasDefer": null,
+      "translations": [
+        {
+          "msgid": "Value is invalid",
+          "lineNo": 403
+        }
+      ]
     },
     "qxl.apiviewer.TreeUtil": {
       "mtime": "2020-05-22T06:57:28.000Z",
@@ -25975,6 +26047,40 @@
       "extends": "qxl.apiviewer.dao.ClassItem",
       "include": [],
       "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.FormRenderer": {
+      "mtime": "2020-12-01T14:44:41.589Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qx.ui.form.renderer.Single": {
+          "load": true
+        },
+        "qx.ui.form.renderer.IFormRenderer": {
+          "load": true
+        },
+        "qx.ui.form.RadioGroup": {},
+        "qx.ui.basic.Label": {},
+        "qx.ui.form.CheckBox": {},
+        "qx.ui.container.Composite": {},
+        "qx.ui.layout.VBox": {},
+        "qx.ui.layout.HBox": {},
+        "qx.ui.form.renderer.AbstractRenderer": {
+          "load": true
+        },
+        "qx.ui.layout.Grid": {
+          "load": true
+        }
+      },
+      "extends": "qx.ui.form.renderer.Single",
+      "include": [],
+      "implement": [
+        "qx.ui.form.renderer.IFormRenderer"
+      ],
       "hasDefer": null
     },
     "qxl.apiviewer.ui.tabview.AbstractPage": {
@@ -26960,14 +27066,14 @@
       "qxl.apiviewer.MWidgetRegistry": "__P_429_",
       "qxl.apiviewer.Viewer": "__P_430_",
       "qxl.apiviewer.Controller": "__P_431_",
-      "qxl.dialog.Form": "__P_432_",
-      "qxl.apiviewer.ui.PackageTree": "__P_433_",
-      "qxl.apiviewer.ui.SearchView": "__P_434_",
-      "qxl.apiviewer.ui.LegendView": "__P_435_",
-      "qxl.apiviewer.ClassLoader": "__P_436_",
-      "qxl.apiviewer.TabViewController": "__P_437_",
-      "qxl.apiviewer.dao.Package": "__P_438_",
-      "qxl.apiviewer.LoadingIndicator": "__P_439_",
+      "qxl.apiviewer.ui.PackageTree": "__P_432_",
+      "qxl.apiviewer.ui.SearchView": "__P_433_",
+      "qxl.apiviewer.ui.LegendView": "__P_434_",
+      "qxl.apiviewer.ClassLoader": "__P_435_",
+      "qxl.apiviewer.TabViewController": "__P_436_",
+      "qxl.apiviewer.dao.Package": "__P_437_",
+      "qxl.apiviewer.LoadingIndicator": "__P_438_",
+      "qxl.dialog.MForm": "__P_439_",
       "qxl.apiviewer.ui.tabview.AbstractPage": "__P_440_",
       "qxl.apiviewer.ui.ClassViewer": "__P_441_",
       "qxl.apiviewer.ui.AbstractViewer": "__P_442_",

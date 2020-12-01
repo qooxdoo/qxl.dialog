@@ -4420,6 +4420,7 @@
     "qx.ui.table.pane.FocusIndicator",
     "qx.ui.tabview.Page",
     "qx.ui.toolbar.PartContainer",
+    "qxl.dialog.DialogEmbed",
     "qxl.apiviewer.Viewer",
     "qxl.dialog.FormTag",
     "qxl.apiviewer.ui.SearchView"

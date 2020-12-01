@@ -1,0 +1,27 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.dialog/qxl.dialog/source/class/qxl/dialog/FormEmbed.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "qxl",
+    "dialog",
+    "DialogEmbed",
+    "include",
+    "MForm",
+    "members",
+    "_createOkButton",
+    "FormEmbed"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;AAeA;;;AAGAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,sBAAhB,EAAwC;AACtCC,IAAAA,MAAM,EAAEC,GAAG,CAACC,MAAJ,CAAWC,WADmB;AAEtCC,IAAAA,OAAO,EAAE,CAAEH,GAAG,CAACC,MAAJ,CAAWG,KAAb,CAF6B;AAItCC,IAAAA,OAAO,EACP;AACE;;;;;;AAMAC,MAAAA,eAAe,EAAE,2BAAY;AAC3B,8EAA4B,IAA5B;AACD;AATH;AALsC,GAAxC;AAlBAN,EAAAA,GAAG,CAACC,MAAJ,CAAWM,SAAX,CAAqBX,aAArB,GAAqCA,aAArC",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo dialog library\n   https://github.com/qooxdoo/qxl.dialog\n\n   Copyright:\n     2007-2018 Christian Boulanger and others\n\n   License:\n     LGPL: http://www.gnu.org/licenses/lgpl.html\n     EPL: http://www.eclipse.org/org/documents/epl-v10.php\n     See the LICENSE file in the project's top-level directory for details.\n\n************************************************************************ */\n\n/**\n * A dialog with a form that is constructed on-the-fly\n */\nqx.Class.define(\"qxl.dialog.FormEmbed\", {\n  extend: qxl.dialog.DialogEmbed,\n  include: [ qxl.dialog.MForm ],\n\n  members :\n  {\n    /**\n     * Create OK Button\n     * unlike our superclass, we do not add an appear listener to focus OK\n     * @override\n     * @return {qx.ui.form.Button}\n     */\n    _createOkButton: function () {\n      return this.base(arguments, true);\n    }\n  }\n});\n"
+  ]
+}
