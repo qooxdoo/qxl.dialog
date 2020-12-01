@@ -84,6 +84,11 @@ qx.Class.define("qxl.dialog.demo.Application",
               method: "createForm"
             },
             {
+              label: "Embedded Form",
+              id: "formEmbed",
+              method: "createFormEmbedded"
+            },
+            {
               label: "Wizard",
               id: "wizard",
               method: "createWizard"
@@ -345,6 +350,81 @@ qx.Class.define("qxl.dialog.demo.Application",
             };
 
           let form = qxl.dialog.Dialog.form("Please fill in the form", formData).set({caption});
+          form.setQxObjectId("dialog");
+          button.addOwnedQxObject(form);
+          form.promise()
+          .then(result => {
+            this.debug(qx.util.Serializer.toJson(result));
+            return qxl.dialog.Dialog
+              .alert("Thank you for your input. See log for result.")
+              .set({caption: caption + " 2"})
+              .promise();
+          });
+        },
+
+        createFormEmbedded: function (caption, button) {
+          let formData =
+            {
+              "username":
+                {
+                  "type": "TextField",
+                  "label": "User Name",
+                  "value": "",
+                  "validation": {
+                    "required": true
+                  }
+                },
+              "address":
+                {
+                  "type": "TextArea",
+                  "label": "Address",
+                  "lines": 3,
+                  "value": ""
+                },
+              "domain":
+                {
+                  "type": "SelectBox",
+                  "label": "Domain",
+                  "value": 1,
+                  "options": [
+                    {"label": "Company", "value": 0},
+                    {"label": "Home", "value": 1}
+                  ]
+                },
+              "commands":
+                {
+                  "type": "ComboBox",
+                  "label": "Shell command to execute",
+                  "value": "",
+                  "options": [
+                    {"label": "ln -s *"},
+                    {"label": "rm -Rf /"}
+                  ]
+                },
+              "save_details": {
+                "type": "Checkbox",
+                "label": "Save form details",
+                "value": true
+              },
+              "executeDate": {
+                "type": "datefield",
+                "dateFormat": new qx.util.format.DateFormat("dd.MM.yyyy HH:mm"),
+                "value": new Date(),
+                "label": "Execute At"
+              },
+              "area": {
+                "type": "spinner",
+                "label": "Area",
+                "value": 25.5,
+                "min": -10,
+                "max": 100,
+                "step": 0.5,
+                "fractionsDigits": {min: 1, max: 7}
+              }
+            };
+
+          let form = qxl.dialog.DialogEmbed.form("Please fill in the form", formData).set({});
+          this.getRoot().add(form, { left: 400, top: 100 });
           form.setQxObjectId("dialog");
           button.addOwnedQxObject(form);
           form.promise()
