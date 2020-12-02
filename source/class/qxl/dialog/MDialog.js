@@ -155,7 +155,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * Create the content of the qxl.dialog.
      * Extending classes must implement this method.
      */
-    _createWidgetContent: function() {
+    _createWidgetContent: function(properties) {
       this.error("_createWidgetContent not implemented!");
     },
 

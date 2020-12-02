@@ -345,11 +345,13 @@ qx.Class.define("qxl.dialog.demo.Application",
                 "min": -10,
                 "max": 100,
                 "step": 0.5,
-                "fractionsDigits": {min: 1, max: 7}
+                "fractionsDigits": {min: 1, max: 7},
+                "properties": { maxWidth: 50 }
               }
             };
 
           let form = qxl.dialog.Dialog.form("Please fill in the form", formData).set({caption});
+          form.setLabelColumnWidth(200);
           form.setQxObjectId("dialog");
           button.addOwnedQxObject(form);
           form.promise()
@@ -423,7 +425,18 @@ qx.Class.define("qxl.dialog.demo.Application",
               }
             };
 
-          let form = qxl.dialog.DialogEmbed.form("Please fill in the form", formData).set({});
+//          let form = qxl.dialog.DialogEmbed.form("Please fill in the form", formData);
+          let form = new qxl.dialog.FormEmbed({
+            message : "Please fill in the form",
+            formData : formData,
+            setupFormRendererFunction : (form) => {
+              var view;
+
+console.log("in setupFormRendererFunction");
+              view = new qxl.dialog.MultiColumnFormRenderer(this._form);
+              return view;
+            }
+          });
           this.getRoot().add(form, { left: 400, top: 100 });
           form.setQxObjectId("dialog");
           button.addOwnedQxObject(form);

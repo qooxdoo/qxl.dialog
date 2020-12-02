@@ -48,7 +48,7 @@ qx.Class.define("qxl.dialog.DialogEmbed", {
   construct: function(properties) {
     this.base(arguments);
     this.setLayout(new qx.ui.layout.Grow());
-    this._createWidgetContent();
+    this._createWidgetContent(properties);
 
     // set properties from constructor param
     if (typeof properties == "object") {
