@@ -204,7 +204,7 @@ qx.Class.define("qxl.dialog.Dialog", {
         marginLeft: Math.round( (qx.bom.Document.getWidth() - bounds.width)/2)
       });
     });
-    this._createWidgetContent();
+    this._createWidgetContent(properties);
     // set properties from constructor param
     if (typeof properties == "object") {
       this.set(properties);

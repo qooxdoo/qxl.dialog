@@ -84,7 +84,7 @@ qx.Class.define("qxl.dialog.demo.Application",
               method: "createForm"
             },
             {
-              label: "Embedded Form",
+              label: "Embedded Multi-column Form",
               id: "formEmbed",
               method: "createFormEmbedded"
             },
@@ -315,7 +315,19 @@ qx.Class.define("qxl.dialog.demo.Application",
                   "options": [
                     {"label": "Company", "value": 0},
                     {"label": "Home", "value": 1}
-                  ]
+                  ],
+                  "events": {
+                    "changeSelection": function(e)
+                    {
+                      const selection = e.getData();
+                      for (let i = 0; i < selection.length; i++) {
+                        qxl.dialog.Dialog.alert(
+                          "Selected item: " +
+                            selection[i].getModel().getLabel() +
+                            " (" + selection[i].getModel().getValue() + ")");
+                      }
+                    }
+                  }
                 },
               "commands":
                 {
@@ -345,11 +357,13 @@ qx.Class.define("qxl.dialog.demo.Application",
                 "min": -10,
                 "max": 100,
                 "step": 0.5,
-                "fractionsDigits": {min: 1, max: 7}
+                "fractionsDigits": {min: 1, max: 7},
+                "properties": { maxWidth: 50 }
               }
             };
 
           let form = qxl.dialog.Dialog.form("Please fill in the form", formData).set({caption});
+          form.setLabelColumnWidth(200);
           form.setQxObjectId("dialog");
           button.addOwnedQxObject(form);
           form.promise()
@@ -379,7 +393,10 @@ qx.Class.define("qxl.dialog.demo.Application",
                   "type": "TextArea",
                   "label": "Address",
                   "lines": 3,
-                  "value": ""
+                  "value": "",
+                  "userdata": {
+                    rowspan: 2
+                  }
                 },
               "domain":
                 {
@@ -401,6 +418,15 @@ qx.Class.define("qxl.dialog.demo.Application",
                     {"label": "rm -Rf /"}
                   ]
                 },
+              "list": {
+                "type": "list",
+                "label": "Options",
+                "options": [
+                  { label : "Option 1", value : "opt1" },
+                  { label : "Option 2", value : "opt2" },
+                  { label : "Option 3", value : "opt3" }
+                ]
+              },
               "save_details": {
                 "type": "Checkbox",
                 "label": "Save form details",
@@ -410,7 +436,11 @@ qx.Class.define("qxl.dialog.demo.Application",
                 "type": "datefield",
                 "dateFormat": new qx.util.format.DateFormat("dd.MM.yyyy HH:mm"),
                 "value": new Date(),
-                "label": "Execute At"
+                "label": "Execute At",
+                "userdata": {
+                  row: 0,
+                  column: 2
+                }
               },
               "area": {
                 "type": "spinner",
@@ -419,11 +449,43 @@ qx.Class.define("qxl.dialog.demo.Application",
                 "min": -10,
                 "max": 100,
                 "step": 0.5,
-                "fractionsDigits": {min: 1, max: 7}
+                "fractionsDigits": {min: 1, max: 7},
+                "properties": {
+                  "maxWidth": 80
+                }
               }
             };
 
-          let form = qxl.dialog.DialogEmbed.form("Please fill in the form", formData).set({});
+//          let form = qxl.dialog.DialogEmbed.form("Please fill in the form", formData);
+          let _this = this;
+          let form = new qxl.dialog.FormEmbed({
+            message : "Please fill in the form",
+            formData : formData,
+            setupFormRendererFunction : function(form) {
+              var renderer = new qxl.dialog.MultiColumnFormRenderer(form);
+              var layout = new qx.ui.layout.Grid();
+              const col = renderer.column;
+              
+              layout.setSpacing(6);
+
+              layout.setColumnMaxWidth(col(0), this.getLabelColumnWidth());
+              layout.setColumnWidth(col(0), this.getLabelColumnWidth());
+              layout.setColumnAlign(col(0), "right", "top");
+
+              layout.setColumnFlex(col(1), 1);
+              layout.setColumnAlign(col(1), "left", "top");
+
+              layout.setColumnMaxWidth(col(2), this.getLabelColumnWidth());
+              layout.setColumnWidth(col(2), this.getLabelColumnWidth());
+              layout.setColumnAlign(col(2), "right", "top");
+
+              layout.setColumnFlex(col(3), 1);
+              layout.setColumnAlign(col(3), "left", "top");
+
+              renderer._setLayout(layout);
+              return renderer;
+            }
+          });
           this.getRoot().add(form, { left: 400, top: 100 });
           form.setQxObjectId("dialog");
           button.addOwnedQxObject(form);
