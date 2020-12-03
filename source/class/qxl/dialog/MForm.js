@@ -46,6 +46,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
      *   RadioGroup
      *   CheckBox
      *   Spinner
+     *   List
      *
      * <pre>
      * {
