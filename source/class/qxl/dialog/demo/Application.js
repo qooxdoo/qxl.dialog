@@ -439,8 +439,7 @@ qx.Class.define("qxl.dialog.demo.Application",
                 "label": "Execute At",
                 "userdata": {
                   row: 0,
-                  column: 4  // Spacing set at 6 in setupFormRendererFunction.
-                             // Leave empty columns for whitespace
+                  column: 2
                 }
               },
               "area": {
@@ -458,17 +457,31 @@ qx.Class.define("qxl.dialog.demo.Application",
             };
 
 //          let form = qxl.dialog.DialogEmbed.form("Please fill in the form", formData);
+          let _this = this;
           let form = new qxl.dialog.FormEmbed({
             message : "Please fill in the form",
             formData : formData,
-            setupFormRendererFunction : (form) => {
+            setupFormRendererFunction : function(form) {
               var renderer = new qxl.dialog.MultiColumnFormRenderer(form);
               var layout = new qx.ui.layout.Grid();
+              const col = renderer.column;
+              
               layout.setSpacing(6);
-              layout.setColumnAlign(renderer.column(0), "right", "top");
-              layout.setColumnAlign(renderer.column(1), "left", "top");
-              layout.setColumnAlign(renderer.column(4), "right", "top");
-              layout.setColumnAlign(renderer.column(5), "left", "top");
+
+              layout.setColumnMaxWidth(col(0), this.getLabelColumnWidth());
+              layout.setColumnWidth(col(0), this.getLabelColumnWidth());
+              layout.setColumnAlign(col(0), "right", "top");
+
+              layout.setColumnFlex(col(1), 1);
+              layout.setColumnAlign(col(1), "left", "top");
+
+              layout.setColumnMaxWidth(col(2), this.getLabelColumnWidth());
+              layout.setColumnWidth(col(2), this.getLabelColumnWidth());
+              layout.setColumnAlign(col(2), "right", "top");
+
+              layout.setColumnFlex(col(3), 1);
+              layout.setColumnAlign(col(3), "left", "top");
+
               renderer._setLayout(layout);
               return renderer;
             }
