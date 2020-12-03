@@ -216,9 +216,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
       /*
        * Handle properties that must be set before _applyFormData
        */
-console.log("_createWidgetContent: properties=", properties);
       if (properties.setupFormRendererFunction) {
-console.log("_createWidgetContent: setting form renderer function");
         this.setSetupFormRendererFunction(properties.setupFormRendererFunction);
       }
 
@@ -723,7 +721,6 @@ console.log("_createWidgetContent: setting form renderer function");
       var setupFormRenderer;
 
       setupFormRenderer = this.getSetupFormRendererFunction();
-console.log("setupFormRenderer = ", setupFormRenderer);
       if (! setupFormRenderer)
       {
         setupFormRenderer = function(form)

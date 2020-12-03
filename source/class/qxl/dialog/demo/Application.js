@@ -84,7 +84,7 @@ qx.Class.define("qxl.dialog.demo.Application",
               method: "createForm"
             },
             {
-              label: "Embedded Form",
+              label: "Embedded Multi-column Form",
               id: "formEmbed",
               method: "createFormEmbedded"
             },
@@ -412,7 +412,12 @@ qx.Class.define("qxl.dialog.demo.Application",
                 "type": "datefield",
                 "dateFormat": new qx.util.format.DateFormat("dd.MM.yyyy HH:mm"),
                 "value": new Date(),
-                "label": "Execute At"
+                "label": "Execute At",
+                "userdata": {
+                  row: 0,
+                  column: 4  // Spacing set at 6 in setupFormRendererFunction.
+                             // Leave empty columns for whitespace
+                }
               },
               "area": {
                 "type": "spinner",
@@ -430,11 +435,15 @@ qx.Class.define("qxl.dialog.demo.Application",
             message : "Please fill in the form",
             formData : formData,
             setupFormRendererFunction : (form) => {
-              var view;
-
-console.log("in setupFormRendererFunction");
-              view = new qxl.dialog.MultiColumnFormRenderer(this._form);
-              return view;
+              var renderer = new qxl.dialog.MultiColumnFormRenderer(form);
+              var layout = new qx.ui.layout.Grid();
+              layout.setSpacing(6);
+              layout.setColumnAlign(0, "right", "top");
+              layout.setColumnAlign(1, "left", "top");
+              layout.setColumnAlign(2, "right", "top");
+              layout.setColumnAlign(3, "left", "top");
+              renderer._setLayout(layout);
+              return renderer;
             }
           });
           this.getRoot().add(form, { left: 400, top: 100 });

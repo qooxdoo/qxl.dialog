@@ -39,7 +39,6 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
       var             rowspan;
       var             widget;
 
-      console.log("MultiColumn addItems");
       /*
        * add the header
        */
@@ -190,7 +189,6 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
          * increment row
          */
         this._row++;
-        this._col++;
         
         /*
          * focus the first item
