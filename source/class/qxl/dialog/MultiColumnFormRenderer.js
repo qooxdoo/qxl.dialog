@@ -188,7 +188,7 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
         /*
          * increment row
          */
-        this._row++;
+        this._row += rowspan;
         
         /*
          * focus the first item

@@ -381,7 +381,10 @@ qx.Class.define("qxl.dialog.demo.Application",
                   "type": "TextArea",
                   "label": "Address",
                   "lines": 3,
-                  "value": ""
+                  "value": "",
+                  "userdata": {
+                    rowspan: 2
+                  }
                 },
               "domain":
                 {
@@ -426,7 +429,10 @@ qx.Class.define("qxl.dialog.demo.Application",
                 "min": -10,
                 "max": 100,
                 "step": 0.5,
-                "fractionsDigits": {min: 1, max: 7}
+                "fractionsDigits": {min: 1, max: 7},
+                "properties": {
+                  "maxWidth": 80
+                }
               }
             };
 
