@@ -319,7 +319,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         });
       });
 
-      this._createWidgetContent(); // set properties from constructor param
+      this._createWidgetContent(properties); // set properties from constructor param
 
 
       if (_typeof(properties) == "object") {
@@ -433,4 +433,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qxl.dialog.Dialog.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Dialog.js.map?dt=1606833975072
+//# sourceMappingURL=Dialog.js.map?dt=1607008557466

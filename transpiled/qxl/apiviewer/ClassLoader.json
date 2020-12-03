@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 62,
+        "line": 68,
         "column": 3
       }
     },
@@ -42,14 +42,28 @@
       "type": "variable",
       "access": "private"
     },
-    "setBaseUri": {
+    "RESOURCEPATH": {
       "location": {
         "start": {
           "line": 30,
           "column": 4
         },
         "end": {
+          "line": 30,
+          "column": 22
+        }
+      },
+      "type": "variable",
+      "access": "public"
+    },
+    "setBaseUri": {
+      "location": {
+        "start": {
           "line": 32,
+          "column": 4
+        },
+        "end": {
+          "line": 34,
           "column": 5
         }
       },
@@ -59,11 +73,11 @@
     "getBaseUri": {
       "location": {
         "start": {
-          "line": 34,
+          "line": 36,
           "column": 4
         },
         "end": {
-          "line": 36,
+          "line": 38,
           "column": 5
         }
       },
@@ -73,11 +87,11 @@
     "loadClassList": {
       "location": {
         "start": {
-          "line": 38,
+          "line": 40,
           "column": 4
         },
         "end": {
-          "line": 48,
+          "line": 50,
           "column": 5
         }
       },
@@ -87,17 +101,30 @@
     "getClassOrPackage": {
       "location": {
         "start": {
-          "line": 50,
+          "line": 52,
           "column": 4
         },
         "end": {
-          "line": 59,
+          "line": 61,
           "column": 5
         }
       },
       "type": "function",
       "access": "public"
     }
+  },
+  "defer": {
+    "location": {
+      "start": {
+        "line": 63,
+        "column": 9
+      },
+      "end": {
+        "line": 65,
+        "column": 3
+      }
+    },
+    "jsdoc": {}
   },
   "members": {
     "getQxOwner": {

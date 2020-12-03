@@ -77,7 +77,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       qx.ui.container.Composite.constructor.call(this);
       this.setLayout(new qx.ui.layout.Grow());
 
-      this._createWidgetContent(); // set properties from constructor param
+      this._createWidgetContent(properties); // set properties from constructor param
 
 
       if (_typeof(properties) == "object") {
@@ -116,4 +116,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qxl.dialog.DialogEmbed.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=DialogEmbed.js.map?dt=1606833975112
+//# sourceMappingURL=DialogEmbed.js.map?dt=1607008558342

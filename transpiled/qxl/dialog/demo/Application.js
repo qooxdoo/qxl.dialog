@@ -31,7 +31,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       "qx.ui.form.Button": {},
       "qx.util.format.DateFormat": {},
       "qx.util.Serializer": {},
-      "qxl.dialog.DialogEmbed": {},
+      "qxl.dialog.FormEmbed": {},
+      "qxl.dialog.MultiColumnFormRenderer": {},
+      "qx.ui.layout.Grid": {},
       "qx.util.Validate": {},
       "qxl.dialog.Wizard": {},
       "qxl.dialog.Login": {},
@@ -114,7 +116,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           id: "form",
           method: "createForm"
         }, {
-          label: "Embedded Form",
+          label: "Embedded Multi-column Form",
           id: "formEmbed",
           method: "createFormEmbedded"
         }, {
@@ -242,26 +244,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         this._replaceOwnedObject(button, dlg, "dialog");
       },
       createConfirm: function createConfirm(caption, button) {
-        var _this = this;
-
-        var dlg = qxl.dialog.Dialog.confirm("Do you really want to erase your hard drive?").set({
-          caption: caption
-        });
-
-        this._replaceOwnedObject(button, dlg, "dialog1");
-
-        dlg.promise().then(function (result) {
-          var dlg2 = qxl.dialog.Dialog.alert("Your answer was: " + result).set({
-            caption: caption + " 2"
-          });
-
-          _this._replaceOwnedObject(button, dlg2, "dialog2");
-        });
-      },
-      createPrompt: function createPrompt(caption, button) {
         var _this2 = this;
 
-        var dlg = qxl.dialog.Dialog.prompt("Please enter the root password for your server").set({
+        var dlg = qxl.dialog.Dialog.confirm("Do you really want to erase your hard drive?").set({
           caption: caption
         });
 
@@ -275,12 +260,29 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           _this2._replaceOwnedObject(button, dlg2, "dialog2");
         });
       },
+      createPrompt: function createPrompt(caption, button) {
+        var _this3 = this;
+
+        var dlg = qxl.dialog.Dialog.prompt("Please enter the root password for your server").set({
+          caption: caption
+        });
+
+        this._replaceOwnedObject(button, dlg, "dialog1");
+
+        dlg.promise().then(function (result) {
+          var dlg2 = qxl.dialog.Dialog.alert("Your answer was: " + result).set({
+            caption: caption + " 2"
+          });
+
+          _this3._replaceOwnedObject(button, dlg2, "dialog2");
+        });
+      },
 
       /**
        * Example for nested callbacks
        */
       createDialogChain: function createDialogChain(caption, button) {
-        var _this3 = this;
+        var _this4 = this;
 
         var dlg1 = qxl.dialog.Dialog.alert("This demostrates a series of 'nested' dialogs ").set({
           caption: caption
@@ -293,7 +295,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             caption: caption + " 2"
           });
 
-          _this3._replaceOwnedObject(button, dlg2, "dialog2");
+          _this4._replaceOwnedObject(button, dlg2, "dialog2");
 
           return dlg2.promise();
         }).then(function (result) {
@@ -301,7 +303,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             caption: caption + " 3"
           });
 
-          _this3._replaceOwnedObject(button, dlg3, "dialog3");
+          _this4._replaceOwnedObject(button, dlg3, "dialog3");
 
           return dlg3.promise();
         }).then(function (result) {
@@ -309,7 +311,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             caption: caption + " 4"
           });
 
-          _this3._replaceOwnedObject(button, dlg4, "dialog4");
+          _this4._replaceOwnedObject(button, dlg4, "dialog4");
 
           return dlg4.promise();
         });
@@ -319,7 +321,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
        * Offer a selection of choices to the user
        */
       createSelect: function createSelect(caption, button) {
-        var _this4 = this;
+        var _this5 = this;
 
         var dlg1 = qxl.dialog.Dialog.select("Select the type of record to create:").set({
           caption: caption,
@@ -342,89 +344,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             caption: caption + " 2"
           });
 
-          _this4._replaceOwnedObject(button, dlg2, "dialog2");
+          _this5._replaceOwnedObject(button, dlg2, "dialog2");
 
           return dlg2.promise();
         });
       },
       createForm: function createForm(caption, button) {
-        var _this5 = this;
-
-        var formData = {
-          "username": {
-            "type": "TextField",
-            "label": "User Name",
-            "value": "",
-            "validation": {
-              "required": true
-            }
-          },
-          "address": {
-            "type": "TextArea",
-            "label": "Address",
-            "lines": 3,
-            "value": ""
-          },
-          "domain": {
-            "type": "SelectBox",
-            "label": "Domain",
-            "value": 1,
-            "options": [{
-              "label": "Company",
-              "value": 0
-            }, {
-              "label": "Home",
-              "value": 1
-            }]
-          },
-          "commands": {
-            "type": "ComboBox",
-            "label": "Shell command to execute",
-            "value": "",
-            "options": [{
-              "label": "ln -s *"
-            }, {
-              "label": "rm -Rf /"
-            }]
-          },
-          "save_details": {
-            "type": "Checkbox",
-            "label": "Save form details",
-            "value": true
-          },
-          "executeDate": {
-            "type": "datefield",
-            "dateFormat": new qx.util.format.DateFormat("dd.MM.yyyy HH:mm"),
-            "value": new Date(),
-            "label": "Execute At"
-          },
-          "area": {
-            "type": "spinner",
-            "label": "Area",
-            "value": 25.5,
-            "min": -10,
-            "max": 100,
-            "step": 0.5,
-            "fractionsDigits": {
-              min: 1,
-              max: 7
-            }
-          }
-        };
-        var form = qxl.dialog.Dialog.form("Please fill in the form", formData).set({
-          caption: caption
-        });
-        form.setQxObjectId("dialog");
-        button.addOwnedQxObject(form);
-        form.promise().then(function (result) {
-          _this5.debug(qx.util.Serializer.toJson(result));
-
-          return qxl.dialog.Dialog.alert("Thank you for your input. See log for result.").set({
-            caption: caption + " 2"
-          }).promise();
-        });
-      },
-      createFormEmbedded: function createFormEmbedded(caption, button) {
         var _this6 = this;
 
         var formData = {
@@ -452,7 +377,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             }, {
               "label": "Home",
               "value": 1
-            }]
+            }],
+            "events": {
+              "changeSelection": function changeSelection(e) {
+                var selection = e.getData();
+
+                for (var i = 0; i < selection.length; i++) {
+                  qxl.dialog.Dialog.alert("Selected item: " + selection[i].getModel().getLabel() + " (" + selection[i].getModel().getValue() + ")");
+                }
+              }
+            }
           },
           "commands": {
             "type": "ComboBox",
@@ -485,14 +419,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             "fractionsDigits": {
               min: 1,
               max: 7
+            },
+            "properties": {
+              maxWidth: 50
             }
           }
         };
-        var form = qxl.dialog.DialogEmbed.form("Please fill in the form", formData).set({});
-        this.getRoot().add(form, {
-          left: 400,
-          top: 100
+        var form = qxl.dialog.Dialog.form("Please fill in the form", formData).set({
+          caption: caption
         });
+        form.setLabelColumnWidth(200);
         form.setQxObjectId("dialog");
         button.addOwnedQxObject(form);
         form.promise().then(function (result) {
@@ -503,8 +439,137 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           }).promise();
         });
       },
-      createWizard: function createWizard(caption) {
+      createFormEmbedded: function createFormEmbedded(caption, button) {
         var _this7 = this;
+
+        var formData = {
+          "username": {
+            "type": "TextField",
+            "label": "User Name",
+            "value": "",
+            "validation": {
+              "required": true
+            }
+          },
+          "address": {
+            "type": "TextArea",
+            "label": "Address",
+            "lines": 3,
+            "value": "",
+            "userdata": {
+              rowspan: 2
+            }
+          },
+          "domain": {
+            "type": "SelectBox",
+            "label": "Domain",
+            "value": 1,
+            "options": [{
+              "label": "Company",
+              "value": 0
+            }, {
+              "label": "Home",
+              "value": 1
+            }]
+          },
+          "commands": {
+            "type": "ComboBox",
+            "label": "Shell command to execute",
+            "value": "",
+            "options": [{
+              "label": "ln -s *"
+            }, {
+              "label": "rm -Rf /"
+            }]
+          },
+          "list": {
+            "type": "list",
+            "label": "Options",
+            "options": [{
+              label: "Option 1",
+              value: "opt1"
+            }, {
+              label: "Option 2",
+              value: "opt2"
+            }, {
+              label: "Option 3",
+              value: "opt3"
+            }]
+          },
+          "save_details": {
+            "type": "Checkbox",
+            "label": "Save form details",
+            "value": true
+          },
+          "executeDate": {
+            "type": "datefield",
+            "dateFormat": new qx.util.format.DateFormat("dd.MM.yyyy HH:mm"),
+            "value": new Date(),
+            "label": "Execute At",
+            "userdata": {
+              row: 0,
+              column: 2
+            }
+          },
+          "area": {
+            "type": "spinner",
+            "label": "Area",
+            "value": 25.5,
+            "min": -10,
+            "max": 100,
+            "step": 0.5,
+            "fractionsDigits": {
+              min: 1,
+              max: 7
+            },
+            "properties": {
+              "maxWidth": 80
+            }
+          }
+        }; //          let form = qxl.dialog.DialogEmbed.form("Please fill in the form", formData);
+
+        var _this = this;
+
+        var form = new qxl.dialog.FormEmbed({
+          message: "Please fill in the form",
+          formData: formData,
+          setupFormRendererFunction: function setupFormRendererFunction(form) {
+            var renderer = new qxl.dialog.MultiColumnFormRenderer(form);
+            var layout = new qx.ui.layout.Grid();
+            var col = renderer.column;
+            layout.setSpacing(6);
+            layout.setColumnMaxWidth(col(0), this.getLabelColumnWidth());
+            layout.setColumnWidth(col(0), this.getLabelColumnWidth());
+            layout.setColumnAlign(col(0), "right", "top");
+            layout.setColumnFlex(col(1), 1);
+            layout.setColumnAlign(col(1), "left", "top");
+            layout.setColumnMaxWidth(col(2), this.getLabelColumnWidth());
+            layout.setColumnWidth(col(2), this.getLabelColumnWidth());
+            layout.setColumnAlign(col(2), "right", "top");
+            layout.setColumnFlex(col(3), 1);
+            layout.setColumnAlign(col(3), "left", "top");
+
+            renderer._setLayout(layout);
+
+            return renderer;
+          }
+        });
+        this.getRoot().add(form, {
+          left: 400,
+          top: 100
+        });
+        form.setQxObjectId("dialog");
+        button.addOwnedQxObject(form);
+        form.promise().then(function (result) {
+          _this7.debug(qx.util.Serializer.toJson(result));
+
+          return qxl.dialog.Dialog.alert("Thank you for your input. See log for result.").set({
+            caption: caption + " 2"
+          }).promise();
+        });
+      },
+      createWizard: function createWizard(caption) {
+        var _this8 = this;
 
         /*
          * wizard widget
@@ -612,7 +677,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           callback: function callback(map) {
             qxl.dialog.Dialog.alert("Thank you for your input. See log for result.");
 
-            _this7.debug(qx.util.Serializer.toJson(map));
+            _this8.debug(qx.util.Serializer.toJson(map));
           },
           caption: caption
         });
@@ -776,4 +841,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.dialog.demo.Application.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Application.js.map?dt=1606833929361
+//# sourceMappingURL=Application.js.map?dt=1607008517032

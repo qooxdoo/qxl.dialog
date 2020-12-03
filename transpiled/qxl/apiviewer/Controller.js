@@ -84,14 +84,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     /**
      * @param widgetRegistry
      *          {Viewer} the GUI
+     *
+     * @ignore (qx.$$appRoot)
+     *
      */
-    // @ignore (qx.$$appRoot)
     construct: function construct(widgetRegistry) {
       qx.core.Object.constructor.call(this);
       this._widgetRegistry = qxl.apiviewer.MWidgetRegistry;
       this._titlePrefix = "API Documentation";
       document.title = this._titlePrefix;
-      qxl.apiviewer.ClassLoader.setBaseUri(qx.$$appRoot + "..");
+      qxl.apiviewer.ClassLoader.setBaseUri("".concat(qx.$$appRoot, "../resource/").concat(qxl.apiviewer.ClassLoader.RESOURCEPATH, "/"));
       this._detailLoader = this._widgetRegistry.getWidgetById("detail_loader");
       this._tabViewController = new qxl.apiviewer.TabViewController(this._widgetRegistry);
 
@@ -452,4 +454,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.apiviewer.Controller.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Controller.js.map?dt=1606833975659
+//# sourceMappingURL=Controller.js.map?dt=1607008558063

@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 357,
+        "line": 358,
         "column": 3
       }
     },
@@ -30,11 +30,11 @@
   "construct": {
     "location": {
       "start": {
-        "line": 46,
+        "line": 47,
         "column": 14
       },
       "end": {
-        "line": 78,
+        "line": 79,
         "column": 3
       }
     },
@@ -57,6 +57,12 @@
           "description": " the GUI",
           "type": "qxl.apiviewer.Viewer"
         }
+      ],
+      "@ignore": [
+        {
+          "name": "@ignore",
+          "body": "qx.$$appRoot"
+        }
       ]
     }
   },
@@ -64,11 +70,11 @@
     "__openInNewTab": {
       "location": {
         "start": {
-          "line": 83,
+          "line": 84,
           "column": 4
         },
         "end": {
-          "line": 83,
+          "line": 84,
           "column": 26
         }
       },
@@ -78,11 +84,11 @@
     "$$logCategory": {
       "location": {
         "start": {
-          "line": 86,
+          "line": 87,
           "column": 4
         },
         "end": {
-          "line": 86,
+          "line": 87,
           "column": 33
         }
       },
@@ -93,11 +99,11 @@
     "load": {
       "location": {
         "start": {
-          "line": 94,
+          "line": 95,
           "column": 4
         },
         "end": {
-          "line": 121,
+          "line": 122,
           "column": 5
         }
       },
@@ -124,11 +130,11 @@
     "__bindTabViewController": {
       "location": {
         "start": {
-          "line": 126,
+          "line": 127,
           "column": 4
         },
         "end": {
-          "line": 151,
+          "line": 152,
           "column": 5
         }
       },
@@ -146,11 +152,11 @@
     "__bindTree": {
       "location": {
         "start": {
-          "line": 157,
+          "line": 158,
           "column": 4
         },
         "end": {
-          "line": 167,
+          "line": 168,
           "column": 5
         }
       },
@@ -168,11 +174,11 @@
     "__bindToolbar": {
       "location": {
         "start": {
-          "line": 173,
+          "line": 174,
           "column": 4
         },
         "end": {
-          "line": 199,
+          "line": 200,
           "column": 5
         }
       },
@@ -190,11 +196,11 @@
     "__syncMenuButton": {
       "location": {
         "start": {
-          "line": 207,
+          "line": 208,
           "column": 4
         },
         "end": {
-          "line": 225,
+          "line": 226,
           "column": 5
         }
       },
@@ -212,11 +218,11 @@
     "__bindHistory": {
       "location": {
         "start": {
-          "line": 230,
+          "line": 231,
           "column": 4
         },
         "end": {
-          "line": 237,
+          "line": 238,
           "column": 5
         }
       },
@@ -234,11 +240,11 @@
     "_updateHistory": {
       "location": {
         "start": {
-          "line": 247,
+          "line": 248,
           "column": 4
         },
         "end": {
-          "line": 250,
+          "line": 251,
           "column": 5
         }
       },
@@ -265,11 +271,11 @@
     "_selectClass": {
       "location": {
         "start": {
-          "line": 259,
+          "line": 260,
           "column": 4
         },
         "end": {
-          "line": 269,
+          "line": 270,
           "column": 5
         }
       },
@@ -296,11 +302,11 @@
     "__selectItem": {
       "location": {
         "start": {
-          "line": 280,
+          "line": 281,
           "column": 4
         },
         "end": {
-          "line": 333,
+          "line": 334,
           "column": 5
         }
       },
@@ -327,11 +333,11 @@
     "__encodeState": {
       "location": {
         "start": {
-          "line": 336,
+          "line": 337,
           "column": 4
         },
         "end": {
-          "line": 338,
+          "line": 339,
           "column": 5
         }
       },
@@ -341,11 +347,11 @@
     "__decodeState": {
       "location": {
         "start": {
-          "line": 340,
+          "line": 341,
           "column": 4
         },
         "end": {
-          "line": 342,
+          "line": 343,
           "column": 5
         }
       },
@@ -492,11 +498,11 @@
   "destruct": {
     "location": {
       "start": {
-        "line": 353,
+        "line": 354,
         "column": 13
       },
       "end": {
-        "line": 356,
+        "line": 357,
         "column": 3
       }
     },

@@ -167,7 +167,7 @@
        * Create the content of the qxl.dialog.
        * Extending classes must implement this method.
        */
-      _createWidgetContent: function _createWidgetContent() {
+      _createWidgetContent: function _createWidgetContent(properties) {
         this.error("_createWidgetContent not implemented!");
       },
 
@@ -343,4 +343,4 @@
   qxl.dialog.MDialog.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MDialog.js.map?dt=1606833975760
+//# sourceMappingURL=MDialog.js.map?dt=1607008558152

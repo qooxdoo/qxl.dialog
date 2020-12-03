@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 818,
+        "line": 827,
         "column": 3
       }
     },
@@ -309,14 +309,50 @@
       "type": "variable",
       "access": "protected"
     },
-    "load": {
+    "__url": {
+      "location": {
+        "start": {
+          "line": 59,
+          "column": 4
+        },
+        "end": {
+          "line": 59,
+          "column": 15
+        }
+      },
+      "type": "variable",
+      "access": "private"
+    },
+    "getMetaFile": {
       "location": {
         "start": {
           "line": 64,
           "column": 4
         },
         "end": {
-          "line": 83,
+          "line": 66,
+          "column": 5
+        }
+      },
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>retrieves the meta file name + path</p>"
+          }
+        ]
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "load": {
+      "location": {
+        "start": {
+          "line": 73,
+          "column": 4
+        },
+        "end": {
+          "line": 92,
           "column": 5
         }
       },
@@ -342,11 +378,11 @@
     "isLoaded": {
       "location": {
         "start": {
-          "line": 85,
+          "line": 94,
           "column": 4
         },
         "end": {
-          "line": 87,
+          "line": 96,
           "column": 5
         }
       },
@@ -356,11 +392,11 @@
     "_initMeta": {
       "location": {
         "start": {
-          "line": 94,
+          "line": 103,
           "column": 4
         },
         "end": {
-          "line": 215,
+          "line": 224,
           "column": 5
         }
       },
@@ -390,11 +426,11 @@
     "getPackage": {
       "location": {
         "start": {
-          "line": 217,
+          "line": 226,
           "column": 4
         },
         "end": {
-          "line": 219,
+          "line": 228,
           "column": 5
         }
       },
@@ -404,11 +440,11 @@
     "getName": {
       "location": {
         "start": {
-          "line": 226,
+          "line": 235,
           "column": 4
         },
         "end": {
-          "line": 228,
+          "line": 237,
           "column": 5
         }
       },
@@ -434,11 +470,11 @@
     "getFullName": {
       "location": {
         "start": {
-          "line": 236,
+          "line": 245,
           "column": 4
         },
         "end": {
-          "line": 238,
+          "line": 247,
           "column": 5
         }
       },
@@ -464,11 +500,11 @@
     "getPackageName": {
       "location": {
         "start": {
-          "line": 246,
+          "line": 255,
           "column": 4
         },
         "end": {
-          "line": 248,
+          "line": 257,
           "column": 5
         }
       },
@@ -494,11 +530,11 @@
     "getType": {
       "location": {
         "start": {
-          "line": 257,
+          "line": 266,
           "column": 4
         },
         "end": {
-          "line": 259,
+          "line": 268,
           "column": 5
         }
       },
@@ -524,11 +560,11 @@
     "isAbstract": {
       "location": {
         "start": {
-          "line": 267,
+          "line": 276,
           "column": 4
         },
         "end": {
-          "line": 269,
+          "line": 278,
           "column": 5
         }
       },
@@ -554,11 +590,11 @@
     "isStatic": {
       "location": {
         "start": {
-          "line": 277,
+          "line": 286,
           "column": 4
         },
         "end": {
-          "line": 279,
+          "line": 288,
           "column": 5
         }
       },
@@ -584,11 +620,11 @@
     "isSingleton": {
       "location": {
         "start": {
-          "line": 287,
+          "line": 296,
           "column": 4
         },
         "end": {
-          "line": 289,
+          "line": 298,
           "column": 5
         }
       },
@@ -614,11 +650,11 @@
     "getSuperClass": {
       "location": {
         "start": {
-          "line": 297,
+          "line": 306,
           "column": 4
         },
         "end": {
-          "line": 299,
+          "line": 308,
           "column": 5
         }
       },
@@ -644,11 +680,11 @@
     "getChildClasses": {
       "location": {
         "start": {
-          "line": 308,
+          "line": 317,
           "column": 4
         },
         "end": {
-          "line": 317,
+          "line": 326,
           "column": 5
         }
       },
@@ -674,11 +710,11 @@
     "getInterfaces": {
       "location": {
         "start": {
-          "line": 326,
+          "line": 335,
           "column": 4
         },
         "end": {
-          "line": 328,
+          "line": 337,
           "column": 5
         }
       },
@@ -704,11 +740,11 @@
     "getSuperInterfaces": {
       "location": {
         "start": {
-          "line": 335,
+          "line": 344,
           "column": 4
         },
         "end": {
-          "line": 337,
+          "line": 346,
           "column": 5
         }
       },
@@ -734,11 +770,11 @@
     "getMixins": {
       "location": {
         "start": {
-          "line": 345,
+          "line": 354,
           "column": 4
         },
         "end": {
-          "line": 347,
+          "line": 356,
           "column": 5
         }
       },
@@ -764,11 +800,11 @@
     "getSuperMixins": {
       "location": {
         "start": {
-          "line": 354,
+          "line": 363,
           "column": 4
         },
         "end": {
-          "line": 356,
+          "line": 365,
           "column": 5
         }
       },
@@ -794,11 +830,11 @@
     "getIncluder": {
       "location": {
         "start": {
-          "line": 363,
+          "line": 372,
           "column": 4
         },
         "end": {
-          "line": 372,
+          "line": 381,
           "column": 5
         }
       },
@@ -824,11 +860,11 @@
     "getImplementations": {
       "location": {
         "start": {
-          "line": 379,
+          "line": 388,
           "column": 4
         },
         "end": {
-          "line": 388,
+          "line": 397,
           "column": 5
         }
       },
@@ -854,11 +890,11 @@
     "getConstructor": {
       "location": {
         "start": {
-          "line": 395,
+          "line": 404,
           "column": 4
         },
         "end": {
-          "line": 397,
+          "line": 406,
           "column": 5
         }
       },
@@ -884,11 +920,11 @@
     "getChildControls": {
       "location": {
         "start": {
-          "line": 405,
+          "line": 414,
           "column": 4
         },
         "end": {
-          "line": 407,
+          "line": 416,
           "column": 5
         }
       },
@@ -914,11 +950,11 @@
     "getMembers": {
       "location": {
         "start": {
-          "line": 415,
+          "line": 424,
           "column": 4
         },
         "end": {
-          "line": 417,
+          "line": 426,
           "column": 5
         }
       },
@@ -950,11 +986,11 @@
     "getMethods": {
       "location": {
         "start": {
-          "line": 424,
+          "line": 433,
           "column": 4
         },
         "end": {
-          "line": 426,
+          "line": 435,
           "column": 5
         }
       },
@@ -980,11 +1016,11 @@
     "getMixinMembers": {
       "location": {
         "start": {
-          "line": 434,
+          "line": 443,
           "column": 4
         },
         "end": {
-          "line": 436,
+          "line": 445,
           "column": 5
         }
       },
@@ -1016,11 +1052,11 @@
     "getMixinMethods": {
       "location": {
         "start": {
-          "line": 443,
+          "line": 452,
           "column": 4
         },
         "end": {
-          "line": 445,
+          "line": 454,
           "column": 5
         }
       },
@@ -1046,11 +1082,11 @@
     "getStatics": {
       "location": {
         "start": {
-          "line": 452,
+          "line": 461,
           "column": 4
         },
         "end": {
-          "line": 454,
+          "line": 463,
           "column": 5
         }
       },
@@ -1076,11 +1112,11 @@
     "getEvents": {
       "location": {
         "start": {
-          "line": 461,
+          "line": 470,
           "column": 4
         },
         "end": {
-          "line": 463,
+          "line": 472,
           "column": 5
         }
       },
@@ -1106,11 +1142,11 @@
     "getMixinEvents": {
       "location": {
         "start": {
-          "line": 470,
+          "line": 479,
           "column": 4
         },
         "end": {
-          "line": 472,
+          "line": 481,
           "column": 5
         }
       },
@@ -1136,11 +1172,11 @@
     "getProperties": {
       "location": {
         "start": {
-          "line": 479,
+          "line": 488,
           "column": 4
         },
         "end": {
-          "line": 481,
+          "line": 490,
           "column": 5
         }
       },
@@ -1166,11 +1202,11 @@
     "getProperty": {
       "location": {
         "start": {
-          "line": 488,
+          "line": 497,
           "column": 4
         },
         "end": {
-          "line": 496,
+          "line": 505,
           "column": 5
         }
       },
@@ -1196,11 +1232,11 @@
     "getMixinProperties": {
       "location": {
         "start": {
-          "line": 503,
+          "line": 512,
           "column": 4
         },
         "end": {
-          "line": 505,
+          "line": 514,
           "column": 5
         }
       },
@@ -1226,11 +1262,11 @@
     "getConstants": {
       "location": {
         "start": {
-          "line": 512,
+          "line": 521,
           "column": 4
         },
         "end": {
-          "line": 514,
+          "line": 523,
           "column": 5
         }
       },
@@ -1256,11 +1292,11 @@
     "getSee": {
       "location": {
         "start": {
-          "line": 521,
+          "line": 530,
           "column": 4
         },
         "end": {
-          "line": 523,
+          "line": 532,
           "column": 5
         }
       },
@@ -1286,11 +1322,11 @@
     "getErrors": {
       "location": {
         "start": {
-          "line": 525,
+          "line": 534,
           "column": 4
         },
         "end": {
-          "line": 527,
+          "line": 536,
           "column": 5
         }
       },
@@ -1314,11 +1350,11 @@
     "getClassHierarchy": {
       "location": {
         "start": {
-          "line": 540,
+          "line": 549,
           "column": 4
         },
         "end": {
-          "line": 552,
+          "line": 561,
           "column": 5
         }
       },
@@ -1353,11 +1389,11 @@
     "getInterfaceHierarchy": {
       "location": {
         "start": {
-          "line": 562,
+          "line": 571,
           "column": 4
         },
         "end": {
-          "line": 572,
+          "line": 581,
           "column": 5
         }
       },
@@ -1383,11 +1419,11 @@
     "getAllInterfaces": {
       "location": {
         "start": {
-          "line": 581,
+          "line": 590,
           "column": 4
         },
         "end": {
-          "line": 595,
+          "line": 604,
           "column": 5
         }
       },
@@ -1416,11 +1452,11 @@
     "getItemByNameFromMixins": {
       "location": {
         "start": {
-          "line": 605,
+          "line": 614,
           "column": 4
         },
         "end": {
-          "line": 610,
+          "line": 619,
           "column": 5
         }
       },
@@ -1455,11 +1491,11 @@
     "getItem": {
       "location": {
         "start": {
-          "line": 618,
+          "line": 627,
           "column": 4
         },
         "end": {
-          "line": 641,
+          "line": 650,
           "column": 5
         }
       },
@@ -1494,11 +1530,11 @@
     "getItemList": {
       "location": {
         "start": {
-          "line": 660,
+          "line": 669,
           "column": 4
         },
         "end": {
-          "line": 679,
+          "line": 688,
           "column": 5
         }
       },
@@ -1533,11 +1569,11 @@
     "getItemByListAndName": {
       "location": {
         "start": {
-          "line": 690,
+          "line": 699,
           "column": 4
         },
         "end": {
-          "line": 698,
+          "line": 707,
           "column": 5
         }
       },
@@ -1579,11 +1615,11 @@
     "loadDependedClasses": {
       "location": {
         "start": {
-          "line": 701,
+          "line": 710,
           "column": 4
         },
         "end": {
-          "line": 703,
+          "line": 712,
           "column": 5
         }
       },
@@ -1593,11 +1629,11 @@
     "getDependedClasses": {
       "location": {
         "start": {
-          "line": 712,
+          "line": 721,
           "column": 4
         },
         "end": {
-          "line": 731,
+          "line": 740,
           "column": 5
         }
       },
@@ -1761,11 +1797,11 @@
     "_native_classes": {
       "location": {
         "start": {
-          "line": 735,
+          "line": 744,
           "column": 4
         },
         "end": {
-          "line": 746,
+          "line": 755,
           "column": 5
         }
       },
@@ -1775,11 +1811,11 @@
     "getClassByName": {
       "location": {
         "start": {
-          "line": 755,
+          "line": 764,
           "column": 4
         },
         "end": {
-          "line": 771,
+          "line": 780,
           "column": 5
         }
       },
@@ -1814,11 +1850,11 @@
     "getClassesByName": {
       "location": {
         "start": {
-          "line": 781,
+          "line": 790,
           "column": 4
         },
         "end": {
-          "line": 785,
+          "line": 794,
           "column": 5
         }
       },
@@ -1853,11 +1889,11 @@
     "findClasses": {
       "location": {
         "start": {
-          "line": 788,
+          "line": 797,
           "column": 4
         },
         "end": {
-          "line": 802,
+          "line": 811,
           "column": 5
         }
       },
@@ -1867,11 +1903,11 @@
     "isNativeObject": {
       "location": {
         "start": {
-          "line": 813,
+          "line": 822,
           "column": 4
         },
         "end": {
-          "line": 815,
+          "line": 824,
           "column": 5
         }
       },
