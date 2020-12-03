@@ -681,12 +681,20 @@ qx.Mixin.define("qxl.dialog.MForm", {
          */
         if (qx.lang.Type.isObject(fieldData.events)) {
           for (let type in fieldData.events) {
+            let func;
             try {
-              // WHY IS eval NECESSARY???
-              //let func = eval("(" + fieldData.events[type] + ")"); // eval is evil, I know.
-              let func = fieldData.events[type];
-              if (!qx.lang.Type.isFunction(func)) {
-                throw new Error();
+              switch(typeof fieldData.events[type]) {
+              case "string" : /** @deprecated */
+                // A string allows transferring this handler via JSON.
+                func = eval("(" + fieldData.events[type] + ")"); // eval is evil, I know.
+                break;
+
+              case "function" :
+                func = fieldData.events[type];
+                break;
+
+              default :
+                throw new Error("Event handler must be a string eval()'ed to a function (deprecated), or a function");
               }
               formElement.addListener(type, func, formElement);
             } catch (e) {
