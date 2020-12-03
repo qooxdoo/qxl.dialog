@@ -30,6 +30,17 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
     _row : 0,
     _col : 0,
 
+    /**
+     * Renderer columns each consume multiple layout (grid) columns. This is a
+     * convenience function allowing the application to more easily specify
+     * the column numbers when establishing the layout, in terms of the column
+     * numbers that the application uses.
+     */
+    column : function(col)
+    {
+      return col * 2;
+    },
+
     // overridden
     addItems : function(items, names, title)
     {

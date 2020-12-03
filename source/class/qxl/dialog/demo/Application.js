@@ -315,7 +315,19 @@ qx.Class.define("qxl.dialog.demo.Application",
                   "options": [
                     {"label": "Company", "value": 0},
                     {"label": "Home", "value": 1}
-                  ]
+                  ],
+                  "events": {
+                    "changeSelection": function(e)
+                    {
+                      const selection = e.getData();
+                      for (let i = 0; i < selection.length; i++) {
+                        qxl.dialog.Dialog.alert(
+                          "Selected item: " +
+                            selection[i].getModel().getLabel() +
+                            " (" + selection[i].getModel().getValue() + ")");
+                      }
+                    }
+                  }
                 },
               "commands":
                 {
@@ -406,6 +418,15 @@ qx.Class.define("qxl.dialog.demo.Application",
                     {"label": "rm -Rf /"}
                   ]
                 },
+              "list": {
+                "type": "list",
+                "label": "Options",
+                "options": [
+                  { label : "Option 1", value : "opt1" },
+                  { label : "Option 2", value : "opt2" },
+                  { label : "Option 3", value : "opt3" }
+                ]
+              },
               "save_details": {
                 "type": "Checkbox",
                 "label": "Save form details",
@@ -444,10 +465,10 @@ qx.Class.define("qxl.dialog.demo.Application",
               var renderer = new qxl.dialog.MultiColumnFormRenderer(form);
               var layout = new qx.ui.layout.Grid();
               layout.setSpacing(6);
-              layout.setColumnAlign(0, "right", "top");
-              layout.setColumnAlign(1, "left", "top");
-              layout.setColumnAlign(2, "right", "top");
-              layout.setColumnAlign(3, "left", "top");
+              layout.setColumnAlign(renderer.column(0), "right", "top");
+              layout.setColumnAlign(renderer.column(1), "left", "top");
+              layout.setColumnAlign(renderer.column(4), "right", "top");
+              layout.setColumnAlign(renderer.column(5), "left", "top");
               renderer._setLayout(layout);
               return renderer;
             }
