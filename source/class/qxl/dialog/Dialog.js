@@ -155,7 +155,10 @@ qx.Class.define("qxl.dialog.Dialog", {
     form: function(message, formData, callback=null, context=null, caption="") {
       qx.core.Assert.assertMap(formData);
       return new qxl.dialog.Form({message, formData, allowCancel: true, callback, context, caption}).show();
-    }
+    },
+
+    // ease use for form element writers
+    registerFormElementHandlers : qxl.dialog.MForm.registerFormElementHandlers
   },
 
   /**
