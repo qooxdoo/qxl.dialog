@@ -4,7 +4,7 @@
    https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2020 Derrell Lipman
+     2020 Christian Boulanger, rDerrell Lipman
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
