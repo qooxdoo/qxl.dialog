@@ -13,20 +13,21 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.TextArea",
+qx.Class.define("qxl.dialog.formElement.DateField",
 {
   statics :
   {
     register : function() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "textarea", this._registration);
+        "datefield", this._registration);
     },
 
     _registration : {
       initElement : function(fieldType, fieldData, key) {
-        let formElement = new qx.ui.form.TextArea();
-        formElement.setHeight(fieldData.lines * 16);
-        formElement.setLiveUpdate(true);
+        let formElement = new qx.ui.form.DateField();
+        if (fieldData.dateFormat) {
+          formElement.setDateFormat(fieldData.dateFormat);
+        }
         return formElement;
       },
 

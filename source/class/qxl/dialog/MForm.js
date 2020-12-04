@@ -193,8 +193,9 @@ qx.Mixin.define("qxl.dialog.MForm", {
      *   the `fieldData` property.
      *
      * @param handlers {Map}
-     *   Handler functions for this form element. `initElement` and
-     *   `attToFormController` are mandatory; `postProcess` is optional.
+     *   Handler functions for this form element. `initElement` is
+     *   mandatory; `attToFormController` and `postProcess` are
+     *   optional.
      *
      *   All handlers are called in the context of the
      *   `qxl.dialog.Form` or `qxl.dialog.FormEmbed`. The `fieldType`
@@ -219,7 +220,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
      *       The form element to be added to the form
      *
      *
-     *   - attToFormController(fieldType, fieldData, formElement, key)
+     *   - addToFormController(fieldType, fieldData, formElement, key)
      *
      *     Add the form element to the form controller `this._formController`,
      *     providing any appropriate converters, etc., for this form element.
@@ -238,7 +239,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
      *     @param formElement {qx.ui.form.IForm}
      *       The form element returned by `initElement`
      *
-     *   - postProcess(fieldType, fieldData, key)
+     *   - postProcess(fieldType, fieldData, key, formElement)
      *
      *     Accomplish any field-specific configuration. This handler may be
      *     undefined.
@@ -250,6 +251,9 @@ qx.Mixin.define("qxl.dialog.MForm", {
      *     @param fieldData {Map}
      *       The data, provided to the member of the `fieldData` property's
      *       map, for this specific field
+     *
+     *     @param formElement {qx.ui.form.IForm}
+     *       The form element returned by `initElement`
      *
      *     @param key {String}
      *       The user-provided name for this form field
@@ -267,7 +271,18 @@ qx.Mixin.define("qxl.dialog.MForm", {
     _registeredFormElements : {},
 
     _internalFormElements : {
-      textarea : qxl.dialog.formElement.TextArea
+      checkbox      : qxl.dialog.formElement.CheckBox,
+      combobox      : qxl.dialog.formElement.ComboBox,
+      datefield     : qxl.dialog.formElement.DateField,
+      groupheader   : qxl.dialog.formElement.GroupHeader,
+      label         : qxl.dialog.formElement.Label,
+      list          : qxl.dialog.formElement.List,
+      passwordfield : qxl.dialog.formElement.PasswordField,
+      radiogroup    : qxl.dialog.formElement.RadioGroup,
+      selectbox     : qxl.dialog.formElement.SelectBox,
+      spiinner      : qxl.dialog.formElement.Spinner,
+      textarea      : qxl.dialog.formElement.TextArea,
+      textfield     : qxl.dialog.formElement.TextField
     }
   },
 
@@ -455,210 +470,25 @@ qx.Mixin.define("qxl.dialog.MForm", {
         }
         let fieldType = fieldData.type.toLowerCase();
         let formElement = null;
-        switch (fieldType) {
-          case "groupheader":
-            this._form.addGroupHeader(fieldData.value);
-            break;
-          case "textarea":
-            formElement =
-              qxl.dialog.MForm._registeredFormElements[fieldType]
-                .initElement(fieldType, fieldData, key);
-            break;
-          case "textfield":
-            formElement = new qx.ui.form.TextField();
-            if (fieldData.maxLength) {
-             formElement.setMaxLength(fieldData.maxLength);
-            }
-            formElement.setLiveUpdate(true);
-            break;
-          case "datefield":
-          case "date":
-            formElement = new qx.ui.form.DateField();
-            if (fieldData.dateFormat) {
-              formElement.setDateFormat(fieldData.dateFormat);
-            }
-            break;
-          case "passwordfield":
-          case "password":
-            formElement = new qx.ui.form.PasswordField();
-            formElement.getContentElement().setAttribute("autocomplete", "password");
-            formElement.setLiveUpdate(true);
-            break;
-          case "combobox":
-            formElement = new qx.ui.form.ComboBox();
-            fieldData.options.forEach(function (item) {
-              let listItem = new qx.ui.form.ListItem(item.label, item.icon);
-              formElement.add(listItem);
-            });
-            break;
-          case "selectbox":
-            formElement = new qx.ui.form.SelectBox();
-            model = qx.data.marshal.Json.createModel(fieldData.options);
-            new qx.data.controller.List(model, formElement, "label");
-            break;
-          case "radiogroup":
-            formElement = new qx.ui.form.RadioGroup();
-            if (fieldData.orientation) {
-              formElement.setUserData("orientation", fieldData.orientation);
-            }
-            fieldData.options.forEach(function (item) {
-              let radioButton = new qx.ui.form.RadioButton(item.label);
-              radioButton.setUserData(
-              "value",
-              item.value !== undefined ? item.value : item.label
-              );
-              formElement.add(radioButton);
-            }, this);
-            break;
-          case "label":
-            formElement = new qx.ui.form.TextField(); // dummy
-            formElement.setUserData("excluded", true);
-            break;
-          case "checkbox":
-            formElement = new qx.ui.form.CheckBox(fieldData.label);
-            break;
-          case "spinner":
-            formElement = new qx.ui.form.Spinner();
-            if (fieldData.min) {
-              formElement.setMinimum(fieldData.min);
-            }
-            if (fieldData.max) {
-              formElement.setMaximum(fieldData.max);
-            }
-            if (fieldData.step) {
-              formElement.setSingleStep(fieldData.step);
-            }
-            if (fieldData.fractionsDigits) {
-              let fd = fieldData.fractionsDigits;
-              let nf = new qx.util.format.NumberFormat();
-              if (fd.min) {
-                nf.setMinimumFractionDigits(fd.min);
-              }
-              if (fd.max) {
-                nf.setMaximumFractionDigits(fd.max);
-              }
-              formElement.setNumberFormat(nf);
-            }
-            break;
-          case "list":
-            formElement = new qx.ui.form.List();
-            if (fieldData.selectionMode)
-            {
-              formElement.setSelectionMode(fieldData.selectionMode);
-            }
-            if (fieldData.dragSelection)
-            {
-              var mode = formElement.getSelectionMode();
-              if (mode == "single" || mode == "one")
-              {
-                this.debug("Drag selection not available in " + mode);
-              }
-              else
-              {
-                formElement.setDragSelection(fieldData.dragSelection);
-              }
-            }
-            model = qx.data.marshal.Json.createModel( fieldData.options );
-            new qx.data.controller.List( model, formElement, "label");
-            break;
-          default:
-            this.error("Invalid form field type:" + fieldData.type);
+
+        // Ensure the field type is registered
+        if (! (fieldType in qxl.dialog.MForm._registeredFormElements)) {
+          throw new Error(`Field type ${fieldType} is unknown`);
         }
+
+        // Instantiate and initialize the form element
+        formElement =
+          qxl.dialog.MForm._registeredFormElements[fieldType]
+            .initElement(fieldType, fieldData, key);
+
+        // Save the key
         formElement.setUserData("key", key);
-        let _this = this;
-        switch (fieldType) {
-          case "textarea":
-            qxl.dialog.MForm._registeredFormElements[fieldType]
-              .addToFormController.call(
-                this, fieldType, fieldData, key, formElement);
-            break;
-          case "textfield":
-          case "passwordfield":
-          case "combobox":
-          case "datefield":
-          case "spinner":
-            this._formController.addTarget(formElement, "value", key, true, null, {
-              converter: function (value) {
-                _this._form.getValidationManager().validate();
-                return value;
-              }
-            });
-            break;
-          case "checkbox":
-            this._formController.addTarget(formElement, "value", key, true, null);
-            break;
-          case "selectbox":
-            this._formController.addTarget(formElement, "selection", key, true, {
-              converter: qx.lang.Function.bind(function (value) {
-                let selected = null;
-                let selectables = this.getSelectables();
-                selectables.forEach(function (selectable) {
-                  if (selectable.getModel().getValue() === value) {
-                    selected = selectable;
-                  }
-                }, this);
-                if (!selected) {
-                  return [selectables[0]];
-                }
-                return [selected];
-              }, formElement)
-            }, {
-              converter: qx.lang.Function.bind(function (selection) {
-                let value = selection[0].getModel().getValue();
-                return value;
-              }, formElement)
-            });
-            break;
-          case "radiogroup":
-            this._formController.addTarget(formElement, "selection", key, true, {
-              converter: qx.lang.Function.bind(function (value) {
-                let selectables = this.getSelectables();
-                let selection = [];
-                if (value) {
-                  selectables.forEach(function (selectable) {
-                    let sValue = selectable.getUserData("value");
-                    if (sValue === value) {
-                      selection = [selectable];
-                    }
-                  }, this);
-                }
-                return selection;
-              }, formElement)
-            }, {
-              converter: function (selection) {
-                let value = selection[0].getUserData("value");
-                return value;
-              }
-            });
-            break;
 
-        case "list":
-          this._formController.addTarget(
-            formElement, "selection", key, true, {
-              "converter" : qx.lang.Function.bind( function( value ) {
-                var selected=[];
-                var selectables = this.getSelectables();
-                selectables.forEach( function( selectable ) {
-                  if ((value instanceof Array ||
-                       value instanceof qx.data.Array) &&
-                      value.includes(selectable.getModel().getValue())) {
-                    selected.push(selectable);
-                  }
-                }, this );
-
-                return selected;
-              }, formElement)
-            },{
-              "converter" : qx.lang.Function.bind( function( selection ) {
-                var value = [];
-                selection.forEach( function ( selected ) {
-                  value.push(selected.getModel().getValue());
-                });
-                return value;
-              }, formElement)
-            }
-          );
-          break;
+        // Add the form element to the form controller, if needed for the type
+        if (qxl.dialog.MForm._registeredFormElements[fieldType].addToFormController) {
+          qxl.dialog.MForm._registeredFormElements[fieldType]
+            .addToFormController.call(
+              this, fieldType, fieldData, key, formElement);
         }
 
         /**
@@ -755,31 +585,11 @@ qx.Mixin.define("qxl.dialog.MForm", {
           formElement.set( fieldData.properties );
         }
 
-        /*
-         * This allows changing the default autocomplete behavior to disable
-         * autocomplete on all text and password fields unless allowed at
-         * either the form level or at the field level using the
-         * allowBrowserAutocomplete key.
-         */
-        if ([
-              "textfield",
-              "passwordfield"
-            ].includes( fieldData.type.toLowerCase()) ) {
-
-          if ( typeof fieldData.allowBrowserAutocomplete == "boolean" ) {
-            if ( ! fieldData.allowBrowserAutocomplete ) {
-              //turn off autocomplete
-              formElement.getContentElement().setAttribute(
-              "autocomplete", "new-password");
-            } else {
-              // leave autocomplete alone.
-              // Note: Password field above sets attribute
-            }
-          } else if ( ! this.getAllowBrowserAutocomplete() ) {
-            //turn off autocomplete
-            formElement.getContentElement().setAttribute(
-              "autocomplete", "new-password");
-          }
+        // Do any required post-processing
+        if ("postProcess" in qxl.dialog.MForm._registeredFormElements[fieldType]) {
+          qxl.dialog.MForm._registeredFormElements[fieldType]
+            .postProcess.call(
+              this, fieldType, fieldData, key, formElement);
         }
 
          // generic userdata settings

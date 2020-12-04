@@ -13,20 +13,38 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.TextArea",
+qx.Class.define("qxl.dialog.formElement.Spinner",
 {
   statics :
   {
     register : function() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "textarea", this._registration);
+        "spinner", this._registration);
     },
 
     _registration : {
       initElement : function(fieldType, fieldData, key) {
-        let formElement = new qx.ui.form.TextArea();
-        formElement.setHeight(fieldData.lines * 16);
-        formElement.setLiveUpdate(true);
+        let formElement = new qx.ui.form.Spinner();
+        if (fieldData.min) {
+          formElement.setMinimum(fieldData.min);
+        }
+        if (fieldData.max) {
+          formElement.setMaximum(fieldData.max);
+        }
+        if (fieldData.step) {
+          formElement.setSingleStep(fieldData.step);
+        }
+        if (fieldData.fractionsDigits) {
+          let fd = fieldData.fractionsDigits;
+          let nf = new qx.util.format.NumberFormat();
+          if (fd.min) {
+            nf.setMinimumFractionDigits(fd.min);
+          }
+          if (fd.max) {
+            nf.setMaximumFractionDigits(fd.max);
+          }
+          formElement.setNumberFormat(nf);
+        }
         return formElement;
       },
 

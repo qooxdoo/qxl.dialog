@@ -13,30 +13,20 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.TextArea",
+qx.Class.define("qxl.dialog.formElement.Label",
 {
   statics :
   {
     register : function() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "textarea", this._registration);
+        "label", this._registration);
     },
 
     _registration : {
       initElement : function(fieldType, fieldData, key) {
-        let formElement = new qx.ui.form.TextArea();
-        formElement.setHeight(fieldData.lines * 16);
-        formElement.setLiveUpdate(true);
+        let formElement = new qx.ui.form.TextField(); // dummy
+        formElement.setUserData("excluded", true);
         return formElement;
-      },
-
-      addToFormController : function(fieldType, fieldData, key, formElement) {
-        this._formController.addTarget(formElement, "value", key, true, null, {
-          converter: function (value) {
-            this._form.getValidationManager().validate();
-            return value;
-          }.bind(this)
-        });
       }
     }
   }

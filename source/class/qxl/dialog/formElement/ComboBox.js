@@ -13,20 +13,22 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.TextArea",
+qx.Class.define("qxl.dialog.formElement.ComboBox",
 {
   statics :
   {
     register : function() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "textarea", this._registration);
+        "combobox", this._registration);
     },
 
     _registration : {
       initElement : function(fieldType, fieldData, key) {
-        let formElement = new qx.ui.form.TextArea();
-        formElement.setHeight(fieldData.lines * 16);
-        formElement.setLiveUpdate(true);
+        let formElement = new qx.ui.form.ComboBox();
+        fieldData.options.forEach(function (item) {
+          let listItem = new qx.ui.form.ListItem(item.label, item.icon);
+          formElement.add(listItem);
+        });
         return formElement;
       },
 
