@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 804,
+        "line": 723,
         "column": 3
       }
     },
@@ -288,15 +288,176 @@
       "check": "Function"
     }
   },
+  "statics": {
+    "registerFormElementHandlers": {
+      "location": {
+        "start": {
+          "line": 261,
+          "column": 4
+        },
+        "end": {
+          "line": 268,
+          "column": 5
+        }
+      },
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Register a form element to be used within a qxl.dialog form.</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "fieldType {String}\n   The field type, later to be used as the `type` member when setting\n   the `fieldData` property.",
+            "paramName": "fieldType",
+            "description": "\n   The field type, later to be used as the `type` member when setting\n   the `fieldData` property.",
+            "type": "String"
+          },
+          {
+            "name": "@param",
+            "body": "handlers {Map}\n   Handler functions for this form element. `initElement` is\n   mandatory; `attToFormController` and `postProcess` are\n   optional.\n   All handlers are called in the context of the\n   `qxl.dialog.Form` or `qxl.dialog.FormEmbed`. The `fieldType`\n   argument has already been down-cased upon call.\n   - initElement(fieldType, fieldData)\n     Instantiate and initialize the form field to be used on the form.",
+            "paramName": "handlers",
+            "description": "\n   Handler functions for this form element. `initElement` is\n   mandatory; `attToFormController` and `postProcess` are\n   optional.\n   All handlers are called in the context of the\n   `qxl.dialog.Form` or `qxl.dialog.FormEmbed`. The `fieldType`\n   argument has already been down-cased upon call.\n   - initElement(fieldType, fieldData)\n     Instantiate and initialize the form field to be used on the form.",
+            "type": "Map"
+          },
+          {
+            "name": "@param",
+            "body": "fieldType {String}\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map. This field is case-insensitive.",
+            "paramName": "fieldType",
+            "description": "\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map. This field is case-insensitive.",
+            "type": "String"
+          },
+          {
+            "name": "@param",
+            "body": "fieldData {Map}\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "paramName": "fieldData",
+            "description": "\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "type": "Map"
+          },
+          {
+            "name": "@param",
+            "body": "key {String}\n       The user-provided name for this form field",
+            "paramName": "key",
+            "description": "\n       The user-provided name for this form field",
+            "type": "String"
+          },
+          {
+            "name": "@param",
+            "body": "fieldType {String}\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map. This field is case-insensitive.",
+            "paramName": "fieldType",
+            "description": "\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map. This field is case-insensitive.",
+            "type": "String"
+          },
+          {
+            "name": "@param",
+            "body": "fieldData {Map}\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "paramName": "fieldData",
+            "description": "\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "type": "Map"
+          },
+          {
+            "name": "@param",
+            "body": "key {String}\n       The user-provided name for this form field",
+            "paramName": "key",
+            "description": "\n       The user-provided name for this form field",
+            "type": "String"
+          },
+          {
+            "name": "@param",
+            "body": "formElement {qx.ui.form.IForm}\n       The form element returned by `initElement`\n   - postProcess(fieldType, fieldData, key, formElement)\n     Accomplish any field-specific configuration. This handler may be\n     undefined.",
+            "paramName": "formElement",
+            "description": "\n       The form element returned by `initElement`\n   - postProcess(fieldType, fieldData, key, formElement)\n     Accomplish any field-specific configuration. This handler may be\n     undefined.",
+            "type": "qx.ui.form.IForm"
+          },
+          {
+            "name": "@param",
+            "body": "fieldType {String}\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map",
+            "paramName": "fieldType",
+            "description": "\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map",
+            "type": "String"
+          },
+          {
+            "name": "@param",
+            "body": "fieldData {Map}\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "paramName": "fieldData",
+            "description": "\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "type": "Map"
+          },
+          {
+            "name": "@param",
+            "body": "formElement {qx.ui.form.IForm}\n       The form element returned by `initElement`",
+            "paramName": "formElement",
+            "description": "\n       The form element returned by `initElement`",
+            "type": "qx.ui.form.IForm"
+          },
+          {
+            "name": "@param",
+            "body": "key {String}\n       The user-provided name for this form field",
+            "paramName": "key",
+            "description": "\n       The user-provided name for this form field",
+            "type": "String"
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "body": "{qx.ui.form.IForm}\n       The form element to be added to the form\n   - addToFormController(fieldType, fieldData, formElement, key)\n     Add the form element to the form controller `this._formController`,\n     providing any appropriate converters, etc., for this form element.",
+            "type": "qx.ui.form.IForm",
+            "description": "\n       The form element to be added to the form\n   - addToFormController(fieldType, fieldData, formElement, key)\n     Add the form element to the form controller `this._formController`,\n     providing any appropriate converters, etc., for this form element."
+          }
+        ]
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "_registeredFormElements": {
+      "location": {
+        "start": {
+          "line": 271,
+          "column": 4
+        },
+        "end": {
+          "line": 271,
+          "column": 32
+        }
+      },
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Map of registered form element handlers, keyed by fieldType</p>"
+          }
+        ]
+      },
+      "type": "variable",
+      "access": "protected"
+    },
+    "_internalFormElements": {
+      "location": {
+        "start": {
+          "line": 273,
+          "column": 4
+        },
+        "end": {
+          "line": 286,
+          "column": 5
+        }
+      },
+      "type": "variable",
+      "access": "protected"
+    }
+  },
   "members": {
     "_formContainer": {
       "location": {
         "start": {
-          "line": 188,
+          "line": 290,
           "column": 4
         },
         "end": {
-          "line": 188,
+          "line": 290,
           "column": 24
         }
       },
@@ -306,11 +467,11 @@
     "_form": {
       "location": {
         "start": {
-          "line": 189,
+          "line": 291,
           "column": 4
         },
         "end": {
-          "line": 189,
+          "line": 291,
           "column": 15
         }
       },
@@ -320,11 +481,11 @@
     "_formValidator": {
       "location": {
         "start": {
-          "line": 190,
+          "line": 292,
           "column": 4
         },
         "end": {
-          "line": 190,
+          "line": 292,
           "column": 24
         }
       },
@@ -334,11 +495,11 @@
     "_formController": {
       "location": {
         "start": {
-          "line": 191,
+          "line": 293,
           "column": 4
         },
         "end": {
-          "line": 191,
+          "line": 293,
           "column": 25
         }
       },
@@ -348,11 +509,11 @@
     "_formElements": {
       "location": {
         "start": {
-          "line": 192,
+          "line": 294,
           "column": 4
         },
         "end": {
-          "line": 192,
+          "line": 294,
           "column": 24
         }
       },
@@ -362,11 +523,11 @@
     "_init": {
       "location": {
         "start": {
-          "line": 194,
+          "line": 296,
           "column": 4
         },
         "end": {
-          "line": 203,
+          "line": 320,
           "column": 5
         }
       },
@@ -376,11 +537,11 @@
     "getForm": {
       "location": {
         "start": {
-          "line": 209,
+          "line": 326,
           "column": 4
         },
         "end": {
-          "line": 211,
+          "line": 328,
           "column": 5
         }
       },
@@ -406,11 +567,11 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 216,
+          "line": 333,
           "column": 4
         },
         "end": {
-          "line": 274,
+          "line": 391,
           "column": 5
         }
       },
@@ -428,11 +589,11 @@
     "_applyFormData": {
       "location": {
         "start": {
-          "line": 282,
+          "line": 399,
           "column": 4
         },
         "end": {
-          "line": 752,
+          "line": 671,
           "column": 5
         }
       },
@@ -478,11 +639,11 @@
     "_applyLabelColumnWidth": {
       "location": {
         "start": {
-          "line": 759,
+          "line": 678,
           "column": 4
         },
         "end": {
-          "line": 772,
+          "line": 691,
           "column": 5
         }
       },
@@ -522,11 +683,11 @@
     "_onFormReady": {
       "location": {
         "start": {
-          "line": 781,
+          "line": 700,
           "column": 4
         },
         "end": {
-          "line": 787,
+          "line": 706,
           "column": 5
         }
       },
@@ -553,11 +714,11 @@
     "_handleOk": {
       "location": {
         "start": {
-          "line": 793,
+          "line": 712,
           "column": 4
         },
         "end": {
-          "line": 802,
+          "line": 721,
           "column": 5
         }
       },

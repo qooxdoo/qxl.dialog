@@ -23,6 +23,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       "qxl.dialog.Select": {},
       "qx.core.Assert": {},
       "qxl.dialog.Form": {},
+      "qxl.dialog.MForm": {
+        "require": true
+      },
       "qx.ui.layout.Grow": {
         "construct": true
       },
@@ -262,7 +265,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           context: context,
           caption: caption
         }).show();
-      }
+      },
+      // ease use for form element writers
+      registerFormElementHandlers: qxl.dialog.MForm.registerFormElementHandlers
     },
 
     /**
@@ -433,4 +438,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qxl.dialog.Dialog.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Dialog.js.map?dt=1607008557466
+//# sourceMappingURL=Dialog.js.map?dt=1607097370728

@@ -9,7 +9,7 @@
   "compilerVersion": "1.0.0-beta-20201203-1458",
   "classInfo": {
     "qxl.dialog.demo.Application": {
-      "mtime": "2020-12-03T15:14:33.731Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.Dialog": {
@@ -54,7 +54,7 @@
       ]
     },
     "qxl.dialog.theme.Theme": {
-      "mtime": "2020-12-03T15:14:33.731Z",
+      "mtime": "2020-12-04T15:55:04.104Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.theme.icon.IcoMoonFree": {
@@ -24542,7 +24542,7 @@
       }
     },
     "qxl.dialog.Dialog": {
-      "mtime": "2020-12-03T15:14:33.727Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24566,6 +24566,9 @@
         "qxl.dialog.Select": {},
         "qx.core.Assert": {},
         "qxl.dialog.Form": {},
+        "qxl.dialog.MForm": {
+          "load": true
+        },
         "qx.ui.layout.Grow": {
           "construct": true
         },
@@ -24594,7 +24597,7 @@
       "hasDefer": null
     },
     "qxl.dialog.FormEmbed": {
-      "mtime": "2020-12-03T15:14:33.727Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24625,7 +24628,7 @@
       "hasDefer": null
     },
     "qxl.dialog.MultiColumnFormRenderer": {
-      "mtime": "2020-12-03T15:14:33.731Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24645,7 +24648,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Wizard": {
-      "mtime": "2020-12-03T15:14:33.731Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24685,7 +24688,7 @@
       ]
     },
     "qxl.dialog.Login": {
-      "mtime": "2020-12-03T15:14:33.727Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24748,7 +24751,7 @@
       ]
     },
     "qxl.dialog.Progress": {
-      "mtime": "2020-12-03T15:14:33.731Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24789,7 +24792,7 @@
       "hasDefer": null
     },
     "qxl.dialog.theme.icon.IcoMoonFree": {
-      "mtime": "2020-12-03T15:14:33.731Z",
+      "mtime": "2020-12-04T15:55:04.104Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24818,7 +24821,7 @@
       }
     },
     "qxl.dialog.theme.icon.Oxygen": {
-      "mtime": "2020-12-03T15:14:33.731Z",
+      "mtime": "2020-12-04T15:55:04.104Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24848,7 +24851,7 @@
       }
     },
     "qxl.dialog.theme.icon.Tango": {
-      "mtime": "2020-12-03T15:14:33.731Z",
+      "mtime": "2020-12-04T15:55:04.104Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -25135,7 +25138,7 @@
       "hasDefer": null
     },
     "qxl.dialog.MDialog": {
-      "mtime": "2020-12-03T15:14:33.727Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Mixin": {
@@ -25164,7 +25167,7 @@
       ]
     },
     "qxl.dialog.Alert": {
-      "mtime": "2020-12-03T15:14:33.727Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25203,7 +25206,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Confirm": {
-      "mtime": "2020-12-03T15:14:33.727Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25253,7 +25256,7 @@
       ]
     },
     "qxl.dialog.Prompt": {
-      "mtime": "2020-12-03T15:14:33.731Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25294,7 +25297,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Select": {
-      "mtime": "2020-12-03T15:14:33.731Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25333,7 +25336,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Form": {
-      "mtime": "2020-12-03T15:14:33.727Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25372,8 +25375,84 @@
       "implement": [],
       "hasDefer": null
     },
+    "qxl.dialog.MForm": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qxl.dialog.FormRenderer": {
+          "require": true
+        },
+        "qx.util.Serializer": {
+          "require": true
+        },
+        "qx.util.Validate": {
+          "require": true
+        },
+        "qx.Mixin": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.formElement.CheckBox": {
+          "load": true
+        },
+        "qxl.dialog.formElement.ComboBox": {
+          "load": true
+        },
+        "qxl.dialog.formElement.DateField": {
+          "load": true
+        },
+        "qxl.dialog.formElement.GroupHeader": {
+          "load": true
+        },
+        "qxl.dialog.formElement.Label": {
+          "load": true
+        },
+        "qxl.dialog.formElement.List": {
+          "load": true
+        },
+        "qxl.dialog.formElement.PasswordField": {
+          "load": true
+        },
+        "qxl.dialog.formElement.RadioGroup": {
+          "load": true
+        },
+        "qxl.dialog.formElement.SelectBox": {
+          "load": true
+        },
+        "qxl.dialog.formElement.Spinner": {
+          "load": true
+        },
+        "qxl.dialog.formElement.TextArea": {
+          "load": true
+        },
+        "qxl.dialog.formElement.TextField": {
+          "load": true
+        },
+        "qx.ui.container.Composite": {},
+        "qx.ui.layout.VBox": {},
+        "qx.ui.layout.HBox": {},
+        "qx.ui.basic.Label": {},
+        "qxl.dialog.FormTag": {},
+        "qx.ui.layout.Grow": {},
+        "qx.data.marshal.Json": {},
+        "qx.ui.form.Form": {},
+        "qx.data.controller.Object": {},
+        "qx.ui.form.validation.AsyncValidator": {},
+        "qx.lang.Type": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null,
+      "translations": [
+        {
+          "msgid": "Value is invalid",
+          "lineNo": 549
+        }
+      ]
+    },
     "qxl.dialog.DialogEmbed": {
-      "mtime": "2020-12-03T15:14:33.727Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25406,64 +25485,8 @@
       "implement": [],
       "hasDefer": null
     },
-    "qxl.dialog.MForm": {
-      "mtime": "2020-12-03T15:14:33.731Z",
-      "libraryName": "qxl.dialog",
-      "dependsOn": {
-        "qxl.dialog.FormRenderer": {
-          "require": true
-        },
-        "qx.util.Serializer": {
-          "require": true
-        },
-        "qx.util.Validate": {
-          "require": true
-        },
-        "qx.Mixin": {
-          "load": true,
-          "usage": "dynamic"
-        },
-        "qx.ui.container.Composite": {},
-        "qx.ui.layout.VBox": {},
-        "qx.ui.layout.HBox": {},
-        "qx.ui.basic.Label": {},
-        "qxl.dialog.FormTag": {},
-        "qx.ui.layout.Grow": {},
-        "qx.data.marshal.Json": {},
-        "qx.ui.form.Form": {},
-        "qx.data.controller.Object": {},
-        "qx.ui.form.TextArea": {},
-        "qx.ui.form.TextField": {},
-        "qx.ui.form.DateField": {},
-        "qx.ui.form.PasswordField": {},
-        "qx.ui.form.ComboBox": {},
-        "qx.ui.form.ListItem": {},
-        "qx.ui.form.SelectBox": {},
-        "qx.data.controller.List": {},
-        "qx.ui.form.RadioGroup": {},
-        "qx.ui.form.RadioButton": {},
-        "qx.ui.form.CheckBox": {},
-        "qx.ui.form.Spinner": {},
-        "qx.util.format.NumberFormat": {},
-        "qx.ui.form.List": {},
-        "qx.lang.Function": {},
-        "qx.data.Array": {},
-        "qx.ui.form.validation.AsyncValidator": {},
-        "qx.lang.Type": {}
-      },
-      "extends": null,
-      "include": [],
-      "implement": [],
-      "hasDefer": null,
-      "translations": [
-        {
-          "msgid": "Value is invalid",
-          "lineNo": 605
-        }
-      ]
-    },
     "qxl.dialog.FormRenderer": {
-      "mtime": "2020-12-03T15:14:33.727Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25497,7 +25520,7 @@
       "hasDefer": null
     },
     "qxl.dialog.FormTag": {
-      "mtime": "2020-12-03T15:14:33.727Z",
+      "mtime": "2020-12-04T15:55:04.100Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25835,6 +25858,206 @@
         }
       },
       "extends": "qx.core.Object",
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.CheckBox": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.CheckBox": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.ComboBox": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.ComboBox": {},
+        "qx.ui.form.ListItem": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.DateField": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.DateField": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.GroupHeader": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.TextField": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.Label": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.TextField": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.List": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.List": {},
+        "qx.data.marshal.Json": {},
+        "qx.data.controller.List": {},
+        "qx.data.Array": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.PasswordField": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.PasswordField": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.RadioGroup": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.RadioGroup": {},
+        "qx.ui.form.RadioButton": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.SelectBox": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.SelectBox": {},
+        "qx.data.marshal.Json": {},
+        "qx.data.controller.List": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.Spinner": {
+      "mtime": "2020-12-04T15:55:04.100Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.Spinner": {},
+        "qx.util.format.NumberFormat": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.TextArea": {
+      "mtime": "2020-12-04T15:55:04.104Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.TextArea": {}
+      },
+      "extends": null,
+      "include": [],
+      "implement": [],
+      "hasDefer": null
+    },
+    "qxl.dialog.formElement.TextField": {
+      "mtime": "2020-12-04T15:55:04.104Z",
+      "libraryName": "qxl.dialog",
+      "dependsOn": {
+        "qx.Class": {
+          "load": true,
+          "usage": "dynamic"
+        },
+        "qxl.dialog.Dialog": {},
+        "qx.ui.form.TextField": {}
+      },
+      "extends": null,
       "include": [],
       "implement": [],
       "hasDefer": null

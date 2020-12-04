@@ -15,7 +15,7 @@
         "column": 0
       },
       "end": {
-        "line": 312,
+        "line": 315,
         "column": 3
       }
     },
@@ -642,16 +642,31 @@
       },
       "type": "function",
       "access": "public"
+    },
+    "registerFormElementHandlers": {
+      "location": {
+        "start": {
+          "line": 161,
+          "column": 4
+        },
+        "end": {
+          "line": 161,
+          "column": 78
+        }
+      },
+      "jsdoc": {},
+      "type": "variable",
+      "access": "public"
     }
   },
   "construct": {
     "location": {
       "start": {
-        "line": 167,
+        "line": 170,
         "column": 13
       },
       "end": {
-        "line": 216,
+        "line": 219,
         "column": 3
       }
     },
@@ -681,11 +696,11 @@
     "show": {
       "location": {
         "start": {
-          "line": 223,
+          "line": 226,
           "column": 4
         },
         "end": {
-          "line": 228,
+          "line": 231,
           "column": 5
         }
       },
@@ -708,11 +723,11 @@
     "useBlocker": {
       "location": {
         "start": {
-          "line": 233,
+          "line": 236,
           "column": 4
         },
         "end": {
-          "line": 236,
+          "line": 239,
           "column": 5
         }
       },
@@ -733,11 +748,11 @@
     "blockerColor": {
       "location": {
         "start": {
-          "line": 241,
+          "line": 244,
           "column": 4
         },
         "end": {
-          "line": 244,
+          "line": 247,
           "column": 5
         }
       },
@@ -758,11 +773,11 @@
     "blockerOpacity": {
       "location": {
         "start": {
-          "line": 249,
+          "line": 252,
           "column": 4
         },
         "end": {
-          "line": 252,
+          "line": 255,
           "column": 5
         }
       },
@@ -882,11 +897,11 @@
     "__previousFocus": {
       "location": {
         "start": {
-          "line": 260,
+          "line": 263,
           "column": 4
         },
         "end": {
-          "line": 260,
+          "line": 263,
           "column": 25
         }
       },
@@ -904,11 +919,11 @@
     "show": {
       "location": {
         "start": {
-          "line": 267,
+          "line": 270,
           "column": 4
         },
         "end": {
-          "line": 291,
+          "line": 294,
           "column": 5
         }
       },
@@ -938,11 +953,11 @@
     "hide": {
       "location": {
         "start": {
-          "line": 298,
+          "line": 301,
           "column": 4
         },
         "end": {
-          "line": 310,
+          "line": 313,
           "column": 5
         }
       },
