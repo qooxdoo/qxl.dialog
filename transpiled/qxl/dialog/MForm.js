@@ -200,10 +200,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       },
 
       /**
-       * Function to call just before creating the form's input fields. This
-       * allows additional, non-form widgets to be added. The function is called
-       * one two arguments: the container in which the form fields should be
-       * placed, and the form object itself (this).
+       * Function to call just before creating the form's input fields.
+       * This allows additional, non-form widgets to be added. The
+       * function is called two arguments: the container in which the
+       * form fields should be placed, and the form object itself
+       * (this).
        */
       beforeFormFunction: {
         check: "Function",
@@ -403,6 +404,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         var hbox = new qx.ui.container.Composite();
         hbox.setLayout(new qx.ui.layout.HBox(10));
         container.add(hbox);
+        container.setUserData("messageHBox", hbox);
         this._message = new qx.ui.basic.Label();
 
         this._message.setRich(true);
@@ -730,7 +732,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
             var label = fieldData.label;
-            label && _this._form.add(formElement, label, validator); // Add the form elements as objects owned by the form widget
+
+            _this._form.add(formElement, label || "", validator); // Add the form elements as objects owned by the form widget
+
 
             {
               formElement.setQxObjectId(key);
@@ -826,4 +830,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.dialog.MForm.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MForm.js.map?dt=1607097371427
+//# sourceMappingURL=MForm.js.map?dt=1607441433468

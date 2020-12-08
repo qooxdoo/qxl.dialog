@@ -9473,12 +9473,12 @@
         "width": 128,
         "height": 128
       },
-      "qx/icon/Oxygen/128/status/mail-read.png": {
+      "qx/icon/Oxygen/128/status/image-missing.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
-      "qx/icon/Oxygen/128/status/image-missing.png": {
+      "qx/icon/Oxygen/128/status/mail-read.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -14628,12 +14628,12 @@
         "width": 64,
         "height": 64
       },
-      "qx/icon/Oxygen/64/apps/preferences-keyboard.png": {
+      "qx/icon/Oxygen/64/apps/preferences-font.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
       },
-      "qx/icon/Oxygen/64/apps/preferences-font.png": {
+      "qx/icon/Oxygen/64/apps/preferences-keyboard.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64
@@ -16273,12 +16273,12 @@
         "width": 16,
         "height": 16
       },
-      "qx/icon/Tango/16/actions/bookmark-new.png": {
+      "qx/icon/Tango/16/actions/check-spelling.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
       },
-      "qx/icon/Tango/16/actions/check-spelling.png": {
+      "qx/icon/Tango/16/actions/bookmark-new.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -17103,12 +17103,12 @@
         "width": 16,
         "height": 16
       },
-      "qx/icon/Tango/16/devices/media-optical.png": {
+      "qx/icon/Tango/16/devices/media-flash.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
       },
-      "qx/icon/Tango/16/devices/media-flash.png": {
+      "qx/icon/Tango/16/devices/media-optical.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -17178,11 +17178,6 @@
         "width": 16,
         "height": 16
       },
-      "qx/icon/Tango/16/emotes/face-plain.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
       "qx/icon/Tango/16/emotes/face-raspberry.png": {
         "resourcePath": "resourcePath",
         "width": 16,
@@ -17204,6 +17199,11 @@
         "height": 16
       },
       "qx/icon/Tango/16/emotes/face-surprise.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/emotes/face-plain.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -17633,12 +17633,12 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/actions/help-about.png": {
+      "qx/icon/Tango/22/actions/help-contents.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/actions/help-contents.png": {
+      "qx/icon/Tango/22/actions/help-about.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -17673,12 +17673,12 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/actions/mail-forward.png": {
+      "qx/icon/Tango/22/actions/mail-mark-important.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/actions/mail-mark-important.png": {
+      "qx/icon/Tango/22/actions/mail-forward.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -17763,12 +17763,12 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/actions/media-skip-forward.png": {
+      "qx/icon/Tango/22/actions/object-flip-horizontal.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/actions/object-flip-horizontal.png": {
+      "qx/icon/Tango/22/actions/media-skip-forward.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -17993,12 +17993,12 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/apps/preferences-display.png": {
+      "qx/icon/Tango/22/apps/preferences-font.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/apps/preferences-font.png": {
+      "qx/icon/Tango/22/apps/preferences-display.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -18253,12 +18253,12 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/devices/pda.png": {
+      "qx/icon/Tango/22/devices/phone.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
-      "qx/icon/Tango/22/devices/phone.png": {
+      "qx/icon/Tango/22/devices/pda.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -18563,12 +18563,12 @@
         "width": 32,
         "height": 32
       },
-      "qx/icon/Tango/32/actions/document-open.png": {
+      "qx/icon/Tango/32/actions/document-print-preview.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
       },
-      "qx/icon/Tango/32/actions/document-print-preview.png": {
+      "qx/icon/Tango/32/actions/document-open.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
@@ -18893,12 +18893,12 @@
         "width": 32,
         "height": 32
       },
-      "qx/icon/Tango/32/actions/object-flip-horizontal.png": {
+      "qx/icon/Tango/32/actions/object-flip-vertical.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
       },
-      "qx/icon/Tango/32/actions/object-flip-vertical.png": {
+      "qx/icon/Tango/32/actions/object-flip-horizontal.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
@@ -18993,12 +18993,12 @@
         "width": 32,
         "height": 32
       },
-      "qx/icon/Tango/32/apps/internet-blog.png": {
+      "qx/icon/Tango/32/apps/internet-download-manager.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32
       },
-      "qx/icon/Tango/32/apps/internet-download-manager.png": {
+      "qx/icon/Tango/32/apps/internet-blog.png": {
         "resourcePath": "resourcePath",
         "width": 32,
         "height": 32

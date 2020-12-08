@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 723,
+        "line": 725,
         "column": 3
       }
     },
@@ -189,11 +189,11 @@
     "beforeFormFunction": {
       "location": {
         "start": {
-          "line": 136,
+          "line": 137,
           "column": 4
         },
         "end": {
-          "line": 141,
+          "line": 142,
           "column": 5
         }
       },
@@ -201,7 +201,7 @@
         "@description": [
           {
             "name": "@description",
-            "body": "<p>Function to call just before creating the form's input fields. This\n allows additional, non-form widgets to be added. The function is called\n one two arguments: the container in which the form fields should be\n placed, and the form object itself (this).</p>"
+            "body": "<p>Function to call just before creating the form's input fields.\n This allows additional, non-form widgets to be added. The\n function is called two arguments: the container in which the\n form fields should be placed, and the form object itself\n (this).</p>"
           }
         ]
       },
@@ -214,11 +214,11 @@
     "formReadyFunction": {
       "location": {
         "start": {
-          "line": 152,
+          "line": 153,
           "column": 4
         },
         "end": {
-          "line": 158,
+          "line": 159,
           "column": 5
         }
       },
@@ -240,11 +240,11 @@
     "afterFormFunction": {
       "location": {
         "start": {
-          "line": 166,
+          "line": 167,
           "column": 4
         },
         "end": {
-          "line": 171,
+          "line": 172,
           "column": 5
         }
       },
@@ -265,11 +265,11 @@
     "afterButtonsFunction": {
       "location": {
         "start": {
-          "line": 179,
+          "line": 180,
           "column": 4
         },
         "end": {
-          "line": 184,
+          "line": 185,
           "column": 5
         }
       },
@@ -292,11 +292,11 @@
     "registerFormElementHandlers": {
       "location": {
         "start": {
-          "line": 261,
+          "line": 262,
           "column": 4
         },
         "end": {
-          "line": 268,
+          "line": 269,
           "column": 5
         }
       },
@@ -415,11 +415,11 @@
     "_registeredFormElements": {
       "location": {
         "start": {
-          "line": 271,
+          "line": 272,
           "column": 4
         },
         "end": {
-          "line": 271,
+          "line": 272,
           "column": 32
         }
       },
@@ -437,11 +437,11 @@
     "_internalFormElements": {
       "location": {
         "start": {
-          "line": 273,
+          "line": 274,
           "column": 4
         },
         "end": {
-          "line": 286,
+          "line": 287,
           "column": 5
         }
       },
@@ -453,11 +453,11 @@
     "_formContainer": {
       "location": {
         "start": {
-          "line": 290,
+          "line": 291,
           "column": 4
         },
         "end": {
-          "line": 290,
+          "line": 291,
           "column": 24
         }
       },
@@ -467,11 +467,11 @@
     "_form": {
       "location": {
         "start": {
-          "line": 291,
+          "line": 292,
           "column": 4
         },
         "end": {
-          "line": 291,
+          "line": 292,
           "column": 15
         }
       },
@@ -481,11 +481,11 @@
     "_formValidator": {
       "location": {
         "start": {
-          "line": 292,
+          "line": 293,
           "column": 4
         },
         "end": {
-          "line": 292,
+          "line": 293,
           "column": 24
         }
       },
@@ -495,11 +495,11 @@
     "_formController": {
       "location": {
         "start": {
-          "line": 293,
+          "line": 294,
           "column": 4
         },
         "end": {
-          "line": 293,
+          "line": 294,
           "column": 25
         }
       },
@@ -509,11 +509,11 @@
     "_formElements": {
       "location": {
         "start": {
-          "line": 294,
+          "line": 295,
           "column": 4
         },
         "end": {
-          "line": 294,
+          "line": 295,
           "column": 24
         }
       },
@@ -523,11 +523,11 @@
     "_init": {
       "location": {
         "start": {
-          "line": 296,
+          "line": 297,
           "column": 4
         },
         "end": {
-          "line": 320,
+          "line": 321,
           "column": 5
         }
       },
@@ -537,11 +537,11 @@
     "getForm": {
       "location": {
         "start": {
-          "line": 326,
+          "line": 327,
           "column": 4
         },
         "end": {
-          "line": 328,
+          "line": 329,
           "column": 5
         }
       },
@@ -567,11 +567,11 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 333,
+          "line": 334,
           "column": 4
         },
         "end": {
-          "line": 391,
+          "line": 393,
           "column": 5
         }
       },
@@ -589,11 +589,11 @@
     "_applyFormData": {
       "location": {
         "start": {
-          "line": 399,
+          "line": 401,
           "column": 4
         },
         "end": {
-          "line": 671,
+          "line": 673,
           "column": 5
         }
       },
@@ -639,11 +639,11 @@
     "_applyLabelColumnWidth": {
       "location": {
         "start": {
-          "line": 678,
+          "line": 680,
           "column": 4
         },
         "end": {
-          "line": 691,
+          "line": 693,
           "column": 5
         }
       },
@@ -683,11 +683,11 @@
     "_onFormReady": {
       "location": {
         "start": {
-          "line": 700,
+          "line": 702,
           "column": 4
         },
         "end": {
-          "line": 706,
+          "line": 708,
           "column": 5
         }
       },
@@ -714,11 +714,11 @@
     "_handleOk": {
       "location": {
         "start": {
-          "line": 712,
+          "line": 714,
           "column": 4
         },
         "end": {
-          "line": 721,
+          "line": 723,
           "column": 5
         }
       },

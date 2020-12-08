@@ -153,10 +153,19 @@
               this._getLayout().getCellWidget(row, col).setAlignX("left");
             }
             /*
-             * if the label is null, use the full width for the widget
-             * doesn't work yet
+             * If the label is null, use the full width for the widget.
+             *
+             * This doesn't work because the first of the two columns (the
+             * label column) has a maxWidth value, and (it seems) the grid
+             * layout isn't able to handle a colspan with a maxWidth in
+             * the first of the two columns and additional space available
+             * in the subsequent column; it still limits the width to the
+             * first column's maxWidth
+             *
+             * Instead, allow a means of using this that is backwards compatible,
+             * should it ever be made to work
              */
-            else if (!names[i]) {
+            else if (item.getUserData("combineWithLabelColumn") && !names[i]) {
                 this._add(widget, {
                   row: row,
                   column: col,
@@ -165,24 +174,34 @@
                 });
               }
               /*
-               * normal case: label in column col, form element in column col+1
+               * Instead, just elide the label
                */
-              else {
-                  label = this._createLabel(names[i], item);
-                  label.setRich(true);
-
-                  this._add(label, {
-                    row: row,
-                    column: col,
-                    rowSpan: rowspan
-                  });
-
+              else if (!names[i]) {
                   this._add(widget, {
                     row: row,
                     column: col + 1,
                     rowSpan: rowspan
                   });
                 }
+                /*
+                 * normal case: label in column col, form element in column col+1
+                 */
+                else {
+                    label = this._createLabel(names[i], item);
+                    label.setRich(true);
+
+                    this._add(label, {
+                      row: row,
+                      column: col,
+                      rowSpan: rowspan
+                    });
+
+                    this._add(widget, {
+                      row: row,
+                      column: col + 1,
+                      rowSpan: rowspan
+                    });
+                  }
           /*
            * increment row
            */
@@ -203,4 +222,4 @@
   qxl.dialog.MultiColumnFormRenderer.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MultiColumnFormRenderer.js.map?dt=1607097370767
+//# sourceMappingURL=MultiColumnFormRenderer.js.map?dt=1607441432767

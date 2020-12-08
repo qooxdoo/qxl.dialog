@@ -249,7 +249,7 @@
         "@description": [
           {
             "name": "@description",
-            "body": "<p>Function to call just before creating the form's input fields. This\n allows additional, non-form widgets to be added. The function is called\n one two arguments: the container in which the form fields should be\n placed, and the form object itself (this).</p>"
+            "body": "<p>Function to call just before creating the form's input fields.\n This allows additional, non-form widgets to be added. The\n function is called two arguments: the container in which the\n form fields should be placed, and the form object itself\n (this).</p>"
           }
         ]
       }

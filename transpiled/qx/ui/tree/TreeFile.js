@@ -57,4 +57,4 @@
   qx.ui.tree.TreeFile.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=TreeFile.js.map?dt=1607097366889
+//# sourceMappingURL=TreeFile.js.map?dt=1607441428594
