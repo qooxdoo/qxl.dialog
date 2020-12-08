@@ -161,7 +161,8 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
          * if the label is null, use the full width for the widget
          * doesn't work yet
          */
-        else if (! names[i])
+        // SINCE IT DOESN'T WORK YET, TEMPORARILY COMMENT IT OUT...
+        else if (false && ! names[i])
         {
           this._add(
             widget,
@@ -170,6 +171,17 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
               column  : col,
               rowSpan : rowspan,
               colSpan : 2
+            });
+        }
+        // ... AND DO THIS INSTEAD
+        else if (true && ! names[i])
+        {
+          this._add(
+            widget,
+            {
+              row     : row,
+              column  : col + 1,
+              rowSpan : rowspan
             });
         }
         

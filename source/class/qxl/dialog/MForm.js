@@ -128,10 +128,11 @@ qx.Mixin.define("qxl.dialog.MForm", {
     },
 
     /**
-     * Function to call just before creating the form's input fields. This
-     * allows additional, non-form widgets to be added. The function is called
-     * one two arguments: the container in which the form fields should be
-     * placed, and the form object itself (this).
+     * Function to call just before creating the form's input fields.
+     * This allows additional, non-form widgets to be added. The
+     * function is called two arguments: the container in which the
+     * form fields should be placed, and the form object itself
+     * (this).
      */
     beforeFormFunction :
     {
@@ -344,6 +345,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
       let hbox = new qx.ui.container.Composite();
       hbox.setLayout(new qx.ui.layout.HBox(10));
       container.add(hbox);
+      container.setUserData("messageHBox", hbox);
       this._message = new qx.ui.basic.Label();
       this._message.setRich(true);
       this._message.setMinWidth(200);
@@ -629,7 +631,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
 
         // Putting it all together
         let label = fieldData.label;
-        label && this._form.add(formElement, label, validator);
+        this._form.add(formElement, label || "", validator);
         // Add the form elements as objects owned by the form widget
         if (qx.core.Environment.get("module.objectid") === true) {
           formElement.setQxObjectId(key);
