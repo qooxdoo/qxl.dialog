@@ -713,6 +713,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
      */
     _handleOk: function () {
       this.hide();
+      this.fireEvent("ok");
       if (this.getCallback()) {
         this.getCallback().call(
         this.getContext(),
