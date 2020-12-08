@@ -158,10 +158,19 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
         }
         
         /*
-         * if the label is null, use the full width for the widget
-         * doesn't work yet
+         * If the label is null, use the full width for the widget.
+         *
+         * This doesn't work because the first of the two columns (the
+         * label column) has a maxWidth value, and (it seems) the grid
+         * layout isn't able to handle a colspan with a maxWidth in
+         * the first of the two columns and additional space available
+         * in the subsequent column; it still limits the width to the
+         * first column's maxWidth
+         *
+         * Instead, allow a means of using this that is backwards compatible,
+         * should it ever be made to work
          */
-        else if (! names[i])
+        else if (item.getUserData("combineWithLabelColumn") && ! names[i])
         {
           this._add(
             widget,
@@ -170,6 +179,20 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
               column  : col,
               rowSpan : rowspan,
               colSpan : 2
+            });
+        }
+
+        /*
+         * Instead, just elide the label
+         */
+        else if (! names[i])
+        {
+          this._add(
+            widget,
+            {
+              row     : row,
+              column  : col + 1,
+              rowSpan : rowspan
             });
         }
         
