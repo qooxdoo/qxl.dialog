@@ -95,4 +95,4 @@
   qx.bom.client.CssTransition.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=CssTransition.js.map?dt=1607441405077
+//# sourceMappingURL=CssTransition.js.map?dt=1607450652723

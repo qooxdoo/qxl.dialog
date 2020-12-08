@@ -818,6 +818,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
        */
       _handleOk: function _handleOk() {
         this.hide();
+        this.fireEvent("ok");
 
         if (this.getCallback()) {
           this.getCallback().call(this.getContext(), qx.util.Serializer.toNativeObject(this.getModel()));
@@ -830,4 +831,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.dialog.MForm.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MForm.js.map?dt=1607441433468
+//# sourceMappingURL=MForm.js.map?dt=1607450684111

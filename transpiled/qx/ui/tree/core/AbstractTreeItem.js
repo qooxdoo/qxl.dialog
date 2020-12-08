@@ -527,4 +527,4 @@
   qx.ui.tree.core.AbstractTreeItem.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=AbstractTreeItem.js.map?dt=1607441428815
+//# sourceMappingURL=AbstractTreeItem.js.map?dt=1607450679126

@@ -67,4 +67,4 @@
   qx.ui.virtual.selection.ISelectionDelegate.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ISelectionDelegate.js.map?dt=1607441430388
+//# sourceMappingURL=ISelectionDelegate.js.map?dt=1607450680634
