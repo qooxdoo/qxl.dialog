@@ -13,6 +13,9 @@
 
 ************************************************************************ */
 
+/**
+ * @asset(qx/icon/*)
+*/
 qx.Class.define("qxl.dialog.formElement.DateField",
 {
   statics :
