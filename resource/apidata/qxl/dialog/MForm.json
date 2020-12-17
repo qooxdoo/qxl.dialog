@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 726,
+        "line": 746,
         "column": 3
       }
     },
@@ -286,17 +286,42 @@
       "nullable": true,
       "allowNull": true,
       "check": "Function"
+    },
+    "finalizeFunction": {
+      "location": {
+        "start": {
+          "line": 192,
+          "column": 4
+        },
+        "end": {
+          "line": 197,
+          "column": 5
+        }
+      },
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Function to call just after the form is filled with data. The\n function is called with one argument: the form object itself\n (this).</p>"
+          }
+        ]
+      },
+      "name": "finalizeFunction",
+      "propertyType": "new",
+      "nullable": true,
+      "allowNull": true,
+      "check": "Function"
     }
   },
   "statics": {
     "registerFormElementHandlers": {
       "location": {
         "start": {
-          "line": 262,
+          "line": 274,
           "column": 4
         },
         "end": {
-          "line": 269,
+          "line": 281,
           "column": 5
         }
       },
@@ -415,11 +440,11 @@
     "_registeredFormElements": {
       "location": {
         "start": {
-          "line": 272,
+          "line": 284,
           "column": 4
         },
         "end": {
-          "line": 272,
+          "line": 284,
           "column": 32
         }
       },
@@ -437,11 +462,11 @@
     "_internalFormElements": {
       "location": {
         "start": {
-          "line": 274,
+          "line": 286,
           "column": 4
         },
         "end": {
-          "line": 287,
+          "line": 299,
           "column": 5
         }
       },
@@ -453,11 +478,11 @@
     "_formContainer": {
       "location": {
         "start": {
-          "line": 291,
+          "line": 303,
           "column": 4
         },
         "end": {
-          "line": 291,
+          "line": 303,
           "column": 24
         }
       },
@@ -467,11 +492,11 @@
     "_form": {
       "location": {
         "start": {
-          "line": 292,
+          "line": 304,
           "column": 4
         },
         "end": {
-          "line": 292,
+          "line": 304,
           "column": 15
         }
       },
@@ -481,11 +506,11 @@
     "_formValidator": {
       "location": {
         "start": {
-          "line": 293,
+          "line": 305,
           "column": 4
         },
         "end": {
-          "line": 293,
+          "line": 305,
           "column": 24
         }
       },
@@ -495,11 +520,11 @@
     "_formController": {
       "location": {
         "start": {
-          "line": 294,
+          "line": 306,
           "column": 4
         },
         "end": {
-          "line": 294,
+          "line": 306,
           "column": 25
         }
       },
@@ -509,11 +534,11 @@
     "_formElements": {
       "location": {
         "start": {
-          "line": 295,
+          "line": 307,
           "column": 4
         },
         "end": {
-          "line": 295,
+          "line": 307,
           "column": 24
         }
       },
@@ -523,11 +548,11 @@
     "_init": {
       "location": {
         "start": {
-          "line": 297,
+          "line": 309,
           "column": 4
         },
         "end": {
-          "line": 321,
+          "line": 333,
           "column": 5
         }
       },
@@ -537,11 +562,11 @@
     "getForm": {
       "location": {
         "start": {
-          "line": 327,
+          "line": 339,
           "column": 4
         },
         "end": {
-          "line": 329,
+          "line": 341,
           "column": 5
         }
       },
@@ -567,11 +592,11 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 334,
+          "line": 346,
           "column": 4
         },
         "end": {
-          "line": 393,
+          "line": 405,
           "column": 5
         }
       },
@@ -589,11 +614,11 @@
     "_applyFormData": {
       "location": {
         "start": {
-          "line": 401,
+          "line": 413,
           "column": 4
         },
         "end": {
-          "line": 673,
+          "line": 693,
           "column": 5
         }
       },
@@ -639,11 +664,11 @@
     "_applyLabelColumnWidth": {
       "location": {
         "start": {
-          "line": 680,
+          "line": 700,
           "column": 4
         },
         "end": {
-          "line": 693,
+          "line": 713,
           "column": 5
         }
       },
@@ -683,11 +708,11 @@
     "_onFormReady": {
       "location": {
         "start": {
-          "line": 702,
+          "line": 722,
           "column": 4
         },
         "end": {
-          "line": 708,
+          "line": 728,
           "column": 5
         }
       },
@@ -714,11 +739,11 @@
     "_handleOk": {
       "location": {
         "start": {
-          "line": 714,
+          "line": 734,
           "column": 4
         },
         "end": {
-          "line": 724,
+          "line": 744,
           "column": 5
         }
       },
@@ -1353,6 +1378,72 @@
           {
             "name": "@description",
             "body": "Resets the user value of the property <code>afterButtonsFunction</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #afterButtonsFunction}."
+          }
+        ]
+      }
+    },
+    "getFinalizeFunction": {
+      "type": "function",
+      "name": "getFinalizeFunction",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>finalizeFunction</code>.\n\nFor further details take a look at the property definition: {@link #finalizeFunction}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Function",
+            "desc": "Returns the value for finalizeFunction"
+          }
+        ]
+      }
+    },
+    "setFinalizeFunction": {
+      "type": "function",
+      "name": "setFinalizeFunction",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>finalizeFunction</code>.\n\nFor further details take a look at the property definition: {@link #finalizeFunction}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Function",
+            "paramName": "value",
+            "desc": "Value for finalizeFunction"
+          }
+        ]
+      }
+    },
+    "resetFinalizeFunction": {
+      "type": "function",
+      "name": "resetFinalizeFunction",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>finalizeFunction</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #finalizeFunction}."
           }
         ]
       }

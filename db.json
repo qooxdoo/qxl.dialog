@@ -9,7 +9,7 @@
   "compilerVersion": "1.0.0-beta-20201203-1458",
   "classInfo": {
     "qxl.dialog.demo.Application": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.Dialog": {
@@ -54,7 +54,7 @@
       ]
     },
     "qxl.dialog.theme.Theme": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.theme.icon.IcoMoonFree": {
@@ -24542,7 +24542,7 @@
       }
     },
     "qxl.dialog.Dialog": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24597,7 +24597,7 @@
       "hasDefer": null
     },
     "qxl.dialog.FormEmbed": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24628,7 +24628,7 @@
       "hasDefer": null
     },
     "qxl.dialog.MultiColumnFormRenderer": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24648,7 +24648,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Wizard": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24688,7 +24688,7 @@
       ]
     },
     "qxl.dialog.Login": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24751,7 +24751,7 @@
       ]
     },
     "qxl.dialog.Progress": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -24792,7 +24792,7 @@
       "hasDefer": null
     },
     "qxl.dialog.theme.icon.IcoMoonFree": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24821,7 +24821,7 @@
       }
     },
     "qxl.dialog.theme.icon.Oxygen": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -24851,7 +24851,7 @@
       }
     },
     "qxl.dialog.theme.icon.Tango": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Theme": {
@@ -25138,7 +25138,7 @@
       "hasDefer": null
     },
     "qxl.dialog.MDialog": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Mixin": {
@@ -25167,7 +25167,7 @@
       ]
     },
     "qxl.dialog.Alert": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25206,7 +25206,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Confirm": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25256,7 +25256,7 @@
       ]
     },
     "qxl.dialog.Prompt": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25297,7 +25297,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Select": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25336,7 +25336,7 @@
       "hasDefer": null
     },
     "qxl.dialog.Form": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25376,7 +25376,7 @@
       "hasDefer": null
     },
     "qxl.dialog.MForm": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qxl.dialog.FormRenderer": {
@@ -25447,12 +25447,12 @@
       "translations": [
         {
           "msgid": "Value is invalid",
-          "lineNo": 551
+          "lineNo": 563
         }
       ]
     },
     "qxl.dialog.DialogEmbed": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25486,7 +25486,7 @@
       "hasDefer": null
     },
     "qxl.dialog.FormRenderer": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25520,7 +25520,7 @@
       "hasDefer": null
     },
     "qxl.dialog.FormTag": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.043Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25863,7 +25863,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.CheckBox": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25879,7 +25879,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.ComboBox": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25896,7 +25896,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.DateField": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25909,10 +25909,13 @@
       "extends": null,
       "include": [],
       "implement": [],
-      "hasDefer": null
+      "hasDefer": null,
+      "assets": [
+        "qx/icon/*"
+      ]
     },
     "qxl.dialog.formElement.GroupHeader": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25928,7 +25931,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.Label": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25944,7 +25947,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.List": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25963,7 +25966,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.PasswordField": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25979,7 +25982,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.RadioGroup": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -25996,7 +25999,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.SelectBox": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -26014,7 +26017,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.Spinner": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -26031,7 +26034,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.TextArea": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {
@@ -26047,7 +26050,7 @@
       "hasDefer": null
     },
     "qxl.dialog.formElement.TextField": {
-      "mtime": "2020-12-08T18:03:30.857Z",
+      "mtime": "2020-12-17T21:55:17.047Z",
       "libraryName": "qxl.dialog",
       "dependsOn": {
         "qx.Class": {

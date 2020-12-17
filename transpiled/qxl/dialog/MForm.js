@@ -250,6 +250,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         check: "Function",
         nullable: true,
         init: null
+      },
+
+      /*
+       * Function to call just after the form is filled with data. The
+       * function is called with one argument: the form object itself
+       * (this).
+       */
+      finalizeFunction: {
+        check: "Function",
+        nullable: true,
+        init: null
       }
     },
     statics: {
@@ -780,6 +791,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         this._formContainer.add(setupFormRenderer.bind(this)(this._form));
 
         this._form.getValidationManager().validate();
+
+        var finalizeFunction;
+        finalizeFunction = this.getFinalizeFunction();
+
+        if (finalizeFunction) {
+          finalizeFunction.call(this.getContext(), this._form, this);
+        }
       },
 
       /**
@@ -831,4 +849,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.dialog.MForm.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MForm.js.map?dt=1607450684111
+//# sourceMappingURL=MForm.js.map?dt=1608242185068

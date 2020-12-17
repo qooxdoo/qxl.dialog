@@ -25,6 +25,10 @@
        See the LICENSE file in the project's top-level directory for details.
   
   ************************************************************************ */
+
+  /**
+   * @asset(qx/icon/*)
+  */
   qx.Class.define("qxl.dialog.formElement.DateField", {
     statics: {
       register: function register() {
@@ -55,4 +59,4 @@
   qxl.dialog.formElement.DateField.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=DateField.js.map?dt=1607450684656
+//# sourceMappingURL=DateField.js.map?dt=1608242185587
