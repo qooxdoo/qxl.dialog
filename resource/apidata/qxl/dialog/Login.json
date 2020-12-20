@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 320,
+        "line": 328,
         "column": 3
       }
     },
@@ -330,7 +330,7 @@
           "column": 4
         },
         "end": {
-          "line": 253,
+          "line": 261,
           "column": 5
         }
       },
@@ -353,11 +353,11 @@
     "_callCheckCredentials": {
       "location": {
         "start": {
-          "line": 259,
+          "line": 267,
           "column": 4
         },
         "end": {
-          "line": 267,
+          "line": 275,
           "column": 5
         }
       },
@@ -375,11 +375,11 @@
     "_handleCancel": {
       "location": {
         "start": {
-          "line": 272,
+          "line": 280,
           "column": 4
         },
         "end": {
-          "line": 274,
+          "line": 282,
           "column": 5
         }
       },
@@ -402,11 +402,11 @@
     "_handleCheckCredentials": {
       "location": {
         "start": {
-          "line": 287,
+          "line": 295,
           "column": 4
         },
         "end": {
-          "line": 309,
+          "line": 317,
           "column": 5
         }
       },
@@ -447,11 +447,11 @@
     "hide": {
       "location": {
         "start": {
-          "line": 314,
+          "line": 322,
           "column": 4
         },
         "end": {
-          "line": 318,
+          "line": 326,
           "column": 5
         }
       },

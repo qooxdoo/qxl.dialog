@@ -191,6 +191,11 @@
         }
 
         this._username = new qx.ui.form.TextField();
+
+        this._username.addListener("appear", function () {
+          this._username.focus();
+        }, this);
+
         this._password = new qx.ui.form.PasswordField();
 
         this._password.getContentElement().setAttribute("autocomplete", "password");
@@ -339,4 +344,4 @@
   qxl.dialog.Login.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Login.js.map?dt=1608242184464
+//# sourceMappingURL=Login.js.map?dt=1608478941791
