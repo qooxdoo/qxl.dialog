@@ -162,6 +162,14 @@ qx.Class.define("qxl.dialog.Login", {
         );
       }
       this._username = new qx.ui.form.TextField();
+
+      this._username.addListener(
+        "appear",
+        function() {
+          this._username.focus();
+        },
+        this);
+
       this._password = new qx.ui.form.PasswordField();
       this._password.getContentElement().setAttribute("autocomplete", "password");
       this._password.addListener(
