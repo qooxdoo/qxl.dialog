@@ -88,7 +88,42 @@ Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dia
 ## Changelog
 
 ### v3.1.0
-@derrell: Refactoring of `qxl.dialog.Form` to add extensibility.   
+- Refactored `qxl.dialog.Dialog` and `qxl.dialog.Form`
+  - The mass of functionality for Dialog and Form now resides in
+    mixins, MDialog and MForm. The MDialog mixin is included by two
+    classes, Dialog and DialogEmbed; and the MForm mixin is included
+    by two classes, Form and FormEmbed. The Dialog and Form classes
+    work as they always have, creating a pop-up window in which to
+    render. The new DialogEmbed and FormEmbed classes allow forms to
+    be placed in any arbitrary container of the programmer's choice,
+    so that these classes can be used for the main functionality on a
+    page rather than only as pop-ups.
+  - It is now easy to extend the Form functionality (both windowed and
+    embedded) with form elements that are not provided as part of this
+    package. All form elements, including those provided with this
+    package, are now registered in a standard way. This means that
+    user applications can register form elements not provided by this
+    package, and include them in forms created this package.
+- Added a generic multi-column form renderer, and the ability for a
+  application to easily provide its own form renderer.
+- Arbitrary propery settings can be provided to any form element.
+- Arbitrary events can be handled from any form element.
+- Arbitrary userdata can be specified for any form element. This is
+  used, within this package, to specify row and column numbers for the
+  multi-column form renderer, but it can be used for any other
+  application needs as well.
+- A finalizer function can be provided, which will be called when a
+  form is completely generated. This finalizer function may be used at
+  the application's discretion, but in particular, it allows the
+  application to add validation to the complete form, that requires
+  that all of the form elements have been added to the form.
+- Access is provided via the `_formElements` map, to all of the form
+  elements. The map is keyed by the same keys provided in the
+  `formData` map.
+- `beforeFormFunction`, `afterButtonsFunction`, and
+  `afterFormFunction` allow widgets to be added above and below the
+  form, e.g., headings, or buttons that act on the form.
+- Fixed the non-functioning `labelColumnWidth`
 
 ### v3.0.0
 Moved package from cboulanger/qx-contrib-Dialog and changed namespace to `qxl.dialog`
