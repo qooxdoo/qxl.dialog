@@ -103,8 +103,8 @@ Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dia
     package. All form elements, including those provided with this
     package, are now registered in a standard way. This means that
     user applications can register form elements not provided by this
-    package, and include them in forms created this package.
-- Added a generic multi-column form renderer, and the ability for a
+    package, and include them in forms created using this package.
+- Added a generic multi-column form renderer, and the ability for an
   application to easily provide its own form renderer.
 - Arbitrary propery settings can be provided to any form element.
 - Arbitrary events can be handled from any form element.
@@ -112,8 +112,8 @@ Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dia
   used, within this package, to specify row and column numbers for the
   multi-column form renderer, but it can be used for any other
   application needs as well.
-- A finalizer function can be provided, which will be called when a
-  form is completely generated. This finalizer function may be used at
+- A `finalizeFunction` can be provided, which will be called when a
+  form is completely generated. This finalize function may be used at
   the application's discretion, but in particular, it allows the
   application to add validation to the complete form, that requires
   that all of the form elements have been added to the form.
