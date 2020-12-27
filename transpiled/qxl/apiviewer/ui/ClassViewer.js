@@ -389,7 +389,7 @@
           tocItem.innerHTML = qxl.apiviewer.ui.ClassViewer.createImageHtml(panel.getPanelIcon(), panel.getPanelTitle()) + " ";
           q(tocItem).on("tap", function (firstItem) {
             return function () {
-              this.__P_442_0(firstItem, firstItem.getName());
+              this.__enableSection(firstItem, firstItem.getName());
 
               qx.bom.element.Scroll.intoView(panel.getTitleElement(), null, "left", "top");
 
@@ -454,21 +454,21 @@
 
 
         if (classNode.getType() === "interface") {
-          classHtml.add(this.__P_442_1(classNode));
+          classHtml.add(this.__getInterfaceHierarchyHtml(classNode));
         } else {
-          classHtml.add(this.__P_442_2(classNode));
+          classHtml.add(this.__getClassHierarchyHtml(classNode));
         }
 
         return classNode.getChildClasses().then(function (childClasses) {
-          classHtml.add(_this2.__P_442_3(childClasses, "Direct " + subObjectsName + ":"));
-          classHtml.add(_this2.__P_442_3(classNode.getInterfaces(), "Implemented interfaces:"));
-          classHtml.add(_this2.__P_442_3(classNode.getMixins(), "Included mixins:"));
+          classHtml.add(_this2.__getDependentClassesHtml(childClasses, "Direct " + subObjectsName + ":"));
+          classHtml.add(_this2.__getDependentClassesHtml(classNode.getInterfaces(), "Implemented interfaces:"));
+          classHtml.add(_this2.__getDependentClassesHtml(classNode.getMixins(), "Included mixins:"));
           return classNode.getImplementations();
         }).then(function (classes) {
-          classHtml.add(_this2.__P_442_3(classes, "Implementations of this interface:"));
+          classHtml.add(_this2.__getDependentClassesHtml(classes, "Implementations of this interface:"));
           return classNode.getIncluder();
         }).then(function (classes) {
-          classHtml.add(_this2.__P_442_3(classes, "Classes including this mixin:"));
+          classHtml.add(_this2.__getDependentClassesHtml(classes, "Classes including this mixin:"));
 
           if (classNode.isDeprecated()) {
             classHtml.add("<h2 class=\"warning\">", "Deprecated:", "</h2>");
@@ -509,7 +509,7 @@
        * @param title {String} headline
        * @return {String} HTML Fragement
        */
-      __P_442_3: function __P_442_3(dependentClasses, title) {
+      __getDependentClassesHtml: function __getDependentClassesHtml(dependentClasses, title) {
         var result = "";
 
         if (dependentClasses.length > 0) {
@@ -535,7 +535,7 @@
        * @param classNode {qxl.apiviewer.dao.Class} class node
        * @return {String} HTML fragemnt
        */
-      __P_442_2: function __P_442_2(classNode) {
+      __getClassHierarchyHtml: function __getClassHierarchyHtml(classNode) {
         var ClassViewer = qxl.apiviewer.ui.ClassViewer; // Create the class hierarchy
 
         var classHtml = new qx.util.StringBuilder("<h2>", "Inheritance hierarchy:", "</h2>");
@@ -577,7 +577,7 @@
        * @param classNode {qxl.apiviewer.dao.Class} class node
        * @return {String} HTML fragemnt
        */
-      __P_442_1: function __P_442_1(classNode) {
+      __getInterfaceHierarchyHtml: function __getInterfaceHierarchyHtml(classNode) {
         var ClassViewer = qxl.apiviewer.ui.ClassViewer;
         var TreeUtil = qxl.apiviewer.TreeUtil;
         var InfoPanel = qxl.apiviewer.ui.panels.InfoPanel;
@@ -651,7 +651,7 @@
         } // Show properties, private or protected methods if they are hidden
 
 
-        this.__P_442_0(itemNode, itemName);
+        this.__enableSection(itemNode, itemName);
 
         var panel = this._getPanelForItemNode(itemNode);
 
@@ -690,7 +690,7 @@
        * @param itemName {String} the name of the item to highlight.
        * @param itemName {String} The doc node of the item
        */
-      __P_442_0: function __P_442_0(itemNode, itemName) {
+      __enableSection: function __enableSection(itemNode, itemName) {
         var uiModel = qxl.apiviewer.UiModel.getInstance(); // Check for property
 
         if (itemNode.isFromProperty && itemNode.isFromProperty()) {
@@ -756,4 +756,4 @@
   qxl.apiviewer.ui.ClassViewer.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ClassViewer.js.map?dt=1608478943552
+//# sourceMappingURL=ClassViewer.js.map?dt=1609082307744

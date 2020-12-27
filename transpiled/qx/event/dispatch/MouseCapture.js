@@ -92,21 +92,21 @@
      */
     construct: function construct(manager, registration) {
       qx.event.dispatch.AbstractBubbling.constructor.call(this, manager);
-      this.__P_124_0 = manager.getWindow();
-      this.__P_124_1 = registration;
-      manager.addListener(this.__P_124_0, "blur", this.releaseCapture, this);
-      manager.addListener(this.__P_124_0, "focus", this.releaseCapture, this);
-      manager.addListener(this.__P_124_0, "scroll", this.releaseCapture, this);
+      this.__window = manager.getWindow();
+      this.__registration = registration;
+      manager.addListener(this.__window, "blur", this.releaseCapture, this);
+      manager.addListener(this.__window, "focus", this.releaseCapture, this);
+      manager.addListener(this.__window, "scroll", this.releaseCapture, this);
     },
     statics: {
       /** @type {Integer} Priority of this dispatcher */
       PRIORITY: qx.event.Registration.PRIORITY_FIRST
     },
     members: {
-      __P_124_1: null,
-      __P_124_2: null,
-      __P_124_3: true,
-      __P_124_0: null,
+      __registration: null,
+      __captureElement: null,
+      __containerCapture: true,
+      __window: null,
       // overridden
       _getParent: function _getParent(target) {
         return target.parentNode;
@@ -119,7 +119,7 @@
       */
       // overridden
       canDispatchEvent: function canDispatchEvent(target, event, type) {
-        return !!(this.__P_124_2 && this.__P_124_4[type]);
+        return !!(this.__captureElement && this.__captureEvents[type]);
       },
       // overridden
       dispatchEvent: function dispatchEvent(target, event, type) {
@@ -129,8 +129,8 @@
           return;
         }
 
-        if (this.__P_124_3 || !qx.dom.Hierarchy.contains(this.__P_124_2, target)) {
-          target = this.__P_124_2;
+        if (this.__containerCapture || !qx.dom.Hierarchy.contains(this.__captureElement, target)) {
+          target = this.__captureElement;
         }
 
         return qx.event.dispatch.MouseCapture.prototype.dispatchEvent.base.call(this, target, event, type);
@@ -145,7 +145,7 @@
       /**
        * @lint ignoreReferenceField(__captureEvents)
        */
-      __P_124_4: {
+      __captureEvents: {
         "mouseup": 1,
         "mousedown": 1,
         "click": 1,
@@ -179,11 +179,11 @@
       activateCapture: function activateCapture(element, containerCapture) {
         var containerCapture = containerCapture !== false;
 
-        if (this.__P_124_2 === element && this.__P_124_3 == containerCapture) {
+        if (this.__captureElement === element && this.__containerCapture == containerCapture) {
           return;
         }
 
-        if (this.__P_124_2) {
+        if (this.__captureElement) {
           this.releaseCapture();
         } // turn on native mouse capturing if the browser supports it
 
@@ -200,10 +200,10 @@
           qx.bom.Event.addNativeListener(element, "losecapture", onNativeListener);
         }
 
-        this.__P_124_3 = containerCapture;
-        this.__P_124_2 = element;
+        this.__containerCapture = containerCapture;
+        this.__captureElement = element;
 
-        this.__P_124_1.fireEvent(element, "capture", qx.event.type.Event, [true, false]);
+        this.__registration.fireEvent(element, "capture", qx.event.type.Event, [true, false]);
       },
 
       /**
@@ -213,22 +213,22 @@
        *    null.
        */
       getCaptureElement: function getCaptureElement() {
-        return this.__P_124_2;
+        return this.__captureElement;
       },
 
       /**
        * Stop capturing of mouse events.
        */
       releaseCapture: function releaseCapture() {
-        var element = this.__P_124_2;
+        var element = this.__captureElement;
 
         if (!element) {
           return;
         }
 
-        this.__P_124_2 = null;
+        this.__captureElement = null;
 
-        this.__P_124_1.fireEvent(element, "losecapture", qx.event.type.Event, [true, false]); // turn off native mouse capturing if the browser supports it
+        this.__registration.fireEvent(element, "losecapture", qx.event.type.Event, [true, false]); // turn off native mouse capturing if the browser supports it
 
 
         this.nativeReleaseCapture(element);
@@ -278,4 +278,4 @@
   qx.event.dispatch.MouseCapture.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MouseCapture.js.map?dt=1608478919466
+//# sourceMappingURL=MouseCapture.js.map?dt=1609082278784

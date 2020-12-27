@@ -42,16 +42,16 @@
      * @param renderTime {Number} Elapsed DOM rendering time
      */
     construct: function construct(message, iterations, ownTime, renderTime) {
-      this.__P_107_0 = message;
-      this.__P_107_1 = iterations;
-      this.__P_107_2 = ownTime;
-      this.__P_107_3 = renderTime;
+      this.__message = message;
+      this.__iterations = iterations;
+      this.__ownTime = ownTime;
+      this.__renderTime = renderTime;
     },
     members: {
-      __P_107_0: null,
-      __P_107_1: null,
-      __P_107_2: null,
-      __P_107_3: null,
+      __message: null,
+      __iterations: null,
+      __ownTime: null,
+      __renderTime: null,
 
       /**
        * Returns the stored data as a map.
@@ -59,10 +59,10 @@
        */
       getData: function getData() {
         return {
-          message: this.__P_107_0,
-          iterations: this.__P_107_1,
-          ownTime: this.__P_107_2,
-          renderTime: this.__P_107_3
+          message: this.__message,
+          iterations: this.__iterations,
+          ownTime: this.__ownTime,
+          renderTime: this.__renderTime
         };
       },
 
@@ -72,11 +72,11 @@
        * @return {String} Result summary
        */
       toString: function toString() {
-        return ["Measured: " + this.__P_107_0, "Iterations: " + this.__P_107_1, "Time: " + this.__P_107_2 + "ms", "Render time: " + this.__P_107_3 + "ms"].join("\n");
+        return ["Measured: " + this.__message, "Iterations: " + this.__iterations, "Time: " + this.__ownTime + "ms", "Render time: " + this.__renderTime + "ms"].join("\n");
       }
     }
   });
   qx.dev.unit.MeasurementResult.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MeasurementResult.js.map?dt=1608478917903
+//# sourceMappingURL=MeasurementResult.js.map?dt=1609082276979

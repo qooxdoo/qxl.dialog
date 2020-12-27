@@ -79,7 +79,7 @@
       }
 
       this.getFakeServer();
-      this.__P_100_0 = [];
+      this.__responses = [];
     },
     statics: {
       $$instance: null,
@@ -102,10 +102,10 @@
       }
     },
     members: {
-      __P_100_1: null,
-      __P_100_2: null,
-      __P_100_0: null,
-      __P_100_3: null,
+      __sinon: null,
+      __fakeServer: null,
+      __responses: null,
+      __filter: null,
 
       /**
        * Configures a set of fake HTTP responses. Each response is defined as a map
@@ -138,19 +138,19 @@
           var response = [item.method, urlRegExp];
           var hasResponse = false;
 
-          for (var i = 0, l = this.__P_100_0.length; i < l; i++) {
-            var old = this.__P_100_0[i];
+          for (var i = 0, l = this.__responses.length; i < l; i++) {
+            var old = this.__responses[i];
             hasResponse = old[0] == response[0] && old[1] == response[1];
           }
 
           if (!hasResponse) {
-            this.__P_100_0.push(response);
+            this.__responses.push(response);
           }
 
           this.respondWith(item.method, urlRegExp, item.response);
         }.bind(this));
 
-        var filter = this.__P_100_3 = this.__P_100_4();
+        var filter = this.__filter = this.__getCombinedFilter();
 
         this.addFilter(filter);
       },
@@ -167,7 +167,7 @@
        * if the request should not be faked.
        */
       addFilter: function addFilter(filter) {
-        this.__P_100_1.FakeXMLHttpRequest.addFilter(filter);
+        this.__sinon.FakeXMLHttpRequest.addFilter(filter);
       },
 
       /**
@@ -175,7 +175,7 @@
        * @param filter {Function} filter function to remove
        */
       removeFilter: function removeFilter(filter) {
-        qx.lang.Array.remove(this.__P_100_1.FakeXMLHttpRequest.filters, filter);
+        qx.lang.Array.remove(this.__sinon.FakeXMLHttpRequest.filters, filter);
       },
 
       /**
@@ -184,17 +184,17 @@
        * @param url {String|RegExp} URL of the response
        */
       removeResponse: function removeResponse(method, url) {
-        qx.lang.Array.remove(this.__P_100_1.FakeXMLHttpRequest.filters, this.__P_100_3);
+        qx.lang.Array.remove(this.__sinon.FakeXMLHttpRequest.filters, this.__filter);
         var urlRegExp = url instanceof RegExp ? url : this._getRegExp(url);
-        this.__P_100_0 = this.__P_100_0.filter(function (response) {
+        this.__responses = this.__responses.filter(function (response) {
           return response[0] != method || response[1].toString() != urlRegExp.toString();
         });
-        this.__P_100_2.responses = this.__P_100_2.responses.filter(function (response) {
+        this.__fakeServer.responses = this.__fakeServer.responses.filter(function (response) {
           return response.method != method || response.url.toString() != urlRegExp.toString();
         });
-        this.removeFilter(this.__P_100_3);
-        this.__P_100_3 = this.__P_100_4();
-        this.addFilter(this.__P_100_3);
+        this.removeFilter(this.__filter);
+        this.__filter = this.__getCombinedFilter();
+        this.addFilter(this.__filter);
       },
 
       /**
@@ -214,27 +214,27 @@
         * @return {Object} FakeServer object
        */
       getFakeServer: function getFakeServer() {
-        if (!this.__P_100_2) {
-          var sinon = this.__P_100_1 = qx.dev.unit.Sinon.getSinon();
+        if (!this.__fakeServer) {
+          var sinon = this.__sinon = qx.dev.unit.Sinon.getSinon();
           sinon.FakeXMLHttpRequest.useFilters = true;
-          this.__P_100_2 = sinon.sandbox.useFakeServer();
-          this.__P_100_2.autoRespond = true;
+          this.__fakeServer = sinon.sandbox.useFakeServer();
+          this.__fakeServer.autoRespond = true;
         }
 
-        return this.__P_100_2;
+        return this.__fakeServer;
       },
 
       /**
        * Stops the FakeServer and removes all configured responses and/or filters.
        */
       restore: function restore() {
-        this.__P_100_0 = [];
-        this.removeFilter(this.__P_100_3);
-        this.__P_100_3 = null;
+        this.__responses = [];
+        this.removeFilter(this.__filter);
+        this.__filter = null;
 
-        this.__P_100_2.restore();
+        this.__fakeServer.restore();
 
-        this.__P_100_2 = null;
+        this.__fakeServer = null;
       },
 
       /**
@@ -254,8 +254,8 @@
        * fake responses will be intercepted.
        * @return {Function} filter function
        */
-      __P_100_4: function __P_100_4() {
-        var responses = this.__P_100_0;
+      __getCombinedFilter: function __getCombinedFilter() {
+        var responses = this.__responses;
         return function (method, url, async, username, password) {
           for (var i = 0, l = responses.length; i < l; i++) {
             var filterMethod = responses[i][0];
@@ -272,10 +272,10 @@
     },
     destruct: function destruct() {
       this.restore();
-      this.__P_100_2 = this.__P_100_1 = null;
+      this.__fakeServer = this.__sinon = null;
     }
   });
   qx.dev.FakeServer.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=FakeServer.js.map?dt=1608478917475
+//# sourceMappingURL=FakeServer.js.map?dt=1609082276526

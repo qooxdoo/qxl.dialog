@@ -122,8 +122,8 @@
      */
     construct: function construct(manager) {
       qx.core.Object.constructor.call(this);
-      this.__P_142_0 = {};
-      this.__P_142_1 = qx.lang.Function.listener(this._onNative, this);
+      this.__registeredEvents = {};
+      this.__onEventWrapper = qx.lang.Function.listener(this._onNative, this);
     },
 
     /*
@@ -162,8 +162,8 @@
     *****************************************************************************
     */
     members: {
-      __P_142_1: null,
-      __P_142_0: null,
+      __onEventWrapper: null,
+      __registeredEvents: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -190,29 +190,29 @@
         "webkit": function webkit(target, type, capture) {
           var hash = qx.core.ObjectRegistry.toHashCode(target) + type;
           var nativeType = qx.event.handler.Transition.TYPE_TO_NATIVE[type];
-          this.__P_142_0[hash] = {
+          this.__registeredEvents[hash] = {
             target: target,
             type: nativeType
           };
-          qx.bom.Event.addNativeListener(target, nativeType, this.__P_142_1);
+          qx.bom.Event.addNativeListener(target, nativeType, this.__onEventWrapper);
         },
         "gecko": function gecko(target, type, capture) {
           var hash = qx.core.ObjectRegistry.toHashCode(target) + type;
           var nativeType = qx.event.handler.Transition.TYPE_TO_NATIVE[type];
-          this.__P_142_0[hash] = {
+          this.__registeredEvents[hash] = {
             target: target,
             type: nativeType
           };
-          qx.bom.Event.addNativeListener(target, nativeType, this.__P_142_1);
+          qx.bom.Event.addNativeListener(target, nativeType, this.__onEventWrapper);
         },
         "mshtml": function mshtml(target, type, capture) {
           var hash = qx.core.ObjectRegistry.toHashCode(target) + type;
           var nativeType = qx.event.handler.Transition.TYPE_TO_NATIVE[type];
-          this.__P_142_0[hash] = {
+          this.__registeredEvents[hash] = {
             target: target,
             type: nativeType
           };
-          qx.bom.Event.addNativeListener(target, nativeType, this.__P_142_1);
+          qx.bom.Event.addNativeListener(target, nativeType, this.__onEventWrapper);
         },
         "default": function _default() {}
       }),
@@ -232,7 +232,7 @@
        */
       unregisterEvent: qx.core.Environment.select("engine.name", {
         "webkit": function webkit(target, type, capture) {
-          var events = this.__P_142_0;
+          var events = this.__registeredEvents;
 
           if (!events) {
             return;
@@ -244,10 +244,10 @@
             delete events[hash];
           }
 
-          qx.bom.Event.removeNativeListener(target, qx.event.handler.Transition.TYPE_TO_NATIVE[type], this.__P_142_1);
+          qx.bom.Event.removeNativeListener(target, qx.event.handler.Transition.TYPE_TO_NATIVE[type], this.__onEventWrapper);
         },
         "gecko": function gecko(target, type, capture) {
-          var events = this.__P_142_0;
+          var events = this.__registeredEvents;
 
           if (!events) {
             return;
@@ -259,10 +259,10 @@
             delete events[hash];
           }
 
-          qx.bom.Event.removeNativeListener(target, qx.event.handler.Transition.TYPE_TO_NATIVE[type], this.__P_142_1);
+          qx.bom.Event.removeNativeListener(target, qx.event.handler.Transition.TYPE_TO_NATIVE[type], this.__onEventWrapper);
         },
         "mshtml": function mshtml(target, type, capture) {
-          var events = this.__P_142_0;
+          var events = this.__registeredEvents;
 
           if (!events) {
             return;
@@ -274,7 +274,7 @@
             delete events[hash];
           }
 
-          qx.bom.Event.removeNativeListener(target, qx.event.handler.Transition.TYPE_TO_NATIVE[type], this.__P_142_1);
+          qx.bom.Event.removeNativeListener(target, qx.event.handler.Transition.TYPE_TO_NATIVE[type], this.__onEventWrapper);
         },
         "default": function _default() {}
       }),
@@ -303,17 +303,17 @@
     */
     destruct: function destruct() {
       var event;
-      var events = this.__P_142_0;
+      var events = this.__registeredEvents;
 
       for (var id in events) {
         event = events[id];
 
         if (event.target) {
-          qx.bom.Event.removeNativeListener(event.target, event.type, this.__P_142_1);
+          qx.bom.Event.removeNativeListener(event.target, event.type, this.__onEventWrapper);
         }
       }
 
-      this.__P_142_0 = this.__P_142_1 = null;
+      this.__registeredEvents = this.__onEventWrapper = null;
     },
 
     /*
@@ -343,4 +343,4 @@
   qx.event.handler.Transition.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Transition.js.map?dt=1608478920503
+//# sourceMappingURL=Transition.js.map?dt=1609082279980

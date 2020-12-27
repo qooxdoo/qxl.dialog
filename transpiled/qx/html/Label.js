@@ -49,7 +49,7 @@
     *****************************************************************************
     */
     members: {
-      __P_157_0: null,
+      __rich: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -67,7 +67,7 @@
       },
       // overridden
       _createDomElement: function _createDomElement() {
-        var rich = this.__P_157_0;
+        var rich = this.__rich;
         var el = qx.bom.Label.create(this._content, rich);
         el.style.overflow = 'hidden';
         return el;
@@ -99,11 +99,11 @@
 
         value = !!value;
 
-        if (this.__P_157_0 == value) {
+        if (this.__rich == value) {
           return this;
         }
 
-        this.__P_157_0 = value;
+        this.__rich = value;
         return this;
       },
 
@@ -141,4 +141,4 @@
   qx.html.Label.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Label.js.map?dt=1608478921571
+//# sourceMappingURL=Label.js.map?dt=1609082281274

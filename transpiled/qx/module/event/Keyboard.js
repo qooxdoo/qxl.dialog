@@ -159,8 +159,8 @@
        */
       registerInputFix: function registerInputFix(element) {
         if (element.type === "text" || element.type === "password" || element.type === "textarea") {
-          if (!element.__P_193_0) {
-            element.__P_193_0 = qxWeb(element).on("keyup", qx.module.event.Keyboard._inputFix);
+          if (!element.__inputFix) {
+            element.__inputFix = qxWeb(element).on("keyup", qx.module.event.Keyboard._inputFix);
           }
         }
       },
@@ -172,9 +172,9 @@
        * @internal
        */
       unregisterInputFix: function unregisterInputFix(element) {
-        if (element.__P_193_0 && !qxWeb(element).hasListener("input")) {
+        if (element.__inputFix && !qxWeb(element).hasListener("input")) {
           qxWeb(element).off("keyup", qx.module.event.Keyboard._inputFix);
-          element.__P_193_0 = null;
+          element.__inputFix = null;
         }
       },
 
@@ -191,8 +191,8 @@
         var target = ev.getTarget();
         var newValue = qxWeb(target).getValue();
 
-        if (!target.__P_193_1 || target.__P_193_1 !== newValue) {
-          target.__P_193_1 = newValue;
+        if (!target.__oldInputValue || target.__oldInputValue !== newValue) {
+          target.__oldInputValue = newValue;
           ev.type = ev._type = "input";
           target.$$emitter.emit("input", ev);
         }
@@ -209,4 +209,4 @@
   qx.module.event.Keyboard.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Keyboard.js.map?dt=1608478924190
+//# sourceMappingURL=Keyboard.js.map?dt=1609082284842

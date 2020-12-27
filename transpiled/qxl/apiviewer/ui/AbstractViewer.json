@@ -324,7 +324,7 @@
         }
       },
       "type": "variable",
-      "access": "private"
+      "access": "protected"
     },
     "_init": {
       "location": {
@@ -352,7 +352,7 @@
         }
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "_getTitleHtml": {
       "location": {

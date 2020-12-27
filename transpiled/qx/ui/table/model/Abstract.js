@@ -76,15 +76,15 @@
     },
     construct: function construct() {
       qx.core.Object.constructor.call(this);
-      this.__P_353_0 = [];
-      this.__P_353_1 = [];
-      this.__P_353_2 = {};
+      this.__columnIdArr = [];
+      this.__columnNameArr = [];
+      this.__columnIndexMap = {};
     },
     members: {
-      __P_353_0: null,
-      __P_353_1: null,
-      __P_353_2: null,
-      __P_353_3: null,
+      __columnIdArr: null,
+      __columnNameArr: null,
+      __columnIndexMap: null,
+      __internalChange: null,
 
       /**
        * Initialize the table model <--> table interaction. The table model is
@@ -157,19 +157,19 @@
       },
       // overridden
       getColumnCount: function getColumnCount() {
-        return this.__P_353_0.length;
+        return this.__columnIdArr.length;
       },
       // overridden
       getColumnIndexById: function getColumnIndexById(columnId) {
-        return this.__P_353_2[columnId];
+        return this.__columnIndexMap[columnId];
       },
       // overridden
       getColumnId: function getColumnId(columnIndex) {
-        return this.__P_353_0[columnIndex];
+        return this.__columnIdArr[columnIndex];
       },
       // overridden
       getColumnName: function getColumnName(columnIndex) {
-        return this.__P_353_1[columnIndex];
+        return this.__columnNameArr[columnIndex];
       },
 
       /**
@@ -183,17 +183,17 @@
        * @see #setColumns
        */
       setColumnIds: function setColumnIds(columnIdArr) {
-        this.__P_353_0 = columnIdArr; // Create the reverse map
+        this.__columnIdArr = columnIdArr; // Create the reverse map
 
-        this.__P_353_2 = {};
+        this.__columnIndexMap = {};
 
         for (var i = 0; i < columnIdArr.length; i++) {
-          this.__P_353_2[columnIdArr[i]] = i;
+          this.__columnIndexMap[columnIdArr[i]] = i;
         }
 
-        this.__P_353_1 = new Array(columnIdArr.length); // Inform the listeners
+        this.__columnNameArr = new Array(columnIdArr.length); // Inform the listeners
 
-        if (!this.__P_353_3) {
+        if (!this.__internalChange) {
           this.fireEvent("metaDataChanged");
         }
       },
@@ -209,11 +209,11 @@
        * @see #setColumnIds
        */
       setColumnNamesByIndex: function setColumnNamesByIndex(columnNameArr) {
-        if (this.__P_353_0.length != columnNameArr.length) {
-          throw new Error("this.__columnIdArr and columnNameArr have different length: " + this.__P_353_0.length + " != " + columnNameArr.length);
+        if (this.__columnIdArr.length != columnNameArr.length) {
+          throw new Error("this.__columnIdArr and columnNameArr have different length: " + this.__columnIdArr.length + " != " + columnNameArr.length);
         }
 
-        this.__P_353_1 = columnNameArr; // Inform the listeners
+        this.__columnNameArr = columnNameArr; // Inform the listeners
 
         this.fireEvent("metaDataChanged");
       },
@@ -229,10 +229,10 @@
        * @see #setColumnIds
        */
       setColumnNamesById: function setColumnNamesById(columnNameMap) {
-        this.__P_353_1 = new Array(this.__P_353_0.length);
+        this.__columnNameArr = new Array(this.__columnIdArr.length);
 
-        for (var i = 0; i < this.__P_353_0.length; ++i) {
-          this.__P_353_1[i] = columnNameMap[this.__P_353_0[i]];
+        for (var i = 0; i < this.__columnIdArr.length; ++i) {
+          this.__columnNameArr[i] = columnNameMap[this.__columnIdArr[i]];
         }
       },
 
@@ -258,13 +258,13 @@
        *
        */
       setColumns: function setColumns(columnNameArr, columnIdArr) {
-        var bSetIds = this.__P_353_0.length == 0 || columnIdArr;
+        var bSetIds = this.__columnIdArr.length == 0 || columnIdArr;
 
         if (columnIdArr == null) {
-          if (this.__P_353_0.length == 0) {
+          if (this.__columnIdArr.length == 0) {
             columnIdArr = columnNameArr;
           } else {
-            columnIdArr = this.__P_353_0;
+            columnIdArr = this.__columnIdArr;
           }
         }
 
@@ -273,19 +273,19 @@
         }
 
         if (bSetIds) {
-          this.__P_353_3 = true;
+          this.__internalChange = true;
           this.setColumnIds(columnIdArr);
-          this.__P_353_3 = false;
+          this.__internalChange = false;
         }
 
         this.setColumnNamesByIndex(columnNameArr);
       }
     },
     destruct: function destruct() {
-      this.__P_353_0 = this.__P_353_1 = this.__P_353_2 = null;
+      this.__columnIdArr = this.__columnNameArr = this.__columnIndexMap = null;
     }
   });
   qx.ui.table.model.Abstract.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Abstract.js.map?dt=1608478936203
+//# sourceMappingURL=Abstract.js.map?dt=1609082298975

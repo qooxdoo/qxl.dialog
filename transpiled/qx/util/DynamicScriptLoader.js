@@ -101,8 +101,8 @@
      */
     construct: function construct(scriptArr) {
       qx.core.Object.constructor.call(this);
-      this.__P_410_0 = false;
-      this.__P_410_1 = qx.lang.Type.isString(scriptArr) ? [scriptArr] : qx.lang.Array.clone(scriptArr);
+      this.__started = false;
+      this.__QUEUE = qx.lang.Type.isString(scriptArr) ? [scriptArr] : qx.lang.Array.clone(scriptArr);
     },
 
     /*
@@ -131,12 +131,12 @@
        * Map of scripts being added at the present time. Key is script name; value is instance of this class which
        * is loading it.
        */
-      __P_410_2: {},
+      __IN_PROGRESS: {},
 
       /**
        * Map of scripts that have fully loaded. Key is script name; value is true
        */
-      __P_410_3: {}
+      __LOADED: {}
     },
 
     /*
@@ -148,12 +148,12 @@
       /**
        * Array of the scripts to be loaded
        */
-      __P_410_1: null,
+      __QUEUE: null,
 
       /**
        * True if start has been called.
        */
-      __P_410_0: null,
+      __started: null,
 
       /**
        * Start loading scripts. This may only be called once!
@@ -170,13 +170,13 @@
             reject(new Error('disposed'));
           }
 
-          if (this.__P_410_0) {
+          if (this.__started) {
             reject(new Error('you can only call start once per instance'));
           }
 
-          this.__P_410_0 = true;
+          this.__started = true;
 
-          this.__P_410_4();
+          this.__loadScripts();
         }, this);
       },
 
@@ -186,32 +186,32 @@
        * Recursively called until the array of scripts is consumed
        *
        */
-      __P_410_4: function __P_410_4() {
+      __loadScripts: function __loadScripts() {
         var DynamicScriptLoader = qx.util.DynamicScriptLoader;
         var script;
         var dynLoader;
         var id1, id2;
         var uri;
         var loader;
-        script = this.__P_410_1.shift();
+        script = this.__QUEUE.shift();
 
         if (!script) {
           this.fireEvent("ready");
           return;
         }
 
-        if (DynamicScriptLoader.__P_410_3[script]) {
+        if (DynamicScriptLoader.__LOADED[script]) {
           this.fireDataEvent('loaded', {
             script: script,
             status: 'preloaded'
           });
 
-          this.__P_410_4();
+          this.__loadScripts();
 
           return;
         }
 
-        dynLoader = DynamicScriptLoader.__P_410_2[script];
+        dynLoader = DynamicScriptLoader.__IN_PROGRESS[script];
 
         if (dynLoader) {
           id1 = dynLoader.addListener('loaded', function (e) {
@@ -226,7 +226,7 @@
               dynLoader.removeListenerById(id1);
               this.fireDataEvent('loaded', data);
 
-              this.__P_410_4();
+              this.__loadScripts();
             }
           }, this);
           id2 = dynLoader.addListener('failed', function (e) {
@@ -252,14 +252,14 @@
             return;
           }
 
-          DynamicScriptLoader.__P_410_3[script] = true;
-          delete DynamicScriptLoader.__P_410_2[script];
+          DynamicScriptLoader.__LOADED[script] = true;
+          delete DynamicScriptLoader.__IN_PROGRESS[script];
           this.fireDataEvent('loaded', {
             script: script,
             status: request.status
           });
 
-          this.__P_410_4();
+          this.__loadScripts();
         }, this);
 
         var onError = function onError(request) {
@@ -267,7 +267,7 @@
             return;
           }
 
-          delete DynamicScriptLoader.__P_410_2[script];
+          delete DynamicScriptLoader.__IN_PROGRESS[script];
           this.fireDataEvent('failed', {
             script: script,
             status: request.status
@@ -278,23 +278,23 @@
         loader.on("timeout", onError, this); // this.debug("Loading " + script + " started");
 
         loader.open("GET", uri);
-        DynamicScriptLoader.__P_410_2[script] = this;
+        DynamicScriptLoader.__IN_PROGRESS[script] = this;
         loader.send();
       }
     },
     destruct: function destruct() {
       var DynamicScriptLoader = qx.util.DynamicScriptLoader;
 
-      for (var key in DynamicScriptLoader.__P_410_2) {
-        if (DynamicScriptLoader.__P_410_2[key] === this) {
-          delete DynamicScriptLoader.__P_410_2[key];
+      for (var key in DynamicScriptLoader.__IN_PROGRESS) {
+        if (DynamicScriptLoader.__IN_PROGRESS[key] === this) {
+          delete DynamicScriptLoader.__IN_PROGRESS[key];
         }
       }
 
-      this.__P_410_1 = undefined;
+      this.__QUEUE = undefined;
     }
   });
   qx.util.DynamicScriptLoader.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=DynamicScriptLoader.js.map?dt=1608478940446
+//# sourceMappingURL=DynamicScriptLoader.js.map?dt=1609082304131

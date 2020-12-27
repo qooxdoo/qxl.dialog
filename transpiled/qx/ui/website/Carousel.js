@@ -99,14 +99,14 @@
       qx.ui.website.Widget.constructor.call(this, selector, context);
     },
     members: {
-      __P_395_0: null,
-      __P_395_1: null,
-      __P_395_2: null,
-      __P_395_3: null,
-      __P_395_4: null,
-      __P_395_5: null,
+      __active: null,
+      __pageContainer: null,
+      __scrollContainer: null,
+      __paginationLabels: null,
+      __startPosLeft: null,
+      __pagination: null,
       _ie9: false,
-      __P_395_6: false,
+      __blocked: false,
       // overridden
       init: function init() {
         if (!qx.ui.website.Carousel.prototype.init.base.call(this)) {
@@ -123,15 +123,15 @@
 
         qxWeb(window).on("resize", this._onResize, this);
         var prefix = this.getCssPrefix();
-        this.__P_395_2 = qxWeb.create("<div>").addClass(prefix + "-container").appendTo(this);
-        this.__P_395_1 = qxWeb.create("<div>").addClass("qx-hbox").setStyle("height", "100%").appendTo(this.__P_395_2);
-        this.__P_395_3 = [];
-        this.__P_395_5 = qxWeb.create("<div>").addClasses([prefix + "-pagination", "qx-hbox", "qx-flex1"]).setStyle("visibility", "excluded").appendTo(this);
+        this.__scrollContainer = qxWeb.create("<div>").addClass(prefix + "-container").appendTo(this);
+        this.__pageContainer = qxWeb.create("<div>").addClass("qx-hbox").setStyle("height", "100%").appendTo(this.__scrollContainer);
+        this.__paginationLabels = [];
+        this.__pagination = qxWeb.create("<div>").addClasses([prefix + "-pagination", "qx-hbox", "qx-flex1"]).setStyle("visibility", "excluded").appendTo(this);
 
         if (this._ie9) {
-          this.__P_395_1.setStyle("display", "table");
+          this.__pageContainer.setStyle("display", "table");
 
-          this.__P_395_5.setStyle("textAlign", "center");
+          this.__pagination.setStyle("textAlign", "center");
         } else {
           this.on("trackstart", this._onTrackStart, this).on("track", this._onTrack, this).on("trackend", this._onTrackEnd, this);
         }
@@ -160,8 +160,8 @@
        * @param page {qxWeb} The page to be activated
        */
       setActive: function setActive(page) {
-        var old = this.__P_395_0;
-        this.__P_395_0 = page;
+        var old = this.__active;
+        this.__active = page;
 
         this._update();
 
@@ -178,7 +178,7 @@
        * @return {qxWeb} The active page
        */
       getActive: function getActive() {
-        return this.__P_395_0;
+        return this.__active;
       },
 
       /**
@@ -241,14 +241,14 @@
        * @param child {qxWeb} The added child.
        */
       addPage: function addPage(child) {
-        child.addClasses(["qx-flex1", this.getCssPrefix() + "-page"]).appendTo(this.__P_395_1);
+        child.addClasses(["qx-flex1", this.getCssPrefix() + "-page"]).appendTo(this.__pageContainer);
 
-        if (this.find("." + this.getCssPrefix() + "-page").length > this.__P_395_3.length) {
+        if (this.find("." + this.getCssPrefix() + "-page").length > this.__paginationLabels.length) {
           var paginationLabel = this._createPaginationLabel();
 
-          this.__P_395_3.push(paginationLabel);
+          this.__paginationLabels.push(paginationLabel);
 
-          this.__P_395_5.append(paginationLabel);
+          this.__pagination.append(paginationLabel);
         }
 
         this._updateWidth();
@@ -266,7 +266,7 @@
         this.find(".scroll").setStyle("touchAction", "pan-y"); // scroll as soon as we have the third page added
 
         if (this._getPages().length === 3 && !this._ie9) {
-          this.__P_395_2.translate([-this.getWidth() + "px", 0, 0]);
+          this.__scrollContainer.translate([-this.getWidth() + "px", 0, 0]);
         }
 
         this._updatePagination();
@@ -281,9 +281,9 @@
         child.remove(); // reset the active page if we don't have any page at all
 
         if (this._getPages().length == 0) {
-          this.__P_395_5.empty();
+          this.__pagination.empty();
 
-          this.__P_395_3 = [];
+          this.__paginationLabels = [];
           this.setActive(null);
           return;
         }
@@ -299,10 +299,10 @@
           this._setOrder(this._getPages(), 0);
         }
 
-        this.__P_395_3.splice(child.priorPosition, 1)[0].remove();
+        this.__paginationLabels.splice(child.priorPosition, 1)[0].remove();
 
-        for (var i = 0; i < this.__P_395_3.length; i++) {
-          this.__P_395_3[i].getChildren(".label").setHtml(i + 1 + "");
+        for (var i = 0; i < this.__paginationLabels.length; i++) {
+          this.__paginationLabels[i].getChildren(".label").setHtml(i + 1 + "");
         }
 
         this._updatePagination();
@@ -337,9 +337,9 @@
           var direction = this._updateOrder();
 
           if (direction == "right") {
-            left = this._getPositionLeft() - this.__P_395_2.getWidth();
+            left = this._getPositionLeft() - this.__scrollContainer.getWidth();
           } else if (direction == "left") {
-            left = this._getPositionLeft() + this.__P_395_2.getWidth();
+            left = this._getPositionLeft() + this.__scrollContainer.getWidth();
           } else if (this._getPages().length >= 3) {
             // back snapping if the order has not changed
             this._translateTo(this.getWidth());
@@ -352,7 +352,7 @@
 
           if (left !== undefined) {
             // first, translate the old page into view
-            this.__P_395_2.translate([-left + "px", 0, 0]); // animate to the new page
+            this.__scrollContainer.translate([-left + "px", 0, 0]); // animate to the new page
 
 
             this._translateTo(this.getWidth());
@@ -439,13 +439,13 @@
 
 
         if (this._getPositionLeft() === 0 && this._getPages().length > 2 && !this._ie9) {
-          this.__P_395_2.translate([-this.getWidth() + "px", 0, 0]);
+          this.__scrollContainer.translate([-this.getWidth() + "px", 0, 0]);
         } // set the container width to total width of all pages
 
 
         var containerWidth = this.getWidth() * this._getPages().length;
 
-        this.__P_395_1.setStyle("width", containerWidth + "px"); // set the width of all pages to the carousel width
+        this.__pageContainer.setStyle("width", containerWidth + "px"); // set the width of all pages to the carousel width
 
 
         this._getPages().setStyle("width", this.getWidth() + "px");
@@ -458,16 +458,16 @@
        * cancels any running animation.
        */
       _onTrackStart: function _onTrackStart() {
-        if (this.__P_395_6) {
+        if (this.__blocked) {
           return;
         }
 
-        this.__P_395_4 = this._getPositionLeft();
+        this.__startPosLeft = this._getPositionLeft();
 
-        this.__P_395_2 // stop the current scroll animation
+        this.__scrollContainer // stop the current scroll animation
         .stop() // correct the scroll position as the stopped animation
         // resets to its initial value
-        .translate([-Math.round(this.__P_395_4) + "px", 0, 0]);
+        .translate([-Math.round(this.__startPosLeft) + "px", 0, 0]);
       },
 
       /**
@@ -475,12 +475,12 @@
        * @param e {Event} The track event.
        */
       _onTrack: function _onTrack(e) {
-        if (this.__P_395_6) {
+        if (this.__blocked) {
           return;
         }
 
         if (e.delta.axis == "x" && this._getPages().length > 2) {
-          this.__P_395_2.translate([-(this.__P_395_4 - e.delta.x) + "px", 0, 0]);
+          this.__scrollContainer.translate([-(this.__startPosLeft - e.delta.x) + "px", 0, 0]);
         }
       },
 
@@ -488,18 +488,18 @@
        * TrackEnd handler for enabling the scroll events.
        */
       _onTrackEnd: function _onTrackEnd() {
-        if (this.__P_395_4 == null || this.__P_395_6) {
+        if (this.__startPosLeft == null || this.__blocked) {
           // don't end if we didn't start
           return;
         } // make sure the trackend handling is done after the swipe handling
 
 
         window.setTimeout(function () {
-          if (this._getPages().length < 3 || this.__P_395_2.isPlaying()) {
+          if (this._getPages().length < 3 || this.__scrollContainer.isPlaying()) {
             return;
           }
 
-          this.__P_395_4 = null;
+          this.__startPosLeft = null;
           var width = this.getWidth();
 
           var pages = this._getPages();
@@ -536,7 +536,7 @@
        * @param e {Event} The swipe event.
        */
       _onSwipe: function _onSwipe(e) {
-        if (this.__P_395_6) {
+        if (this.__blocked) {
           return;
         }
 
@@ -566,7 +566,7 @@
        * @param e {Event} The tap event.
        */
       _onPaginationLabelTap: function _onPaginationLabelTap(e) {
-        this.__P_395_3.forEach(function (label, index) {
+        this.__paginationLabels.forEach(function (label, index) {
           if (label[0] === e.currentTarget) {
             var pages = this._getPages(); // wo don't reorder with two pages there just set the active property
 
@@ -582,16 +582,16 @@
             this._setOrder(pages, 0); // get the active page into view
 
 
-            this.__P_395_2.translate([-activeIndex * this.getWidth() + "px", 0, 0]);
+            this.__scrollContainer.translate([-activeIndex * this.getWidth() + "px", 0, 0]);
 
-            this.__P_395_6 = true; // animate to the desired page
+            this.__blocked = true; // animate to the desired page
 
             this._translateTo((activeIndex + distance) * this.getWidth());
 
-            this.__P_395_2.once("animationEnd", function (page) {
-              this.__P_395_6 = false; // set the viewport back to the default position
+            this.__scrollContainer.once("animationEnd", function (page) {
+              this.__blocked = false; // set the viewport back to the default position
 
-              this.__P_395_2.translate([-this.getWidth() + "px", 0, 0]);
+              this.__scrollContainer.translate([-this.getWidth() + "px", 0, 0]);
 
               this.setActive(page); // this also updates the order
 
@@ -608,13 +608,13 @@
        */
       _updatePagination: function _updatePagination() {
         // hide the pagination for one page
-        this._getPages().length < 2 ? this.__P_395_5.setStyle("visibility", "excluded") : this.__P_395_5.setStyle("visibility", "visible");
+        this._getPages().length < 2 ? this.__pagination.setStyle("visibility", "excluded") : this.__pagination.setStyle("visibility", "visible");
 
-        this.__P_395_5.find("." + this.getCssPrefix() + "-pagination-label").removeClass("active");
+        this.__pagination.find("." + this.getCssPrefix() + "-pagination-label").removeClass("active");
 
         var pages = this._getPages();
 
-        this.__P_395_3[pages.indexOf(this.getActive())].addClass("active");
+        this.__paginationLabels[pages.indexOf(this.getActive())].addClass("active");
       },
 
       /**
@@ -624,7 +624,7 @@
         this._updateWidth();
 
         if (this._getPages().length > 2) {
-          this.__P_395_2.translate([-this.getWidth() + "px", 0, 0]);
+          this.__scrollContainer.translate([-this.getWidth() + "px", 0, 0]);
         }
       },
 
@@ -633,7 +633,7 @@
        * @param left {Number} The new left position
        */
       _translateTo: function _translateTo(left) {
-        this.__P_395_2.animate({
+        this.__scrollContainer.animate({
           duration: this.getConfig("pageSwitchDuration"),
           keep: 100,
           timing: "ease",
@@ -678,7 +678,7 @@
        * @return {qxWeb} All pages.
        */
       _getPages: function _getPages() {
-        return this.__P_395_1.find("." + this.getCssPrefix() + "-page");
+        return this.__pageContainer.find("." + this.getCssPrefix() + "-page");
       },
 
       /**
@@ -686,7 +686,7 @@
        * @return {Number} The position in px.
        */
       _getPositionLeft: function _getPositionLeft() {
-        var containerRect = this.__P_395_2[0].getBoundingClientRect();
+        var containerRect = this.__scrollContainer[0].getBoundingClientRect();
 
         var parentRect = this[0].getBoundingClientRect();
         return -(containerRect.left - parentRect.left);
@@ -707,4 +707,4 @@
   qx.ui.website.Carousel.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Carousel.js.map?dt=1608478939509
+//# sourceMappingURL=Carousel.js.map?dt=1609082302953

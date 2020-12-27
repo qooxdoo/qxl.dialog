@@ -63,8 +63,8 @@
     *****************************************************************************
     */
     members: {
-      __P_377_0: 16,
-      __P_377_1: 16,
+      __defaultWidth: 16,
+      __defaultHeight: 16,
       _aliasManager: null,
 
       /**
@@ -74,7 +74,7 @@
        * @return {Map} A map containing the image's <code>width</code> and
        *    <code>height</code>
        */
-      __P_377_2: function __P_377_2(source) {
+      __getImageSize: function __getImageSize(source) {
         var ResourceManager = qx.util.ResourceManager.getInstance();
         var ImageLoader = qx.io.ImageLoader;
         var width, height; // Detect if the image registry knows this image
@@ -85,8 +85,8 @@
           width = ImageLoader.getWidth(source);
           height = ImageLoader.getHeight(source);
         } else {
-          width = this.__P_377_0;
-          height = this.__P_377_1;
+          width = this.__defaultWidth;
+          height = this.__defaultHeight;
         }
 
         return {
@@ -114,7 +114,7 @@
        *     <li>tooltip (optional)</li>
        *   </ul>
        */
-      __P_377_3: function __P_377_3(imageData) {
+      __createImage: function __createImage(imageData) {
         if (typeof imageData == "string") {
           imageData = {
             url: imageData
@@ -131,7 +131,7 @@
             height: imageData.height
           };
         } else {
-          sizes = this.__P_377_2(url);
+          sizes = this.__getImageSize(url);
         }
 
         return {
@@ -167,7 +167,7 @@
 
         var content = "";
 
-        var imageData = this.__P_377_3(this._identifyImage(value));
+        var imageData = this.__createImage(this._identifyImage(value));
 
         var tooltip = imageData.tooltip ? 'title="' + imageData.tooltip + '"' : "";
         var styles = {
@@ -196,4 +196,4 @@
   qx.ui.virtual.cell.AbstractImage.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=AbstractImage.js.map?dt=1608478938386
+//# sourceMappingURL=AbstractImage.js.map?dt=1609082301565

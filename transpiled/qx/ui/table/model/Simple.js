@@ -40,10 +40,10 @@
     construct: function construct() {
       qx.ui.table.model.Abstract.constructor.call(this);
       this._rowArr = [];
-      this.__P_355_0 = -1; // Array of objects, each with property "ascending" and "descending"
+      this.__sortColumnIndex = -1; // Array of objects, each with property "ascending" and "descending"
 
-      this.__P_355_1 = [];
-      this.__P_355_2 = null;
+      this.__sortMethods = [];
+      this.__editableColArr = null;
     },
     properties: {
       /**
@@ -175,11 +175,11 @@
     },
     members: {
       _rowArr: null,
-      __P_355_2: null,
-      __P_355_3: null,
-      __P_355_1: null,
-      __P_355_0: null,
-      __P_355_4: null,
+      __editableColArr: null,
+      __sortableColArr: null,
+      __sortMethods: null,
+      __sortColumnIndex: null,
+      __sortAscending: null,
       // overridden
       getRowData: function getRowData(rowIndex) {
         var rowData = this._rowArr[rowIndex];
@@ -247,10 +247,10 @@
        * @param editable {Boolean} whether all columns are editable.
        */
       setEditable: function setEditable(editable) {
-        this.__P_355_2 = [];
+        this.__editableColArr = [];
 
         for (var col = 0; col < this.getColumnCount(); col++) {
-          this.__P_355_2[col] = editable;
+          this.__editableColArr[col] = editable;
         }
 
         this.fireEvent("metaDataChanged");
@@ -264,17 +264,17 @@
        */
       setColumnEditable: function setColumnEditable(columnIndex, editable) {
         if (editable != this.isColumnEditable(columnIndex)) {
-          if (this.__P_355_2 == null) {
-            this.__P_355_2 = [];
+          if (this.__editableColArr == null) {
+            this.__editableColArr = [];
           }
 
-          this.__P_355_2[columnIndex] = editable;
+          this.__editableColArr[columnIndex] = editable;
           this.fireEvent("metaDataChanged");
         }
       },
       // overridden
       isColumnEditable: function isColumnEditable(columnIndex) {
-        return this.__P_355_2 ? this.__P_355_2[columnIndex] == true : false;
+        return this.__editableColArr ? this.__editableColArr[columnIndex] == true : false;
       },
 
       /**
@@ -285,24 +285,24 @@
        */
       setColumnSortable: function setColumnSortable(columnIndex, sortable) {
         if (sortable != this.isColumnSortable(columnIndex)) {
-          if (this.__P_355_3 == null) {
-            this.__P_355_3 = [];
+          if (this.__sortableColArr == null) {
+            this.__sortableColArr = [];
           }
 
-          this.__P_355_3[columnIndex] = sortable;
+          this.__sortableColArr[columnIndex] = sortable;
           this.fireEvent("metaDataChanged");
         }
       },
       // overridden
       isColumnSortable: function isColumnSortable(columnIndex) {
-        return this.__P_355_3 ? this.__P_355_3[columnIndex] !== false : true;
+        return this.__sortableColArr ? this.__sortableColArr[columnIndex] !== false : true;
       },
       // overridden
       sortByColumn: function sortByColumn(columnIndex, ascending) {
         // NOTE: We use different comparators for ascending and descending,
         //     because comparators should be really fast.
         var comparator;
-        var sortMethods = this.__P_355_1[columnIndex];
+        var sortMethods = this.__sortMethods[columnIndex];
 
         if (sortMethods) {
           comparator = ascending ? sortMethods.ascending : sortMethods.descending;
@@ -320,8 +320,8 @@
           return comparator(row1, row2, columnIndex);
         });
 
-        this.__P_355_0 = columnIndex;
-        this.__P_355_4 = ascending;
+        this.__sortColumnIndex = columnIndex;
+        this.__sortAscending = ascending;
         var data = {
           columnIndex: columnIndex,
           ascending: ascending
@@ -391,7 +391,7 @@
           methods = compare;
         }
 
-        this.__P_355_1[columnIndex] = methods;
+        this.__sortMethods[columnIndex] = methods;
       },
 
       /**
@@ -406,22 +406,22 @@
        *   in {@link #setSortMethods}.
        */
       getSortMethods: function getSortMethods(columnIndex) {
-        return this.__P_355_1[columnIndex];
+        return this.__sortMethods[columnIndex];
       },
 
       /**
        * Clears the sorting.
        */
       clearSorting: function clearSorting() {
-        if (this.__P_355_0 != -1) {
-          this.__P_355_0 = -1;
-          this.__P_355_4 = true;
+        if (this.__sortColumnIndex != -1) {
+          this.__sortColumnIndex = -1;
+          this.__sortAscending = true;
           this.fireEvent("metaDataChanged");
         }
       },
       // overridden
       getSortColumnIndex: function getSortColumnIndex() {
-        return this.__P_355_0;
+        return this.__sortColumnIndex;
       },
 
       /**
@@ -433,11 +433,11 @@
        * @param columnIndex {Integer} index of the column
        */
       _setSortColumnIndex: function _setSortColumnIndex(columnIndex) {
-        this.__P_355_0 = columnIndex;
+        this.__sortColumnIndex = columnIndex;
       },
       // overridden
       isSortAscending: function isSortAscending() {
-        return this.__P_355_4;
+        return this.__sortAscending;
       },
 
       /**
@@ -451,7 +451,7 @@
        *   <i> false</i> for a descending sort.
        */
       _setSortAscending: function _setSortAscending(ascending) {
-        this.__P_355_4 = ascending;
+        this.__sortAscending = ascending;
       },
       // overridden
       getRowCount: function getRowCount() {
@@ -480,7 +480,7 @@
             this.fireDataEvent("dataChanged", data);
           }
 
-          if (columnIndex == this.__P_355_0) {
+          if (columnIndex == this.__sortColumnIndex) {
             this.clearSorting();
           }
         }
@@ -708,10 +708,10 @@
       }
     },
     destruct: function destruct() {
-      this._rowArr = this.__P_355_2 = this.__P_355_1 = this.__P_355_3 = null;
+      this._rowArr = this.__editableColArr = this.__sortMethods = this.__sortableColArr = null;
     }
   });
   qx.ui.table.model.Simple.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Simple.js.map?dt=1608478936386
+//# sourceMappingURL=Simple.js.map?dt=1609082299202

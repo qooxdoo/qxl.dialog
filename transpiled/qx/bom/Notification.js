@@ -119,7 +119,7 @@
      */
     construct: function construct() {
       qx.core.Object.constructor.call(this);
-      this.__P_27_0 = {};
+      this.__notifications = {};
     },
 
     /*
@@ -153,8 +153,8 @@
     *****************************************************************************
     */
     members: {
-      __P_27_0: null,
-      __P_27_1: 0,
+      __notifications: null,
+      __lastId: 0,
 
       /**
        * Display a desktop notification using a _title_, _message_ and _icon_.
@@ -176,7 +176,7 @@
           // Generate unique tag to be able to identify the
           // notification later on.
           if (tag !== undefined) {
-            tag = "id" + this.__P_27_1++;
+            tag = "id" + this.__lastId++;
           } // If we've the permission already, just send it
 
 
@@ -242,34 +242,34 @@
         var that = this;
 
         notification.onshow = function () {
-          that.__P_27_0[tag] = notification;
+          that.__notifications[tag] = notification;
           that.fireDataEvent("appear", tag);
         };
 
         notification.onclose = function () {
           that.fireDataEvent("close", tag);
 
-          if (that.__P_27_0[tag]) {
-            that.__P_27_0[tag] = null;
-            delete that.__P_27_0[tag];
+          if (that.__notifications[tag]) {
+            that.__notifications[tag] = null;
+            delete that.__notifications[tag];
           }
         };
 
         notification.onclick = function () {
           that.fireDataEvent("click", tag);
 
-          if (that.__P_27_0[tag]) {
-            that.__P_27_0[tag] = null;
-            delete that.__P_27_0[tag];
+          if (that.__notifications[tag]) {
+            that.__notifications[tag] = null;
+            delete that.__notifications[tag];
           }
         };
 
         notification.onerror = function () {
           that.fireDataEvent("error", tag);
 
-          if (that.__P_27_0[tag]) {
-            that.__P_27_0[tag] = null;
-            delete that.__P_27_0[tag];
+          if (that.__notifications[tag]) {
+            that.__notifications[tag] = null;
+            delete that.__notifications[tag];
           }
         }; // Install expire timer if exists
 
@@ -287,8 +287,8 @@
        * @param tag {String} Notification tag
        */
       close: function close(tag) {
-        if (this.__P_27_0[tag]) {
-          this.__P_27_0[tag].close();
+        if (this.__notifications[tag]) {
+          this.__notifications[tag].close();
         }
       },
 
@@ -327,4 +327,4 @@
   qx.bom.Notification.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Notification.js.map?dt=1608478911987
+//# sourceMappingURL=Notification.js.map?dt=1609082270518

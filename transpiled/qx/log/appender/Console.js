@@ -75,10 +75,10 @@
         INITIALIZATION AND SHUTDOWN
       ---------------------------------------------------------------------------
       */
-      __P_179_0: null,
-      __P_179_1: null,
-      __P_179_2: null,
-      __P_179_3: null,
+      __main: null,
+      __log: null,
+      __cmd: null,
+      __lastCommand: null,
 
       /**
        * Initializes the console, building HTML and pushing last
@@ -98,11 +98,11 @@
         var main = wrapper.firstChild;
         document.body.appendChild(wrapper.firstChild); // Make important DOM nodes available
 
-        this.__P_179_0 = main;
-        this.__P_179_1 = main.childNodes[1];
-        this.__P_179_2 = main.childNodes[2].firstChild; // Correct height of messages frame
+        this.__main = main;
+        this.__log = main.childNodes[1];
+        this.__cmd = main.childNodes[2].firstChild; // Correct height of messages frame
 
-        this.__P_179_4(); // Finally register to log engine
+        this.__onResize(); // Finally register to log engine
 
 
         qx.log.Logger.register(this); // Register to object manager
@@ -115,7 +115,7 @@
        *
        */
       dispose: function dispose() {
-        qx.event.Registration.removeListener(document.documentElement, "keypress", this.__P_179_5, this);
+        qx.event.Registration.removeListener(document.documentElement, "keypress", this.__onKeyPress, this);
         qx.log.Logger.unregister(this);
       },
 
@@ -131,7 +131,7 @@
        */
       clear: function clear() {
         // Remove all messages
-        this.__P_179_1.innerHTML = "";
+        this.__log.innerHTML = "";
       },
 
       /**
@@ -144,17 +144,17 @@
         // Append new content
         var formatter = qx.log.appender.Formatter.getFormatter();
 
-        this.__P_179_1.appendChild(formatter.toHtml(entry)); // Scroll down
+        this.__log.appendChild(formatter.toHtml(entry)); // Scroll down
 
 
-        this.__P_179_6();
+        this.__scrollDown();
       },
 
       /**
        * Automatically scroll down to the last line
        */
-      __P_179_6: function __P_179_6() {
-        this.__P_179_1.scrollTop = this.__P_179_1.scrollHeight;
+      __scrollDown: function __scrollDown() {
+        this.__log.scrollTop = this.__log.scrollHeight;
       },
 
       /*
@@ -164,19 +164,19 @@
       */
 
       /** @type {Boolean} Flag to store last visibility status */
-      __P_179_7: true,
+      __visible: true,
 
       /**
        * Toggles the visibility of the console between visible and hidden.
        *
        */
       toggle: function toggle() {
-        if (!this.__P_179_0) {
+        if (!this.__main) {
           this.init();
-        } else if (this.__P_179_0.style.display == "none") {
+        } else if (this.__main.style.display == "none") {
           this.show();
         } else {
-          this.__P_179_0.style.display = "none";
+          this.__main.style.display = "none";
         }
       },
 
@@ -185,11 +185,11 @@
        *
        */
       show: function show() {
-        if (!this.__P_179_0) {
+        if (!this.__main) {
           this.init();
         } else {
-          this.__P_179_0.style.display = "block";
-          this.__P_179_1.scrollTop = this.__P_179_1.scrollHeight;
+          this.__main.style.display = "block";
+          this.__log.scrollTop = this.__log.scrollHeight;
         }
       },
 
@@ -200,14 +200,14 @@
       */
 
       /** @type {Array} List of all previous commands. */
-      __P_179_8: [],
+      __history: [],
 
       /**
        * Executes the currently given command
        *
        */
       execute: function execute() {
-        var value = this.__P_179_2.value;
+        var value = this.__cmd.value;
 
         if (value == "") {
           return;
@@ -223,13 +223,13 @@
         command.innerHTML = formatter.escapeHTML(">>> " + value);
         command.className = "user-command";
 
-        this.__P_179_8.push(value);
+        this.__history.push(value);
 
-        this.__P_179_3 = this.__P_179_8.length;
+        this.__lastCommand = this.__history.length;
 
-        this.__P_179_1.appendChild(command);
+        this.__log.appendChild(command);
 
-        this.__P_179_6();
+        this.__scrollDown();
 
         try {
           var ret = window.eval(value);
@@ -253,8 +253,8 @@
        *
        * @param e {Event} Event object
        */
-      __P_179_4: function __P_179_4(e) {
-        this.__P_179_1.style.height = this.__P_179_0.clientHeight - this.__P_179_0.firstChild.offsetHeight - this.__P_179_0.lastChild.offsetHeight + "px";
+      __onResize: function __onResize(e) {
+        this.__log.style.height = this.__main.clientHeight - this.__main.firstChild.offsetHeight - this.__main.lastChild.offsetHeight + "px";
       },
 
       /**
@@ -262,7 +262,7 @@
        *
        * @param e {Event} Event object
        */
-      __P_179_5: function __P_179_5(e) {
+      __onKeyPress: function __onKeyPress(e) {
         if (e instanceof qx.event.type.Tap || e instanceof qx.event.type.Pointer) {
           var target = e.getTarget();
 
@@ -281,29 +281,29 @@
         } // Not yet created
 
 
-        if (!this.__P_179_0) {
+        if (!this.__main) {
           return;
         } // Active element not in console
 
 
-        if (!qx.dom.Hierarchy.contains(this.__P_179_0, e.getTarget())) {
+        if (!qx.dom.Hierarchy.contains(this.__main, e.getTarget())) {
           return;
         } // Command execution
 
 
-        if (iden == "Enter" && this.__P_179_2.value != "") {
+        if (iden == "Enter" && this.__cmd.value != "") {
           this.execute();
-          this.__P_179_2.value = "";
+          this.__cmd.value = "";
         } // History management
 
 
         if (iden == "Up" || iden == "Down") {
-          this.__P_179_3 += iden == "Up" ? -1 : 1;
-          this.__P_179_3 = Math.min(Math.max(0, this.__P_179_3), this.__P_179_8.length);
-          var entry = this.__P_179_8[this.__P_179_3];
-          this.__P_179_2.value = entry || "";
+          this.__lastCommand += iden == "Up" ? -1 : 1;
+          this.__lastCommand = Math.min(Math.max(0, this.__lastCommand), this.__history.length);
+          var entry = this.__history[this.__lastCommand];
+          this.__cmd.value = entry || "";
 
-          this.__P_179_2.select();
+          this.__cmd.select();
         }
       }
     },
@@ -314,11 +314,11 @@
     *****************************************************************************
     */
     defer: function defer(statics) {
-      qx.event.Registration.addListener(document.documentElement, "keypress", statics.__P_179_5, statics);
-      qx.event.Registration.addListener(document.documentElement, "longtap", statics.__P_179_5, statics);
+      qx.event.Registration.addListener(document.documentElement, "keypress", statics.__onKeyPress, statics);
+      qx.event.Registration.addListener(document.documentElement, "longtap", statics.__onKeyPress, statics);
     }
   });
   qx.log.appender.Console.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Console.js.map?dt=1608478923289
+//# sourceMappingURL=Console.js.map?dt=1609082283375

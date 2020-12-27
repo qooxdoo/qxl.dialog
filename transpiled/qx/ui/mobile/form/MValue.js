@@ -114,9 +114,9 @@
     *****************************************************************************
     */
     members: {
-      __P_305_0: null,
-      __P_305_1: null,
-      __P_305_2: null,
+      __oldValue: null,
+      __inputTimeoutHandle: null,
+      __hasFocus: null,
 
       /**
        * Converts the incoming value.
@@ -138,14 +138,14 @@
       * Handler for <code>focus</code> event.
       */
       _onFocus: function _onFocus() {
-        this.__P_305_2 = true;
+        this.__hasFocus = true;
       },
 
       /**
       * Handler for <code>blur</code> event.
       */
       _onBlur: function _onBlur() {
-        this.__P_305_2 = false;
+        this.__hasFocus = false;
       },
 
       /**
@@ -153,7 +153,7 @@
       * @return {Boolean} <code>true</code> or <code>false</code>
       */
       hasFocus: function hasFocus() {
-        return this.__P_305_2;
+        return this.__hasFocus;
       },
 
       /**
@@ -164,14 +164,14 @@
       setValue: function setValue(value) {
         value = this._convertValue(value);
 
-        if (this.__P_305_0 != value) {
+        if (this.__oldValue != value) {
           if (this._setValue) {
             this._setValue(value);
           } else {
             this._setAttribute("value", value);
           }
 
-          this.__P_305_3(value);
+          this.__fireChangeValue(value);
         }
       },
 
@@ -197,7 +197,7 @@
        * @param evt {qx.event.type.Data} The event, containing the changed content.
        */
       _onChangeContent: function _onChangeContent(evt) {
-        this.__P_305_3(this._convertValue(evt.getData()));
+        this.__fireChangeValue(this._convertValue(evt.getData()));
       },
 
       /**
@@ -213,7 +213,7 @@
           if (this._setValue) {
             this._setValue(data);
           } else {
-            this.__P_305_3(this._convertValue(data));
+            this.__fireChangeValue(this._convertValue(data));
           }
         }
       },
@@ -249,9 +249,9 @@
        *
        * @param value {var} The current value to fire.
        */
-      __P_305_3: function __P_305_3(value) {
-        if (this.__P_305_0 != value) {
-          this.__P_305_0 = value;
+      __fireChangeValue: function __fireChangeValue(value) {
+        if (this.__oldValue != value) {
+          this.__oldValue = value;
           this.fireDataEvent("changeValue", value);
         }
       }
@@ -264,4 +264,4 @@
   qx.ui.mobile.form.MValue.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MValue.js.map?dt=1608478933479
+//# sourceMappingURL=MValue.js.map?dt=1609082295623

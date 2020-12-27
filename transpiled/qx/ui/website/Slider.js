@@ -185,7 +185,7 @@
       "changePosition": "Number"
     },
     members: {
-      __P_397_0: null,
+      __dragMode: null,
       _value: 0,
       init: function init() {
         if (!qx.ui.website.Slider.prototype.init.base.call(this)) {
@@ -259,7 +259,7 @@
         this._value = value;
 
         if (qxWeb.type.get(step) != "Array" || step.indexOf(value) != -1) {
-          this.__P_397_1(value);
+          this.__valueToPosition(value);
 
           this.getChildren("." + this.getCssPrefix() + "-knob").setHtml(this._getKnobContent());
           this.emit("changeValue", value);
@@ -432,11 +432,11 @@
       _onPointerDown: function _onPointerDown(e) {
         // this can happen if the user releases the button while dragging outside
         // of the browser viewport
-        if (this.__P_397_0) {
+        if (this.__dragMode) {
           return;
         }
 
-        this.__P_397_0 = true;
+        this.__dragMode = true;
         qxWeb(document.documentElement).on("pointermove", this._onPointerMove, this).setStyle("cursor", "pointer");
         e.stopPropagation();
       },
@@ -448,11 +448,11 @@
        * @param e {qx.event.Emitter} Incoming event object
        */
       _onDocPointerUp: function _onDocPointerUp(e) {
-        if (this.__P_397_0 === true) {
+        if (this.__dragMode === true) {
           // Cleanup status flags
-          delete this.__P_397_0;
+          delete this.__dragMode;
 
-          this.__P_397_1(this.getValue());
+          this.__valueToPosition(this.getValue());
 
           qxWeb(document.documentElement).off("pointermove", this._onPointerMove, this).setStyle("cursor", "auto");
           e.stopPropagation();
@@ -467,7 +467,7 @@
       _onPointerMove: function _onPointerMove(e) {
         e.preventDefault();
 
-        if (this.__P_397_0) {
+        if (this.__dragMode) {
           var dragPosition = e.getDocumentLeft();
 
           var dragBoundaries = this._getDragBoundaries();
@@ -588,7 +588,7 @@
           this._getPixels();
         }
 
-        this.__P_397_1(this._value);
+        this.__valueToPosition(this._value);
       },
 
       /**
@@ -597,7 +597,7 @@
        *
        * @param value {Integer} slider step value
        */
-      __P_397_1: function __P_397_1(value) {
+      __valueToPosition: function __valueToPosition(value) {
         var pixels = this._getPixels();
 
         var paddingLeft = Math.ceil(parseFloat(this.getStyle("paddingLeft")) || 0);
@@ -641,4 +641,4 @@
   qx.ui.website.Slider.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Slider.js.map?dt=1608478939661
+//# sourceMappingURL=Slider.js.map?dt=1609082303143

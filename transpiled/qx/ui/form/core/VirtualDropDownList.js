@@ -76,9 +76,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
       this._createChildControl("list");
 
-      this.addListener("changeVisibility", this.__P_269_0, this);
-      this.__P_269_1 = new qx.data.Array();
-      this.initSelection(this.__P_269_1);
+      this.addListener("changeVisibility", this.__onChangeVisibility, this);
+      this.__defaultSelection = new qx.data.Array();
+      this.initSelection(this.__defaultSelection);
     },
     properties: {
       // overridden
@@ -134,13 +134,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @type {Boolean} Indicator to ignore selection changes from the
        * {@link #selection} array.
        */
-      __P_269_2: false,
+      __ignoreSelection: false,
 
       /** @type {Boolean} Indicator to ignore selection changes from the list. */
-      __P_269_3: false,
+      __ignoreListSelection: false,
 
       /** @type {qx.data.Array} The initial selection array. */
-      __P_269_1: null,
+      __defaultSelection: null,
 
       /**
        * When the drop-down is allowed to grow wider than its parent,
@@ -149,7 +149,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *
        * @type {Number}
        */
-      __P_269_4: 0,
+      __cachedMaxListItemWidth: 0,
 
       /*
       ---------------------------------------------------------------------------
@@ -179,14 +179,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       setPreselected: function setPreselected(modelItem) {
         this._preselected = modelItem;
-        this.__P_269_3 = true;
+        this.__ignoreListSelection = true;
         var listSelection = this.getChildControl("list").getSelection();
         var helper = new qx.data.Array([modelItem]);
 
-        this.__P_269_5(helper, listSelection);
+        this.__synchronizeSelection(helper, listSelection);
 
         helper.dispose();
-        this.__P_269_3 = false;
+        this.__ignoreListSelection = false;
       },
 
       /*
@@ -237,7 +237,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       _handleKeyboard: function _handleKeyboard(event) {
         if (this.isVisible() && event.getKeyIdentifier() === "Enter") {
-          this.__P_269_6();
+          this.__selectPreselected();
 
           return;
         }
@@ -254,7 +254,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param event {qx.event.type.Mouse} The mouse event.
        */
       _handlePointer: function _handlePointer(event) {
-        this.__P_269_6();
+        this.__selectPreselected();
       },
 
       /**
@@ -264,23 +264,23 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *
        * @param event {qx.event.type.Data} The data event.
        */
-      __P_269_7: function __P_269_7(event) {
-        if (this.__P_269_2) {
+      __onChangeSelection: function __onChangeSelection(event) {
+        if (this.__ignoreSelection) {
           return;
         }
 
         var selection = this.getSelection();
         var listSelection = this.getChildControl("list").getSelection();
-        this.__P_269_3 = true;
+        this.__ignoreListSelection = true;
 
-        this.__P_269_5(selection, listSelection);
+        this.__synchronizeSelection(selection, listSelection);
 
-        this.__P_269_3 = false;
-        this.__P_269_2 = true;
+        this.__ignoreListSelection = false;
+        this.__ignoreSelection = true;
 
-        this.__P_269_5(listSelection, selection);
+        this.__synchronizeSelection(listSelection, selection);
 
-        this.__P_269_2 = false;
+        this.__ignoreSelection = false;
       },
 
       /**
@@ -290,7 +290,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param event {qx.event.type.Data} The data event.
        */
       _onListChangeSelection: function _onListChangeSelection(event) {
-        if (this.__P_269_3) {
+        if (this.__ignoreListSelection) {
           return;
         }
 
@@ -299,11 +299,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         if (this.isVisible()) {
           this.setPreselected(listSelection.getItem(0));
         } else {
-          this.__P_269_2 = true;
+          this.__ignoreSelection = true;
 
-          this.__P_269_5(listSelection, this.getSelection());
+          this.__synchronizeSelection(listSelection, this.getSelection());
 
-          this.__P_269_2 = false;
+          this.__ignoreSelection = false;
         }
       },
 
@@ -313,13 +313,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *
        * @param event {qx.event.type.Data} The event.
        */
-      __P_269_0: function __P_269_0(event) {
+      __onChangeVisibility: function __onChangeVisibility(event) {
         if (this.isVisible()) {
           if (this._preselected == null) {
             var selection = this.getSelection();
             var listSelection = this.getChildControl("list").getSelection();
 
-            this.__P_269_5(selection, listSelection);
+            this.__synchronizeSelection(selection, listSelection);
           }
 
           this._adjustSize();
@@ -375,13 +375,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       */
       // property apply
       _applySelection: function _applySelection(value, old) {
-        value.addListener("change", this.__P_269_7, this);
+        value.addListener("change", this.__onChangeSelection, this);
 
         if (old != null) {
-          old.removeListener("change", this.__P_269_7, this);
+          old.removeListener("change", this.__onChangeSelection, this);
         }
 
-        this.__P_269_5(value, this.getChildControl("list").getSelection(value));
+        this.__synchronizeSelection(value, this.getChildControl("list").getSelection(value));
       },
 
       /*
@@ -394,7 +394,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * Helper method to select the current preselected item, also closes the
        * drop-down.
        */
-      __P_269_6: function __P_269_6() {
+      __selectPreselected: function __selectPreselected() {
         if (this._preselected != null) {
           var selection = this.getSelection();
           selection.splice(0, 1, this._preselected);
@@ -410,7 +410,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param source {qx.data.Array} The source selection.
        * @param target {qx.data.Array} The target selection.
        */
-      __P_269_5: function __P_269_5(source, target) {
+      __synchronizeSelection: function __synchronizeSelection(source, target) {
         if (source.equals(target)) {
           return;
         }
@@ -456,8 +456,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           // Let the drop-down handle its own width.
           this.setWidth(null);
 
-          if (this.__P_269_4 > 0) {
-            uiList.setWidth(this.__P_269_4);
+          if (this.__cachedMaxListItemWidth > 0) {
+            uiList.setWidth(this.__cachedMaxListItemWidth);
           } else {
             uiList.setWidth(width);
           }
@@ -584,7 +584,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           tempListItem.dispose();
         }
 
-        this.__P_269_4 = maxWidth;
+        this.__cachedMaxListItemWidth = maxWidth;
       },
 
       /**
@@ -594,16 +594,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @protected
        */
       _getMaxListItemWidth: function _getMaxListItemWidth() {
-        return this.__P_269_4;
+        return this.__cachedMaxListItemWidth;
       }
     },
     destruct: function destruct() {
-      if (this.__P_269_1) {
-        this.__P_269_1.dispose();
+      if (this.__defaultSelection) {
+        this.__defaultSelection.dispose();
       }
     }
   });
   qx.ui.form.core.VirtualDropDownList.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=VirtualDropDownList.js.map?dt=1608478930838
+//# sourceMappingURL=VirtualDropDownList.js.map?dt=1609082292390

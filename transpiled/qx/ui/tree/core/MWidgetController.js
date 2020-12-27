@@ -39,7 +39,7 @@
    */
   qx.Mixin.define("qx.ui.tree.core.MWidgetController", {
     construct: function construct() {
-      this.__P_371_0 = [];
+      this.__boundItems = [];
     },
     properties: {
       /**
@@ -98,7 +98,7 @@
     },
     members: {
       /** @type {Array} which contains the bounded items */
-      __P_371_0: null,
+      __boundItems: null,
 
       /**
        * Helper-Method for binding the default properties from the model to the
@@ -116,7 +116,7 @@
         this.bindProperty("", "model", null, item, index);
         this.bindProperty(this.getLabelPath(), "label", this.getLabelOptions(), item, index);
 
-        var bindPath = this.__P_371_1(index);
+        var bindPath = this.__getBindPath(index);
 
         var bindTarget = this._tree.getLookupTable();
 
@@ -152,13 +152,13 @@
        * @param index {Integer} The index of the current binding.
        */
       bindProperty: function bindProperty(sourcePath, targetProperty, options, targetWidget, index) {
-        var bindPath = this.__P_371_1(index, sourcePath);
+        var bindPath = this.__getBindPath(index, sourcePath);
 
         var bindTarget = this._tree.getLookupTable();
 
         var id = bindTarget.bind(bindPath, targetWidget, targetProperty, options);
 
-        this.__P_371_2(targetWidget, id);
+        this.__addBinding(targetWidget, id);
       },
 
       /**
@@ -175,21 +175,21 @@
        * @param index {Integer} The index of the current binding.
        */
       bindPropertyReverse: function bindPropertyReverse(targetPath, sourceProperty, options, sourceWidget, index) {
-        var bindPath = this.__P_371_1(index, targetPath);
+        var bindPath = this.__getBindPath(index, targetPath);
 
         var bindTarget = this._tree.getLookupTable();
 
         var id = sourceWidget.bind(sourceProperty, bindTarget, bindPath, options);
 
-        this.__P_371_2(sourceWidget, id);
+        this.__addBinding(sourceWidget, id);
       },
 
       /**
        * Remove all bindings from all bounded items.
        */
       removeBindings: function removeBindings() {
-        while (this.__P_371_0.length > 0) {
-          var item = this.__P_371_0.pop();
+        while (this.__boundItems.length > 0) {
+          var item = this.__boundItems.pop();
 
           this._removeBindingsFrom(item);
         }
@@ -218,7 +218,7 @@
        *   removed.
        */
       _removeBindingsFrom: function _removeBindingsFrom(item) {
-        var bindings = this.__P_371_3(item);
+        var bindings = this.__getBindings(item);
 
         while (bindings.length > 0) {
           var id = bindings.pop();
@@ -230,8 +230,8 @@
           }
         }
 
-        if (this.__P_371_0.includes(item)) {
-          qx.lang.Array.remove(this.__P_371_0, item);
+        if (this.__boundItems.includes(item)) {
+          qx.lang.Array.remove(this.__boundItems, item);
         }
       },
 
@@ -242,7 +242,7 @@
        * @param path {String|null} The path to the property.
        * @return {String} The binding path
        */
-      __P_371_1: function __P_371_1(index, path) {
+      __getBindPath: function __getBindPath(index, path) {
         var bindPath = "[" + index + "]";
 
         if (path != null && path != "") {
@@ -258,15 +258,15 @@
        * @param widget {qx.ui.core.Widget} widget to save binding.
        * @param id {var} the id from the binding.
        */
-      __P_371_2: function __P_371_2(widget, id) {
-        var bindings = this.__P_371_3(widget);
+      __addBinding: function __addBinding(widget, id) {
+        var bindings = this.__getBindings(widget);
 
         if (!bindings.includes(id)) {
           bindings.push(id);
         }
 
-        if (!this.__P_371_0.includes(widget)) {
-          this.__P_371_0.push(widget);
+        if (!this.__boundItems.includes(widget)) {
+          this.__boundItems.push(widget);
         }
       },
 
@@ -276,7 +276,7 @@
        * @param widget {qx.ui.core.Widget} widget to get all binding.
        * @return {Array} all bound id's.
        */
-      __P_371_3: function __P_371_3(widget) {
+      __getBindings: function __getBindings(widget) {
         var bindings = widget.getUserData("BindingIds");
 
         if (bindings == null) {
@@ -288,10 +288,10 @@
       }
     },
     destruct: function destruct() {
-      this.__P_371_0 = null;
+      this.__boundItems = null;
     }
   });
   qx.ui.tree.core.MWidgetController.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MWidgetController.js.map?dt=1608478937808
+//# sourceMappingURL=MWidgetController.js.map?dt=1609082300835

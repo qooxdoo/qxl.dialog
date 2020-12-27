@@ -51,10 +51,10 @@
      */
     construct: function construct(paneScroller) {
       qx.ui.core.Widget.constructor.call(this);
-      this.__P_359_0 = paneScroller;
-      this.__P_359_1 = 0;
-      this.__P_359_2 = 0;
-      this.__P_359_3 = [];
+      this.__paneScroller = paneScroller;
+      this.__lastColCount = 0;
+      this.__lastRowCount = 0;
+      this.__rowCache = [];
     },
 
     /*
@@ -121,15 +121,15 @@
     *****************************************************************************
     */
     members: {
-      __P_359_2: null,
-      __P_359_1: null,
-      __P_359_0: null,
-      __P_359_4: null,
-      __P_359_5: null,
-      __P_359_6: null,
+      __lastRowCount: null,
+      __lastColCount: null,
+      __paneScroller: null,
+      __tableContainer: null,
+      __focusedRow: null,
+      __focusedCol: null,
       // sparse array to cache rendered rows
-      __P_359_3: null,
-      __P_359_7: 0,
+      __rowCache: null,
+      __rowCacheCount: 0,
       // property modifier
       _applyFirstVisibleRow: function _applyFirstVisibleRow(value, old) {
         this.updateContent(false, value - old);
@@ -154,7 +154,7 @@
        * @return {qx.ui.table.pane.Scroller} the TablePaneScroller.
        */
       getPaneScroller: function getPaneScroller() {
-        return this.__P_359_0;
+        return this.__paneScroller;
       },
 
       /**
@@ -163,7 +163,7 @@
        * @return {qx.ui.table.Table} the table.
        */
       getTable: function getTable() {
-        return this.__P_359_0.getTable();
+        return this.__paneScroller.getTable();
       },
 
       /**
@@ -175,10 +175,10 @@
        *          If true, no repaint will be done.
        */
       setFocusedCell: function setFocusedCell(col, row, massUpdate) {
-        if (col != this.__P_359_6 || row != this.__P_359_5) {
-          var oldRow = this.__P_359_5;
-          this.__P_359_6 = col;
-          this.__P_359_5 = row; // Update the focused row background
+        if (col != this.__focusedCol || row != this.__focusedRow) {
+          var oldRow = this.__focusedRow;
+          this.__focusedCol = col;
+          this.__focusedRow = row; // Update the focused row background
 
           if (row != oldRow && !massUpdate) {
             if (oldRow !== null) {
@@ -240,7 +240,7 @@
        * @param lastColumn {Integer} The model index of the last column that has changed.
        */
       onTableModelDataChanged: function onTableModelDataChanged(firstRow, lastRow, firstColumn, lastColumn) {
-        this.__P_359_8();
+        this.__rowCacheClear();
 
         var paneFirstRow = this.getFirstVisibleRow();
         var rowCount = this.getVisibleRowCount();
@@ -264,17 +264,17 @@
       },
       // property apply method
       _applyMaxCacheLines: function _applyMaxCacheLines(value, old) {
-        if (this.__P_359_7 >= value && value !== -1) {
-          this.__P_359_8();
+        if (this.__rowCacheCount >= value && value !== -1) {
+          this.__rowCacheClear();
         }
       },
 
       /**
        * Clear the row cache
        */
-      __P_359_8: function __P_359_8() {
-        this.__P_359_3 = [];
-        this.__P_359_7 = 0;
+      __rowCacheClear: function __rowCacheClear() {
+        this.__rowCache = [];
+        this.__rowCacheCount = 0;
       },
 
       /**
@@ -286,9 +286,9 @@
        * @return {String|null} The cached row or null if a row with the given
        *     index is not cached.
        */
-      __P_359_9: function __P_359_9(row, selected, focused) {
-        if (!selected && !focused && this.__P_359_3[row]) {
-          return this.__P_359_3[row];
+      __rowCacheGet: function __rowCacheGet(row, selected, focused) {
+        if (!selected && !focused && this.__rowCache[row]) {
+          return this.__rowCache[row];
         } else {
           return null;
         }
@@ -302,14 +302,14 @@
        * @param selected {Boolean} Whether the row is currently selected
        * @param focused {Boolean} Whether the row is currently focused
        */
-      __P_359_10: function __P_359_10(row, rowString, selected, focused) {
+      __rowCacheSet: function __rowCacheSet(row, rowString, selected, focused) {
         var maxCacheLines = this.getMaxCacheLines();
 
-        if (!selected && !focused && !this.__P_359_3[row] && maxCacheLines > 0) {
+        if (!selected && !focused && !this.__rowCache[row] && maxCacheLines > 0) {
           this._applyMaxCacheLines(maxCacheLines);
 
-          this.__P_359_3[row] = rowString;
-          this.__P_359_7 += 1;
+          this.__rowCache[row] = rowString;
+          this.__rowCacheCount += 1;
         }
       },
 
@@ -325,7 +325,7 @@
        */
       updateContent: function updateContent(completeUpdate, scrollOffset, onlyRow, onlySelectionOrFocusChanged) {
         if (completeUpdate) {
-          this.__P_359_8();
+          this.__rowCacheClear();
         }
 
         if (scrollOffset && Math.abs(scrollOffset) <= Math.min(10, this.getVisibleRowCount())) {
@@ -389,7 +389,7 @@
         for (; y < end; y++, row++) {
           cellInfo.row = row;
           cellInfo.selected = selectionModel.isSelectedIndex(row);
-          cellInfo.focusedRow = this.__P_359_5 == row;
+          cellInfo.focusedRow = this.__focusedRow == row;
           cellInfo.rowData = tableModel.getRowData(row);
           rowRenderer.updateDataRowElement(cellInfo, rowNodes[y]);
         }
@@ -424,7 +424,7 @@
             col: col,
             xPos: x,
             editable: tableModel.isColumnEditable(col),
-            focusedCol: this.__P_359_6 == col,
+            focusedCol: this.__focusedCol == col,
             styleLeft: left,
             styleWidth: cellWidth
           });
@@ -436,9 +436,9 @@
 
         for (var row = firstRow; row < firstRow + rowCount; row++) {
           var selected = selectionModel.isSelectedIndex(row);
-          var focusedRow = this.__P_359_5 == row;
+          var focusedRow = this.__focusedRow == row;
 
-          var cachedRow = this.__P_359_9(row, selected, focusedRow);
+          var cachedRow = this.__rowCacheGet(row, selected, focusedRow);
 
           if (cachedRow) {
             rowsArr.push(cachedRow);
@@ -511,7 +511,7 @@
           rowHtml.push('</div>');
           var rowString = rowHtml.join("");
 
-          this.__P_359_10(row, rowString, selected, focusedRow);
+          this.__rowCacheSet(row, rowString, selected, focusedRow);
 
           rowsArr.push(rowString);
         }
@@ -564,15 +564,15 @@
         } // render new lines
 
 
-        if (!this.__P_359_4) {
-          this.__P_359_4 = document.createElement("div");
+        if (!this.__tableContainer) {
+          this.__tableContainer = document.createElement("div");
         }
 
         var tableDummy = '<div>';
         tableDummy += this._getRowsHtml(firstRow + addRowBase, Math.abs(rowOffset));
         tableDummy += '</div>';
-        this.__P_359_4.innerHTML = tableDummy;
-        var newTableRows = this.__P_359_4.firstChild.childNodes; // append new lines
+        this.__tableContainer.innerHTML = tableDummy;
+        var newTableRows = this.__tableContainer.firstChild.childNodes; // append new lines
 
         if (rowOffset > 0) {
           for (var i = newTableRows.length - 1; i >= 0; i--) {
@@ -587,10 +587,10 @@
         } // update focus indicator
 
 
-        if (this.__P_359_5 !== null) {
-          this._updateRowStyles(this.__P_359_5 - rowOffset);
+        if (this.__focusedRow !== null) {
+          this._updateRowStyles(this.__focusedRow - rowOffset);
 
-          this._updateRowStyles(this.__P_359_5);
+          this._updateRowStyles(this.__focusedRow);
         }
 
         this.fireEvent("paneUpdated");
@@ -624,12 +624,12 @@
         } // render new lines
 
 
-        if (!this.__P_359_4) {
-          this.__P_359_4 = document.createElement("div");
+        if (!this.__tableContainer) {
+          this.__tableContainer = document.createElement("div");
         }
 
-        this.__P_359_4.innerHTML = "<div>" + this._getRowsHtml(row, 1) + "</div>";
-        var newTableRows = this.__P_359_4.firstChild.childNodes;
+        this.__tableContainer.innerHTML = "<div>" + this._getRowsHtml(row, 1) + "</div>";
+        var newTableRows = this.__tableContainer.firstChild.childNodes;
         tableBody.replaceChild(newTableRows[0], rowElem); // update focus indicator
 
         this._updateRowStyles(null);
@@ -677,8 +677,8 @@
         var data = htmlArr.join("");
         elem.innerHTML = data;
         this.setWidth(rowWidth);
-        this.__P_359_1 = colCount;
-        this.__P_359_2 = rowCount;
+        this.__lastColCount = colCount;
+        this.__lastRowCount = rowCount;
         this.fireEvent("paneUpdated");
       }
     },
@@ -689,11 +689,11 @@
     *****************************************************************************
     */
     destruct: function destruct() {
-      this.__P_359_4 = this.__P_359_0 = this.__P_359_3 = null;
+      this.__tableContainer = this.__paneScroller = this.__rowCache = null;
       this.removeListener("track", this._onTrack, this);
     }
   });
   qx.ui.table.pane.Pane.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Pane.js.map?dt=1608478936589
+//# sourceMappingURL=Pane.js.map?dt=1609082299466

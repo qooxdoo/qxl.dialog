@@ -102,7 +102,7 @@
        *
        * @lint ignoreReferenceField(__contentPaddingSetter)
        */
-      __P_217_0: {
+      __contentPaddingSetter: {
         contentPaddingTop: "setPaddingTop",
         contentPaddingRight: "setPaddingRight",
         contentPaddingBottom: "setPaddingBottom",
@@ -114,7 +114,7 @@
        *
        * @lint ignoreReferenceField(__contentPaddingThemedSetter)
        */
-      __P_217_1: {
+      __contentPaddingThemedSetter: {
         contentPaddingTop: "setThemedPaddingTop",
         contentPaddingRight: "setThemedPaddingRight",
         contentPaddingBottom: "setThemedPaddingBottom",
@@ -126,7 +126,7 @@
        *
        * @lint ignoreReferenceField(__contentPaddingResetter)
        */
-      __P_217_2: {
+      __contentPaddingResetter: {
         contentPaddingTop: "resetPaddingTop",
         contentPaddingRight: "resetPaddingRight",
         contentPaddingBottom: "resetPaddingBottom",
@@ -137,15 +137,15 @@
         var target = this._getContentPaddingTarget();
 
         if (value == null) {
-          var resetter = this.__P_217_2[name];
+          var resetter = this.__contentPaddingResetter[name];
           target[resetter]();
         } else {
           // forward the themed sates if case the apply was invoked by a theme
           if (variant == "setThemed" || variant == "resetThemed") {
-            var setter = this.__P_217_1[name];
+            var setter = this.__contentPaddingThemedSetter[name];
             target[setter](value);
           } else {
-            var setter = this.__P_217_0[name];
+            var setter = this.__contentPaddingSetter[name];
             target[setter](value);
           }
         }
@@ -155,4 +155,4 @@
   qx.ui.core.MContentPadding.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MContentPadding.js.map?dt=1608478927201
+//# sourceMappingURL=MContentPadding.js.map?dt=1609082288427

@@ -206,7 +206,7 @@
           qx.lang.Object.mergeWith(horizontalInWindow, this._findCellsInRange("lastColumn", firstColumn, lastColumn));
         }
 
-        return this.__P_387_0(horizontalInWindow, verticalInWindow);
+        return this.__intersectionAsArray(horizontalInWindow, verticalInWindow);
       },
 
       /**
@@ -217,7 +217,7 @@
        * @param setB {Object} The second map
        * @return {String[]} An array keys found in both maps
        */
-      __P_387_0: function __P_387_0(setA, setB) {
+      __intersectionAsArray: function __intersectionAsArray(setA, setB) {
         var intersection = [];
 
         for (var key in setA) {
@@ -394,4 +394,4 @@
   qx.ui.virtual.layer.CellSpanManager.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=CellSpanManager.js.map?dt=1608478938928
+//# sourceMappingURL=CellSpanManager.js.map?dt=1609082302232

@@ -10548,12 +10548,12 @@
         "width": 16,
         "height": 16
       },
-      "qx/icon/Oxygen/16/places/network-workgroup.png": {
+      "qx/icon/Oxygen/16/places/user-desktop.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
       },
-      "qx/icon/Oxygen/16/places/user-desktop.png": {
+      "qx/icon/Oxygen/16/places/network-workgroup.png": {
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
@@ -11613,12 +11613,12 @@
         "width": 22,
         "height": 22
       },
-      "qx/icon/Oxygen/22/mimetypes/office-calendar.png": {
+      "qx/icon/Oxygen/22/mimetypes/office-contact.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
       },
-      "qx/icon/Oxygen/22/mimetypes/office-contact.png": {
+      "qx/icon/Oxygen/22/mimetypes/office-calendar.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22
@@ -13158,12 +13158,12 @@
         "width": 48,
         "height": 48
       },
-      "qx/icon/Oxygen/48/actions/insert-text.png": {
+      "qx/icon/Oxygen/48/actions/insert-link.png": {
         "resourcePath": "resourcePath",
         "width": 48,
         "height": 48
       },
-      "qx/icon/Oxygen/48/actions/insert-link.png": {
+      "qx/icon/Oxygen/48/actions/insert-text.png": {
         "resourcePath": "resourcePath",
         "width": 48,
         "height": 48
@@ -15623,12 +15623,12 @@
         "width": 128,
         "height": 128
       },
-      "qx/icon/Tango/128/apps/internet-download-manager.png": {
+      "qx/icon/Tango/128/apps/internet-blog.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
       },
-      "qx/icon/Tango/128/apps/internet-blog.png": {
+      "qx/icon/Tango/128/apps/internet-download-manager.png": {
         "resourcePath": "resourcePath",
         "width": 128,
         "height": 128
@@ -20923,11 +20923,6 @@
         "width": 64,
         "height": 64
       },
-      "qx/icon/Tango/64/actions/format-justify-left.png": {
-        "resourcePath": "resourcePath",
-        "width": 64,
-        "height": 64
-      },
       "qx/icon/Tango/64/actions/format-justify-right.png": {
         "resourcePath": "resourcePath",
         "width": 64,
@@ -20939,6 +20934,11 @@
         "height": 64
       },
       "qx/icon/Tango/64/actions/format-text-direction-ltr.png": {
+        "resourcePath": "resourcePath",
+        "width": 64,
+        "height": 64
+      },
+      "qx/icon/Tango/64/actions/format-justify-left.png": {
         "resourcePath": "resourcePath",
         "width": 64,
         "height": 64

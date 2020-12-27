@@ -415,7 +415,7 @@
         ]
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "__getClassHierarchyHtml": {
       "location": {
@@ -454,7 +454,7 @@
         ]
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "__getInterfaceHierarchyHtml": {
       "location": {
@@ -493,7 +493,7 @@
         ]
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "showItem": {
       "location": {
@@ -570,7 +570,7 @@
         ]
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "_getPanelForItemNode": {
       "location": {

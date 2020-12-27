@@ -87,10 +87,10 @@
     */
     construct: function construct() {
       qx.core.Object.constructor.call(this);
-      this.__P_177_0 = qx.$$translations || {};
-      this.__P_177_1 = qx.$$locales || {};
+      this.__translations = qx.$$translations || {};
+      this.__locales = qx.$$locales || {};
       this.initLocale();
-      this.__P_177_2 = this.getLocale();
+      this.__clientLocale = this.getLocale();
     },
 
     /*
@@ -222,12 +222,12 @@
     *****************************************************************************
     */
     members: {
-      __P_177_3: qx.core.Environment.get("locale.default"),
-      __P_177_4: null,
-      __P_177_5: null,
-      __P_177_0: null,
-      __P_177_1: null,
-      __P_177_2: null,
+      __defaultLocale: qx.core.Environment.get("locale.default"),
+      __locale: null,
+      __language: null,
+      __translations: null,
+      __locales: null,
+      __clientLocale: null,
 
       /**
        * Get the language code of the current locale
@@ -237,7 +237,7 @@
        * @return {String} language code
        */
       getLanguage: function getLanguage() {
-        return this.__P_177_5;
+        return this.__language;
       },
 
       /**
@@ -266,9 +266,9 @@
       getAvailableLocales: function getAvailableLocales(includeNonloaded) {
         var locales = [];
 
-        for (var locale in this.__P_177_1) {
-          if (locale != this.__P_177_3) {
-            if (this.__P_177_1[locale] === null && !includeNonloaded) {
+        for (var locale in this.__locales) {
+          if (locale != this.__defaultLocale) {
+            if (this.__locales[locale] === null && !includeNonloaded) {
               continue; // skip not yet loaded locales
             }
 
@@ -285,7 +285,7 @@
        * @param locale {String} locale to be used
        * @return {String} language
        */
-      __P_177_6: function __P_177_6(locale) {
+      __extractLanguage: function __extractLanguage(locale) {
         var language;
 
         if (locale == null) {
@@ -304,8 +304,8 @@
       },
       // property apply
       _applyLocale: function _applyLocale(value, old) {
-        this.__P_177_4 = value;
-        this.__P_177_5 = this.__P_177_6(value);
+        this.__locale = value;
+        this.__language = this.__extractLanguage(value);
       },
 
       /**
@@ -321,7 +321,7 @@
        *                             are separate keys.
        */
       addTranslation: function addTranslation(languageCode, translationMap) {
-        var catalog = this.__P_177_0;
+        var catalog = this.__translations;
 
         if (catalog[languageCode]) {
           for (var key in translationMap) {
@@ -343,7 +343,7 @@
        *                        <i>{"cldr_date_format_short" : "M/d/yy"}</i>.
        */
       addLocale: function addLocale(localeCode, localeMap) {
-        var catalog = this.__P_177_1;
+        var catalog = this.__locales;
 
         if (catalog[localeCode]) {
           for (var key in localeMap) {
@@ -368,8 +368,8 @@
        * @return {String | LocalizedString} translated message or localized string
        */
       translate: function translate(messageId, args, locale) {
-        var catalog = this.__P_177_0;
-        return this.__P_177_7(catalog, messageId, args, locale);
+        var catalog = this.__translations;
+        return this.__lookupAndExpand(catalog, messageId, args, locale);
       },
 
       /**
@@ -386,8 +386,8 @@
        * @return {String | LocalizedString} translated message or localized string
        */
       localize: function localize(messageId, args, locale) {
-        var catalog = this.__P_177_1;
-        return this.__P_177_7(catalog, messageId, args, locale);
+        var catalog = this.__locales;
+        return this.__lookupAndExpand(catalog, messageId, args, locale);
       },
 
       /**
@@ -404,7 +404,7 @@
        * @param locale {String ? #locale} locale to be used; if not given, defaults to the value of {@link #locale}
        * @return {String | LocalizedString} translated message or localized string
        */
-      __P_177_7: function __P_177_7(catalog, messageId, args, locale) {
+      __lookupAndExpand: function __lookupAndExpand(catalog, messageId, args, locale) {
         var txt;
 
         if (!catalog) {
@@ -412,10 +412,10 @@
         }
 
         if (locale) {
-          var language = this.__P_177_6(locale);
+          var language = this.__extractLanguage(locale);
         } else {
-          locale = this.__P_177_4;
-          language = this.__P_177_5;
+          locale = this.__locale;
+          language = this.__language;
         } // e.g. DE_at
 
 
@@ -429,8 +429,8 @@
         } // C
 
 
-        if (!txt && catalog[this.__P_177_3]) {
-          txt = catalog[this.__P_177_3][messageId];
+        if (!txt && catalog[this.__defaultLocale]) {
+          txt = catalog[this.__defaultLocale][messageId];
         }
 
         if (!txt) {
@@ -454,7 +454,7 @@
         }
 
         {
-          txt = new qx.locale.LocalizedString(txt, messageId, args, catalog === this.__P_177_1);
+          txt = new qx.locale.LocalizedString(txt, messageId, args, catalog === this.__locales);
         }
         return txt;
       }
@@ -463,4 +463,4 @@
   qx.locale.Manager.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Manager.js.map?dt=1608478923145
+//# sourceMappingURL=Manager.js.map?dt=1609082283211

@@ -53,12 +53,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *
        * @return {StyleSheet} Stylesheet element
        */
-      __P_45_0: function __P_45_0() {
-        if (!qx.bom.client.Stylesheet.__P_45_1) {
-          qx.bom.client.Stylesheet.__P_45_1 = qx.bom.Stylesheet.createElement();
+      __getStylesheet: function __getStylesheet() {
+        if (!qx.bom.client.Stylesheet.__stylesheet) {
+          qx.bom.client.Stylesheet.__stylesheet = qx.bom.Stylesheet.createElement();
         }
 
-        return qx.bom.client.Stylesheet.__P_45_1;
+        return qx.bom.client.Stylesheet.__stylesheet;
       },
 
       /**
@@ -82,7 +82,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @return {Boolean} <code>true</code> if insertRule is supported
        */
       getInsertRule: function getInsertRule() {
-        return typeof qx.bom.client.Stylesheet.__P_45_0().insertRule === "function";
+        return typeof qx.bom.client.Stylesheet.__getStylesheet().insertRule === "function";
       },
 
       /**
@@ -92,7 +92,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @return {Boolean} <code>true</code> if deleteRule is supported
        */
       getDeleteRule: function getDeleteRule() {
-        return typeof qx.bom.client.Stylesheet.__P_45_0().deleteRule === "function";
+        return typeof qx.bom.client.Stylesheet.__getStylesheet().deleteRule === "function";
       },
 
       /**
@@ -103,7 +103,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @return {Boolean} <code>true</code> if stylesheet.addImport is supported
        */
       getAddImport: function getAddImport() {
-        return _typeof(qx.bom.client.Stylesheet.__P_45_0().addImport) === "object";
+        return _typeof(qx.bom.client.Stylesheet.__getStylesheet().addImport) === "object";
       },
 
       /**
@@ -114,7 +114,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @return {Boolean} <code>true</code> if stylesheet.removeImport is supported
        */
       getRemoveImport: function getRemoveImport() {
-        return _typeof(qx.bom.client.Stylesheet.__P_45_0().removeImport) === "object";
+        return _typeof(qx.bom.client.Stylesheet.__getStylesheet().removeImport) === "object";
       }
     },
     defer: function defer(statics) {
@@ -128,4 +128,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qx.bom.client.Stylesheet.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Stylesheet.js.map?dt=1608478913917
+//# sourceMappingURL=Stylesheet.js.map?dt=1609082272550

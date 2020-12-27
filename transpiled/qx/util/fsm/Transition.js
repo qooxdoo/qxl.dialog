@@ -162,7 +162,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         // If we find one of our properties, call its setter.
         switch (field) {
           case "predicate":
-            this.setPredicate(this.__P_424_0(transitionInfo[field], context));
+            this.setPredicate(this.__bindIfFunction(transitionInfo[field], context));
             break;
 
           case "nextState":
@@ -170,15 +170,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             break;
 
           case "autoActionsBeforeOntransition":
-            this.setAutoActionsBeforeOntransition(this.__P_424_0(transitionInfo[field], context));
+            this.setAutoActionsBeforeOntransition(this.__bindIfFunction(transitionInfo[field], context));
             break;
 
           case "autoActionsAfterOntransition":
-            this.setAutoActionsAfterOntransition(this.__P_424_0(transitionInfo[field], context));
+            this.setAutoActionsAfterOntransition(this.__bindIfFunction(transitionInfo[field], context));
             break;
 
           case "ontransition":
-            this.setOntransition(this.__P_424_0(transitionInfo[field], context));
+            this.setOntransition(this.__bindIfFunction(transitionInfo[field], context));
             break;
 
           case "context":
@@ -213,7 +213,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         init: function init(fsm, event) {
           return true;
         },
-        transform: "__P_424_1"
+        transform: "__transformPredicate"
       },
 
       /**
@@ -225,7 +225,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       nextState: {
         init: qx.util.fsm.FiniteStateMachine.StateChange.CURRENT_STATE,
-        transform: "__P_424_2"
+        transform: "__transformNextState"
       },
 
       /**
@@ -237,7 +237,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       autoActionsBeforeOntransition: {
         init: function init(fsm, event) {},
-        transform: "__P_424_3"
+        transform: "__transformAutoActionsBeforeOntransition"
       },
 
       /**
@@ -249,7 +249,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       autoActionsAfterOntransition: {
         init: function init(fsm, event) {},
-        transform: "__P_424_4"
+        transform: "__transformAutoActionsAfterOntransition"
       },
 
       /**
@@ -260,7 +260,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       ontransition: {
         init: function init(fsm, event) {},
-        transform: "__P_424_5"
+        transform: "__transformOntransition"
       }
     },
     members: {
@@ -270,7 +270,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param value {var} incoming value
        * @return {Function} predicate function
        */
-      __P_424_1: function __P_424_1(value) {
+      __transformPredicate: function __transformPredicate(value) {
         // Validate the predicate.  Convert all valid types to function.
         switch (_typeof(value)) {
           case "undefined":
@@ -300,7 +300,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param value {var} Current value
        * @return {Function} the final value
        */
-      __P_424_2: function __P_424_2(value) {
+      __transformNextState: function __transformNextState(value) {
         // Validate nextState.  It must be a string or a number.
         switch (_typeof(value)) {
           case "string":
@@ -331,7 +331,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param value {var} Current value
        * @return {Function} the final value
        */
-      __P_424_3: function __P_424_3(value) {
+      __transformAutoActionsBeforeOntransition: function __transformAutoActionsBeforeOntransition(value) {
         return qx.util.fsm.State._commonTransformAutoActions("autoActionsBeforeOntransition", value, this.getUserData("context"));
       },
 
@@ -341,7 +341,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param value {var} Current value
        * @return {Function} the final value
        */
-      __P_424_4: function __P_424_4(value) {
+      __transformAutoActionsAfterOntransition: function __transformAutoActionsAfterOntransition(value) {
         return qx.util.fsm.State._commonTransformAutoActions("autoActionsAfterOntransition", value, this.getUserData("context"));
       },
 
@@ -351,7 +351,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param value {var} Current value
        * @return {Function} the final value
        */
-      __P_424_5: function __P_424_5(value) {
+      __transformOntransition: function __transformOntransition(value) {
         // Validate the ontransition function.  Convert undefined to function.
         switch (_typeof(value)) {
           case "undefined":
@@ -382,7 +382,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *   be called in the specified context. Otherwise, f is returned
        *   unaltered.
        */
-      __P_424_0: function __P_424_0(f, context) {
+      __bindIfFunction: function __bindIfFunction(f, context) {
         // Is the first parameter a function?
         if (typeof f == "function") {
           // Yup. Bind it to the specified context.
@@ -396,4 +396,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qx.util.fsm.Transition.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Transition.js.map?dt=1608478941376
+//# sourceMappingURL=Transition.js.map?dt=1609082305252

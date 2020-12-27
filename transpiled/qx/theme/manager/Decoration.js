@@ -85,8 +85,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     },
     construct: function construct() {
       qx.core.Object.constructor.call(this);
-      this.__P_198_0 = [];
-      this.__P_198_1 = qx.core.Environment.get("engine.name") == "mshtml" && qx.core.Environment.get("browser.documentmode") < 9;
+      this.__rules = [];
+      this.__legacyIe = qx.core.Environment.get("engine.name") == "mshtml" && qx.core.Environment.get("browser.documentmode") < 9;
     },
 
     /*
@@ -110,9 +110,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     *****************************************************************************
     */
     members: {
-      __P_198_2: null,
-      __P_198_0: null,
-      __P_198_1: false,
+      __dynamic: null,
+      __rules: null,
+      __legacyIe: false,
 
       /**
        * Returns the name which will be / is used as css class name.
@@ -171,9 +171,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               innerCss += innerKey + ":" + innerStyles[innerKey] + ";";
             }
 
-            var innerSelector = this.__P_198_1 ? selector : selector + (inner ? ":" : "");
+            var innerSelector = this.__legacyIe ? selector : selector + (inner ? ":" : "");
 
-            this.__P_198_0.push(innerSelector + key);
+            this.__rules.push(innerSelector + key);
 
             sheet.addRule(innerSelector + key, innerCss);
             return;
@@ -185,7 +185,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         if (css) {
           sheet.addRule(selector, css);
 
-          this.__P_198_0.push(selector);
+          this.__rules.push(selector);
         }
 
         return value;
@@ -197,13 +197,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       removeAllCssClasses: function removeAllCssClasses() {
         // remove old rules
-        for (var i = 0; i < this.__P_198_0.length; i++) {
-          var selector = this.__P_198_0[i];
+        for (var i = 0; i < this.__rules.length; i++) {
+          var selector = this.__rules[i];
           qx.ui.style.Stylesheet.getInstance().removeRule(selector);
         }
 
         ;
-        this.__P_198_0 = [];
+        this.__rules = [];
       },
 
       /**
@@ -221,10 +221,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           return value;
         }
 
-        var cache = this.__P_198_2;
+        var cache = this.__dynamic;
 
         if (!cache) {
-          cache = this.__P_198_2 = {};
+          cache = this.__dynamic = {};
         }
 
         var resolved = cache[value];
@@ -311,7 +311,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @internal
        */
       isCached: function isCached(decorator) {
-        return !this.__P_198_2 ? false : qx.lang.Object.contains(this.__P_198_2, decorator);
+        return !this.__dynamic ? false : qx.lang.Object.contains(this.__dynamic, decorator);
       },
       // property apply
       _applyTheme: function _applyTheme(value, old) {
@@ -331,9 +331,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           }
         }
 
-        this._disposeMap("__P_198_2");
+        this._disposeMap("__dynamic");
 
-        this.__P_198_2 = {};
+        this.__dynamic = {};
       },
 
       /**
@@ -353,9 +353,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         this.removeAllCssClasses();
 
-        this._disposeMap("__P_198_2");
+        this._disposeMap("__dynamic");
 
-        this.__P_198_2 = {};
+        this.__dynamic = {};
       },
 
       /**
@@ -387,4 +387,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qx.theme.manager.Decoration.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Decoration.js.map?dt=1608478925064
+//# sourceMappingURL=Decoration.js.map?dt=1609082285868

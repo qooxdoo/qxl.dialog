@@ -62,11 +62,11 @@
     construct: function construct() {
       this._initSelectionManager();
 
-      this.__P_393_0 = new qx.data.Array();
+      this.__selection = new qx.data.Array();
 
-      this.__P_393_0.addListener("change", this._onChangeSelection, this);
+      this.__selection.addListener("change", this._onChangeSelection, this);
 
-      this._applySelection(this.__P_393_0, null);
+      this._applySelection(this.__selection, null);
     },
     properties: {
       /** Current selected items */
@@ -136,11 +136,11 @@
       _manager: null,
 
       /** @type {Boolean} flag to ignore the selection change from {@link #selection} */
-      __P_393_1: false,
+      __ignoreChangeSelection: false,
 
       /** @type {Boolean} flag to ignore the selection change from <code>_manager</code> */
-      __P_393_2: false,
-      __P_393_0: null,
+      __ignoreManagerChangeSelection: false,
+      __selection: null,
 
       /**
        * setValue implements part of the {@link qx.ui.form.IField} interface.
@@ -249,9 +249,9 @@
        */
       setSelection: function setSelection(value) {
         if (value) {
-          this.__P_393_0.replace(value);
+          this.__selection.replace(value);
         } else {
-          this.__P_393_0.removeAll();
+          this.__selection.removeAll();
         }
       },
 
@@ -261,14 +261,14 @@
        * @return {qx.data.Array}
        */
       getSelection: function getSelection() {
-        return this.__P_393_0;
+        return this.__selection;
       },
 
       /**
        * Reset for selection property
        */
       resetSelection: function resetSelection() {
-        this.__P_393_0.removeAll();
+        this.__selection.removeAll();
       },
 
       /**
@@ -316,11 +316,11 @@
        * @param e {qx.event.type.Data} the change event.
        */
       _onChangeSelection: function _onChangeSelection(e) {
-        if (this.__P_393_2 == true) {
+        if (this.__ignoreManagerChangeSelection == true) {
           return;
         }
 
-        this.__P_393_1 = true;
+        this.__ignoreChangeSelection = true;
         var selection = this.getSelection();
         var newSelection = [];
 
@@ -354,13 +354,13 @@
           this._manager.selectItem(newSelection[newSelection.length - 1]);
         }
 
-        this.__P_393_3();
+        this.__synchronizeSelection();
 
         if (this._afterApplySelection != null && qx.lang.Type.isFunction(this._afterApplySelection)) {
           this._afterApplySelection();
         }
 
-        this.__P_393_1 = false;
+        this.__ignoreChangeSelection = false;
       },
 
       /**
@@ -369,23 +369,23 @@
        * @param e {qx.event.type.Data} the change event.
        */
       _onManagerChangeSelection: function _onManagerChangeSelection(e) {
-        if (this.__P_393_1 == true) {
+        if (this.__ignoreChangeSelection == true) {
           return;
         }
 
-        this.__P_393_2 = true;
+        this.__ignoreManagerChangeSelection = true;
 
-        this.__P_393_3();
+        this.__synchronizeSelection();
 
-        this.__P_393_2 = false;
+        this.__ignoreManagerChangeSelection = false;
         this.fireDataEvent("changeValue", e.getData(), e.getOldData());
       },
 
       /**
        * Synchronized the selection form the manager with the local one.
        */
-      __P_393_3: function __P_393_3() {
-        if (this.__P_393_4()) {
+      __synchronizeSelection: function __synchronizeSelection() {
+        if (this.__isSelectionEquals()) {
           return;
         }
 
@@ -401,7 +401,7 @@
           }
         }
 
-        this.__P_393_5(newSelection);
+        this.__replaceSelection(newSelection);
       },
 
       /**
@@ -409,7 +409,7 @@
        *
        * @param newSelection {qx.data.Array} The new selection.
        */
-      __P_393_5: function __P_393_5(newSelection) {
+      __replaceSelection: function __replaceSelection(newSelection) {
         var selection = this.getSelection();
 
         if (newSelection.length > 0) {
@@ -429,7 +429,7 @@
        * @return {Boolean} <code>true</code> if the selections are equal,
        *   <code>false</code> otherwise.
        */
-      __P_393_4: function __P_393_4() {
+      __isSelectionEquals: function __isSelectionEquals() {
         var selection = this.getSelection();
 
         var managerSelection = this._manager.getSelection();
@@ -475,12 +475,12 @@
 
       this._manager = null;
 
-      if (this.__P_393_0) {
-        this.__P_393_0.dispose();
+      if (this.__selection) {
+        this.__selection.dispose();
       }
     }
   });
   qx.ui.virtual.selection.MModel.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MModel.js.map?dt=1608478939278
+//# sourceMappingURL=MModel.js.map?dt=1609082302658

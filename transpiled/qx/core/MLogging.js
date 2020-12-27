@@ -37,7 +37,7 @@
   qx.Mixin.define("qx.core.MLogging", {
     members: {
       /** @type {Class} Pointer to the regular logger class */
-      __P_81_0: qx.log.Logger,
+      __Logger: qx.log.Logger,
 
       /**
        * Logs a debug message.
@@ -47,7 +47,7 @@
        * logged.
        */
       debug: function debug(varargs) {
-        this.__P_81_1("debug", arguments);
+        this.__logMessage("debug", arguments);
       },
 
       /**
@@ -58,7 +58,7 @@
        * logged.
        */
       info: function info(varargs) {
-        this.__P_81_1("info", arguments);
+        this.__logMessage("info", arguments);
       },
 
       /**
@@ -69,7 +69,7 @@
        * logged.
        */
       warn: function warn(varargs) {
-        this.__P_81_1("warn", arguments);
+        this.__logMessage("warn", arguments);
       },
 
       /**
@@ -80,7 +80,7 @@
        * logged.
        */
       error: function error(varargs) {
-        this.__P_81_1("error", arguments);
+        this.__logMessage("error", arguments);
       },
 
       /**
@@ -91,7 +91,7 @@
        * logged.
        */
       trace: function trace(varargs) {
-        this.__P_81_1("trace", arguments);
+        this.__logMessage("trace", arguments);
       },
 
       /**
@@ -101,15 +101,15 @@
        * @param level {String} The log level of the message
        * @param varargs {arguments} Arguments list to be logged
        */
-      __P_81_1: function __P_81_1(level, varargs) {
+      __logMessage: function __logMessage(level, varargs) {
         var argumentsArray = qx.lang.Array.fromArguments(varargs);
         argumentsArray.unshift(this);
 
-        this.__P_81_0[level].apply(this.__P_81_0, argumentsArray);
+        this.__Logger[level].apply(this.__Logger, argumentsArray);
       }
     }
   });
   qx.core.MLogging.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MLogging.js.map?dt=1608478915955
+//# sourceMappingURL=MLogging.js.map?dt=1609082274894

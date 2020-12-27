@@ -42,10 +42,10 @@
     extend: qx.core.Object,
     construct: function construct() {
       qx.core.Object.constructor.call(this);
-      this.__P_260_0 = [];
+      this.__items = [];
     },
     members: {
-      __P_260_0: null,
+      __items: null,
 
       /**
        * Adding a field to the resetter will get its current value and store
@@ -55,9 +55,9 @@
        * @throws {TypeError} When given argument is not a field.
        */
       add: function add(field) {
-        this.__P_260_1(field);
+        this.__typeCheck(field);
 
-        this.__P_260_0.push({
+        this.__items.push({
           item: field,
           init: field.getValue()
         });
@@ -71,13 +71,13 @@
        * @return {Boolean} <code>true</code>, if the field has been removed.
        */
       remove: function remove(field) {
-        this.__P_260_1(field);
+        this.__typeCheck(field);
 
-        for (var i = 0; i < this.__P_260_0.length; i++) {
-          var storedItem = this.__P_260_0[i];
+        for (var i = 0; i < this.__items.length; i++) {
+          var storedItem = this.__items[i];
 
           if (storedItem.item === field) {
-            this.__P_260_0.splice(i, 1);
+            this.__items.splice(i, 1);
 
             return true;
           }
@@ -97,8 +97,8 @@
             e,
             errors = [];
 
-        for (var i = 0; i < this.__P_260_0.length; i++) {
-          dataEntry = this.__P_260_0[i];
+        for (var i = 0; i < this.__items.length; i++) {
+          dataEntry = this.__items[i];
           e = dataEntry.item.setValue(dataEntry.init);
 
           if (e && e instanceof Error) {
@@ -122,10 +122,10 @@
        * @return {null|Error} Returns an error when the field value could not be set.
        */
       resetItem: function resetItem(field) {
-        this.__P_260_1(field);
+        this.__typeCheck(field);
 
-        for (var i = 0; i < this.__P_260_0.length; i++) {
-          var dataEntry = this.__P_260_0[i];
+        for (var i = 0; i < this.__items.length; i++) {
+          var dataEntry = this.__items[i];
 
           if (dataEntry.item === field) {
             return field.setValue(dataEntry.init);
@@ -141,10 +141,10 @@
        */
       redefine: function redefine() {
         // go threw all added items
-        for (var i = 0; i < this.__P_260_0.length; i++) {
-          var item = this.__P_260_0[i].item; // set the new init value for the item
+        for (var i = 0; i < this.__items.length; i++) {
+          var item = this.__items[i].item; // set the new init value for the item
 
-          this.__P_260_0[i].init = item.getValue();
+          this.__items[i].init = item.getValue();
         }
       },
 
@@ -156,14 +156,14 @@
        * @throws {TypeError} When given argument is not a field.
        */
       redefineItem: function redefineItem(field) {
-        this.__P_260_1(field); // get the data entry
+        this.__typeCheck(field); // get the data entry
 
 
         var dataEntry;
 
-        for (var i = 0; i < this.__P_260_0.length; i++) {
-          if (this.__P_260_0[i].item === field) {
-            dataEntry = this.__P_260_0[i];
+        for (var i = 0; i < this.__items.length; i++) {
+          if (this.__items[i].item === field) {
+            dataEntry = this.__items[i];
             dataEntry.init = dataEntry.item.getValue();
             return;
           }
@@ -179,7 +179,7 @@
        * @throws {TypeError} When given argument is not a field.
        * @private
        */
-      __P_260_1: function __P_260_1(field) {
+      __typeCheck: function __typeCheck(field) {
         if (!qx.Class.hasInterface(field.constructor, qx.ui.form.IField)) {
           throw new TypeError("Field " + field + " not supported for resetting.");
         }
@@ -193,10 +193,10 @@
     */
     destruct: function destruct() {
       // holding references to widgets --> must set to null
-      this.__P_260_0 = null;
+      this.__items = null;
     }
   });
   qx.ui.form.Resetter.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Resetter.js.map?dt=1608478930299
+//# sourceMappingURL=Resetter.js.map?dt=1609082291722

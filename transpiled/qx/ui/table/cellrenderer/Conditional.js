@@ -66,10 +66,10 @@
       this.numericAllowed = ["==", "!=", ">", "<", ">=", "<="];
       this.betweenAllowed = ["between", "!between"];
       this.conditions = [];
-      this.__P_347_0 = align || "";
-      this.__P_347_1 = color || "";
-      this.__P_347_2 = style || "";
-      this.__P_347_3 = weight || "";
+      this.__defaultTextAlign = align || "";
+      this.__defaultColor = color || "";
+      this.__defaultFontStyle = style || "";
+      this.__defaultFontWeight = weight || "";
     },
 
     /*
@@ -78,17 +78,17 @@
     *****************************************************************************
     */
     members: {
-      __P_347_0: null,
-      __P_347_1: null,
-      __P_347_2: null,
-      __P_347_3: null,
+      __defaultTextAlign: null,
+      __defaultColor: null,
+      __defaultFontStyle: null,
+      __defaultFontWeight: null,
 
       /**
        * Applies the cell styles to the style map.
        * @param condition {Array} The matched condition
        * @param style {Map} map of already applied styles.
        */
-      __P_347_4: function __P_347_4(condition, style) {
+      __applyFormatting: function __applyFormatting(condition, style) {
         if (condition[1] != null) {
           style["text-align"] = condition[1];
         }
@@ -226,10 +226,10 @@
         var cond_test;
         var compareValue;
         var style = {
-          "text-align": this.__P_347_0,
-          "color": this.__P_347_1,
-          "font-style": this.__P_347_2,
-          "font-weight": this.__P_347_3
+          "text-align": this.__defaultTextAlign,
+          "color": this.__defaultColor,
+          "font-style": this.__defaultFontStyle,
+          "font-weight": this.__defaultFontWeight
         };
 
         for (i in this.conditions) {
@@ -320,7 +320,7 @@
 
 
           if (cond_test == true) {
-            this.__P_347_4(this.conditions[i], style);
+            this.__applyFormatting(this.conditions[i], style);
           }
         }
 
@@ -348,4 +348,4 @@
   qx.ui.table.cellrenderer.Conditional.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Conditional.js.map?dt=1608478935780
+//# sourceMappingURL=Conditional.js.map?dt=1609082298456

@@ -246,8 +246,8 @@
     *****************************************************************************
     */
     members: {
-      __P_285_0: null,
-      __P_285_1: null,
+      __scheduledOpen: null,
+      __onAfterSlideBarAdd: null,
 
       /** @type {qx.ui.core.Blocker} blocker for background blocking */
       _blocker: null,
@@ -266,7 +266,7 @@
           var isPlaced = this.placeToWidget(this.getOpener(), true);
 
           if (isPlaced) {
-            this.__P_285_2();
+            this.__updateSlideBar();
 
             this.show();
             this._placementTarget = this.getOpener();
@@ -286,7 +286,7 @@
       openAtPointer: function openAtPointer(e) {
         this.placeToPointer(e);
 
-        this.__P_285_2();
+        this.__updateSlideBar();
 
         this.show();
         this._placementTarget = {
@@ -304,7 +304,7 @@
       openAtPoint: function openAtPoint(point) {
         this.placeToPoint(point);
 
-        this.__P_285_2();
+        this.__updateSlideBar();
 
         this.show();
         this._placementTarget = point;
@@ -395,13 +395,13 @@
           this.resetSelectedButton();
         }
 
-        this.__P_285_3();
+        this.__updateBlockerVisibility();
       },
 
       /**
        * Updates the blocker's visibility
        */
-      __P_285_3: function __P_285_3() {
+      __updateBlockerVisibility: function __updateBlockerVisibility() {
         if (this.isVisible()) {
           if (this.getBlockBackground()) {
             var zIndex = this.getZIndex();
@@ -547,11 +547,11 @@
        * Updates the visibility of the slidebar based on the menu's current size
        * and position.
        */
-      __P_285_2: function __P_285_2() {
+      __updateSlideBar: function __updateSlideBar() {
         var menuBounds = this._getMenuBounds();
 
         if (!menuBounds) {
-          this.addListenerOnce("resize", this.__P_285_2, this);
+          this.addListenerOnce("resize", this.__updateSlideBar, this);
           return;
         }
 
@@ -588,17 +588,17 @@
           return callback.call(this);
         }
 
-        this.__P_285_1 = callback;
+        this.__onAfterSlideBarAdd = callback;
         qx.ui.core.queue.Widget.add(this);
       },
       // overridden
       syncWidget: function syncWidget(jobs) {
         this.getChildControl("slidebar");
 
-        if (this.__P_285_1) {
-          this.__P_285_1.call(this);
+        if (this.__onAfterSlideBarAdd) {
+          this.__onAfterSlideBarAdd.call(this);
 
-          delete this.__P_285_1;
+          delete this.__onAfterSlideBarAdd;
         }
       },
 
@@ -625,7 +625,7 @@
             throw new Error("Unknown target: " + target);
           }
 
-          this.__P_285_2();
+          this.__updateSlideBar();
         }
       },
 
@@ -652,7 +652,7 @@
 
             mgr.scheduleOpen(subMenu); // Remember scheduled menu for opening
 
-            this.__P_285_0 = subMenu;
+            this.__scheduledOpen = subMenu;
           } else {
             var opened = this.getOpenedButton();
 
@@ -660,9 +660,9 @@
               mgr.scheduleClose(opened.getMenu());
             }
 
-            if (this.__P_285_0) {
-              mgr.cancelOpen(this.__P_285_0);
-              this.__P_285_0 = null;
+            if (this.__scheduledOpen) {
+              mgr.cancelOpen(this.__scheduledOpen);
+              this.__scheduledOpen = null;
             }
           }
         } else if (!this.getOpenedButton()) {
@@ -696,8 +696,8 @@
           // all pending requests to open any other sub menu
 
 
-          if (this.__P_285_0) {
-            mgr.cancelOpen(this.__P_285_0);
+          if (this.__scheduledOpen) {
+            mgr.cancelOpen(this.__scheduledOpen);
           }
         }
       }
@@ -722,4 +722,4 @@
   qx.ui.menu.Menu.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Menu.js.map?dt=1608478932124
+//# sourceMappingURL=Menu.js.map?dt=1609082294089

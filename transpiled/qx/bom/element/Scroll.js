@@ -56,7 +56,7 @@
     */
     statics: {
       /** @type {Integer} The typical native scrollbar size in the environment */
-      __P_58_0: null,
+      __scrollbarSize: null,
 
       /**
        * Get the typical native scrollbar size in the environment
@@ -64,8 +64,8 @@
        * @return {Number} The native scrollbar size
        */
       getScrollbarWidth: function getScrollbarWidth() {
-        if (this.__P_58_0 !== null) {
-          return this.__P_58_0;
+        if (this.__scrollbarSize !== null) {
+          return this.__scrollbarSize;
         }
 
         var Style = qx.bom.element.Style;
@@ -113,9 +113,9 @@
         s.overflow = "scroll";
         document.body.appendChild(t);
         var c = getScrollBarSizeRight(t);
-        this.__P_58_0 = c;
+        this.__scrollbarSize = c;
         document.body.removeChild(t);
-        return this.__P_58_0;
+        return this.__scrollbarSize;
       },
 
       /*
@@ -338,4 +338,4 @@
   qx.bom.element.Scroll.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Scroll.js.map?dt=1608478914646
+//# sourceMappingURL=Scroll.js.map?dt=1609082273324

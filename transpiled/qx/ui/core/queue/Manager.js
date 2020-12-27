@@ -69,16 +69,16 @@
   qx.Class.define("qx.ui.core.queue.Manager", {
     statics: {
       /** @type {Boolean} Whether a flush was scheduled */
-      __P_231_0: false,
+      __scheduled: false,
 
       /** @type {Boolean} true, if the flush should not be executed */
-      __P_231_1: false,
+      __canceled: false,
 
       /** @type {Map} Internal data structure for the current job list */
-      __P_231_2: {},
+      __jobs: {},
 
       /** @type {Integer} Counts how often a flush failed due to exceptions */
-      __P_231_3: 0,
+      __retries: 0,
 
       /** @type {Integer} Maximum number of flush retries */
       MAX_RETRIES: 10,
@@ -92,19 +92,19 @@
       scheduleFlush: function scheduleFlush(job) {
         // Sometimes not executed in context, fix this
         var self = qx.ui.core.queue.Manager;
-        self.__P_231_2[job] = true;
+        self.__jobs[job] = true;
 
-        if (!self.__P_231_0) {
-          self.__P_231_1 = false;
+        if (!self.__scheduled) {
+          self.__canceled = false;
           qx.bom.AnimationFrame.request(function () {
-            if (self.__P_231_1) {
-              self.__P_231_1 = false;
+            if (self.__canceled) {
+              self.__canceled = false;
               return;
             }
 
             self.flush();
           }, self);
-          self.__P_231_0 = true;
+          self.__scheduled = true;
         }
       },
 
@@ -117,16 +117,16 @@
         // Sometimes not executed in context, fix this
         var self = qx.ui.core.queue.Manager; // Stop when already executed
 
-        if (self.__P_231_4) {
+        if (self.__inFlush) {
           return;
         }
 
-        self.__P_231_4 = true; // Cancel timeout if called manually
+        self.__inFlush = true; // Cancel timeout if called manually
 
-        self.__P_231_1 = true;
-        var jobs = self.__P_231_2;
+        self.__canceled = true;
+        var jobs = self.__jobs;
 
-        self.__P_231_5(function () {
+        self.__executeAndRescheduleOnError(function () {
           // Process jobs
           while (jobs.visibility || jobs.widget || jobs.appearance || jobs.layout || jobs.element) {
             // No else blocks here because each flush can influence the following flushes!
@@ -190,10 +190,10 @@
             }
           }
         }, function () {
-          self.__P_231_0 = false;
+          self.__scheduled = false;
         });
 
-        self.__P_231_5(function () {
+        self.__executeAndRescheduleOnError(function () {
           if (jobs.dispose) {
             delete jobs.dispose;
             {
@@ -206,11 +206,11 @@
           }
         }, function () {
           // Clear flag
-          self.__P_231_4 = false;
+          self.__inFlush = false;
         }); // flush succeeded successfully. Reset retries
 
 
-        self.__P_231_3 = 0;
+        self.__retries = 0;
       },
 
       /**
@@ -222,20 +222,20 @@
        * @param callback {Function} the callback function
        * @param finallyCode {Function} function to be called in the finally block
        */
-      __P_231_5: function __P_231_5(callback, finallyCode) {
+      __executeAndRescheduleOnError: function __executeAndRescheduleOnError(callback, finallyCode) {
         var self = qx.ui.core.queue.Manager;
 
         try {
           callback();
         } catch (e) {
-          self.__P_231_0 = false;
-          self.__P_231_4 = false;
-          self.__P_231_3 += 1;
+          self.__scheduled = false;
+          self.__inFlush = false;
+          self.__retries += 1;
 
-          if (self.__P_231_3 <= self.MAX_RETRIES) {
+          if (self.__retries <= self.MAX_RETRIES) {
             self.scheduleFlush();
           } else {
-            throw new Error("Fatal Error: Flush terminated " + (self.__P_231_3 - 1) + " times in a row" + " due to exceptions in user code. The application has to be reloaded!");
+            throw new Error("Fatal Error: Flush terminated " + (self.__retries - 1) + " times in a row" + " due to exceptions in user code. The application has to be reloaded!");
           }
 
           throw e;
@@ -254,7 +254,7 @@
        *
        * @param e {qx.event.type.Data} The user action data event.
        */
-      __P_231_6: function __P_231_6(e) {
+      __onUserAction: function __onUserAction(e) {
         qx.ui.core.queue.Manager.flush();
       }
     },
@@ -270,10 +270,10 @@
       // before the HTML element flush.
       qx.html.Element._scheduleFlush = statics.scheduleFlush; // Register to user action
 
-      qx.event.Registration.addListener(window, "useraction", qx.core.Environment.get("event.touch") ? statics.__P_231_6 : statics.flush);
+      qx.event.Registration.addListener(window, "useraction", qx.core.Environment.get("event.touch") ? statics.__onUserAction : statics.flush);
     }
   });
   qx.ui.core.queue.Manager.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Manager.js.map?dt=1608478927962
+//# sourceMappingURL=Manager.js.map?dt=1609082289323

@@ -73,9 +73,9 @@
     construct: function construct(widget) {
       qx.core.Object.constructor.call(this);
       this._widget = widget;
-      widget.addListener("resize", this.__P_211_0, this);
-      widget.addListener("move", this.__P_211_0, this);
-      widget.addListener("disappear", this.__P_211_1, this);
+      widget.addListener("resize", this.__onBoundsChange, this);
+      widget.addListener("move", this.__onBoundsChange, this);
+      widget.addListener("disappear", this.__onWidgetDisappear, this);
 
       if (qx.Class.isDefined("qx.ui.root.Abstract") && widget instanceof qx.ui.root.Abstract) {
         this._isRoot = true;
@@ -86,8 +86,8 @@
       {
         qx.theme.manager.Meta.getInstance().addListener("changeTheme", this._onChangeTheme, this);
       }
-      this.__P_211_2 = [];
-      this.__P_211_3 = [];
+      this.__activeElements = [];
+      this.__focusElements = [];
     },
 
     /*
@@ -144,21 +144,21 @@
     *****************************************************************************
     */
     members: {
-      __P_211_4: null,
-      __P_211_5: 0,
-      __P_211_2: null,
-      __P_211_3: null,
-      __P_211_6: null,
+      __blocker: null,
+      __blockerCount: 0,
+      __activeElements: null,
+      __focusElements: null,
+      __timer: null,
       _widget: null,
       _isRoot: false,
-      __P_211_7: null,
+      __appearListener: null,
 
       /**
        * Adjust html element size on layout resizes.
        *
        * @param e {qx.event.type.Data} event object
        */
-      __P_211_0: function __P_211_0(e) {
+      __onBoundsChange: function __onBoundsChange(e) {
         var data = e.getData();
 
         if (this.isBlocked()) {
@@ -169,7 +169,7 @@
       /**
        * Widget re-appears: Update blocker size/position and attach to (new) parent
        */
-      __P_211_8: function __P_211_8() {
+      __onWidgetAppear: function __onWidgetAppear() {
         this._updateBlockerBounds(this._widget.getBounds());
 
         if (this._widget.isRootWidget()) {
@@ -182,11 +182,11 @@
       /**
        * Remove the blocker if the widget disappears
        */
-      __P_211_1: function __P_211_1() {
+      __onWidgetDisappear: function __onWidgetDisappear() {
         if (this.isBlocked()) {
           this.getBlockerElement().getParent().remove(this.getBlockerElement());
 
-          this._widget.addListenerOnce("appear", this.__P_211_8, this);
+          this._widget.addListenerOnce("appear", this.__onWidgetAppear, this);
         }
       },
 
@@ -206,11 +206,11 @@
       _applyColor: function _applyColor(value, old) {
         var color = qx.theme.manager.Color.getInstance().resolve(value);
 
-        this.__P_211_9("backgroundColor", color);
+        this.__setBlockersStyle("backgroundColor", color);
       },
       // property apply
       _applyOpacity: function _applyOpacity(value, old) {
-        this.__P_211_9("opacity", value);
+        this.__setBlockersStyle("opacity", value);
       },
 
       /**
@@ -227,9 +227,9 @@
        * @param key {String} The name of the style attribute.
        * @param value {String} The value.
        */
-      __P_211_9: function __P_211_9(key, value) {
+      __setBlockersStyle: function __setBlockersStyle(key, value) {
         var blockers = [];
-        this.__P_211_4 && blockers.push(this.__P_211_4);
+        this.__blocker && blockers.push(this.__blocker);
 
         for (var i = 0; i < blockers.length; i++) {
           blockers[i].setStyle(key, value);
@@ -244,9 +244,9 @@
         var activeWidget = qx.ui.core.Widget.getWidgetByElement(focusHandler.getActive());
         var focusedWidget = qx.ui.core.Widget.getWidgetByElement(focusHandler.getFocus());
 
-        this.__P_211_2.push(activeWidget);
+        this.__activeElements.push(activeWidget);
 
-        this.__P_211_3.push(focusedWidget);
+        this.__focusElements.push(focusedWidget);
 
         if (activeWidget) {
           activeWidget.deactivate();
@@ -262,20 +262,20 @@
        */
       _restoreActiveWidget: function _restoreActiveWidget() {
         var widget;
-        var focusElementsLength = this.__P_211_3.length;
+        var focusElementsLength = this.__focusElements.length;
 
         if (focusElementsLength > 0) {
-          widget = this.__P_211_3.pop();
+          widget = this.__focusElements.pop();
 
           if (widget && !widget.isDisposed() && widget.isFocusable()) {
             widget.focus();
           }
         }
 
-        var activeElementsLength = this.__P_211_2.length;
+        var activeElementsLength = this.__activeElements.length;
 
         if (activeElementsLength > 0) {
-          widget = this.__P_211_2.pop();
+          widget = this.__activeElements.pop();
 
           if (widget && !widget.isDisposed()) {
             widget.activate();
@@ -288,7 +288,7 @@
        *
        * @return {qx.html.Element} The blocker element
        */
-      __P_211_10: function __P_211_10() {
+      __createBlockerElement: function __createBlockerElement() {
         return new qx.html.Blocker(this.getColor(), this.getOpacity());
       },
 
@@ -300,10 +300,10 @@
        * @return {qx.html.Element} The blocker element
        */
       getBlockerElement: function getBlockerElement(widget) {
-        if (!this.__P_211_4) {
-          this.__P_211_4 = this.__P_211_10();
+        if (!this.__blocker) {
+          this.__blocker = this.__createBlockerElement();
 
-          this.__P_211_4.setStyle("zIndex", 15);
+          this.__blocker.setStyle("zIndex", 15);
 
           if (!widget) {
             if (this._isRoot) {
@@ -313,12 +313,12 @@
             }
           }
 
-          widget.getContentElement().add(this.__P_211_4);
+          widget.getContentElement().add(this.__blocker);
 
-          this.__P_211_4.exclude();
+          this.__blocker.exclude();
         }
 
-        return this.__P_211_4;
+        return this.__blocker;
       },
 
       /**
@@ -337,8 +337,8 @@
        */
       _block: function _block(zIndex, blockContent) {
         if (!this._isRoot && !this._widget.getLayoutParent()) {
-          if (!this.__P_211_7) {
-            this.__P_211_7 = this._widget.addListenerOnce("appear", this._block.bind(this, zIndex));
+          if (!this.__appearListener) {
+            this.__appearListener = this._widget.addListenerOnce("appear", this._block.bind(this, zIndex));
           }
 
           return;
@@ -358,9 +358,9 @@
           blocker.setStyle("zIndex", zIndex);
         }
 
-        this.__P_211_5++;
+        this.__blockerCount++;
 
-        if (this.__P_211_5 < 2) {
+        if (this.__blockerCount < 2) {
           this._backupActiveWidget();
 
           var bounds = this._widget.getBounds(); // no bounds -> widget not yet rendered -> bounds will be set on resize
@@ -376,10 +376,10 @@
             blocker.activate();
           }
 
-          blocker.addListener("deactivate", this.__P_211_11, this);
-          blocker.addListener("keypress", this.__P_211_12, this);
-          blocker.addListener("keydown", this.__P_211_12, this);
-          blocker.addListener("keyup", this.__P_211_12, this);
+          blocker.addListener("deactivate", this.__activateBlockerElement, this);
+          blocker.addListener("keypress", this.__stopTabEvent, this);
+          blocker.addListener("keydown", this.__stopTabEvent, this);
+          blocker.addListener("keyup", this.__stopTabEvent, this);
           this.fireEvent("blocked", qx.event.type.Event);
         }
       },
@@ -390,7 +390,7 @@
        * @return {Boolean} Whether the widget is blocked.
        */
       isBlocked: function isBlocked() {
-        return this.__P_211_5 > 0;
+        return this.__blockerCount > 0;
       },
 
       /**
@@ -399,22 +399,22 @@
        * the number of {@link #unblock} calls is identical to {@link #block} calls.
        */
       unblock: function unblock() {
-        if (this.__P_211_7) {
-          this._widget.removeListenerById(this.__P_211_7);
+        if (this.__appearListener) {
+          this._widget.removeListenerById(this.__appearListener);
 
-          this.__P_211_7 = null;
+          this.__appearListener = null;
         }
 
         if (!this.isBlocked()) {
           return;
         }
 
-        this.__P_211_5--;
+        this.__blockerCount--;
 
-        if (this.__P_211_5 < 1) {
-          this.__P_211_13();
+        if (this.__blockerCount < 1) {
+          this.__unblock();
 
-          this.__P_211_5 = 0;
+          this.__blockerCount = 0;
         }
       },
 
@@ -423,32 +423,32 @@
        * the amount of {@link #block} calls. The blocker is directly removed.
        */
       forceUnblock: function forceUnblock() {
-        if (this.__P_211_7) {
-          this._widget.removeListenerById(this.__P_211_7);
+        if (this.__appearListener) {
+          this._widget.removeListenerById(this.__appearListener);
 
-          this.__P_211_7 = null;
+          this.__appearListener = null;
         }
 
         if (!this.isBlocked()) {
           return;
         }
 
-        this.__P_211_5 = 0;
+        this.__blockerCount = 0;
 
-        this.__P_211_13();
+        this.__unblock();
       },
 
       /**
        * Unblock the widget blocked by {@link #block}.
        */
-      __P_211_13: function __P_211_13() {
+      __unblock: function __unblock() {
         this._restoreActiveWidget();
 
         var blocker = this.getBlockerElement();
-        blocker.removeListener("deactivate", this.__P_211_11, this);
-        blocker.removeListener("keypress", this.__P_211_12, this);
-        blocker.removeListener("keydown", this.__P_211_12, this);
-        blocker.removeListener("keyup", this.__P_211_12, this);
+        blocker.removeListener("deactivate", this.__activateBlockerElement, this);
+        blocker.removeListener("keypress", this.__stopTabEvent, this);
+        blocker.removeListener("keydown", this.__stopTabEvent, this);
+        blocker.removeListener("keyup", this.__stopTabEvent, this);
         blocker.exclude();
         this.fireEvent("unblocked", qx.event.type.Event);
       },
@@ -468,7 +468,7 @@
        *
        * @param e {qx.event.type.KeySequence} event to stop.
        */
-      __P_211_12: function __P_211_12(e) {
+      __stopTabEvent: function __stopTabEvent(e) {
         if (e.getKeyIdentifier() == "Tab") {
           e.stop();
         }
@@ -477,7 +477,7 @@
       /**
        * Sets the blocker element to active.
        */
-      __P_211_11: function __P_211_11() {
+      __activateBlockerElement: function __activateBlockerElement() {
         //
         // If this._widget is attached to the focus handler as a focus root,
         // activating the blocker after this widget was deactivated,
@@ -507,24 +507,24 @@
         qx.theme.manager.Meta.getInstance().removeListener("changeTheme", this._onChangeTheme, this);
       }
 
-      this._widget.removeListener("resize", this.__P_211_0, this);
+      this._widget.removeListener("resize", this.__onBoundsChange, this);
 
-      this._widget.removeListener("move", this.__P_211_0, this);
+      this._widget.removeListener("move", this.__onBoundsChange, this);
 
-      this._widget.removeListener("appear", this.__P_211_8, this);
+      this._widget.removeListener("appear", this.__onWidgetAppear, this);
 
-      this._widget.removeListener("disappear", this.__P_211_1, this);
+      this._widget.removeListener("disappear", this.__onWidgetDisappear, this);
 
-      if (this.__P_211_7) {
-        this._widget.removeListenerById(this.__P_211_7);
+      if (this.__appearListener) {
+        this._widget.removeListenerById(this.__appearListener);
       }
 
-      this._disposeObjects("__P_211_4", "__P_211_6");
+      this._disposeObjects("__blocker", "__timer");
 
-      this.__P_211_2 = this.__P_211_3 = this._widget = null;
+      this.__activeElements = this.__focusElements = this._widget = null;
     }
   });
   qx.ui.core.Blocker.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Blocker.js.map?dt=1608478926884
+//# sourceMappingURL=Blocker.js.map?dt=1609082288038

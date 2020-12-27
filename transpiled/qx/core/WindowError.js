@@ -58,11 +58,11 @@
         this.stacktrace = inst.stacktrace;
       }
 
-      this.__P_86_0 = failMessage;
-      this.__P_86_1 = uri || "";
-      this.__P_86_2 = lineNumber === undefined ? -1 : lineNumber;
-      this.__P_86_3 = columnNumber === undefined ? -1 : columnNumber;
-      this.__P_86_4 = sourceException;
+      this.__failMessage = failMessage;
+      this.__uri = uri || "";
+      this.__lineNumber = lineNumber === undefined ? -1 : lineNumber;
+      this.__columnNumber = columnNumber === undefined ? -1 : columnNumber;
+      this.__sourceException = sourceException;
     },
 
     /*
@@ -71,11 +71,11 @@
     *****************************************************************************
     */
     members: {
-      __P_86_0: null,
-      __P_86_1: null,
-      __P_86_2: null,
-      __P_86_3: null,
-      __P_86_4: null,
+      __failMessage: null,
+      __uri: null,
+      __lineNumber: null,
+      __columnNumber: null,
+      __sourceException: null,
 
       /**
        * Returns the error message.
@@ -83,7 +83,7 @@
        * @return {String} error message
        */
       toString: function toString() {
-        return this.__P_86_0;
+        return this.__failMessage;
       },
 
       /**
@@ -92,7 +92,7 @@
        * @return {String} URI where error was raised
        */
       getUri: function getUri() {
-        return this.__P_86_1;
+        return this.__uri;
       },
 
       /**
@@ -101,7 +101,7 @@
        * @return {Integer} The line number where the error was raised
        */
       getLineNumber: function getLineNumber() {
-        return this.__P_86_2;
+        return this.__lineNumber;
       },
 
       /**
@@ -110,7 +110,7 @@
        * @return {Integer} The line number where the error was raised
        */
       getColumnNumber: function getColumnNumber() {
-        return this.__P_86_3;
+        return this.__columnNumber;
       },
 
       /**
@@ -119,11 +119,11 @@
        * @return {Error} The source error
        */
       getSourceException: function getSourceException() {
-        return this.__P_86_4;
+        return this.__sourceException;
       }
     }
   });
   qx.core.WindowError.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=WindowError.js.map?dt=1608478916359
+//# sourceMappingURL=WindowError.js.map?dt=1609082275310

@@ -11,11 +11,11 @@
   "clazz": {
     "location": {
       "start": {
-        "line": 19,
+        "line": 23,
         "column": 0
       },
       "end": {
-        "line": 35,
+        "line": 39,
         "column": 3
       }
     },
@@ -33,11 +33,11 @@
     "_createOkButton": {
       "location": {
         "start": {
-          "line": 31,
+          "line": 35,
           "column": 4
         },
         "end": {
-          "line": 33,
+          "line": 37,
           "column": 5
         }
       },

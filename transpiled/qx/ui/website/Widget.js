@@ -139,7 +139,7 @@
       Array.prototype.push.apply(this, Array.prototype.slice.call(col, 0, col.length));
     },
     members: {
-      __P_400_0: null,
+      __cssPrefix: null,
 
       /**
        * Responsible for initializing of the widget. This checks for the data attribute
@@ -170,12 +170,12 @@
        * @return {String} The CSS prefix for the current object.
        */
       getCssPrefix: function getCssPrefix() {
-        if (!this.__P_400_0) {
+        if (!this.__cssPrefix) {
           var split = this.classname.split(".");
-          this.__P_400_0 = "qx-" + split[split.length - 1].toLowerCase();
+          this.__cssPrefix = "qx-" + split[split.length - 1].toLowerCase();
         }
 
-        return this.__P_400_0;
+        return this.__cssPrefix;
       },
 
       /**
@@ -363,4 +363,4 @@
   qx.ui.website.Widget.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Widget.js.map?dt=1608478939944
+//# sourceMappingURL=Widget.js.map?dt=1609082303488

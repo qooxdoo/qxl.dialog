@@ -177,8 +177,8 @@
     *****************************************************************************
     */
     statics: {
-      __P_251_0: null,
-      __P_251_1: null,
+      __dateFormat: null,
+      __formatter: null,
 
       /**
        * Get the shared default date formatter
@@ -188,17 +188,17 @@
       getDefaultDateFormatter: function getDefaultDateFormatter() {
         var format = qx.locale.Date.getDateFormat("medium").toString();
 
-        if (format == this.__P_251_0) {
-          return this.__P_251_1;
+        if (format == this.__dateFormat) {
+          return this.__formatter;
         }
 
-        if (this.__P_251_1) {
-          this.__P_251_1.dispose();
+        if (this.__formatter) {
+          this.__formatter.dispose();
         }
 
-        this.__P_251_1 = new qx.util.format.DateFormat(format, qx.locale.Manager.getInstance().getLocale());
-        this.__P_251_0 = format;
-        return this.__P_251_1;
+        this.__formatter = new qx.util.format.DateFormat(format, qx.locale.Manager.getInstance().getLocale());
+        this.__dateFormat = format;
+        return this.__formatter;
       }
     },
 
@@ -208,7 +208,7 @@
     *****************************************************************************
     */
     members: {
-      __P_251_2: null,
+      __localeListenerId: null,
 
       /**
        * @lint ignoreReferenceField(_forwardStates)
@@ -241,7 +241,7 @@
       _addLocaleChangeListener: function _addLocaleChangeListener() {
         // listen for locale changes
         {
-          this.__P_251_2 = qx.locale.Manager.getInstance().addListener("changeLocale", function () {
+          this.__localeListenerId = qx.locale.Manager.getInstance().addListener("changeLocale", function () {
             this._setDefaultDateFormat();
           }, this);
         }
@@ -560,8 +560,8 @@
     destruct: function destruct() {
       // listen for locale changes
       {
-        if (this.__P_251_2) {
-          qx.locale.Manager.getInstance().removeListenerById(this.__P_251_2);
+        if (this.__localeListenerId) {
+          qx.locale.Manager.getInstance().removeListenerById(this.__localeListenerId);
         }
       }
     }
@@ -569,4 +569,4 @@
   qx.ui.form.DateField.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=DateField.js.map?dt=1608478929718
+//# sourceMappingURL=DateField.js.map?dt=1609082290886

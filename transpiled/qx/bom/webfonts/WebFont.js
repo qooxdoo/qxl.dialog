@@ -70,7 +70,7 @@
     *****************************************************************************
     */
     members: {
-      __P_71_0: null,
+      __families: null,
       // property apply
       _applySources: function _applySources(value, old) {
         var families = [];
@@ -113,4 +113,4 @@
   qx.bom.webfonts.WebFont.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=WebFont.js.map?dt=1608478915513
+//# sourceMappingURL=WebFont.js.map?dt=1609082274385

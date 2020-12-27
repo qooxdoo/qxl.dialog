@@ -56,7 +56,7 @@
      */
     construct: function construct(selectionProvider) {
       qx.core.Object.constructor.call(this);
-      this.__P_226_0 = selectionProvider;
+      this.__selectionProvider = selectionProvider;
     },
 
     /*
@@ -83,7 +83,7 @@
       allowEmptySelection: {
         check: "Boolean",
         init: true,
-        apply: "__P_226_1"
+        apply: "__applyAllowEmptySelection"
       }
     },
 
@@ -94,10 +94,10 @@
     */
     members: {
       /** @type {qx.ui.core.Widget} The selected widget. */
-      __P_226_2: null,
+      __selected: null,
 
       /** @type {qx.ui.core.ISingleSelectionProvider} The provider for selection management */
-      __P_226_0: null,
+      __selectionProvider: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -112,7 +112,7 @@
        *    <code>null</code> if the selection is empty.
        */
       getSelected: function getSelected() {
-        return this.__P_226_2;
+        return this.__selected;
       },
 
       /**
@@ -122,11 +122,11 @@
        * @throws {Error} if the element is not a child element.
        */
       setSelected: function setSelected(item) {
-        if (!this.__P_226_3(item)) {
+        if (!this.__isChildElement(item)) {
           throw new Error("Could not select " + item + ", because it is not a child element!");
         }
 
-        this.__P_226_4(item);
+        this.__setSelected(item);
       },
 
       /**
@@ -134,7 +134,7 @@
        * <code>true</code> the first element will be selected.
        */
       resetSelected: function resetSelected() {
-        this.__P_226_4(null);
+        this.__setSelected(null);
       },
 
       /**
@@ -146,11 +146,11 @@
        * @throws {Error} if the element is not a child element.
        */
       isSelected: function isSelected(item) {
-        if (!this.__P_226_3(item)) {
+        if (!this.__isChildElement(item)) {
           throw new Error("Could not check if " + item + " is selected," + " because it is not a child element!");
         }
 
-        return this.__P_226_2 === item;
+        return this.__selected === item;
       },
 
       /**
@@ -160,7 +160,7 @@
        *    <code>false</code> otherwise.
        */
       isSelectionEmpty: function isSelectionEmpty() {
-        return this.__P_226_2 == null;
+        return this.__selected == null;
       },
 
       /**
@@ -171,12 +171,12 @@
        * @return {qx.ui.core.Widget[]} The contained items.
        */
       getSelectables: function getSelectables(all) {
-        var items = this.__P_226_0.getItems();
+        var items = this.__selectionProvider.getItems();
 
         var result = [];
 
         for (var i = 0; i < items.length; i++) {
-          if (this.__P_226_0.isItemSelectable(items[i])) {
+          if (this.__selectionProvider.isItemSelectable(items[i])) {
             result.push(items[i]);
           }
         } // in case of an user selectable list, remove the enabled items
@@ -201,9 +201,9 @@
       ---------------------------------------------------------------------------
       */
       // apply method
-      __P_226_1: function __P_226_1(value, old) {
+      __applyAllowEmptySelection: function __applyAllowEmptySelection(value, old) {
         if (!value) {
-          this.__P_226_4(this.__P_226_2);
+          this.__setSelected(this.__selected);
         }
       },
 
@@ -221,8 +221,8 @@
        * @param item {qx.ui.core.Widget | null} element to select, or
        *    <code>null</code> to reset selection.
        */
-      __P_226_4: function __P_226_4(item) {
-        var oldSelected = this.__P_226_2;
+      __setSelected: function __setSelected(item) {
+        var oldSelected = this.__selected;
         var newSelected = item;
 
         if (newSelected != null && oldSelected === newSelected) {
@@ -237,7 +237,7 @@
           }
         }
 
-        this.__P_226_2 = newSelected;
+        this.__selected = newSelected;
         this.fireDataEvent("changeSelected", newSelected, oldSelected);
       },
 
@@ -248,8 +248,8 @@
        * @return {Boolean} <code>true</code> if element is child element,
        *    <code>false</code> otherwise.
        */
-      __P_226_3: function __P_226_3(item) {
-        var items = this.__P_226_0.getItems();
+      __isChildElement: function __isChildElement(item) {
+        var items = this.__selectionProvider.getItems();
 
         for (var i = 0; i < items.length; i++) {
           if (items[i] === item) {
@@ -267,16 +267,16 @@
      *****************************************************************************
      */
     destruct: function destruct() {
-      if (this.__P_226_0.toHashCode) {
-        this._disposeObjects("__P_226_0");
+      if (this.__selectionProvider.toHashCode) {
+        this._disposeObjects("__selectionProvider");
       } else {
-        this.__P_226_0 = null;
+        this.__selectionProvider = null;
       }
 
-      this._disposeObjects("__P_226_2");
+      this._disposeObjects("__selected");
     }
   });
   qx.ui.core.SingleSelectionManager.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=SingleSelectionManager.js.map?dt=1608478927583
+//# sourceMappingURL=SingleSelectionManager.js.map?dt=1609082288870

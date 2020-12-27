@@ -107,9 +107,9 @@
     *****************************************************************************
     */
     members: {
-      __P_345_0: 16,
-      __P_345_1: 16,
-      __P_345_2: null,
+      __defaultWidth: 16,
+      __defaultHeight: 16,
+      __imageData: null,
 
       /**
        * Identifies the Image to show. This is a template method, which must be
@@ -163,7 +163,7 @@
 
 
         if (!imageData.imageWidth || !imageData.imageHeight) {
-          var sizes = this.__P_345_3(imageData.url);
+          var sizes = this.__getImageSize(imageData.url);
 
           imageData.imageWidth = sizes.width;
           imageData.imageHeight = sizes.height;
@@ -184,7 +184,7 @@
        * @return {Map} A map containing the image's <code>width</code> and
        *    <code>height</code>
        */
-      __P_345_3: function __P_345_3(source) {
+      __getImageSize: function __getImageSize(source) {
         var ResourceManager = qx.util.ResourceManager.getInstance();
         var ImageLoader = qx.io.ImageLoader;
         var width, height; // Detect if the image registry knows this image
@@ -196,8 +196,8 @@
           width = ImageLoader.getWidth(source);
           height = ImageLoader.getHeight(source);
         } else {
-          width = this.__P_345_0;
-          height = this.__P_345_1;
+          width = this.__defaultWidth;
+          height = this.__defaultHeight;
         }
 
         return {
@@ -207,7 +207,7 @@
       },
       // overridden
       createDataCellHtml: function createDataCellHtml(cellInfo, htmlArr) {
-        this.__P_345_2 = this._getImageInfos(cellInfo);
+        this.__imageData = this._getImageInfos(cellInfo);
         return qx.ui.table.cellrenderer.AbstractImage.prototype.createDataCellHtml.base.call(this, cellInfo, htmlArr);
       },
       // overridden
@@ -218,25 +218,25 @@
       _getContentHtml: function _getContentHtml(cellInfo) {
         var content = "<div></div>"; // set image
 
-        if (this.__P_345_2.url) {
-          var srcUrl = this.__P_345_2.url;
-          var highResolutionSource = qx.util.ResourceManager.getInstance().findHighResolutionSource(this.__P_345_2.url);
+        if (this.__imageData.url) {
+          var srcUrl = this.__imageData.url;
+          var highResolutionSource = qx.util.ResourceManager.getInstance().findHighResolutionSource(this.__imageData.url);
 
           if (highResolutionSource) {
             srcUrl = highResolutionSource;
           }
 
           var style = {
-            width: this.__P_345_2.width + "px",
-            height: this.__P_345_2.height + "px",
+            width: this.__imageData.width + "px",
+            height: this.__imageData.height + "px",
             display: qx.core.Environment.get("css.inlineblock"),
             verticalAlign: "middle",
             position: "static"
           };
 
-          if (qx.util.ResourceManager.getInstance().getCombinedFormat(this.__P_345_2.url) === "") {
+          if (qx.util.ResourceManager.getInstance().getCombinedFormat(this.__imageData.url) === "") {
             // background size is critical for high-resolution images but breaks combined images
-            style["background-size"] = this.__P_345_2.width + "px " + this.__P_345_2.height + "px";
+            style["background-size"] = this.__imageData.width + "px " + this.__imageData.height + "px";
           }
 
           content = qx.bom.element.Decoration.create(srcUrl, this.getRepeat(), style);
@@ -246,7 +246,7 @@
       },
       // overridden
       _getCellAttributes: function _getCellAttributes(cellInfo) {
-        var tooltip = this.__P_345_2.tooltip;
+        var tooltip = this.__imageData.tooltip;
 
         if (tooltip) {
           return "title='" + tooltip + "'";
@@ -262,10 +262,10 @@
     *****************************************************************************
     */
     destruct: function destruct() {
-      this.__P_345_2 = null;
+      this.__imageData = null;
     }
   });
   qx.ui.table.cellrenderer.AbstractImage.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=AbstractImage.js.map?dt=1608478935720
+//# sourceMappingURL=AbstractImage.js.map?dt=1609082298385

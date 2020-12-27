@@ -49,7 +49,7 @@
      */
     construct: function construct(widget) {
       qx.ui.core.selection.Abstract.constructor.call(this);
-      this.__P_238_0 = widget;
+      this.__widget = widget;
     },
 
     /*
@@ -58,7 +58,7 @@
     *****************************************************************************
     */
     members: {
-      __P_238_0: null,
+      __widget: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -67,7 +67,7 @@
       */
       // overridden
       _isSelectable: function _isSelectable(item) {
-        return this._isItemSelectable(item) && item.getLayoutParent() === this.__P_238_0;
+        return this._isItemSelectable(item) && item.getLayoutParent() === this.__widget;
       },
       // overridden
       _selectableToHashCode: function _selectableToHashCode(item) {
@@ -79,11 +79,11 @@
       },
       // overridden
       _capture: function _capture() {
-        this.__P_238_0.capture();
+        this.__widget.capture();
       },
       // overridden
       _releaseCapture: function _releaseCapture() {
-        this.__P_238_0.releaseCapture();
+        this.__widget.releaseCapture();
       },
 
       /**
@@ -106,7 +106,7 @@
        * @return {qx.ui.core.Widget} The widget
        */
       _getWidget: function _getWidget() {
-        return this.__P_238_0;
+        return this.__widget;
       },
 
       /*
@@ -116,13 +116,13 @@
       */
       // overridden
       _getLocation: function _getLocation() {
-        var elem = this.__P_238_0.getContentElement().getDomElement();
+        var elem = this.__widget.getContentElement().getDomElement();
 
         return elem ? qx.bom.element.Location.get(elem) : null;
       },
       // overridden
       _getDimension: function _getDimension() {
-        return this.__P_238_0.getInnerSize();
+        return this.__widget.getInnerSize();
       },
       // overridden
       _getSelectableLocationX: function _getSelectableLocationX(item) {
@@ -164,7 +164,7 @@
       },
       // overridden
       _scrollItemIntoView: function _scrollItemIntoView(item) {
-        this.__P_238_0.scrollChildIntoView(item);
+        this.__widget.scrollChildIntoView(item);
       },
 
       /*
@@ -182,7 +182,7 @@
           this._userInteraction = true;
         }
 
-        var children = this.__P_238_0.getChildren();
+        var children = this.__widget.getChildren();
 
         var result = [];
         var child;
@@ -208,7 +208,7 @@
         // between the given two (including them)
 
 
-        var children = this.__P_238_0.getChildren();
+        var children = this.__widget.getChildren();
 
         var result = [];
         var active = false;
@@ -235,7 +235,7 @@
       },
       // overridden
       _getFirstSelectable: function _getFirstSelectable() {
-        var children = this.__P_238_0.getChildren();
+        var children = this.__widget.getChildren();
 
         for (var i = 0, l = children.length; i < l; i++) {
           if (this._isItemSelectable(children[i])) {
@@ -247,7 +247,7 @@
       },
       // overridden
       _getLastSelectable: function _getLastSelectable() {
-        var children = this.__P_238_0.getChildren();
+        var children = this.__widget.getChildren();
 
         for (var i = children.length - 1; i > 0; i--) {
           if (this._isItemSelectable(children[i])) {
@@ -259,9 +259,9 @@
       },
       // overridden
       _getRelatedSelectable: function _getRelatedSelectable(item, relation) {
-        var vertical = this.__P_238_0.getOrientation() === "vertical";
+        var vertical = this.__widget.getOrientation() === "vertical";
 
-        var children = this.__P_238_0.getChildren();
+        var children = this.__widget.getChildren();
 
         var index = children.indexOf(item);
         var sibling;
@@ -302,10 +302,10 @@
     *****************************************************************************
     */
     destruct: function destruct() {
-      this.__P_238_0 = null;
+      this.__widget = null;
     }
   });
   qx.ui.core.selection.Widget.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Widget.js.map?dt=1608478928489
+//# sourceMappingURL=Widget.js.map?dt=1609082289923

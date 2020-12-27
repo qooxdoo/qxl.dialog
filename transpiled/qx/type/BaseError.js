@@ -52,7 +52,7 @@
         this.stacktrace = inst.stacktrace;
       }
 
-      this.__P_202_0 = comment || ""; // opera 10 crashes if the message is an empty string!!!?!?!
+      this.__comment = comment || ""; // opera 10 crashes if the message is an empty string!!!?!?!
 
       this.message = failMessage || qx.type.BaseError.DEFAULTMESSAGE;
     },
@@ -72,8 +72,8 @@
     *****************************************************************************
     */
     members: {
-      __P_202_1: null,
-      __P_202_0: null,
+      __sTrace: null,
+      __comment: null,
 
       /** @type {String} Fail message provided by the assertion */
       message: null,
@@ -84,7 +84,7 @@
        * @return {String} The comment passed to the assertion call
        */
       getComment: function getComment() {
-        return this.__P_202_0;
+        return this.__comment;
       },
 
       /**
@@ -93,11 +93,11 @@
        * @return {String} The error message
        */
       toString: function toString() {
-        return this.__P_202_0 + (this.message ? ": " + this.message : "");
+        return this.__comment + (this.message ? ": " + this.message : "");
       }
     }
   });
   qx.type.BaseError.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=BaseError.js.map?dt=1608478926108
+//# sourceMappingURL=BaseError.js.map?dt=1609082287143

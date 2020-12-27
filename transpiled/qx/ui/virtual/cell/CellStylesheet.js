@@ -79,14 +79,14 @@
         stylesheet += ".qx-cell {" + qx.bom.element.BoxSizing.compile("content-box") + "}";
       }
 
-      this.__P_381_0 = qx.bom.Stylesheet.createElement(stylesheet);
-      this.__P_381_1 = {};
-      this.__P_381_2 = {};
+      this.__stylesheet = qx.bom.Stylesheet.createElement(stylesheet);
+      this.__classes = {};
+      this.__styles = {};
     },
     members: {
-      __P_381_0: null,
-      __P_381_1: null,
-      __P_381_2: null,
+      __stylesheet: null,
+      __classes: null,
+      __styles: null,
 
       /**
        * Get the DOM stylesheet element
@@ -94,7 +94,7 @@
        * @return {StyleSheet} The DOM stylesheet element
        */
       getStylesheet: function getStylesheet() {
-        return this.__P_381_0;
+        return this.__stylesheet;
       },
 
       /**
@@ -105,7 +105,7 @@
        *   <code>null</code>.
        */
       getCssClass: function getCssClass(key) {
-        return this.__P_381_1[key] || null;
+        return this.__classes[key] || null;
       },
 
       /**
@@ -118,17 +118,17 @@
        * @return {String} The CSS class name.
        */
       computeClassForStyles: function computeClassForStyles(key, styleString) {
-        var cssClass = this.__P_381_2[styleString];
+        var cssClass = this.__styles[styleString];
 
         if (!cssClass) {
           // generate stylesheet rule
-          var cssClass = this.__P_381_3();
+          var cssClass = this.__getNextClassname();
 
-          qx.bom.Stylesheet.addRule(this.__P_381_0, "." + cssClass, styleString);
-          this.__P_381_2[styleString] = cssClass;
+          qx.bom.Stylesheet.addRule(this.__stylesheet, "." + cssClass, styleString);
+          this.__styles[styleString] = cssClass;
         }
 
-        this.__P_381_1[key] = cssClass;
+        this.__classes[key] = cssClass;
         return cssClass;
       },
 
@@ -137,16 +137,16 @@
        *
        * @return {String} The next unique CSS class name
        */
-      __P_381_3: function __P_381_3() {
-        return "qx-cell-" + this.toHashCode() + "-" + this.__P_381_4++;
+      __getNextClassname: function __getNextClassname() {
+        return "qx-cell-" + this.toHashCode() + "-" + this.__classCounter++;
       },
-      __P_381_4: 0
+      __classCounter: 0
     },
     destruct: function destruct() {
-      this.__P_381_0 = this.__P_381_1 = this.__P_381_2 = null;
+      this.__stylesheet = this.__classes = this.__styles = null;
     }
   });
   qx.ui.virtual.cell.CellStylesheet.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=CellStylesheet.js.map?dt=1608478938509
+//# sourceMappingURL=CellStylesheet.js.map?dt=1609082301707

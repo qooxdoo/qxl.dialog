@@ -89,7 +89,7 @@
      */
     construct: function construct(doc) {
       // Temporary storage of element to use
-      this.__P_338_0 = doc;
+      this.__doc = doc;
       qx.ui.root.Abstract.constructor.call(this); // Use a hard-coded basic layout
 
       this._setLayout(new qx.ui.layout.Basic()); // Set a high zIndex to make sure the widgets really overlay the HTML page.
@@ -99,7 +99,7 @@
 
       qx.ui.core.queue.Layout.add(this); // Register resize listener
 
-      this.addListener("resize", this.__P_338_1, this); // Register as root
+      this.addListener("resize", this.__onResize, this); // Register as root
 
       qx.ui.core.FocusHandler.getInstance().connectTo(this); // Avoid the automatically scroll in to view.
       // See http://bugzilla.qooxdoo.org/show_bug.cgi?id=3236 for details.
@@ -115,13 +115,13 @@
     *****************************************************************************
     */
     members: {
-      __P_338_2: null,
-      __P_338_0: null,
+      __timer: null,
+      __doc: null,
       // overridden
       _createContentElement: function _createContentElement() {
-        var elem = this.__P_338_0.createElement("div");
+        var elem = this.__doc.createElement("div");
 
-        this.__P_338_0.body.appendChild(elem);
+        this.__doc.body.appendChild(elem);
 
         var root = new qx.html.Root(elem);
         root.setStyles({
@@ -160,7 +160,7 @@
        *
        * @param e {qx.event.type.Data} event object
        */
-      __P_338_1: function __P_338_1(e) {
+      __onResize: function __onResize(e) {
         // set the size to 0 so make the content element invisible
         // this works because the content element has overflow "show"
         this.getContentElement().setStyles({
@@ -194,10 +194,10 @@
     *****************************************************************************
     */
     destruct: function destruct() {
-      this.__P_338_0 = null;
+      this.__doc = null;
     }
   });
   qx.ui.root.Page.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Page.js.map?dt=1608478935058
+//# sourceMappingURL=Page.js.map?dt=1609082297542

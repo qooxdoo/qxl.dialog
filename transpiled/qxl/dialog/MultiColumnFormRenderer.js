@@ -29,9 +29,9 @@
        See the LICENSE file in the project's top-level directory for details.
   
      Authors:
-     *  Christian Boulanger (cboulanger)
-     *  Derrell Lipman (derrell)
-    
+       *  Christian Boulanger (cboulanger)
+       *  Derrell Lipman (derrell)
+  
   ************************************************************************ */
 
   /**
@@ -107,7 +107,7 @@
           if (item instanceof qx.ui.form.RadioGroup) {
             /*
              * create horizontal radio group for a small
-             * number of radio buttons 
+             * number of radio buttons
              */
             if (item.getUserData("orientation") == "horizontal") {
               widget = this._createHBoxForRadioGroup(item);
@@ -222,4 +222,4 @@
   qxl.dialog.MultiColumnFormRenderer.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MultiColumnFormRenderer.js.map?dt=1608478941688
+//# sourceMappingURL=MultiColumnFormRenderer.js.map?dt=1609082305652

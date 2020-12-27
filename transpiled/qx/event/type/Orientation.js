@@ -57,8 +57,8 @@
     *****************************************************************************
     */
     members: {
-      __P_148_0: null,
-      __P_148_1: null,
+      __orientation: null,
+      __mode: null,
 
       /**
        * Initialize the fields of the event. The event must be initialized before
@@ -70,8 +70,8 @@
        */
       init: function init(orientation, mode) {
         qx.event.type.Orientation.prototype.init.base.call(this, false, false);
-        this.__P_148_0 = orientation;
-        this.__P_148_1 = mode;
+        this.__orientation = orientation;
+        this.__mode = mode;
         return this;
       },
 
@@ -87,8 +87,8 @@
        */
       clone: function clone(embryo) {
         var clone = qx.event.type.Orientation.prototype.clone.base.call(this, embryo);
-        clone.__P_148_0 = this.__P_148_0;
-        clone.__P_148_1 = this.__P_148_1;
+        clone.__orientation = this.__orientation;
+        clone.__mode = this.__mode;
         return clone;
       },
 
@@ -105,7 +105,7 @@
        * @return {Integer} The current orientation in degree
        */
       getOrientation: function getOrientation() {
-        return this.__P_148_0;
+        return this.__orientation;
       },
 
       /**
@@ -115,7 +115,7 @@
        *     is currently in landscape mode.
        */
       isLandscape: function isLandscape() {
-        return this.__P_148_1 == "landscape";
+        return this.__mode == "landscape";
       },
 
       /**
@@ -125,11 +125,11 @@
        *     is currently in portrait mode.
        */
       isPortrait: function isPortrait() {
-        return this.__P_148_1 == "portrait";
+        return this.__mode == "portrait";
       }
     }
   });
   qx.event.type.Orientation.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Orientation.js.map?dt=1608478920866
+//# sourceMappingURL=Orientation.js.map?dt=1609082280448

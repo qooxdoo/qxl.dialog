@@ -101,7 +101,7 @@
      */
     construct: function construct(canvasWidth, canvasHeight) {
       qx.ui.core.Widget.constructor.call(this);
-      this.__P_245_0 = new qx.util.DeferredCall(this.__P_245_1, this);
+      this.__deferredDraw = new qx.util.DeferredCall(this.__redraw, this);
       this.addListener("resize", this._onResize, this);
 
       if (canvasWidth !== undefined) {
@@ -162,7 +162,7 @@
     */
     members: {
       /** @type {qx.util.DeferredCall} */
-      __P_245_0: null,
+      __deferredDraw: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -177,7 +177,7 @@
       /**
        * This methods triggers the redraw of the canvas' content
        */
-      __P_245_1: function __P_245_1() {
+      __redraw: function __redraw() {
         var canvas = this.getContentElement();
         var height = canvas.getHeight();
         var width = canvas.getWidth();
@@ -195,20 +195,20 @@
       _applyCanvasWidth: function _applyCanvasWidth(value, old) {
         this.getContentElement().setWidth(value);
 
-        this.__P_245_0.schedule();
+        this.__deferredDraw.schedule();
       },
       // property apply
       _applyCanvasHeight: function _applyCanvasHeight(value, old) {
         this.getContentElement().setHeight(value);
 
-        this.__P_245_0.schedule();
+        this.__deferredDraw.schedule();
       },
 
       /**
        * Redraw the canvas
        */
       update: function update() {
-        this.__P_245_0.schedule();
+        this.__deferredDraw.schedule();
       },
 
       /**
@@ -254,10 +254,10 @@
      *****************************************************************************
      */
     destruct: function destruct() {
-      this._disposeObjects("__P_245_0");
+      this._disposeObjects("__deferredDraw");
     }
   });
   qx.ui.embed.Canvas.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Canvas.js.map?dt=1608478928874
+//# sourceMappingURL=Canvas.js.map?dt=1609082290366

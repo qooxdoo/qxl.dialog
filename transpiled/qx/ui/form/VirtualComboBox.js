@@ -63,9 +63,9 @@
 
       var dropdown = this.getChildControl("dropdown");
       dropdown.getChildControl("list").setSelectionMode("single");
-      this.__P_266_0 = dropdown.getSelection();
+      this.__selection = dropdown.getSelection();
 
-      this.__P_266_0.addListener("change", this.__P_266_1, this);
+      this.__selection.addListener("change", this.__onSelectionChange, this);
 
       this.bind("value", textField, "value");
       textField.bind("value", this, "value"); // forward the focusin and focusout events to the textfield. The textfield
@@ -126,16 +126,16 @@
     },
     members: {
       /** @type {var} Binding id between local value and text field value. */
-      __P_266_2: null,
+      __localBindId: null,
 
       /** @type {var} Binding id between text field value and local value. */
-      __P_266_3: null,
+      __textFieldBindId: null,
 
       /** @type {qx.data.Array} the drop-down selection. */
-      __P_266_0: null,
+      __selection: null,
 
       /** @type {Boolean} Indicator to ignore selection changes from the list. */
-      __P_266_4: null,
+      __ignoreChangeSelection: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -247,7 +247,7 @@
       },
       // overridden
       _beforeOpen: function _beforeOpen() {
-        this.__P_266_5();
+        this.__selectFirstMatch();
       },
       // overridden
       _handleKeyboard: function _handleKeyboard(event) {
@@ -301,15 +301,15 @@
        *
        * @param event {qx.event.type.Data} The change event from the qx.data.Array.
        */
-      __P_266_1: function __P_266_1(event) {
-        if (this.__P_266_4 == true) {
+      __onSelectionChange: function __onSelectionChange(event) {
+        if (this.__ignoreChangeSelection == true) {
           return;
         }
 
-        var selected = this.__P_266_0.getItem(0);
+        var selected = this.__selection.getItem(0);
 
         if (selected) {
-          selected = this.__P_266_6(selected);
+          selected = this.__convertValue(selected);
           this.setValue(selected);
         }
       },
@@ -333,19 +333,19 @@
       /**
        * Selects the first list item that starts with the text field's value.
        */
-      __P_266_5: function __P_266_5() {
+      __selectFirstMatch: function __selectFirstMatch() {
         var value = this.getValue();
         var dropdown = this.getChildControl("dropdown");
         var selection = dropdown.getSelection();
         var selected = selection.getItem(0); // try to preselect the matching item even if there is no current selection
 
-        if (selected === undefined || this.__P_266_6(selected) !== value) {
+        if (selected === undefined || this.__convertValue(selected) !== value) {
           // only reset the old selection if there is one
           if (selected !== undefined) {
             // reset the old selection
-            this.__P_266_4 = true;
+            this.__ignoreChangeSelection = true;
             selection.removeAll();
-            this.__P_266_4 = false;
+            this.__ignoreChangeSelection = false;
           } // No calculation is needed when the value is empty
 
 
@@ -360,7 +360,7 @@
           for (var i = 0, l = lookupTable.length; i < l; i++) {
             var modelItem = model.getItem(lookupTable[i]);
 
-            var itemLabel = this.__P_266_6(modelItem);
+            var itemLabel = this.__convertValue(modelItem);
 
             if (itemLabel && itemLabel.indexOf(value) == 0) {
               dropdown.setPreselected(modelItem);
@@ -376,7 +376,7 @@
        * @param modelItem {var} The model item to convert.
        * @return {String} The converted value.
        */
-      __P_266_6: function __P_266_6(modelItem) {
+      __convertValue: function __convertValue(modelItem) {
         var labelOptions = this.getLabelOptions();
         var formatter = this.getDefaultFormat();
         var labelPath = this.getLabelPath();
@@ -406,12 +406,12 @@
       this.removeAllBindings();
       textField.removeAllBindings();
 
-      this.__P_266_0.removeListener("change", this.__P_266_1, this);
+      this.__selection.removeListener("change", this.__onSelectionChange, this);
 
-      this.__P_266_0 = null;
+      this.__selection = null;
     }
   });
   qx.ui.form.VirtualComboBox.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=VirtualComboBox.js.map?dt=1608478930694
+//# sourceMappingURL=VirtualComboBox.js.map?dt=1609082292210

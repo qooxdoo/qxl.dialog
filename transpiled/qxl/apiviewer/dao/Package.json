@@ -480,7 +480,7 @@
         }
       },
       "type": "variable",
-      "access": "private"
+      "access": "protected"
     },
     "getPackage": {
       "location": {

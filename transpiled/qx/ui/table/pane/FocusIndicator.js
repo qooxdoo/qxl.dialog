@@ -48,7 +48,7 @@
       // use the grow layout to make sure that the editing control
       // always fills the focus indicator box.
       qx.ui.container.Composite.constructor.call(this, new qx.ui.layout.Grow());
-      this.__P_356_0 = scroller;
+      this.__scroller = scroller;
       this.setKeepActive(true);
       this.addListener("keypress", this._onKeyPress, this);
     },
@@ -72,7 +72,7 @@
       }
     },
     members: {
-      __P_356_0: null,
+      __scroller: null,
 
       /**
        * Keypress handler. Suppress all key events but "Enter" and "Escape"
@@ -98,7 +98,7 @@
         // check if the focus indicator is shown and if the new column is
         // editable. if not, just exclude the indicator because the pointer events
         // should go to the cell itself linked with HTML links [BUG #4250]
-        if (!this.__P_356_0.getShowCellFocusIndicator() && !this.__P_356_0.getTable().getTableModel().isColumnEditable(col)) {
+        if (!this.__scroller.getShowCellFocusIndicator() && !this.__scroller.getTable().getTableModel().isColumnEditable(col)) {
           this.exclude();
           return;
         } else {
@@ -110,20 +110,20 @@
           this.setRow(null);
           this.setColumn(null);
         } else {
-          var xPos = this.__P_356_0.getTablePaneModel().getX(col);
+          var xPos = this.__scroller.getTablePaneModel().getX(col);
 
           if (xPos === -1) {
             this.hide();
             this.setRow(null);
             this.setColumn(null);
           } else {
-            var table = this.__P_356_0.getTable();
+            var table = this.__scroller.getTable();
 
             var columnModel = table.getTableColumnModel();
 
-            var paneModel = this.__P_356_0.getTablePaneModel();
+            var paneModel = this.__scroller.getTablePaneModel();
 
-            var firstRow = this.__P_356_0.getTablePane().getFirstVisibleRow();
+            var firstRow = this.__scroller.getTablePane().getFirstVisibleRow();
 
             var rowHeight = table.getRowHeight();
             var wt = 0;
@@ -146,9 +146,9 @@
             var userHeight = rowHeight + (wl + wr - 2);
             var userTop = (row - firstRow) * rowHeight - (wr - 1);
 
-            if (editing && this.__P_356_0.getMinCellEditHeight() && this.__P_356_0.getMinCellEditHeight() > userHeight) {
-              userTop -= Math.floor((this.__P_356_0.getMinCellEditHeight() - userHeight) / 2);
-              userHeight = this.__P_356_0.getMinCellEditHeight();
+            if (editing && this.__scroller.getMinCellEditHeight() && this.__scroller.getMinCellEditHeight() > userHeight) {
+              userTop -= Math.floor((this.__scroller.getMinCellEditHeight() - userHeight) / 2);
+              userHeight = this.__scroller.getMinCellEditHeight();
             }
 
             this.setUserBounds(paneModel.getColumnLeft(col) - (wt - 1), userTop, columnModel.getColumnWidth(col) + (wt + wb - 3), userHeight);
@@ -160,10 +160,10 @@
       }
     },
     destruct: function destruct() {
-      this.__P_356_0 = null;
+      this.__scroller = null;
     }
   });
   qx.ui.table.pane.FocusIndicator.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=FocusIndicator.js.map?dt=1608478936442
+//# sourceMappingURL=FocusIndicator.js.map?dt=1609082299270

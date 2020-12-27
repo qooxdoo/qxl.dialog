@@ -198,7 +198,7 @@
        * @param win {Window} The window to query
        * @return {Map} Orientation normalizing value
        */
-      __P_33_0: function __P_33_0(win) {
+      __getOrientationNormalizer: function __getOrientationNormalizer(win) {
         // Calculate own understanding of orientation (0 = portrait, 90 = landscape)
         var currentOrientation = this.getWidth(win) > this.getHeight(win) ? 90 : 0;
         var deviceOrientation = win.orientation;
@@ -228,7 +228,7 @@
         }
       },
       // Cache orientation normalizer map on start
-      __P_33_1: null,
+      __orientationNormalizer: null,
 
       /**
        * Returns the current orientation of the viewport in degree.
@@ -259,12 +259,12 @@
           // Calculate orientation from window width and window height
           orientation = this.getWidth(win) > this.getHeight(win) ? 90 : 0;
         } else {
-          if (this.__P_33_1 == null) {
-            this.__P_33_1 = this.__P_33_0(win);
+          if (this.__orientationNormalizer == null) {
+            this.__orientationNormalizer = this.__getOrientationNormalizer(win);
           } // Normalize orientation value
 
 
-          orientation = this.__P_33_1[orientation];
+          orientation = this.__orientationNormalizer[orientation];
         }
 
         return orientation;
@@ -298,4 +298,4 @@
   qx.bom.Viewport.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Viewport.js.map?dt=1608478912798
+//# sourceMappingURL=Viewport.js.map?dt=1609082271411

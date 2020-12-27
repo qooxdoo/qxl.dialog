@@ -98,11 +98,11 @@
       qx.core.Object.constructor.call(this); // Define shorthands
 
       this._window = manager.getWindow();
-      this.__P_126_0 = false;
-      this.__P_126_1 = false;
-      this.__P_126_2 = false;
-      this.__P_126_3 = false;
-      this.__P_126_4 = false; // Initialize observers
+      this.__domReady = false;
+      this.__loaded = false;
+      this.__isReady = false;
+      this.__isInitialized = false;
+      this.__isUnloaded = false; // Initialize observers
 
       this._initObserver(); // Store instance (only supported for main app window, this
       // is the reason why this is OK here)
@@ -142,7 +142,7 @@
         var inst = qx.event.handler.Application.$$instance;
 
         if (inst) {
-          inst.__P_126_5();
+          inst.__fireReady();
         }
       },
 
@@ -155,7 +155,7 @@
         var inst = qx.event.handler.Application.$$instance;
 
         if (inst) {
-          inst.__P_126_6();
+          inst.__fireAppInstanceInitialized();
         }
       }
     },
@@ -179,11 +179,11 @@
       // interface implementation
       unregisterEvent: function unregisterEvent(target, type, capture) {// Nothing needs to be done here
       },
-      __P_126_2: null,
-      __P_126_3: null,
-      __P_126_0: null,
-      __P_126_1: null,
-      __P_126_4: null,
+      __isReady: null,
+      __isInitialized: null,
+      __domReady: null,
+      __loaded: null,
+      __isUnloaded: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -195,21 +195,21 @@
        * Fires a global ready event.
        *
        */
-      __P_126_5: function __P_126_5() {
+      __fireReady: function __fireReady() {
         // Wrapper qxloader needed to be compatible with old generator
-        if (!this.__P_126_2 && this.__P_126_0 && qx.$$loader.scriptLoaded) {
+        if (!this.__isReady && this.__domReady && qx.$$loader.scriptLoaded) {
           // If qooxdoo is loaded within a frame in IE, the document is ready before
           // the "ready" listener can be added. To avoid any startup issue check
           // for the availability of the "ready" listener before firing the event.
           // So at last the native "load" will trigger the "ready" event.
           if (qx.core.Environment.get("engine.name") == "mshtml") {
             if (qx.event.Registration.hasListener(this._window, "ready")) {
-              this.__P_126_2 = true; // Fire user event
+              this.__isReady = true; // Fire user event
 
               qx.event.Registration.fireEvent(this._window, "ready");
             }
           } else {
-            this.__P_126_2 = true; // Fire user event
+            this.__isReady = true; // Fire user event
 
             qx.event.Registration.fireEvent(this._window, "ready");
           }
@@ -220,8 +220,8 @@
        * Fires a global "appinitialized" event.
        *
        */
-      __P_126_6: function __P_126_6() {
-        this.__P_126_3 = true; // Fire user event
+      __fireAppInstanceInitialized: function __fireAppInstanceInitialized() {
+        this.__isInitialized = true; // Fire user event
 
         qx.event.Registration.fireEvent(this._window, "appinitialized");
       },
@@ -232,7 +232,7 @@
        * @return {Boolean} ready status
        */
       isApplicationReady: function isApplicationReady() {
-        return this.__P_126_2;
+        return this.__isReady;
       },
 
       /**
@@ -241,7 +241,7 @@
        * @return {Boolean} initialization status
        */
       isApplicationInitialized: function isApplicationInitialized() {
-        return this.__P_126_3;
+        return this.__isInitialized;
       },
 
       /*
@@ -257,9 +257,9 @@
       _initObserver: function _initObserver() {
         // in Firefox the loader script sets the ready state
         if (qx.$$domReady || document.readyState == "complete" || document.readyState == "ready") {
-          this.__P_126_0 = true;
+          this.__domReady = true;
 
-          this.__P_126_5();
+          this.__fireReady();
         } else {
           this._onNativeLoadWrapped = qx.lang.Function.bind(this._onNativeLoad, this);
 
@@ -323,8 +323,8 @@
        */
       _onNativeLoad: function _onNativeLoad() {
         var callback = qx.core.Environment.select("qx.globalErrorHandling", {
-          "true": qx.event.GlobalError.observeMethod(this.__P_126_7),
-          "false": this.__P_126_7
+          "true": qx.event.GlobalError.observeMethod(this.__onNativeLoadHandler),
+          "false": this.__onNativeLoadHandler
         });
         callback.apply(this, arguments);
       },
@@ -332,10 +332,10 @@
       /**
        * Event listener for native load event
        */
-      __P_126_7: function __P_126_7() {
-        this.__P_126_0 = true;
+      __onNativeLoadHandler: function __onNativeLoadHandler() {
+        this.__domReady = true;
 
-        this.__P_126_5();
+        this.__fireReady();
       },
 
       /**
@@ -343,8 +343,8 @@
        */
       _onNativeUnload: function _onNativeUnload() {
         var callback = qx.core.Environment.select("qx.globalErrorHandling", {
-          "true": qx.event.GlobalError.observeMethod(this.__P_126_8),
-          "false": this.__P_126_8
+          "true": qx.event.GlobalError.observeMethod(this.__onNativeUnloadHandler),
+          "false": this.__onNativeUnloadHandler
         });
         callback.apply(this, arguments);
       },
@@ -352,9 +352,9 @@
       /**
        * Event listener for native unload event
        */
-      __P_126_8: function __P_126_8() {
-        if (!this.__P_126_4) {
-          this.__P_126_4 = true;
+      __onNativeUnloadHandler: function __onNativeUnloadHandler() {
+        if (!this.__isUnloaded) {
+          this.__isUnloaded = true;
 
           try {
             // Fire user event
@@ -390,4 +390,4 @@
   qx.event.handler.Application.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Application.js.map?dt=1608478919537
+//# sourceMappingURL=Application.js.map?dt=1609082278875

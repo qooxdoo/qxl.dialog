@@ -83,9 +83,9 @@
       this._init();
     },
     members: {
-      __P_316_0: null,
-      __P_316_1: null,
-      __P_316_2: null,
+      __image: null,
+      __title: null,
+      __rightContainer: null,
 
       /**
        * Returns the image widget which is used for this renderer.
@@ -93,7 +93,7 @@
        * @return {qx.ui.mobile.basic.Image} The image widget
        */
       getImageWidget: function getImageWidget() {
-        return this.__P_316_0;
+        return this.__image;
       },
 
       /**
@@ -102,7 +102,7 @@
        * @return {qx.ui.mobile.basic.Label} The title widget
        */
       getTitleWidget: function getTitleWidget() {
-        return this.__P_316_1;
+        return this.__title;
       },
 
       /**
@@ -111,7 +111,7 @@
        * @param source {String} The source to set
        */
       setImage: function setImage(source) {
-        this.__P_316_0.setSource(source);
+        this.__image.setSource(source);
       },
 
       /**
@@ -121,9 +121,9 @@
        */
       setTitle: function setTitle(title) {
         if (title && title.translate) {
-          this.__P_316_1.setValue(title.translate());
+          this.__title.setValue(title.translate());
         } else {
-          this.__P_316_1.setValue(title);
+          this.__title.setValue(title);
         }
       },
 
@@ -140,15 +140,15 @@
        *
        */
       _init: function _init() {
-        this.__P_316_0 = this._createImage();
-        this.add(this.__P_316_0);
-        this.__P_316_2 = this._createRightContainer();
-        this.add(this.__P_316_2, {
+        this.__image = this._createImage();
+        this.add(this.__image);
+        this.__rightContainer = this._createRightContainer();
+        this.add(this.__rightContainer, {
           flex: 1
         });
-        this.__P_316_1 = this._createTitle();
+        this.__title = this._createTitle();
 
-        this.__P_316_2.add(this.__P_316_1);
+        this.__rightContainer.add(this.__title);
       },
 
       /**
@@ -185,16 +185,16 @@
       },
       // overridden
       reset: function reset() {
-        this.__P_316_0.setSource(null);
+        this.__image.setSource(null);
 
-        this.__P_316_1.setValue("");
+        this.__title.setValue("");
       }
     },
     destruct: function destruct() {
-      this._disposeObjects("__P_316_0", "__P_316_1", "__P_316_2");
+      this._disposeObjects("__image", "__title", "__rightContainer");
     }
   });
   qx.ui.mobile.list.renderer.group.Default.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Default.js.map?dt=1608478934137
+//# sourceMappingURL=Default.js.map?dt=1609082296413

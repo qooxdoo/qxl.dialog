@@ -114,7 +114,7 @@
         }
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "__createAttributesHtml": {
       "location": {
@@ -128,7 +128,7 @@
         }
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "__createRefinedFromHtml": {
       "location": {
@@ -167,7 +167,7 @@
         ]
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "getItemTypeHtml": {
       "location": {

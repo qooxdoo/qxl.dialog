@@ -81,12 +81,12 @@
        * @param tag {String} Tag name
        * @return {String} XHTML corrected tag
        */
-      __P_20_0: function __P_20_0(all, front, tag) {
+      __fixNonDirectlyClosableHelper: function __fixNonDirectlyClosableHelper(all, front, tag) {
         return tag.match(/^(abbr|br|col|img|input|link|meta|param|hr|area|embed)$/i) ? all : front + "></" + tag + ">";
       },
 
       /** @type {Map} Contains wrap fragments for specific HTML matches */
-      __P_20_1: {
+      __convertMap: {
         opt: [1, "<select multiple='multiple'>", "</select>"],
         // option or optgroup
         leg: [1, "<fieldset>", "</fieldset>"],
@@ -110,7 +110,7 @@
        * @return {String} Fixed HTML
        */
       fixEmptyTags: function fixEmptyTags(html) {
-        return html.replace(/(<(\w+)[^>]*?)\/>/g, this.__P_20_0);
+        return html.replace(/(<(\w+)[^>]*?)\/>/g, this.__fixNonDirectlyClosableHelper);
       },
 
       /**
@@ -120,14 +120,14 @@
        * @param context {Document} Context document in which (helper) elements should be created
        * @return {Array} List of resulting elements
        */
-      __P_20_2: function __P_20_2(html, context) {
+      __convertHtmlString: function __convertHtmlString(html, context) {
         var div = context.createElement("div");
         html = qx.bom.Html.fixEmptyTags(html); // Trim whitespace, otherwise indexOf won't work as expected
 
         var tags = html.replace(/^\s+/, "").substring(0, 5).toLowerCase(); // Auto-wrap content into required DOM structure
 
         var wrap,
-            map = this.__P_20_1;
+            map = this.__convertMap;
 
         if (!tags.indexOf("<opt")) {
           wrap = map.opt;
@@ -227,7 +227,7 @@
           obj = objs[i]; // Convert HTML string into DOM nodes
 
           if (typeof obj === "string") {
-            obj = this.__P_20_2(obj, context);
+            obj = this.__convertHtmlString(obj, context);
           } // Append or merge depending on type
 
 
@@ -295,4 +295,4 @@
   qx.bom.Html.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Html.js.map?dt=1608478911647
+//# sourceMappingURL=Html.js.map?dt=1609082270127

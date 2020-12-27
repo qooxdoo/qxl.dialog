@@ -62,9 +62,9 @@
      */
     construct: function construct(callback, context) {
       qx.core.Object.constructor.call(this);
-      this.__P_407_0 = callback;
-      this.__P_407_1 = context || null;
-      this.__P_407_2 = qx.util.DeferredCallManager.getInstance();
+      this.__callback = callback;
+      this.__context = context || null;
+      this.__manager = qx.util.DeferredCallManager.getInstance();
     },
 
     /*
@@ -73,29 +73,29 @@
     *****************************************************************************
     */
     members: {
-      __P_407_0: null,
-      __P_407_1: null,
-      __P_407_2: null,
+      __callback: null,
+      __context: null,
+      __manager: null,
 
       /**
        * Prevent the callback from being called.
        */
       cancel: function cancel() {
-        this.__P_407_2.cancel(this);
+        this.__manager.cancel(this);
       },
 
       /**
        * Issue a deferred call of the callback.
        */
       schedule: function schedule() {
-        this.__P_407_2.schedule(this);
+        this.__manager.schedule(this);
       },
 
       /**
        * Calls the callback directly.
        */
       call: function call() {
-        this.__P_407_1 ? this.__P_407_0.apply(this.__P_407_1) : this.__P_407_0();
+        this.__context ? this.__callback.apply(this.__context) : this.__callback();
       }
     },
 
@@ -106,10 +106,10 @@
     */
     destruct: function destruct() {
       this.cancel();
-      this.__P_407_1 = this.__P_407_0 = this.__P_407_2 = null;
+      this.__context = this.__callback = this.__manager = null;
     }
   });
   qx.util.DeferredCall.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=DeferredCall.js.map?dt=1608478940355
+//# sourceMappingURL=DeferredCall.js.map?dt=1609082303998

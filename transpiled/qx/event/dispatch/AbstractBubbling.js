@@ -144,15 +144,15 @@
 
         var self = this;
         var tracker = {};
-        var __P_123_0 = false; //(event._type == "pointerup" && event._target.className === "qx-toolbar-button-checked");
+        var __TRACE_LOGGING = false; //(event._type == "pointerup" && event._target.className === "qx-toolbar-button-checked");
 
-        var __P_123_1 = function __P_123_1() {};
+        var __TRACE = function __TRACE() {};
 
-        if (__P_123_0) {
+        if (__TRACE_LOGGING) {
           var serial = (this.SERIAL || 0) + 1;
           this.SERIAL = serial + 1;
 
-          __P_123_1 = function __P_123_1() {
+          __TRACE = function __TRACE() {
             var args = [].slice.apply(arguments);
             args.unshift("serial #" + serial + ": ");
             console.log.apply(this, args);
@@ -161,17 +161,17 @@
 
         qx.event.Utils["catch"](tracker, function () {
           // This function must exist to suppress "unhandled rejection" messages from promises
-          __P_123_1("Aborted serial=" + serial + ", type=" + event.getType());
+          __TRACE("Aborted serial=" + serial + ", type=" + event.getType());
         }); // capturing phase
 
         qx.event.Utils.then(tracker, function () {
           // loop through the hierarchy in reverted order (from root)
           event.setEventPhase(qx.event.type.Event.CAPTURING_PHASE);
 
-          __P_123_1("captureList=" + captureList.length);
+          __TRACE("captureList=" + captureList.length);
 
           return qx.event.Utils.series(captureList, function (localList, i) {
-            __P_123_1("captureList[" + i + "]: localList.length=" + localList.length);
+            __TRACE("captureList[" + i + "]: localList.length=" + localList.length);
 
             var currentTarget = captureTargets[i];
             event.setCurrentTarget(currentTarget);
@@ -179,11 +179,11 @@
               context = listener.context || currentTarget;
 
               if (!self._manager.isBlacklisted(listener.unique)) {
-                __P_123_1("captureList[" + i + "] => localList[" + listenerIndex + "] callListener");
+                __TRACE("captureList[" + i + "] => localList[" + listenerIndex + "] callListener");
 
                 return listener.handler.call(context, event);
               } else {
-                __P_123_1("captureList[" + i + "] => localList[" + listenerIndex + "] is blacklisted");
+                __TRACE("captureList[" + i + "] => localList[" + listenerIndex + "] is blacklisted");
               }
             }, true);
 
@@ -203,17 +203,17 @@
           event.setEventPhase(qx.event.type.Event.AT_TARGET);
           event.setCurrentTarget(target);
 
-          __P_123_1("targetList=" + targetList.length);
+          __TRACE("targetList=" + targetList.length);
 
           return qx.event.Utils.series(targetList, function (localList, i) {
-            __P_123_1("targetList[" + i + "] localList.length=" + localList.length);
+            __TRACE("targetList[" + i + "] localList.length=" + localList.length);
 
             var result = qx.event.Utils.series(localList, function (listener, listenerIndex) {
-              __P_123_1("targetList[" + i + "] -> localList[" + listenerIndex + "] callListener");
+              __TRACE("targetList[" + i + "] -> localList[" + listenerIndex + "] callListener");
 
               context = listener.context || target;
 
-              __P_123_1("Calling target serial=" + serial + ", type=" + event.getType());
+              __TRACE("Calling target serial=" + serial + ", type=" + event.getType());
 
               return listener.handler.call(context, event);
             }, true);
@@ -234,15 +234,15 @@
         qx.event.Utils.then(tracker, function () {
           event.setEventPhase(qx.event.type.Event.BUBBLING_PHASE);
 
-          __P_123_1("bubbleList=" + bubbleList.length);
+          __TRACE("bubbleList=" + bubbleList.length);
 
           return qx.event.Utils.series(bubbleList, function (localList, i) {
-            __P_123_1("bubbleList[" + i + "] localList.length=" + localList.length);
+            __TRACE("bubbleList[" + i + "] localList.length=" + localList.length);
 
             var currentTarget = bubbleTargets[i];
             event.setCurrentTarget(currentTarget);
             var result = qx.event.Utils.series(localList, function (listener, listenerIndex) {
-              __P_123_1("bubbleList[" + i + "] -> localList[" + listenerIndex + "] callListener");
+              __TRACE("bubbleList[" + i + "] -> localList[" + listenerIndex + "] callListener");
 
               context = listener.context || currentTarget;
               return listener.handler.call(context, event);
@@ -260,15 +260,15 @@
           });
         });
 
-        if (__P_123_0) {
+        if (__TRACE_LOGGING) {
           if (tracker.promise) {
-            __P_123_1("events promised");
+            __TRACE("events promised");
 
             qx.event.Utils.then(tracker, function () {
-              __P_123_1("events promised done");
+              __TRACE("events promised done");
             });
           } else {
-            __P_123_1("events done");
+            __TRACE("events done");
           }
         }
 
@@ -279,4 +279,4 @@
   qx.event.dispatch.AbstractBubbling.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=AbstractBubbling.js.map?dt=1608478919399
+//# sourceMappingURL=AbstractBubbling.js.map?dt=1609082278708

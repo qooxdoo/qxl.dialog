@@ -43,8 +43,8 @@
    */
   qx.Bootstrap.define("qx.bom.storage.Memory", {
     statics: {
-      __P_66_0: null,
-      __P_66_1: null,
+      __local: null,
+      __session: null,
 
       /**
        * Returns an instance of {@link qx.bom.storage.Memory} which is of course
@@ -52,11 +52,11 @@
        * @return {qx.bom.storage.Memory} A memory storage.
        */
       getLocal: function getLocal() {
-        if (this.__P_66_0) {
-          return this.__P_66_0;
+        if (this.__local) {
+          return this.__local;
         }
 
-        return this.__P_66_0 = new qx.bom.storage.Memory();
+        return this.__local = new qx.bom.storage.Memory();
       },
 
       /**
@@ -65,18 +65,18 @@
        * @return {qx.bom.storage.Memory} A memory storage.
        */
       getSession: function getSession() {
-        if (this.__P_66_1) {
-          return this.__P_66_1;
+        if (this.__session) {
+          return this.__session;
         }
 
-        return this.__P_66_1 = new qx.bom.storage.Memory();
+        return this.__session = new qx.bom.storage.Memory();
       }
     },
     construct: function construct() {
-      this.__P_66_2 = {};
+      this.__storage = {};
     },
     members: {
-      __P_66_2: null,
+      __storage: null,
 
       /**
        * Returns the internal used map.
@@ -84,7 +84,7 @@
        * @internal
        */
       getStorage: function getStorage() {
-        return this.__P_66_2;
+        return this.__storage;
       },
 
       /**
@@ -92,7 +92,7 @@
        * @return {Integer} The length of the storage.
        */
       getLength: function getLength() {
-        return Object.keys(this.__P_66_2).length;
+        return Object.keys(this.__storage).length;
       },
 
       /**
@@ -103,7 +103,7 @@
        */
       setItem: function setItem(key, value) {
         value = qx.lang.Json.stringify(value);
-        this.__P_66_2[key] = value;
+        this.__storage[key] = value;
       },
 
       /**
@@ -113,7 +113,7 @@
        * @return {var} The stored data.
        */
       getItem: function getItem(key) {
-        var item = this.__P_66_2[key];
+        var item = this.__storage[key];
 
         if (qx.lang.Type.isString(item)) {
           item = qx.lang.Json.parse(item);
@@ -127,14 +127,14 @@
        * @param key {String} The identifier.
        */
       removeItem: function removeItem(key) {
-        delete this.__P_66_2[key];
+        delete this.__storage[key];
       },
 
       /**
        * Deletes every stored item in the storage.
        */
       clear: function clear() {
-        this.__P_66_2 = {};
+        this.__storage = {};
       },
 
       /**
@@ -143,7 +143,7 @@
        * @return {String} The key stored at the given index.
        */
       getKey: function getKey(index) {
-        var keys = Object.keys(this.__P_66_2);
+        var keys = Object.keys(this.__storage);
         return keys[index];
       },
 
@@ -168,4 +168,4 @@
   qx.bom.storage.Memory.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Memory.js.map?dt=1608478915293
+//# sourceMappingURL=Memory.js.map?dt=1609082274036

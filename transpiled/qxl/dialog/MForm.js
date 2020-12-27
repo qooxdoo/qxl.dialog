@@ -86,6 +86,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
        EPL: http://www.eclipse.org/org/documents/epl-v10.php
        See the LICENSE file in the project's top-level directory for details.
   
+     Authors:
+       *  Christian Boulanger (cboulanger)
+       *  Derrell Lipman (derrell)
+  
   ************************************************************************ */
 
   /**
@@ -654,11 +658,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                   var message = fieldData.validation.invalidMessage;
 
                   var validationFunc = function validationFunc(validatorObj, value) {
-                    if (!validatorObj.__P_432_0) {
-                      validatorObj.__P_432_0 = true;
+                    if (!validatorObj.__asyncInProgress) {
+                      validatorObj.__asyncInProgress = true;
                       proxy(method, [value], function (valid) {
                         validatorObj.setValid(valid, message || this.tr("Value is invalid"));
-                        validatorObj.__P_432_0 = false;
+                        validatorObj.__asyncInProgress = false;
                       });
                     }
                   };
@@ -849,4 +853,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.dialog.MForm.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MForm.js.map?dt=1608478942429
+//# sourceMappingURL=MForm.js.map?dt=1609082306532

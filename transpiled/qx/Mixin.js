@@ -302,7 +302,7 @@
       $$registry: {},
 
       /** @type {Map} allowed keys in mixin definition */
-      __P_7_0: null,
+      __allowedKeys: null,
 
       /**
        * Validates incoming configuration and checks keys and values
@@ -311,10 +311,10 @@
        * @param name {String} The name of the class
        * @param config {Map} Configuration map
        */
-      __P_7_1: function __P_7_1(name, config) {}
+      __validateConfig: function __validateConfig(name, config) {}
     }
   });
   qx.Mixin.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Mixin.js.map?dt=1608478909700
+//# sourceMappingURL=Mixin.js.map?dt=1609082267842

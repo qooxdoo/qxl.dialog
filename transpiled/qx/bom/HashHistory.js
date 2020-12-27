@@ -58,12 +58,12 @@
       qx.bom.History.constructor.call(this);
       this._baseUrl = null;
 
-      this.__P_19_0();
+      this.__initIframe();
     },
     members: {
-      __P_19_1: null,
-      __P_19_2: null,
-      __P_19_3: false,
+      __checkOnHashChange: null,
+      __iframe: null,
+      __iframeReady: false,
       //overridden
       addToHistory: function addToHistory(state, newTitle) {
         if (!qx.lang.Type.isString(state)) {
@@ -84,14 +84,14 @@
        * Initializes the iframe
        *
        */
-      __P_19_0: function __P_19_0() {
-        this.__P_19_2 = this.__P_19_4();
-        document.body.appendChild(this.__P_19_2);
+      __initIframe: function __initIframe() {
+        this.__iframe = this.__createIframe();
+        document.body.appendChild(this.__iframe);
 
-        this.__P_19_5(function () {
-          this._baseUrl = this.__P_19_2.contentWindow.document.location.href;
+        this.__waitForIFrame(function () {
+          this._baseUrl = this.__iframe.contentWindow.document.location.href;
 
-          this.__P_19_6();
+          this.__attachListeners();
         }, this);
       },
 
@@ -102,7 +102,7 @@
        *
        * @return {Element}
        */
-      __P_19_4: function __P_19_4() {
+      __createIframe: function __createIframe() {
         var iframe = qx.bom.Iframe.create({
           src: qx.util.ResourceManager.getInstance().toUri("qx/static/blank.html") + "#"
         });
@@ -121,44 +121,44 @@
        * @param context {Object?window} The context for the callback.
        * @param retry {Integer} number of tries to initialize the iframe
        */
-      __P_19_5: function __P_19_5(callback, context, retry) {
+      __waitForIFrame: function __waitForIFrame(callback, context, retry) {
         if (typeof retry === "undefined") {
           retry = 0;
         }
 
-        if (!this.__P_19_2.contentWindow || !this.__P_19_2.contentWindow.document) {
+        if (!this.__iframe.contentWindow || !this.__iframe.contentWindow.document) {
           if (retry > 20) {
             throw new Error("can't initialize iframe");
           }
 
           qx.event.Timer.once(function () {
-            this.__P_19_5(callback, context, ++retry);
+            this.__waitForIFrame(callback, context, ++retry);
           }, this, 10);
           return;
         }
 
-        this.__P_19_3 = true;
+        this.__iframeReady = true;
         callback.call(context || window);
       },
 
       /**
        * Attach hash change listeners
        */
-      __P_19_6: function __P_19_6() {
-        qx.event.Idle.getInstance().addListener("interval", this.__P_19_7, this);
+      __attachListeners: function __attachListeners() {
+        qx.event.Idle.getInstance().addListener("interval", this.__onHashChange, this);
       },
 
       /**
        * Remove hash change listeners
        */
-      __P_19_8: function __P_19_8() {
-        qx.event.Idle.getInstance().removeListener("interval", this.__P_19_7, this);
+      __detatchListeners: function __detatchListeners() {
+        qx.event.Idle.getInstance().removeListener("interval", this.__onHashChange, this);
       },
 
       /**
        * hash change event handler
        */
-      __P_19_7: function __P_19_7() {
+      __onHashChange: function __onHashChange() {
         var currentState = this._readState();
 
         if (qx.lang.Type.isString(currentState) && currentState != this.getState()) {
@@ -184,11 +184,11 @@
        * iframe isn't ready yet
        */
       _getHash: function _getHash() {
-        if (!this.__P_19_3) {
+        if (!this.__iframeReady) {
           return null;
         }
 
-        return this.__P_19_2.contentWindow.document.location.hash;
+        return this.__iframe.contentWindow.document.location.hash;
       },
 
       /**
@@ -206,24 +206,24 @@
        * @param value {String} the fragment identifier
        */
       _setHash: function _setHash(value) {
-        if (!this.__P_19_2 || !this._baseUrl) {
+        if (!this.__iframe || !this._baseUrl) {
           return;
         }
 
-        var hash = !this.__P_19_2.contentWindow.document.location.hash ? "" : this.__P_19_2.contentWindow.document.location.hash.substr(1);
+        var hash = !this.__iframe.contentWindow.document.location.hash ? "" : this.__iframe.contentWindow.document.location.hash.substr(1);
 
         if (value != hash) {
-          this.__P_19_2.contentWindow.document.location.hash = value;
+          this.__iframe.contentWindow.document.location.hash = value;
         }
       }
     },
     destruct: function destruct() {
-      this.__P_19_8();
+      this.__detatchListeners();
 
-      this.__P_19_2 = null;
+      this.__iframe = null;
     }
   });
   qx.bom.HashHistory.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=HashHistory.js.map?dt=1608478911561
+//# sourceMappingURL=HashHistory.js.map?dt=1609082270024

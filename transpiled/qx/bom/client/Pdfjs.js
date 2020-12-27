@@ -78,7 +78,7 @@
        * @internal
        */
       getPdfjs: function getPdfjs(callback, context) {
-        qx.bom.client.Pdfjs.__P_43_0(callback, context);
+        qx.bom.client.Pdfjs.__isAvailable(callback, context);
       },
 
       /**
@@ -87,11 +87,11 @@
        * @param callback {Function} The callback function which should be called.
        * @param context {Object} The context object for the callback function.
        */
-      __P_43_0: function __P_43_0(callback, context) {
+      __isAvailable: function __isAvailable(callback, context) {
         var resManager = qx.util.ResourceManager.getInstance();
         var urlToPdf = resManager.toUri("qx/static/empty.pdf");
 
-        var pluginDetect = qx.bom.client.Pdfjs.__P_43_1();
+        var pluginDetect = qx.bom.client.Pdfjs.__getPluginDetect();
 
         var pluginDetectCallback = function pluginDetectCallback(PluginDetect) {
           var result = pluginDetect.isMinVersion('PDFjs', 0) === 0;
@@ -106,7 +106,7 @@
        *
        * @return {Object} The PluginDetect object
        */
-      __P_43_1: null
+      __getPluginDetect: null
     },
 
     /**
@@ -1572,11 +1572,11 @@
 
     var origPluginDetect = PluginDetect; // Expose to qooxdoo
 
-    qx.bom.client.Pdfjs.__P_43_1 = function () {
+    qx.bom.client.Pdfjs.__getPluginDetect = function () {
       return origPluginDetect;
     };
   }).call(this);
   qx.bom.client.Pdfjs.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Pdfjs.js.map?dt=1608478913772
+//# sourceMappingURL=Pdfjs.js.map?dt=1609082272394

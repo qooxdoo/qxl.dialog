@@ -64,7 +64,7 @@
     */
     members: {
       /** @type {qx.ui.core.SingleSelectionManager} the single selection manager */
-      __P_225_0: null,
+      __manager: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -85,7 +85,7 @@
         }
 
         if (item instanceof qx.ui.core.Widget) {
-          this.__P_225_1().setSelected(item);
+          this.__getManager().setSelected(item);
 
           return null;
         } else {
@@ -99,14 +99,14 @@
        * @returns {null|qx.ui.core.Widget} The currently selected widget or null if there is none.
        */
       getValue: function getValue() {
-        return this.__P_225_1().getSelected() || null;
+        return this.__getManager().getSelected() || null;
       },
 
       /**
        * resetValue implements part of the {@link qx.ui.form.IField} interface.
        */
       resetValue: function resetValue() {
-        this.__P_225_1().resetSelected();
+        this.__getManager().resetSelected();
       },
 
       /**
@@ -118,7 +118,7 @@
        * @return {qx.ui.core.Widget[]} List of items.
        */
       getSelection: function getSelection() {
-        var selected = this.__P_225_1().getSelected();
+        var selected = this.__getManager().getSelected();
 
         if (selected) {
           return [selected];
@@ -141,7 +141,7 @@
             break;
 
           case 1:
-            this.__P_225_1().setSelected(items[0]);
+            this.__getManager().setSelected(items[0]);
 
             break;
 
@@ -154,7 +154,7 @@
        * Clears the whole selection at once.
        */
       resetSelection: function resetSelection() {
-        this.__P_225_1().resetSelected();
+        this.__getManager().resetSelected();
       },
 
       /**
@@ -165,7 +165,7 @@
        * @throws {Error} if one of the items is not a child element.
        */
       isSelected: function isSelected(item) {
-        return this.__P_225_1().isSelected(item);
+        return this.__getManager().isSelected(item);
       },
 
       /**
@@ -174,7 +174,7 @@
        * @return {Boolean} Whether the selection is empty.
        */
       isSelectionEmpty: function isSelectionEmpty() {
-        return this.__P_225_1().isSelectionEmpty();
+        return this.__getManager().isSelectionEmpty();
       },
 
       /**
@@ -185,7 +185,7 @@
        * @return {qx.ui.core.Widget[]} The contained items.
        */
       getSelectables: function getSelectables(all) {
-        return this.__P_225_1().getSelectables(all);
+        return this.__getManager().getSelectables(all);
       },
 
       /*
@@ -215,10 +215,10 @@
        *
        * @return {qx.ui.core.SingleSelectionManager} Single selection manager.
        */
-      __P_225_1: function __P_225_1() {
-        if (this.__P_225_0 == null) {
+      __getManager: function __getManager() {
+        if (this.__manager == null) {
           var that = this;
-          this.__P_225_0 = new qx.ui.core.SingleSelectionManager({
+          this.__manager = new qx.ui.core.SingleSelectionManager({
             getItems: function getItems() {
               return that._getItems();
             },
@@ -231,12 +231,12 @@
             }
           });
 
-          this.__P_225_0.addListener("changeSelected", this._onChangeSelected, this);
+          this.__manager.addListener("changeSelected", this._onChangeSelected, this);
         }
 
-        this.__P_225_0.setAllowEmptySelection(this._isAllowEmptySelection());
+        this.__manager.setAllowEmptySelection(this._isAllowEmptySelection());
 
-        return this.__P_225_0;
+        return this.__manager;
       }
     },
 
@@ -246,10 +246,10 @@
     *****************************************************************************
     */
     destruct: function destruct() {
-      this._disposeObjects("__P_225_0");
+      this._disposeObjects("__manager");
     }
   });
   qx.ui.core.MSingleSelectionHandling.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MSingleSelectionHandling.js.map?dt=1608478927557
+//# sourceMappingURL=MSingleSelectionHandling.js.map?dt=1609082288839

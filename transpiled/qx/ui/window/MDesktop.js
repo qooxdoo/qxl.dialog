@@ -71,8 +71,8 @@
     *****************************************************************************
     */
     members: {
-      __P_401_0: null,
-      __P_401_1: null,
+      __windows: null,
+      __manager: null,
 
       /**
        * Get the desktop's window manager. Each desktop must have a window manager.
@@ -82,11 +82,11 @@
        * @return {qx.ui.window.IWindowManager} The desktop's window manager
        */
       getWindowManager: function getWindowManager() {
-        if (!this.__P_401_1) {
+        if (!this.__manager) {
           this.setWindowManager(new qx.ui.window.Window.DEFAULT_MANAGER_CLASS());
         }
 
-        return this.__P_401_1;
+        return this.__manager;
       },
 
       /**
@@ -105,12 +105,12 @@
        * @param manager {qx.ui.window.IWindowManager} The window manager
        */
       setWindowManager: function setWindowManager(manager) {
-        if (this.__P_401_1) {
-          this.__P_401_1.setDesktop(null);
+        if (this.__manager) {
+          this.__manager.setDesktop(null);
         }
 
         manager.setDesktop(this);
-        this.__P_401_1 = manager;
+        this.__manager = manager;
       },
 
       /**
@@ -214,11 +214,11 @@
        * @return {qx.ui.window.Window[]} Array of managed windows
        */
       getWindows: function getWindows() {
-        if (!this.__P_401_0) {
-          this.__P_401_0 = [];
+        if (!this.__windows) {
+          this.__windows = [];
         }
 
-        return this.__P_401_0;
+        return this.__windows;
       }
     },
 
@@ -228,12 +228,12 @@
     *****************************************************************************
     */
     destruct: function destruct() {
-      this._disposeArray("__P_401_0");
+      this._disposeArray("__windows");
 
-      this._disposeObjects("__P_401_1");
+      this._disposeObjects("__manager");
     }
   });
   qx.ui.window.MDesktop.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MDesktop.js.map?dt=1608478940015
+//# sourceMappingURL=MDesktop.js.map?dt=1609082303571

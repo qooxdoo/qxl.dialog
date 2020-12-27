@@ -63,7 +63,7 @@
        * Static list of all instantiated event managers. The key is the qooxdoo
        * hash value of the corresponding window
        */
-      __P_120_0: {},
+      __managers: {},
 
       /**
        * Get an instance of the event manager, which can handle events for the
@@ -82,11 +82,11 @@
         }
 
         var hash = target.$$hash || qx.core.ObjectRegistry.toHashCode(target);
-        var manager = this.__P_120_0[hash];
+        var manager = this.__managers[hash];
 
         if (!manager) {
           manager = new qx.event.Manager(target, this);
-          this.__P_120_0[hash] = manager;
+          this.__managers[hash] = manager;
         }
 
         return manager;
@@ -102,7 +102,7 @@
        */
       removeManager: function removeManager(mgr) {
         var id = mgr.getWindowId();
-        delete this.__P_120_0[id];
+        delete this.__managers[id];
       },
 
       /**
@@ -271,7 +271,7 @@
        * @return {Event} the event
        * @see #createEvent
        */
-      __P_120_1: function __P_120_1(target, type, clazz, args) {
+      __fireEvent: function __fireEvent(target, type, clazz, args) {
         var evt = this.createEvent(type, clazz || null, args);
         this.getManager(target).dispatchEvent(target, evt);
         return evt;
@@ -342,7 +342,7 @@
        * @return {Event} the event
        * @see #createEvent
        */
-      __P_120_2: function __P_120_2(target, type, clazz, args) {
+      __fireNonBubblingEvent: function __fireNonBubblingEvent(target, type, clazz, args) {
         var mgr = this.getManager(target);
 
         if (!mgr.hasListener(target, type, false)) {
@@ -369,7 +369,7 @@
        * @see #createEvent
        */
       fireNonBubblingEvent: function fireNonBubblingEvent(target, type, clazz, args) {
-        var evt = this.__P_120_2.apply(this, arguments);
+        var evt = this.__fireNonBubblingEvent.apply(this, arguments);
 
         if (evt === null) {
           return true;
@@ -393,7 +393,7 @@
        * @see #createEvent
        */
       fireNonBubblingEventAsync: function fireNonBubblingEventAsync(target, type, clazz, args) {
-        var evt = this.__P_120_2.apply(this, arguments);
+        var evt = this.__fireNonBubblingEvent.apply(this, arguments);
 
         if (evt === null) {
           return qx.Promise.resolve(true);
@@ -424,7 +424,7 @@
       */
 
       /** @type {Array} Contains all known event handlers */
-      __P_120_3: [],
+      __handlers: [],
 
       /**
        * Register an event handler.
@@ -434,10 +434,10 @@
        */
       addHandler: function addHandler(handler) {
         // Append to list
-        this.__P_120_3.push(handler); // Re-sort list
+        this.__handlers.push(handler); // Re-sort list
 
 
-        this.__P_120_3.sort(function (a, b) {
+        this.__handlers.sort(function (a, b) {
           return a.PRIORITY - b.PRIORITY;
         });
       },
@@ -448,7 +448,7 @@
        * @return {qx.event.IEventHandler[]} registered event handlers
        */
       getHandlers: function getHandlers() {
-        return this.__P_120_3;
+        return this.__handlers;
       },
 
       /*
@@ -458,7 +458,7 @@
       */
 
       /** @type {Array} Contains all known event dispatchers */
-      __P_120_4: [],
+      __dispatchers: [],
 
       /**
        * Register an event dispatcher.
@@ -472,10 +472,10 @@
        */
       addDispatcher: function addDispatcher(dispatcher, priority) {
         // Append to list
-        this.__P_120_4.push(dispatcher); // Re-sort list
+        this.__dispatchers.push(dispatcher); // Re-sort list
 
 
-        this.__P_120_4.sort(function (a, b) {
+        this.__dispatchers.sort(function (a, b) {
           return a.PRIORITY - b.PRIORITY;
         });
       },
@@ -486,11 +486,11 @@
        * @return {qx.event.IEventDispatcher[]} all registered event dispatcher
        */
       getDispatchers: function getDispatchers() {
-        return this.__P_120_4;
+        return this.__dispatchers;
       }
     }
   });
   qx.event.Registration.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Registration.js.map?dt=1608478919288
+//# sourceMappingURL=Registration.js.map?dt=1609082278577

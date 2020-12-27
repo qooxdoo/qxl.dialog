@@ -70,12 +70,12 @@
       this._marshaler = new qx.data.marshal.Json(delegate);
 
       if (delegate && qx.lang.Type.isFunction(delegate.configureRequest)) {
-        this.__P_99_0();
+        this.__configureRequest();
       }
 
-      this.__P_99_1 = qx.lang.Function.bind(this.__P_99_2, this);
+      this.__onActionSuccessBound = qx.lang.Function.bind(this.__onActionSuccess, this);
 
-      this.__P_99_3();
+      this.__addListeners();
     },
     properties: {
       /**
@@ -103,12 +103,12 @@
     members: {
       _marshaler: null,
       _delegate: null,
-      __P_99_1: null,
+      __onActionSuccessBound: null,
 
       /**
        * Configure the resource's request by processing the delegate.
        */
-      __P_99_0: function __P_99_0() {
+      __configureRequest: function __configureRequest() {
         var resource = this.getResource(),
             delegate = this._delegate; // Overrides existing callback, if any
 
@@ -118,12 +118,12 @@
       /**
        * Listen to events fired by the resource.
        */
-      __P_99_3: function __P_99_3() {
+      __addListeners: function __addListeners() {
         var resource = this.getResource(),
             actionName = this.getActionName();
 
         if (resource && actionName) {
-          resource.addListener(this.getActionName() + "Success", this.__P_99_1);
+          resource.addListener(this.getActionName() + "Success", this.__onActionSuccessBound);
         }
       },
 
@@ -134,7 +134,7 @@
        *
        * @param e {qx.event.type.Rest} Rest event.
        */
-      __P_99_2: function __P_99_2(e) {
+      __onActionSuccess: function __onActionSuccess(e) {
         var data = e.getData(),
             marshaler = this._marshaler,
             model,
@@ -176,4 +176,4 @@
   qx.data.store.Rest.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Rest.js.map?dt=1608478917370
+//# sourceMappingURL=Rest.js.map?dt=1609082276414

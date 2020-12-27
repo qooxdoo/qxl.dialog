@@ -205,20 +205,20 @@
     members: {
       _isTablet: false,
       _wrapContentByGroup: true,
-      __P_318_0: null,
-      __P_318_1: null,
-      __P_318_2: null,
-      __P_318_3: null,
-      __P_318_4: null,
-      __P_318_5: null,
-      __P_318_6: null,
+      __backButton: null,
+      __actionButton: null,
+      __content: null,
+      __scrollContainer: null,
+      __title: null,
+      __leftContainer: null,
+      __rightContainer: null,
       // interface implementation
       getTitleWidget: function getTitleWidget() {
-        if (!this.__P_318_4) {
-          this.__P_318_4 = this._createTitleWidget();
+        if (!this.__title) {
+          this.__title = this._createTitleWidget();
         }
 
-        return this.__P_318_4;
+        return this.__title;
       },
 
       /**
@@ -231,25 +231,25 @@
       },
       // property apply
       _applyTitle: function _applyTitle(value, old) {
-        if (this.__P_318_4) {
-          this.__P_318_4.setValue(value);
+        if (this.__title) {
+          this.__title.setValue(value);
         }
       },
       // interface implementation
       getLeftContainer: function getLeftContainer() {
-        if (!this.__P_318_5) {
-          this.__P_318_5 = this._createLeftContainer();
+        if (!this.__leftContainer) {
+          this.__leftContainer = this._createLeftContainer();
         }
 
-        return this.__P_318_5;
+        return this.__leftContainer;
       },
       // interface implementation
       getRightContainer: function getRightContainer() {
-        if (!this.__P_318_6) {
-          this.__P_318_6 = this._createRightContainer();
+        if (!this.__rightContainer) {
+          this.__rightContainer = this._createRightContainer();
         }
 
-        return this.__P_318_6;
+        return this.__rightContainer;
       },
 
       /**
@@ -261,13 +261,13 @@
         var layout = new qx.ui.mobile.layout.HBox();
         var container = new qx.ui.mobile.container.Composite(layout);
         container.addCssClass("left-container");
-        this.__P_318_0 = this._createBackButton();
+        this.__backButton = this._createBackButton();
 
-        this.__P_318_0.addListener("tap", this._onBackButtonTap, this);
+        this.__backButton.addListener("tap", this._onBackButtonTap, this);
 
         this._showBackButton();
 
-        container.add(this.__P_318_0);
+        container.add(this.__backButton);
         return container;
       },
 
@@ -280,13 +280,13 @@
         var layout = new qx.ui.mobile.layout.HBox();
         var container = new qx.ui.mobile.container.Composite(layout);
         container.addCssClass("right-container");
-        this.__P_318_1 = this._createButton();
+        this.__actionButton = this._createButton();
 
-        this.__P_318_1.addListener("tap", this._onButtonTap, this);
+        this.__actionButton.addListener("tap", this._onButtonTap, this);
 
         this._showButton();
 
-        container.add(this.__P_318_1);
+        container.add(this.__actionButton);
         return container;
       },
 
@@ -316,7 +316,7 @@
        * @return {qx.ui.mobile.container.Composite} The content container
        */
       getContent: function getContent() {
-        return this.__P_318_2;
+        return this.__content;
       },
 
       /**
@@ -325,7 +325,7 @@
        * @return {qx.ui.mobile.navigationbar.BackButton} The back button widget
        */
       _getBackButton: function _getBackButton() {
-        return this.__P_318_0;
+        return this.__backButton;
       },
 
       /**
@@ -334,7 +334,7 @@
        * @return {qx.ui.mobile.navigationbar.Button} The action button widget
        */
       _getButton: function _getButton() {
-        return this.__P_318_1;
+        return this.__actionButton;
       },
 
       /**
@@ -359,7 +359,7 @@
        * @return {qx.ui.mobile.container.Scroll} The scroll container
        */
       _getScrollContainer: function _getScrollContainer() {
-        return this.__P_318_3;
+        return this.__scrollContainer;
       },
 
       /**
@@ -368,26 +368,26 @@
        * @param widget {qx.ui.mobile.core.Widget} The widget to add, after NavigationBar.
        */
       addAfterNavigationBar: function addAfterNavigationBar(widget) {
-        if (widget && this.__P_318_3) {
-          this.addBefore(widget, this.__P_318_3);
+        if (widget && this.__scrollContainer) {
+          this.addBefore(widget, this.__scrollContainer);
         }
       },
       // property apply
       _applyBackButtonText: function _applyBackButtonText(value, old) {
-        if (this.__P_318_0) {
-          this.__P_318_0.setValue(value);
+        if (this.__backButton) {
+          this.__backButton.setValue(value);
         }
       },
       // property apply
       _applyActionButtonText: function _applyActionButtonText(value, old) {
-        if (this.__P_318_1) {
-          this.__P_318_1.setValue(value);
+        if (this.__actionButton) {
+          this.__actionButton.setValue(value);
         }
       },
       // property apply
       _applyActionButtonIcon: function _applyActionButtonIcon(value, old) {
-        if (this.__P_318_1) {
-          this.__P_318_1.setIcon(value);
+        if (this.__actionButton) {
+          this.__actionButton.setIcon(value);
         }
       },
       // property apply
@@ -400,8 +400,8 @@
       },
       // property apply
       _applyContentCssClass: function _applyContentCssClass(value, old) {
-        if (this.__P_318_2) {
-          this.__P_318_2.setDefaultCssClass(value);
+        if (this.__content) {
+          this.__content.setDefaultCssClass(value);
         }
       },
 
@@ -409,11 +409,11 @@
        * Helper method to show the back button.
        */
       _showBackButton: function _showBackButton() {
-        if (this.__P_318_0) {
+        if (this.__backButton) {
           if (this.getShowBackButton()) {
-            this.__P_318_0.show();
+            this.__backButton.show();
           } else {
-            this.__P_318_0.exclude();
+            this.__backButton.exclude();
           }
         }
       },
@@ -422,11 +422,11 @@
        * Helper method to show the button.
        */
       _showButton: function _showButton() {
-        if (this.__P_318_1) {
+        if (this.__actionButton) {
           if (this.getShowButton()) {
-            this.__P_318_1.show();
+            this.__actionButton.show();
           } else {
-            this.__P_318_1.exclude();
+            this.__actionButton.exclude();
           }
         }
       },
@@ -434,17 +434,17 @@
       _initialize: function _initialize() {
         qx.ui.mobile.page.NavigationPage.prototype._initialize.base.call(this);
 
-        this.__P_318_3 = this._createScrollContainer();
-        this.__P_318_2 = this._createContent();
+        this.__scrollContainer = this._createScrollContainer();
+        this.__content = this._createContent();
 
-        if (this.__P_318_2) {
-          this.__P_318_3.add(this.__P_318_2, {
+        if (this.__content) {
+          this.__scrollContainer.add(this.__content, {
             flex: 1
           });
         }
 
-        if (this.__P_318_3) {
-          this.add(this.__P_318_3, {
+        if (this.__scrollContainer) {
+          this.add(this.__scrollContainer, {
             flex: 1
           });
         }
@@ -494,14 +494,14 @@
       }
     },
     destruct: function destruct() {
-      this._disposeObjects("__P_318_5", "__P_318_6", "__P_318_0", "__P_318_1", "__P_318_4");
+      this._disposeObjects("__leftContainer", "__rightContainer", "__backButton", "__actionButton", "__title");
 
-      this.__P_318_5 = this.__P_318_6 = this.__P_318_0 = this.__P_318_1 = null;
-      this.__P_318_4 = this.__P_318_2 = this.__P_318_3 = null;
+      this.__leftContainer = this.__rightContainer = this.__backButton = this.__actionButton = null;
+      this.__title = this.__content = this.__scrollContainer = null;
       this._isTablet = null;
     }
   });
   qx.ui.mobile.page.NavigationPage.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=NavigationPage.js.map?dt=1608478934287
+//# sourceMappingURL=NavigationPage.js.map?dt=1609082296608

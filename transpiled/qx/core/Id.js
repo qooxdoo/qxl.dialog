@@ -38,8 +38,8 @@
     extend: qx.core.Object,
     type: "singleton",
     members: {
-      __P_78_0: null,
-      __P_78_1: null,
+      __registeredObjects: null,
+      __registeredIdHashes: null,
 
       /*
        * @Override
@@ -55,8 +55,8 @@
        * @Override
        */
       _createQxObjectImpl: function _createQxObjectImpl(id) {
-        if (this.__P_78_0) {
-          var obj = this.__P_78_0[id];
+        if (this.__registeredObjects) {
+          var obj = this.__registeredObjects[id];
 
           if (obj !== undefined) {
             return obj;
@@ -88,7 +88,7 @@
        * @return {String} full path to the object
        */
       getAbsoluteIdOf: function getAbsoluteIdOf(obj, suppressWarnings) {
-        if (this.__P_78_1 && this.__P_78_1[obj.toHashCode()]) {
+        if (this.__registeredIdHashes && this.__registeredIdHashes[obj.toHashCode()]) {
           return obj.getQxObjectId();
         }
 
@@ -116,7 +116,7 @@
             if (owner === application) {
               ownerId = "application";
             } else {
-              ownerId = this.__P_78_1 && this.__P_78_1[owner.toHashCode()] || null;
+              ownerId = this.__registeredIdHashes && this.__registeredIdHashes[owner.toHashCode()] || null;
             } // When we have found the ID of a top level object, add it to the path and stop
 
 
@@ -149,17 +149,17 @@
        * @param id {String?} the ID to register the object under, otherwise the object's own Object Id is used
        */
       register: function register(obj, id) {
-        if (!this.__P_78_0) {
-          this.__P_78_0 = {};
-          this.__P_78_1 = {};
+        if (!this.__registeredObjects) {
+          this.__registeredObjects = {};
+          this.__registeredIdHashes = {};
         }
 
         if (!id) {
           id = obj.getQxObjectId();
         }
 
-        this.__P_78_0[id] = obj;
-        this.__P_78_1[obj.toHashCode()] = id;
+        this.__registeredObjects[id] = obj;
+        this.__registeredIdHashes[obj.toHashCode()] = id;
 
         obj._cascadeQxObjectIdChanges();
       },
@@ -171,7 +171,7 @@
        * @return {Boolean} whether there was an object to unregister
        */
       unregister: function unregister(data) {
-        if (!this.__P_78_0) {
+        if (!this.__registeredObjects) {
           return false;
         }
 
@@ -181,18 +181,18 @@
           id = data;
         } else {
           var hash = data.toHashCode();
-          id = this.__P_78_1[hash];
+          id = this.__registeredIdHashes[hash];
 
           if (!id) {
             return false;
           }
         }
 
-        var obj = this.__P_78_0[id];
+        var obj = this.__registeredObjects[id];
 
         if (obj) {
-          delete this.__P_78_0[id];
-          delete this.__P_78_1[obj.toHashCode()];
+          delete this.__registeredObjects[id];
+          delete this.__registeredIdHashes[obj.toHashCode()];
 
           obj._cascadeQxObjectIdChanges();
 
@@ -208,7 +208,7 @@
        * @return {Object}
        */
       getRegisteredObjects: function getRegisteredObjects() {
-        return this.__P_78_0;
+        return this.__registeredObjects;
       }
     },
     statics: {
@@ -237,4 +237,4 @@
   qx.core.Id.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Id.js.map?dt=1608478915801
+//# sourceMappingURL=Id.js.map?dt=1609082274710

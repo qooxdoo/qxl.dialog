@@ -159,7 +159,7 @@
     *****************************************************************************
     */
     members: {
-      __P_264_0: null,
+      __cursorIsOut: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -261,7 +261,7 @@
 
         this.addState("hovered"); // Delete cursor out flag
 
-        delete this.__P_264_0;
+        delete this.__cursorIsOut;
       },
 
       /**
@@ -291,7 +291,7 @@
         var menu = this.getMenu();
 
         if (menu && menu.isVisible()) {
-          this.__P_264_0 = true;
+          this.__cursorIsOut = true;
           return;
         } // Finally remove state
 
@@ -351,7 +351,7 @@
        * @param e {qx.event.type.Data} property change event
        */
       _onChangeMenuVisibility: function _onChangeMenuVisibility(e) {
-        if (!this.getMenu().isVisible() && this.__P_264_0) {
+        if (!this.getMenu().isVisible() && this.__cursorIsOut) {
           this.removeState("hovered");
         }
       }
@@ -360,4 +360,4 @@
   qx.ui.form.SplitButton.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=SplitButton.js.map?dt=1608478930548
+//# sourceMappingURL=SplitButton.js.map?dt=1609082292032

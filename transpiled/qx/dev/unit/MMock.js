@@ -106,15 +106,15 @@
    */
   qx.Mixin.define("qx.dev.unit.MMock", {
     construct: function construct() {
-      var sinon = this.__P_104_0();
+      var sinon = this.__getSinon();
 
-      this.__P_104_1();
+      this.__exposeAssertions();
 
-      this.__P_104_2 = sinon.sandbox;
+      this.__sandbox = sinon.sandbox;
     },
     members: {
-      __P_104_2: null,
-      __P_104_3: null,
+      __sandbox: null,
+      __fakeXhr: null,
 
       /**
        * Expose Sinon.JS assertions. Provides methods such
@@ -123,7 +123,7 @@
        * Does not override existing assertion methods.
        * @ignore(sinon.assert.expose)
        */
-      __P_104_1: function __P_104_1() {
+      __exposeAssertions: function __exposeAssertions() {
         var temp = {};
         sinon.assert.expose(temp, {
           includeFail: false
@@ -142,7 +142,7 @@
       * @return {Object}
       * @internal
       */
-      __P_104_0: function __P_104_0() {
+      __getSinon: function __getSinon() {
         return qx.dev.unit.Sinon.getSinon();
       },
 
@@ -222,7 +222,7 @@
       *   that allow for introspection. See http://sinonjs.org/docs/#spies.
       */
       spy: function spy(function_or_object, method) {
-        return this.__P_104_2.spy.apply(this.__P_104_2, arguments);
+        return this.__sandbox.spy.apply(this.__sandbox, arguments);
       },
 
       /**
@@ -270,7 +270,7 @@
       *
       */
       stub: function stub(object, method) {
-        return this.__P_104_2.stub.apply(this.__P_104_2, arguments);
+        return this.__sandbox.stub.apply(this.__sandbox, arguments);
       },
 
       /**
@@ -307,7 +307,7 @@
       * @return {Function} A mock to set expectations on. See http://sinonjs.org/docs/#mocks.
       */
       mock: function mock(object) {
-        var sinon = this.__P_104_0();
+        var sinon = this.__getSinon();
 
         return sinon.mock.apply(sinon, arguments);
       },
@@ -325,7 +325,7 @@
       * @return {Object}
       */
       useFakeXMLHttpRequest: function useFakeXMLHttpRequest() {
-        return this.__P_104_3 = this.__P_104_2.useFakeXMLHttpRequest();
+        return this.__fakeXhr = this.__sandbox.useFakeXMLHttpRequest();
       },
 
       /**
@@ -339,7 +339,7 @@
       * @return {Array} Array of faked requests.
       */
       getRequests: function getRequests() {
-        return this.__P_104_3.requests;
+        return this.__fakeXhr.requests;
       },
 
       /**
@@ -356,7 +356,7 @@
       * @return {Object}
       */
       useFakeServer: function useFakeServer() {
-        return this.__P_104_3 = this.__P_104_2.useFakeServer();
+        return this.__fakeXhr = this.__sandbox.useFakeServer();
       },
 
       /**
@@ -365,7 +365,7 @@
       * @return {Object} Fake server.
       */
       getServer: function getServer() {
-        return this.__P_104_2.server;
+        return this.__sandbox.server;
       },
 
       /**
@@ -378,7 +378,7 @@
       *        Sandbox object.
       */
       getSandbox: function getSandbox() {
-        return this.__P_104_2;
+        return this.__sandbox;
       },
 
       /**
@@ -393,8 +393,8 @@
        * @return {Object} A stub.
        */
       deepStub: function deepStub(object) {
-        this.__P_104_4(object).forEach(function (prop) {
-          this.__P_104_5(object, prop);
+        this.__getOwnProperties(object).forEach(function (prop) {
+          this.__stubProperty(object, prop);
         }, this);
 
         return object;
@@ -411,13 +411,13 @@
        * @return {Object} A stub.
        */
       shallowStub: function shallowStub(object, targetClazz, propsToExclude) {
-        this.__P_104_4(object, targetClazz).forEach(function (prop) {
+        this.__getOwnProperties(object, targetClazz).forEach(function (prop) {
           if (propsToExclude && propsToExclude.indexOf(prop) >= 0) {
             // don't stub excluded prop
             return;
           }
 
-          this.__P_104_5(object, prop);
+          this.__stubProperty(object, prop);
         }, this);
 
         return object;
@@ -460,7 +460,7 @@
        * @return {Object} Mock of the object built.
        */
       revealMock: function revealMock(object, property, customObject) {
-        var source = customObject || this.__P_104_6(new object[property]());
+        var source = customObject || this.__deepClone(new object[property]());
 
         this.stub(object, property).returns(source);
         return this.mock(source);
@@ -472,7 +472,7 @@
        * @param obj {Object} Object to prepare (that is, clone).
        * @return {Object} Prepared (deeply cloned) object.
        */
-      __P_104_6: function __P_104_6(obj) {
+      __deepClone: function __deepClone(obj) {
         var clone = {}; // Copy from prototype
 
         for (var prop in obj) {
@@ -489,7 +489,7 @@
        * @param targetClazz {Object} Class which marks the end of the chain.
        * @return {Array} Array of the object’s own properties.
        */
-      __P_104_4: function __P_104_4(object, targetClazz) {
+      __getOwnProperties: function __getOwnProperties(object, targetClazz) {
         var clazz = object.constructor,
             clazzes = [],
             properties = []; // Find classes in inheritance chain up to targetClazz
@@ -529,7 +529,7 @@
        * @param object {Object} Object to stub.
        * @param prop {String} Property to stub.
        */
-      __P_104_5: function __P_104_5(object, prop) {
+      __stubProperty: function __stubProperty(object, prop) {
         // Leave constructor and properties intact
         if (prop === "constructor" || typeof object[prop] !== "function") {
           return;
@@ -542,4 +542,4 @@
   qx.dev.unit.MMock.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MMock.js.map?dt=1608478917774
+//# sourceMappingURL=MMock.js.map?dt=1609082276850

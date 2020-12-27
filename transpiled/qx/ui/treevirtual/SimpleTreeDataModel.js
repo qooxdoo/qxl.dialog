@@ -138,7 +138,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       this._nodeArr.push(qx.ui.treevirtual.MTreePrimitive._getEmptyTree()); // Track which columns are editable
 
 
-      this.__P_375_0 = null;
+      this.__editableColArr = null;
     },
     properties: {
       /**
@@ -161,10 +161,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     *****************************************************************************
     */
     members: {
-      __P_375_1: null,
-      __P_375_0: null,
-      __P_375_2: null,
-      __P_375_3: null,
+      __tree: null,
+      __editableColArr: null,
+      __tempTreeData: null,
+      __recalculateLastChildFlags: null,
 
       /** Rows, resorted into tree order as necessary */
       _rowArr: null,
@@ -193,7 +193,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *
        */
       setTree: function setTree(tree) {
-        this.__P_375_1 = tree;
+        this.__tree = tree;
       },
 
       /**
@@ -202,7 +202,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @return {qx.ui.treevirtual.TreeVirtual}
        */
       getTree: function getTree() {
-        return this.__P_375_1;
+        return this.__tree;
       },
 
       /**
@@ -213,10 +213,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *
        */
       setEditable: function setEditable(editable) {
-        this.__P_375_0 = [];
+        this.__editableColArr = [];
 
         for (var col = 0; col < this.getColumnCount(); col++) {
-          this.__P_375_0[col] = editable;
+          this.__editableColArr[col] = editable;
         }
 
         this.fireEvent("metaDataChanged");
@@ -234,21 +234,21 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       setColumnEditable: function setColumnEditable(columnIndex, editable) {
         if (editable != this.isColumnEditable(columnIndex)) {
-          if (this.__P_375_0 == null) {
-            this.__P_375_0 = [];
+          if (this.__editableColArr == null) {
+            this.__editableColArr = [];
           }
 
-          this.__P_375_0[columnIndex] = editable;
+          this.__editableColArr[columnIndex] = editable;
           this.fireEvent("metaDataChanged");
         }
       },
       // overridden
       isColumnEditable: function isColumnEditable(columnIndex) {
         if (columnIndex == this._treeColumn) {
-          return this.__P_375_1.getAllowNodeEdit();
+          return this.__tree.getAllowNodeEdit();
         }
 
-        return this.__P_375_0 ? this.__P_375_0[columnIndex] == true : false;
+        return this.__editableColArr ? this.__editableColArr[columnIndex] == true : false;
       },
       // overridden
       isColumnSortable: function isColumnSortable(columnIndex) {
@@ -346,7 +346,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         var node = this.getNodeFromRow(rowIndex);
 
         if (columnIndex === this._treeColumn) {
-          if (!this.__P_375_1.getAllowNodeEdit() || value["label"] === undefined) {
+          if (!this.__tree.getAllowNodeEdit() || value["label"] === undefined) {
             return;
           } // only allow to set the node label via this method, clone the original node
 
@@ -570,14 +570,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *   {@link #addLeaf}.
        * @param level {Integer} the level in the hierarchy
        */
-      __P_375_4: function __P_375_4(nodeId, level) {
+      __inorder: function __inorder(nodeId, level) {
         var filter = this.getFilter();
         var child = null;
         var childNodeId; // For each child of the specified node...
 
         var numChildren = this._nodeArr[nodeId].children.length;
         var index = 0;
-        var children = this.__P_375_2[nodeId] = [];
+        var children = this.__tempTreeData[nodeId] = [];
 
         for (var i = 0; i < numChildren; i++) {
           // Determine the node id of this child
@@ -586,7 +586,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           child = this._nodeArr[childNodeId]; // Skip deleted nodes or apply the filter
 
           if (child == null || filter && !filter.call(this, child)) {
-            this.__P_375_3 = true;
+            this.__recalculateLastChildFlags = true;
             continue;
           } // Remember the children so that we can add the lastChild flags later
 
@@ -599,8 +599,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           // Otherwise we will have to recalculate the last child flags, as
           // the parent or sibling node might become the first child.
 
-          if (!this.__P_375_3) {
-            this.__P_375_5(child, i == numChildren - 1);
+          if (!this.__recalculateLastChildFlags) {
+            this.__setLastChildFlag(child, i == numChildren - 1);
           } // Ensure there's an entry in the columnData array for each column
 
 
@@ -648,7 +648,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
           if (child.bOpened) {
             // ... then add its children too.
-            this.__P_375_4(childNodeId, level + 1);
+            this.__inorder(childNodeId, level + 1);
           }
 
           index++;
@@ -663,20 +663,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *   A node identifier, as previously returned by {@link #addBranch} or
        *   {@link #addLeaf}.
        */
-      __P_375_6: function __P_375_6(nodeId) {
-        var tempTreeData = this.__P_375_2;
+      __calculateLastChildFlags: function __calculateLastChildFlags(nodeId) {
+        var tempTreeData = this.__tempTreeData;
         var children = tempTreeData[nodeId];
         var numChildren = children.length;
 
         for (var i = 0; i < numChildren; i++) {
           var child = children[i];
 
-          this.__P_375_5(child, i == numChildren - 1);
+          this.__setLastChildFlag(child, i == numChildren - 1);
 
           var hasChildren = tempTreeData[child.nodeId] && tempTreeData[child.nodeId].length > 0;
 
           if (hasChildren) {
-            this.__P_375_6(child.nodeId);
+            this.__calculateLastChildFlags(child.nodeId);
           }
         }
       },
@@ -687,7 +687,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param node {Object} the node object
        * @param isLastChild {Boolean} whether the node is the last child
        */
-      __P_375_5: function __P_375_5(node, isLastChild) {
+      __setLastChildFlag: function __setLastChildFlag(node, isLastChild) {
         // Determine if we're the last child of our parent
         node.lastChild = [isLastChild]; // Get our parent.
 
@@ -703,10 +703,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       /**
        * Renders the tree data.
        */
-      __P_375_7: function __P_375_7() {
+      __render: function __render() {
         // Reset the __tempTreeData
-        this.__P_375_2 = [];
-        this.__P_375_3 = false; // Reset the row array
+        this.__tempTreeData = [];
+        this.__recalculateLastChildFlags = false; // Reset the row array
 
         this._rowArr = []; // Reset the _nodeArr -> _rowArr map
 
@@ -715,16 +715,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         this._selections = {}; // Begin in-order traversal of the tree from the root to regenerate
         // _rowArr.
 
-        this.__P_375_4(0, 1); // Reset the lastChild flags when needed, so that the tree can render the
+        this.__inorder(0, 1); // Reset the lastChild flags when needed, so that the tree can render the
         // tree lines right.
 
 
-        if (this.__P_375_3) {
-          this.__P_375_6(0);
+        if (this.__recalculateLastChildFlags) {
+          this.__calculateLastChildFlags(0);
         } // Give the memory free
 
 
-        this.__P_375_2 = null; // Inform the listeners
+        this.__tempTreeData = null; // Inform the listeners
 
         if (this.hasListener("dataChanged")) {
           var data = {
@@ -767,7 +767,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         } // Re-render the row array
 
 
-        this.__P_375_7(); // Set selections in the selection model now
+        this.__render(); // Set selections in the selection model now
 
 
         var selectionModel = this.getTree().getSelectionModel();
@@ -905,7 +905,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               } // Get the tree to which this data model is attached
 
 
-              var tree = this.__P_375_1; // Are we opening or closing?
+              var tree = this.__tree; // Are we opening or closing?
 
               if (node.bOpened) {
                 // We're closing.  If there are listeners, generate a treeClose
@@ -1027,11 +1027,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @return {Boolean} If the node has edit permitted
        */
       isNodeEditable: function isNodeEditable(rowIndex) {
-        return this.__P_375_1.getAllowNodeEdit() && this.getNodeFromRow(rowIndex).bCanEdit;
+        return this.__tree.getAllowNodeEdit() && this.getNodeFromRow(rowIndex).bCanEdit;
       }
     },
     destruct: function destruct() {
-      this._rowArr = this._nodeArr = this._nodeRowMap = this._selections = this.__P_375_1 = this.__P_375_2 = null;
+      this._rowArr = this._nodeArr = this._nodeRowMap = this._selections = this.__tree = this.__tempTreeData = null;
     },
     defer: function defer(statics) {
       // For backward compatibility, ensure the Type values are available from
@@ -1042,4 +1042,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qx.ui.treevirtual.SimpleTreeDataModel.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=SimpleTreeDataModel.js.map?dt=1608478938192
+//# sourceMappingURL=SimpleTreeDataModel.js.map?dt=1609082301327

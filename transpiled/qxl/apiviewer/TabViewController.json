@@ -176,7 +176,7 @@
         }
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "__onChangeSelection": {
       "location": {
@@ -190,7 +190,7 @@
         }
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "getQxOwner": {
       "type": "function",

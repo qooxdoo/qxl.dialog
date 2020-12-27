@@ -63,7 +63,7 @@
     *****************************************************************************
     */
     statics: {
-      __P_75_0: null,
+      __application: null,
 
       /**
        * Returns the instantiated qooxdoo application.
@@ -71,7 +71,7 @@
        * @return {qx.core.Object} The application instance.
        */
       getApplication: function getApplication() {
-        return this.__P_75_0 || null;
+        return this.__application || null;
       },
 
       /**
@@ -80,7 +80,7 @@
        *
        */
       ready: function ready() {
-        if (this.__P_75_0) {
+        if (this.__application) {
           return;
         }
 
@@ -101,15 +101,15 @@
         var clazz = qx.Class.getByName(app);
 
         if (clazz) {
-          this.__P_75_0 = new clazz();
+          this.__application = new clazz();
           var start = new Date();
 
-          this.__P_75_0.main();
+          this.__application.main();
 
           qx.log.Logger.debug(this, "Main runtime: " + (new Date() - start) + "ms");
           var start = new Date();
 
-          this.__P_75_0.finalize();
+          this.__application.finalize();
 
           qx.log.Logger.debug(this, "Finalize runtime: " + (new Date() - start) + "ms");
           qx.event.handler.Application.onAppInstanceInitialized();
@@ -124,8 +124,8 @@
        *
        * @param e {qx.event.type.Native} Incoming beforeunload event.
        */
-      __P_75_1: function __P_75_1(e) {
-        var app = this.__P_75_0;
+      __close: function __close(e) {
+        var app = this.__application;
 
         if (app) {
           app.close();
@@ -137,8 +137,8 @@
        * created application instance.
        *
        */
-      __P_75_2: function __P_75_2() {
-        var app = this.__P_75_0;
+      __shutdown: function __shutdown() {
+        var app = this.__application;
 
         if (app) {
           app.terminate();
@@ -149,4 +149,4 @@
   qx.core.BaseInit.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=BaseInit.js.map?dt=1608478915669
+//# sourceMappingURL=BaseInit.js.map?dt=1609082274558

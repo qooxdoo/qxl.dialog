@@ -593,7 +593,7 @@
         }
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "getPanelHtml": {
       "location": {
@@ -757,7 +757,7 @@
         ]
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "_displayNodes": {
       "location": {
@@ -1816,7 +1816,7 @@
         ]
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "createDescriptionHtml": {
       "location": {
@@ -1913,7 +1913,7 @@
         ]
       },
       "type": "function",
-      "access": "private"
+      "access": "protected"
     },
     "descriptionHasDetails": {
       "location": {

@@ -178,17 +178,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     members: {
       _infoPanelHash: null,
       _infoPanels: null,
-      __P_443_0: false,
+      __valid: false,
       _init: function _init(pkg) {
         var _this = this;
 
-        this.__P_443_1();
+        this.__initHtml();
 
         this.addListenerOnce("appear", function () {
           return _this._syncHtml();
         });
       },
-      __P_443_1: function __P_443_1() {
+      __initHtml: function __initHtml() {
         var html = new qx.util.StringBuilder();
         html.add("<div style=\"padding:24px;\">"); // Add title
 
@@ -261,7 +261,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return this._applyDocNode(this.getDocNode());
 
                 case 12:
-                  this.__P_443_0 = true;
+                  this.__valid = true;
                   this.fireEvent("synced");
 
                 case 14:
@@ -279,7 +279,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _syncHtml;
       }(),
       isValid: function isValid() {
-        return this.__P_443_0;
+        return this.__valid;
       },
       addInfoPanel: function addInfoPanel(panel) {
         this._infoPanelHash[panel.toHashCode()] = panel;
@@ -456,4 +456,4 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   qxl.apiviewer.ui.AbstractViewer.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=AbstractViewer.js.map?dt=1608478943671
+//# sourceMappingURL=AbstractViewer.js.map?dt=1609082307872

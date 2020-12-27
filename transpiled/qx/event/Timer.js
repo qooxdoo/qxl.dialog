@@ -76,7 +76,7 @@
 
       var self = this;
 
-      this.__P_121_0 = function () {
+      this.__oninterval = function () {
         self._oninterval.call(self);
       };
     },
@@ -113,12 +113,12 @@
         var timer = new qx.event.Timer(timeout); // Bug #3481: append original function to timer instance so it can be
         // read by a debugger
 
-        timer.__P_121_1 = func; // Add event listener to interval
+        timer.__onceFunc = func; // Add event listener to interval
 
         timer.addListener("interval", function (e) {
           timer.stop();
           func.call(obj, e);
-          delete timer.__P_121_1;
+          delete timer.__onceFunc;
           timer.dispose();
           obj = null;
         }, obj); // Directly start timer
@@ -163,8 +163,8 @@
     *****************************************************************************
     */
     members: {
-      __P_121_2: null,
-      __P_121_0: null,
+      __intervalHandler: null,
+      __oninterval: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -192,10 +192,10 @@
        */
       _applyEnabled: function _applyEnabled(value, old) {
         if (old) {
-          window.clearInterval(this.__P_121_2);
-          this.__P_121_2 = null;
+          window.clearInterval(this.__intervalHandler);
+          this.__intervalHandler = null;
         } else if (value) {
-          this.__P_121_2 = window.setInterval(this.__P_121_0, this.getInterval());
+          this.__intervalHandler = window.setInterval(this.__oninterval, this.getInterval());
         }
       },
 
@@ -279,14 +279,14 @@
     *****************************************************************************
     */
     destruct: function destruct() {
-      if (this.__P_121_2) {
-        window.clearInterval(this.__P_121_2);
+      if (this.__intervalHandler) {
+        window.clearInterval(this.__intervalHandler);
       }
 
-      this.__P_121_2 = this.__P_121_0 = null;
+      this.__intervalHandler = this.__oninterval = null;
     }
   });
   qx.event.Timer.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Timer.js.map?dt=1608478919318
+//# sourceMappingURL=Timer.js.map?dt=1609082278609

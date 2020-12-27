@@ -59,7 +59,7 @@
        */
       get: function get(id, view, partials) {
         var el = qx.bom.Template.get(id, view, partials);
-        el = qx.module.Template.__P_190_0(el);
+        el = qx.module.Template.__wrap(el);
         return qxWeb.$init([el], qxWeb);
       },
 
@@ -93,7 +93,7 @@
        */
       renderToNode: function renderToNode(template, view, partials) {
         var el = qx.bom.Template.renderToNode(template, view, partials);
-        el = qx.module.Template.__P_190_0(el);
+        el = qx.module.Template.__wrap(el);
         return qxWeb.$init([el], qxWeb);
       },
 
@@ -103,7 +103,7 @@
        * @param el {Node} a DOM node
        * @return {Element} Original element or wrapper
        */
-      __P_190_0: function __P_190_0(el) {
+      __wrap: function __wrap(el) {
         if (qxWeb.isTextNode(el)) {
           var wrapper = document.createElement("span");
           wrapper.appendChild(el);
@@ -120,4 +120,4 @@
   qx.module.Template.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Template.js.map?dt=1608478923968
+//# sourceMappingURL=Template.js.map?dt=1609082284596

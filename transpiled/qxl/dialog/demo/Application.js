@@ -709,7 +709,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         loginWidget.addListener("loginFailure", function (e) {// User rejected! Shake your login widget!
         });
         loginWidget.show();
-        this.__P_2_0 = loginWidget;
+        this.__loginWidget = loginWidget;
       },
 
       /**
@@ -743,13 +743,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             caption: "Login Error"
           });
 
-          this._replaceOwnedObject(this.__P_2_0, loginError, "error");
+          this._replaceOwnedObject(this.__loginWidget, loginError, "error");
         } else {
           var loginSuccess = qxl.dialog.Dialog.alert("User '" + data + "' is now logged in.").set({
             caption: "Login Success"
           });
 
-          this._replaceOwnedObject(this.__P_2_0, loginSuccess, "success");
+          this._replaceOwnedObject(this.__loginWidget, loginSuccess, "success");
         }
       },
       createProgress: function createProgress(caption) {
@@ -841,4 +841,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.dialog.demo.Application.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Application.js.map?dt=1608478908821
+//# sourceMappingURL=Application.js.map?dt=1609082266795

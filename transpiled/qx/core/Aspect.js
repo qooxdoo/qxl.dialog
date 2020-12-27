@@ -47,7 +47,7 @@
   qx.Bootstrap.define("qx.core.Aspect", {
     statics: {
       /** @type {Array} Registry for all known aspect wishes */
-      __P_72_0: [],
+      __registry: [],
 
       /**
        * This function is used by {@link qx.Class#define} to wrap all statics, members and
@@ -63,7 +63,7 @@
       wrap: function wrap(fullName, fcn, type) {
         var before = [];
         var after = [];
-        var reg = this.__P_72_0;
+        var reg = this.__registry;
         var entry;
 
         for (var i = 0; i < reg.length; i++) {
@@ -121,7 +121,7 @@
        *     wrapped.
        */
       addAdvice: function addAdvice(fcn, position, type, name) {
-        this.__P_72_0.push({
+        this.__registry.push({
           fcn: fcn,
           pos: position === "before" ? -1 : 1,
           type: type,
@@ -133,4 +133,4 @@
   qx.core.Aspect.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Aspect.js.map?dt=1608478915535
+//# sourceMappingURL=Aspect.js.map?dt=1609082274408

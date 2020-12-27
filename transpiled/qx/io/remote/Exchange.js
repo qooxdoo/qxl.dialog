@@ -682,7 +682,7 @@
         } // Disable future timeouts in case user handler blocks
 
 
-        this.__P_162_0();
+        this.__disableRequestTimeout();
       },
 
       /*
@@ -696,7 +696,7 @@
        * even if the user handler (e.g. "completed") was already called.
        *
        */
-      __P_162_0: function __P_162_0() {
+      __disableRequestTimeout: function __disableRequestTimeout() {
         var vRequest = this.getRequest();
 
         if (vRequest) {
@@ -865,7 +865,7 @@
             } // Disable future timeouts in case user handler blocks
 
 
-            this.__P_162_0();
+            this.__disableRequestTimeout();
 
             if (this.hasListener(value)) {
               var vResponse = qx.event.Registration.createEvent(value, qx.io.remote.Response);
@@ -931,4 +931,4 @@
   qx.io.remote.Exchange.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Exchange.js.map?dt=1608478921791
+//# sourceMappingURL=Exchange.js.map?dt=1609082281563

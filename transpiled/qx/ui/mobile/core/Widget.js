@@ -88,7 +88,7 @@
       this._setContainerElement(this._createContainerElement()); // Init member variables
 
 
-      this.__P_297_0 = [];
+      this.__children = [];
       this.setId(this.getId());
       this.initDefaultCssClass();
       this.initName();
@@ -421,21 +421,21 @@
       ID_PREFIX: "qx_id_",
 
       /** @type {Map} Internal data structure to store widgets */
-      __P_297_1: {},
+      __registry: {},
 
       /** @type {Integer} Incremental counter of the current id */
-      __P_297_2: 0,
+      __idCounter: 0,
 
       /** @type {Integer} ID of the timeout for the DOM update */
-      __P_297_3: null,
+      __domUpdatedScheduleId: null,
 
       /**
        * Event handler. Called when the application is in shutdown.
        * @internal
        */
       onShutdown: function onShutdown() {
-        window.clearTimeout(qx.ui.mobile.core.Widget.__P_297_3);
-        delete qx.ui.mobile.core.Widget.__P_297_1;
+        window.clearTimeout(qx.ui.mobile.core.Widget.__domUpdatedScheduleId);
+        delete qx.ui.mobile.core.Widget.__registry;
       },
 
       /**
@@ -444,7 +444,7 @@
        * @internal
        */
       getCurrentId: function getCurrentId() {
-        return qx.ui.mobile.core.Widget.__P_297_2;
+        return qx.ui.mobile.core.Widget.__idCounter;
       },
 
       /**
@@ -456,7 +456,7 @@
        */
       registerWidget: function registerWidget(widget) {
         var id = widget.getId();
-        var registry = qx.ui.mobile.core.Widget.__P_297_1;
+        var registry = qx.ui.mobile.core.Widget.__registry;
         registry[id] = widget;
       },
 
@@ -468,7 +468,7 @@
        * @internal
        */
       unregisterWidget: function unregisterWidget(id) {
-        delete qx.ui.mobile.core.Widget.__P_297_1[id];
+        delete qx.ui.mobile.core.Widget.__registry[id];
       },
 
       /**
@@ -478,7 +478,7 @@
         * @return {qx.ui.core.Widget} The widget with the given id
         */
       getWidgetById: function getWidgetById(id) {
-        return qx.ui.mobile.core.Widget.__P_297_1[id];
+        return qx.ui.mobile.core.Widget.__registry[id];
       },
 
       /**
@@ -488,8 +488,8 @@
        * @internal
        */
       scheduleDomUpdated: function scheduleDomUpdated() {
-        if (qx.ui.mobile.core.Widget.__P_297_3 == null) {
-          qx.ui.mobile.core.Widget.__P_297_3 = window.setTimeout(qx.ui.mobile.core.Widget.domUpdated, 0);
+        if (qx.ui.mobile.core.Widget.__domUpdatedScheduleId == null) {
+          qx.ui.mobile.core.Widget.__domUpdatedScheduleId = window.setTimeout(qx.ui.mobile.core.Widget.domUpdated, 0);
         }
       },
 
@@ -502,8 +502,8 @@
        */
       domUpdated: qx.event.GlobalError.observeMethod(function () {
         var clazz = qx.ui.mobile.core.Widget;
-        window.clearTimeout(clazz.__P_297_3);
-        clazz.__P_297_3 = null;
+        window.clearTimeout(clazz.__domUpdatedScheduleId);
+        clazz.__domUpdatedScheduleId = null;
         qx.event.handler.Appear.refresh();
         qx.ui.mobile.core.DomUpdatedHandler.refresh();
       }),
@@ -613,11 +613,11 @@
     *****************************************************************************
     */
     members: {
-      __P_297_4: null,
-      __P_297_5: null,
-      __P_297_6: null,
-      __P_297_0: null,
-      __P_297_7: null,
+      __containerElement: null,
+      __contentElement: null,
+      __layoutParent: null,
+      __children: null,
+      __layoutManager: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -668,7 +668,7 @@
       _transformId: function _transformId(value) {
         if (value == null) {
           var clazz = qx.ui.mobile.core.Widget;
-          value = clazz.ID_PREFIX + clazz.__P_297_2++;
+          value = clazz.ID_PREFIX + clazz.__idCounter++;
         }
 
         return value;
@@ -722,7 +722,7 @@
 
         this.getContentElement().appendChild(child.getContainerElement());
 
-        this.__P_297_0.push(child);
+        this.__children.push(child);
 
         this._domUpdated();
       },
@@ -739,10 +739,10 @@
       _addAt: function _addAt(child, index, options) {
         // When moving in the same widget, remove widget first
         if (child.getLayoutParent() == this) {
-          qx.lang.Array.remove(this.__P_297_0, child);
+          qx.lang.Array.remove(this.__children, child);
         }
 
-        var ref = this.__P_297_0[index];
+        var ref = this.__children[index];
 
         if (ref) {
           this._addBefore(child, ref, options);
@@ -766,7 +766,7 @@
         this._initializeChildLayout(child, layoutProperties);
 
         this.getContentElement().insertBefore(child.getContainerElement(), beforeWidget.getContainerElement());
-        qx.lang.Array.insertBefore(this.__P_297_0, child, beforeWidget);
+        qx.lang.Array.insertBefore(this.__children, child, beforeWidget);
 
         this._domUpdated();
       },
@@ -797,7 +797,7 @@
           this.getContentElement().insertBefore(child.getContainerElement(), beforeWidget.getContainerElement());
         }
 
-        qx.lang.Array.insertAfter(this.__P_297_0, child, afterWidget);
+        qx.lang.Array.insertAfter(this.__children, child, afterWidget);
 
         this._domUpdated();
       },
@@ -819,11 +819,11 @@
        * @param index {Integer} Index of the widget to remove.
        */
       _removeAt: function _removeAt(index) {
-        if (!this.__P_297_0) {
+        if (!this.__children) {
           throw new Error("This widget has no children!");
         }
 
-        var child = this.__P_297_0[index];
+        var child = this.__children[index];
 
         this._remove(child);
       },
@@ -834,7 +834,7 @@
        */
       _removeAll: function _removeAll() {
         // create a copy of the array
-        var children = this.__P_297_0.concat();
+        var children = this.__children.concat();
 
         for (var i = 0, l = children.length; i < l; i++) {
           this._remove(children[i]);
@@ -852,7 +852,7 @@
        *   the given widget is no child of this layout.
        */
       _indexOf: function _indexOf(child) {
-        var children = this.__P_297_0;
+        var children = this.__children;
 
         if (!children) {
           return -1;
@@ -869,17 +869,17 @@
        * @internal
        */
       setLayoutParent: function setLayoutParent(parent) {
-        if (this.__P_297_6 === parent) {
+        if (this.__layoutParent === parent) {
           return;
         }
 
-        var oldParent = this.__P_297_6;
+        var oldParent = this.__layoutParent;
 
         if (oldParent && !oldParent.$$disposed) {
-          this.__P_297_6.removeChild(this);
+          this.__layoutParent.removeChild(this);
         }
 
-        this.__P_297_6 = parent || null;
+        this.__layoutParent = parent || null;
       },
 
       /**
@@ -890,7 +890,7 @@
        * @internal
        */
       removeChild: function removeChild(child) {
-        qx.lang.Array.remove(this.__P_297_0, child);
+        qx.lang.Array.remove(this.__children, child);
         this.getContentElement().removeChild(child.getContainerElement());
 
         var layout = this._getLayout();
@@ -906,7 +906,7 @@
        * @return {qx.ui.core.Widget} The parent of the widget
        */
       getLayoutParent: function getLayoutParent() {
-        return this.__P_297_6;
+        return this.__layoutParent;
       },
 
       /**
@@ -915,7 +915,7 @@
        * @return {qx.ui.core.Widget[]} The children of the widget
        */
       _getChildren: function _getChildren() {
-        return this.__P_297_0;
+        return this.__children;
       },
 
       /**
@@ -924,7 +924,7 @@
        * @return {Boolean} Whether the widget has children or not.
        */
       _hasChildren: function _hasChildren() {
-        return this.__P_297_0 && this.__P_297_0.length > 0;
+        return this.__children && this.__children.length > 0;
       },
 
       /*
@@ -942,13 +942,13 @@
        *     <code>null</code> to reset the layout.
        */
       _setLayout: function _setLayout(layout) {
-        if (this.__P_297_7) {
-          this.__P_297_7.connectToWidget(null);
+        if (this.__layoutManager) {
+          this.__layoutManager.connectToWidget(null);
 
           for (var i = 0; i < this._getChildren().length; i++) {
             var child = this._getChildren()[i];
 
-            this.__P_297_7.disconnectFromChildWidget(child);
+            this.__layoutManager.disconnectFromChildWidget(child);
           }
         }
 
@@ -956,7 +956,7 @@
           layout.connectToWidget(this);
         }
 
-        this.__P_297_7 = layout;
+        this.__layoutManager = layout;
 
         this._domUpdated();
       },
@@ -984,7 +984,7 @@
        * @return  {qx.ui.mobile.layout.Abstract} the layout manager of the widget.
        */
       _getLayout: function _getLayout() {
-        return this.__P_297_7;
+        return this.__layoutManager;
       },
 
       /**
@@ -1319,7 +1319,7 @@
        * @param action {String} The causing action that triggered the layout update.
        * @param properties {Map} The animation properties to set. Key / value pairs.
        */
-      __P_297_8: function __P_297_8(action, properties) {
+      __setVisibility: function __setVisibility(action, properties) {
         this.setVisibility(action);
         var parent = this.getLayoutParent();
 
@@ -1335,7 +1335,7 @@
        *
        */
       show: function show(properties) {
-        this.__P_297_8("visible", properties);
+        this.__setVisibility("visible", properties);
       },
 
       /**
@@ -1345,7 +1345,7 @@
        *
        */
       hide: function hide(properties) {
-        this.__P_297_8("hidden", properties);
+        this.__setVisibility("hidden", properties);
       },
 
       /**
@@ -1355,7 +1355,7 @@
        *
        */
       exclude: function exclude(properties) {
-        this.__P_297_8("excluded", properties);
+        this.__setVisibility("excluded", properties);
       },
 
       /**
@@ -1414,7 +1414,7 @@
        * @param element {Element} The container DOM element of the widget
        */
       _setContainerElement: function _setContainerElement(element) {
-        this.__P_297_4 = element;
+        this.__containerElement = element;
       },
 
       /**
@@ -1425,7 +1425,7 @@
        * @internal
        */
       getContainerElement: function getContainerElement() {
-        return this.__P_297_4;
+        return this.__containerElement;
       },
 
       /**
@@ -1436,11 +1436,11 @@
        * @internal
        */
       getContentElement: function getContentElement() {
-        if (!this.__P_297_5) {
-          this.__P_297_5 = this._getContentElement();
+        if (!this.__contentElement) {
+          this.__contentElement = this._getContentElement();
         }
 
-        return this.__P_297_5;
+        return this.__contentElement;
       },
 
       /**
@@ -1472,7 +1472,7 @@
           return;
         }
 
-        var parent = this.__P_297_6;
+        var parent = this.__layoutParent;
 
         if (parent) {
           parent._remove(this);
@@ -1498,13 +1498,13 @@
         }
       }
 
-      this.__P_297_6 = this.__P_297_4 = this.__P_297_5 = null;
+      this.__layoutParent = this.__containerElement = this.__contentElement = null;
 
-      if (this.__P_297_7) {
-        this.__P_297_7.dispose();
+      if (this.__layoutManager) {
+        this.__layoutManager.dispose();
       }
 
-      this.__P_297_7 = null;
+      this.__layoutManager = null;
     },
 
     /*
@@ -1519,4 +1519,4 @@
   qx.ui.mobile.core.Widget.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Widget.js.map?dt=1608478933084
+//# sourceMappingURL=Widget.js.map?dt=1609082295164

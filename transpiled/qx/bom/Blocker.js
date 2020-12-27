@@ -95,16 +95,16 @@
     construct: function construct() {
       qx.core.Object.constructor.call(this);
 
-      this.__P_15_0();
+      this.__init();
     },
     members: {
-      __P_15_1: null,
-      __P_15_2: null,
-      __P_15_3: null,
-      __P_15_4: false,
-      __P_15_5: 10000,
-      __P_15_6: 0,
-      __P_15_7: "transparent",
+      __iframeElement: null,
+      __blockerElement: null,
+      __blockedElement: null,
+      __isActive: false,
+      __defaultZIndex: 10000,
+      __defaultBlockerOpacity: 0,
+      __defaultBlockerColor: "transparent",
 
       /*
       ---------------------------------------------------------------------------
@@ -119,15 +119,15 @@
        * @param element {element?null} If no element is given the whole document is blocked.
        */
       block: function block(element) {
-        if (!this.__P_15_4) {
-          qx.event.Registration.addListener(window, "resize", this.__P_15_8, this);
-          this.__P_15_3 = element;
+        if (!this.__isActive) {
+          qx.event.Registration.addListener(window, "resize", this.__onResize, this);
+          this.__blockedElement = element;
 
-          var styles = this.__P_15_9();
+          var styles = this.__calculateStyles();
 
-          this.__P_15_10(styles);
+          this.__styleAndInsertBlocker(styles);
 
-          this.__P_15_4 = true;
+          this.__isActive = true;
         }
       },
 
@@ -135,11 +135,11 @@
        * Releases the blocking
        */
       unblock: function unblock() {
-        if (this.__P_15_4) {
-          this.__P_15_11();
+        if (this.__isActive) {
+          this.__removeBlocker();
 
-          qx.event.Registration.removeListener(window, "resize", this.__P_15_8, this);
-          this.__P_15_4 = false;
+          qx.event.Registration.removeListener(window, "resize", this.__onResize, this);
+          this.__isActive = false;
         }
       },
 
@@ -149,7 +149,7 @@
        * @return {Boolean} Blocker active
        */
       isBlocked: function isBlocked() {
-        return this.__P_15_4;
+        return this.__isActive;
       },
 
       /**
@@ -158,7 +158,7 @@
        * @return {Element} DOM element
        */
       getBlockerElement: function getBlockerElement() {
-        return this.__P_15_2;
+        return this.__blockerElement;
       },
 
       /**
@@ -169,7 +169,7 @@
        * @see #setBlockerOpacity
        */
       setBlockerColor: function setBlockerColor(color) {
-        qx.bom.element.Style.set(this.__P_15_2, "backgroundColor", color);
+        qx.bom.element.Style.set(this.__blockerElement, "backgroundColor", color);
       },
 
       /**
@@ -178,7 +178,7 @@
        * @return {String} CSS color value
        */
       getBlockerColor: function getBlockerColor() {
-        return qx.bom.element.Style.get(this.__P_15_2, "backgroundColor");
+        return qx.bom.element.Style.get(this.__blockerElement, "backgroundColor");
       },
 
       /**
@@ -189,7 +189,7 @@
        * @see #setBlockerColor
        */
       setBlockerOpacity: function setBlockerOpacity(opacity) {
-        qx.bom.element.Opacity.set(this.__P_15_2, opacity);
+        qx.bom.element.Opacity.set(this.__blockerElement, opacity);
       },
 
       /**
@@ -198,7 +198,7 @@
        * @return {Integer} CSS opacity value
        */
       getBlockerOpacity: function getBlockerOpacity() {
-        return qx.bom.element.Opacity.get(this.__P_15_2);
+        return qx.bom.element.Opacity.get(this.__blockerElement);
       },
 
       /**
@@ -208,7 +208,7 @@
        * @param zIndex {Integer} CSS zIndex value
        */
       setBlockerZIndex: function setBlockerZIndex(zIndex) {
-        qx.bom.element.Style.set(this.__P_15_2, "zIndex", zIndex);
+        qx.bom.element.Style.set(this.__blockerElement, "zIndex", zIndex);
       },
 
       /**
@@ -217,7 +217,7 @@
        * @return {Integer} CSS zIndex value
        */
       getBlockerZIndex: function getBlockerZIndex() {
-        return qx.bom.element.Style.get(this.__P_15_2, "zIndex");
+        return qx.bom.element.Style.get(this.__blockerElement, "zIndex");
       },
 
       /*
@@ -229,25 +229,25 @@
       /**
        * Setups the elements and registers a "resize" event.
        */
-      __P_15_0: function __P_15_0() {
-        this.__P_15_12();
+      __init: function __init() {
+        this.__setupBlockerElement();
 
         if (qx.core.Environment.get("engine.name") == "mshtml") {
-          this.__P_15_13();
+          this.__setupIframeElement();
         }
       },
 
       /**
        * Create blocker element and set initial styles.
        */
-      __P_15_12: function __P_15_12() {
-        this.__P_15_2 = qx.dom.Element.create("div");
-        qx.bom.element.Style.setStyles(this.__P_15_2, {
+      __setupBlockerElement: function __setupBlockerElement() {
+        this.__blockerElement = qx.dom.Element.create("div");
+        qx.bom.element.Style.setStyles(this.__blockerElement, {
           display: "block",
-          opacity: this.__P_15_6,
-          backgroundColor: this.__P_15_7
+          opacity: this.__defaultBlockerOpacity,
+          backgroundColor: this.__defaultBlockerColor
         });
-        this.setBlockerZIndex(this.__P_15_5);
+        this.setBlockerZIndex(this.__defaultZIndex);
       },
 
       /**
@@ -256,13 +256,13 @@
        * Needed to block native form elements
        * // see: http://www.macridesweb.com/oltest/IframeShim.html
        */
-      __P_15_13: function __P_15_13() {
-        this.__P_15_1 = qx.bom.Iframe.create();
-        qx.bom.element.Attribute.set(this.__P_15_1, "allowTransparency", false);
-        qx.bom.element.Attribute.set(this.__P_15_1, "src", "javascript:false;");
-        qx.bom.element.Style.setStyles(this.__P_15_1, {
+      __setupIframeElement: function __setupIframeElement() {
+        this.__iframeElement = qx.bom.Iframe.create();
+        qx.bom.element.Attribute.set(this.__iframeElement, "allowTransparency", false);
+        qx.bom.element.Attribute.set(this.__iframeElement, "src", "javascript:false;");
+        qx.bom.element.Style.setStyles(this.__iframeElement, {
           display: "block",
-          opacity: this.__P_15_6
+          opacity: this.__defaultBlockerOpacity
         });
       },
 
@@ -272,12 +272,12 @@
        *
        * @return {Map} Object with necessary style infos
        */
-      __P_15_9: function __P_15_9() {
+      __calculateStyles: function __calculateStyles() {
         var styles = {
           position: "absolute"
         };
 
-        if (this.__P_15_14()) {
+        if (this.__isWholeDocumentBlockTarget()) {
           styles.left = "0px";
           styles.top = "0px";
           styles.right = null;
@@ -285,10 +285,10 @@
           styles.width = qx.bom.Document.getWidth() + "px";
           styles.height = qx.bom.Document.getHeight() + "px";
         } else {
-          styles.width = qx.bom.element.Dimension.getWidth(this.__P_15_3) + "px";
-          styles.height = qx.bom.element.Dimension.getHeight(this.__P_15_3) + "px";
-          styles.left = qx.bom.element.Location.getLeft(this.__P_15_3) + "px";
-          styles.top = qx.bom.element.Location.getTop(this.__P_15_3) + "px";
+          styles.width = qx.bom.element.Dimension.getWidth(this.__blockedElement) + "px";
+          styles.height = qx.bom.element.Dimension.getHeight(this.__blockedElement) + "px";
+          styles.left = qx.bom.element.Location.getLeft(this.__blockedElement) + "px";
+          styles.top = qx.bom.element.Location.getTop(this.__blockedElement) + "px";
         }
 
         return styles;
@@ -299,26 +299,26 @@
        *
        * @param styles {Object} styles to apply
        */
-      __P_15_10: function __P_15_10(styles) {
+      __styleAndInsertBlocker: function __styleAndInsertBlocker(styles) {
         var target = document.body;
-        qx.bom.element.Style.setStyles(this.__P_15_2, styles);
-        qx.dom.Element.insertEnd(this.__P_15_2, target);
+        qx.bom.element.Style.setStyles(this.__blockerElement, styles);
+        qx.dom.Element.insertEnd(this.__blockerElement, target);
 
         if (qx.core.Environment.get("engine.name") == "mshtml") {
           styles.zIndex = this.getBlockerZIndex() - 1;
-          qx.bom.element.Style.setStyles(this.__P_15_1, styles);
-          qx.dom.Element.insertEnd(this.__P_15_1, document.body);
+          qx.bom.element.Style.setStyles(this.__iframeElement, styles);
+          qx.dom.Element.insertEnd(this.__iframeElement, document.body);
         }
       },
 
       /**
        * Remove the blocker elements.
        */
-      __P_15_11: function __P_15_11() {
-        qx.dom.Element.remove(this.__P_15_2);
+      __removeBlocker: function __removeBlocker() {
+        qx.dom.Element.remove(this.__blockerElement);
 
         if (qx.core.Environment.get("engine.name") == "mshtml") {
-          qx.dom.Element.remove(this.__P_15_1);
+          qx.dom.Element.remove(this.__iframeElement);
         }
       },
 
@@ -328,10 +328,10 @@
        *
        * @param e {qx.event.type.Event} event instance
        */
-      __P_15_8: function __P_15_8(e) {
-        if (this.__P_15_14()) {
+      __onResize: function __onResize(e) {
+        if (this.__isWholeDocumentBlockTarget()) {
           // reset the blocker to get the right calculated document dimension
-          this.__P_15_15({
+          this.__resizeBlocker({
             width: "0px",
             height: "0px"
           }); // If the HTML document is very large, the getWidth() and getHeight()
@@ -344,7 +344,7 @@
               height: qx.bom.Document.getHeight() + "px"
             };
 
-            this.__P_15_15(dimension);
+            this.__resizeBlocker(dimension);
           }, this, 0);
         }
       },
@@ -354,11 +354,11 @@
        *
        * @param dimension {Object} Map with width and height as keys
        */
-      __P_15_15: function __P_15_15(dimension) {
-        qx.bom.element.Style.setStyles(this.__P_15_2, dimension);
+      __resizeBlocker: function __resizeBlocker(dimension) {
+        qx.bom.element.Style.setStyles(this.__blockerElement, dimension);
 
         if (qx.core.Environment.get("engine.name") == "mshtml") {
-          qx.bom.element.Style.setStyles(this.__P_15_1, dimension);
+          qx.bom.element.Style.setStyles(this.__iframeElement, dimension);
         }
       },
 
@@ -367,12 +367,12 @@
        *
        * @return {Boolean} block mode
        */
-      __P_15_14: function __P_15_14() {
-        return this.__P_15_3 == null || qx.dom.Node.isWindow(this.__P_15_3) || qx.dom.Node.isDocument(this.__P_15_3);
+      __isWholeDocumentBlockTarget: function __isWholeDocumentBlockTarget() {
+        return this.__blockedElement == null || qx.dom.Node.isWindow(this.__blockedElement) || qx.dom.Node.isDocument(this.__blockedElement);
       }
     }
   });
   qx.bom.Blocker.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Blocker.js.map?dt=1608478911193
+//# sourceMappingURL=Blocker.js.map?dt=1609082269590

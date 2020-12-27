@@ -56,19 +56,19 @@
   qx.Bootstrap.define("qx.io.ImageLoader", {
     statics: {
       /** @type {Map} Internal data structure to cache image sizes */
-      __P_158_0: {},
+      __data: {},
 
       /** @type {Map} Default image size */
-      __P_158_1: {
+      __defaultSize: {
         width: null,
         height: null
       },
 
       /** @type {RegExp} Known image types */
-      __P_158_2: /\.(png|gif|jpg|jpeg|bmp)\b/i,
+      __knownImageTypesRegExp: /\.(png|gif|jpg|jpeg|bmp)\b/i,
 
       /** @type {RegExp} Image types of a data URL */
-      __P_158_3: /^data:image\/(png|gif|jpg|jpeg|bmp)\b/i,
+      __dataUrlRegExp: /^data:image\/(png|gif|jpg|jpeg|bmp)\b/i,
 
       /**
        * Whether the given image has previously been loaded using the
@@ -78,7 +78,7 @@
        * @return {Boolean} <code>true</code> when the image is loaded
        */
       isLoaded: function isLoaded(source) {
-        var entry = this.__P_158_0[source];
+        var entry = this.__data[source];
         return !!(entry && entry.loaded);
       },
 
@@ -90,7 +90,7 @@
        * @return {Boolean} <code>true</code> when the image loading failed
        */
       isFailed: function isFailed(source) {
-        var entry = this.__P_158_0[source];
+        var entry = this.__data[source];
         return !!(entry && entry.failed);
       },
 
@@ -101,7 +101,7 @@
        * @return {Boolean} <code>true</code> when the image is loading in the moment.
        */
       isLoading: function isLoading(source) {
-        var entry = this.__P_158_0[source];
+        var entry = this.__data[source];
         return !!(entry && entry.loading);
       },
 
@@ -112,15 +112,15 @@
        * @return {String ? null} The format of the image or <code>null</code>
        */
       getFormat: function getFormat(source) {
-        var entry = this.__P_158_0[source];
+        var entry = this.__data[source];
 
         if (!entry || !entry.format) {
-          var result = this.__P_158_3.exec(source);
+          var result = this.__dataUrlRegExp.exec(source);
 
           if (result != null) {
             // If width and height aren't defined, provide some defaults
-            var width = entry && qx.lang.Type.isNumber(entry.width) ? entry.width : this.__P_158_1.width;
-            var height = entry && qx.lang.Type.isNumber(entry.height) ? entry.height : this.__P_158_1.height;
+            var width = entry && qx.lang.Type.isNumber(entry.width) ? entry.width : this.__defaultSize.width;
+            var height = entry && qx.lang.Type.isNumber(entry.height) ? entry.height : this.__defaultSize.height;
             entry = {
               loaded: true,
               format: result[1],
@@ -142,11 +142,11 @@
        *    dimensions are given as <code>null</code> for width and height.
        */
       getSize: function getSize(source) {
-        var entry = this.__P_158_0[source];
+        var entry = this.__data[source];
         return entry ? {
           width: entry.width,
           height: entry.height
-        } : this.__P_158_1;
+        } : this.__defaultSize;
       },
 
       /**
@@ -156,7 +156,7 @@
        * @return {Integer} The width or <code>null</code> when the image is not loaded
        */
       getWidth: function getWidth(source) {
-        var entry = this.__P_158_0[source];
+        var entry = this.__data[source];
         return entry ? entry.width : null;
       },
 
@@ -167,7 +167,7 @@
        * @return {Integer} The height or <code>null</code> when the image is not loaded
        */
       getHeight: function getHeight(source) {
-        var entry = this.__P_158_0[source];
+        var entry = this.__data[source];
         return entry ? entry.height : null;
       },
 
@@ -186,10 +186,10 @@
        */
       load: function load(source, callback, context) {
         // Shorthand
-        var entry = this.__P_158_0[source];
+        var entry = this.__data[source];
 
         if (!entry) {
-          entry = this.__P_158_0[source] = {};
+          entry = this.__data[source] = {};
         } // Normalize context
 
 
@@ -218,7 +218,7 @@
 
           var el = document.createElement('img'); // Create common callback routine
 
-          var boundCallback = qx.lang.Function.listener(this.__P_158_4, this, el, source); // Assign callback to element
+          var boundCallback = qx.lang.Function.listener(this.__onload, this, el, source); // Assign callback to element
 
           el.onload = boundCallback;
           el.onerror = boundCallback; // Start loading of image
@@ -235,7 +235,7 @@
        * @param source {String} URL of the image to abort its loading.
        */
       abort: function abort(source) {
-        var entry = this.__P_158_0[source];
+        var entry = this.__data[source];
 
         if (entry && !entry.loaded) {
           entry.aborted = true;
@@ -255,16 +255,16 @@
           }
         }
 
-        this.__P_158_0[source] = null;
+        this.__data[source] = null;
       },
 
       /**
        * Calls a method based on qx.globalErrorHandling
        */
-      __P_158_4: function __P_158_4() {
+      __onload: function __onload() {
         var callback = qx.core.Environment.select("qx.globalErrorHandling", {
-          "true": qx.event.GlobalError.observeMethod(this.__P_158_5),
-          "false": this.__P_158_5
+          "true": qx.event.GlobalError.observeMethod(this.__onLoadHandler),
+          "false": this.__onLoadHandler
         });
         callback.apply(this, arguments);
       },
@@ -278,9 +278,9 @@
        * @param element {Element} DOM element which represents the image
        * @param source {String} The image source loaded
        */
-      __P_158_5: function __P_158_5(event, element, source) {
+      __onLoadHandler: function __onLoadHandler(event, element, source) {
         // Shorthand
-        var entry = this.__P_158_0[source]; // [BUG #9149]: When loading a SVG IE11 won't have
+        var entry = this.__data[source]; // [BUG #9149]: When loading a SVG IE11 won't have
         // the width/height of the element set, unless
         // it is inserted into the DOM.
 
@@ -300,7 +300,7 @@
           entry.width = element.width;
           entry.height = element.height; // try to determine the image format
 
-          var result = this.__P_158_2.exec(source);
+          var result = this.__knownImageTypesRegExp.exec(source);
 
           if (result != null) {
             entry.format = result[1];
@@ -331,11 +331,11 @@
        * Dispose stored images.
        */
       dispose: function dispose() {
-        this.__P_158_0 = {};
+        this.__data = {};
       }
     }
   });
   qx.io.ImageLoader.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ImageLoader.js.map?dt=1608478921624
+//# sourceMappingURL=ImageLoader.js.map?dt=1609082281348

@@ -107,8 +107,8 @@
       this.setMethod(method !== undefined ? method : "GET");
       this._transport = this._registerTransportListener(this._createTransport());
       qx.core.ObjectRegistry.register(this);
-      this.__P_63_0 = {};
-      this.__P_63_1 = this._createResponseParser();
+      this.__requestHeaders = {};
+      this.__parser = this._createResponseParser();
     },
     members: {
       /*
@@ -125,7 +125,7 @@
        * @return {qx.bom.request.SimpleXhr} Self for chaining.
        */
       setRequestHeader: function setRequestHeader(key, value) {
-        this.__P_63_0[key] = value;
+        this.__requestHeaders[key] = value;
         return this;
       },
 
@@ -136,7 +136,7 @@
        * @return {String} The value of the header.
        */
       getRequestHeader: function getRequestHeader(key) {
-        return this.__P_63_0[key];
+        return this.__requestHeaders[key];
       },
 
       /**
@@ -165,7 +165,7 @@
        */
       setUrl: function setUrl(url) {
         if (qx.lang.Type.isString(url)) {
-          this.__P_63_2 = url;
+          this.__url = url;
         }
 
         return this;
@@ -177,7 +177,7 @@
        * @return {String} URL to be requested.
        */
       getUrl: function getUrl() {
-        return this.__P_63_2;
+        return this.__url;
       },
 
       /**
@@ -188,7 +188,7 @@
        */
       setMethod: function setMethod(method) {
         if (qx.util.Request.isMethod(method)) {
-          this.__P_63_3 = method;
+          this.__method = method;
         }
 
         return this;
@@ -200,7 +200,7 @@
        * @return {String} The method.
        */
       getMethod: function getMethod() {
-        return this.__P_63_3;
+        return this.__method;
       },
 
       /**
@@ -214,7 +214,7 @@
        */
       setRequestData: function setRequestData(data) {
         if (qx.lang.Type.isString(data) || qx.lang.Type.isObject(data) || ["ArrayBuffer", "Blob", "FormData"].indexOf(qx.lang.Type.getClass(data)) !== -1) {
-          this.__P_63_4 = data;
+          this.__requestData = data;
         }
 
         return this;
@@ -226,7 +226,7 @@
        * @return {String} The request data.
        */
       getRequestData: function getRequestData() {
-        return this.__P_63_4;
+        return this.__requestData;
       },
 
       /**
@@ -237,8 +237,8 @@
        * @return {String|null} The parsed response of the request.
        */
       getResponse: function getResponse() {
-        if (this.__P_63_5 !== null) {
-          return this.__P_63_5;
+        if (this.__response !== null) {
+          return this.__response;
         } else {
           return this._transport.responseXML !== null ? this._transport.responseXML : this._transport.responseText;
         }
@@ -280,7 +280,7 @@
        * @return {Function} The parser function
        */
       setParser: function setParser(parser) {
-        return this.__P_63_1.setParser(parser);
+        return this.__parser.setParser(parser);
       },
 
       /**
@@ -291,7 +291,7 @@
        */
       setTimeout: function setTimeout(millis) {
         if (qx.lang.Type.isNumber(millis)) {
-          this.__P_63_6 = millis;
+          this.__timeout = millis;
         }
 
         return this;
@@ -303,7 +303,7 @@
        * @return {Number} The current timeout in milliseconds.
        */
       getTimeout: function getTimeout() {
-        return this.__P_63_6;
+        return this.__timeout;
       },
 
       /**
@@ -342,7 +342,7 @@
        */
       useCaching: function useCaching(value) {
         if (qx.lang.Type.isBoolean(value)) {
-          this.__P_63_7 = value;
+          this.__cache = value;
         }
 
         return this;
@@ -354,7 +354,7 @@
        * @return {Boolean} Whether requests are cached.
        */
       isCaching: function isCaching() {
-        return this.__P_63_7;
+        return this.__cache;
       },
 
       /**
@@ -380,7 +380,7 @@
        * @return {Boolean} Whether the object has been disposed
        */
       isDisposed: function isDisposed() {
-        return !!this.__P_63_8;
+        return !!this.__disposed;
       },
 
       /**
@@ -395,7 +395,7 @@
       send: function send() {
         var curTimeout = this.getTimeout(),
             hasRequestData = this.getRequestData() !== null,
-            hasCacheControlHeader = this.__P_63_0.hasOwnProperty("Cache-Control"),
+            hasCacheControlHeader = this.__requestHeaders.hasOwnProperty("Cache-Control"),
             isBodyForMethodAllowed = qx.util.Request.methodAllowsRequestBody(this.getMethod()),
             curContentType = this.getRequestHeader("Content-Type"),
             serializedData = this._serializeData(this.getRequestData(), curContentType); // add GET params if needed
@@ -422,8 +422,8 @@
         this._transport.open(this.getMethod(), this.getUrl(), true); // set all previously stored headers on initialized request
 
 
-        for (var key in this.__P_63_0) {
-          this._transport.setRequestHeader(key, this.__P_63_0[key]);
+        for (var key in this.__requestHeaders) {
+          this._transport.setRequestHeader(key, this.__requestHeaders[key]);
         } // send
 
 
@@ -459,8 +459,8 @@
        */
       dispose: function dispose() {
         if (this._transport.dispose()) {
-          this.__P_63_1 = null;
-          this.__P_63_8 = true;
+          this.__parser = null;
+          this.__disposed = true;
           return true;
         }
 
@@ -519,7 +519,7 @@
        * @param response {String} The parsed response of the request.
        */
       _setResponse: function _setResponse(response) {
-        this.__P_63_5 = response;
+        this.__response = response;
       },
 
       /**
@@ -565,47 +565,47 @@
       /**
        * {Array} Request headers.
        */
-      __P_63_0: null,
+      __requestHeaders: null,
 
       /**
        * {Object} Request data (i.e. body).
        */
-      __P_63_4: null,
+      __requestData: null,
 
       /**
        * {String} HTTP method to use for request.
        */
-      __P_63_3: "",
+      __method: "",
 
       /**
        * {String} Requested URL.
        */
-      __P_63_2: "",
+      __url: "",
 
       /**
        * {Object} Response data.
        */
-      __P_63_5: null,
+      __response: null,
 
       /**
        * {Function} Parser.
        */
-      __P_63_1: null,
+      __parser: null,
 
       /**
        * {Boolean} Whether caching will be enabled.
        */
-      __P_63_7: null,
+      __cache: null,
 
       /**
        * {Number} The current timeout in milliseconds.
        */
-      __P_63_6: null,
+      __timeout: null,
 
       /**
        * {Boolean} Whether object has been disposed.
        */
-      __P_63_8: null,
+      __disposed: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -649,14 +649,14 @@
         }
 
         if (this.isDone()) {
-          this.__P_63_9();
+          this.__onReadyStateDone();
         }
       },
 
       /**
        * Called internally when readyState is DONE.
        */
-      __P_63_9: function __P_63_9() {
+      __onReadyStateDone: function __onReadyStateDone() {
         if (qx.core.Environment.get("qx.debug.io")) {
           qx.Bootstrap.debug("Request completed with HTTP status: " + this._transport.status);
         }
@@ -672,12 +672,12 @@
             qx.Bootstrap.debug("Response is of type: '" + contentType + "'");
           }
 
-          this._setResponse(this.__P_63_1.parse(response, contentType));
+          this._setResponse(this.__parser.parse(response, contentType));
 
           this.emit("success"); // Erroneous HTTP status
         } else {
           try {
-            this._setResponse(this.__P_63_1.parse(response, contentType));
+            this._setResponse(this.__parser.parse(response, contentType));
           } catch (e) {// ignore if it does not work
           } // A remote error failure
 
@@ -731,4 +731,4 @@
   qx.bom.request.SimpleXhr.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=SimpleXhr.js.map?dt=1608478915038
+//# sourceMappingURL=SimpleXhr.js.map?dt=1609082273767

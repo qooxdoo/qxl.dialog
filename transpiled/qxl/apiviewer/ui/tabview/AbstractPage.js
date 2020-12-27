@@ -53,7 +53,7 @@
       });
       this.setPadding(0);
 
-      this.__P_441_0(this._viewer);
+      this.__bindViewer(this._viewer);
     },
     properties: {
       classNode: {
@@ -82,7 +82,7 @@
           }, _this, 0);
         });
       },
-      __P_441_0: function __P_441_0(viewer) {
+      __bindViewer: function __bindViewer(viewer) {
         var uiModel = qxl.apiviewer.UiModel.getInstance();
         var bindings = this._bindings;
         bindings.push(uiModel.bind("showInherited", viewer, "showInherited"));
@@ -92,7 +92,7 @@
         bindings.push(uiModel.bind("showPrivate", viewer, "showPrivate"));
         bindings.push(uiModel.bind("showInternal", viewer, "showInternal"));
       },
-      __P_441_1: function __P_441_1() {
+      __removeBinding: function __removeBinding() {
         var uiModel = qxl.apiviewer.UiModel.getInstance();
         var bindings = this._bindings;
 
@@ -103,7 +103,7 @@
       }
     },
     destruct: function destruct() {
-      this.__P_441_1();
+      this.__removeBinding();
 
       this._viewer.destroy();
 
@@ -113,4 +113,4 @@
   qxl.apiviewer.ui.tabview.AbstractPage.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=AbstractPage.js.map?dt=1608478943433
+//# sourceMappingURL=AbstractPage.js.map?dt=1609082307611

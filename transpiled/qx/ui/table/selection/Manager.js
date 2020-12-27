@@ -74,7 +74,7 @@
     *****************************************************************************
     */
     members: {
-      __P_361_0: null,
+      __lastPointerDownHandled: null,
 
       /**
        * Handles the tap event.
@@ -90,10 +90,10 @@
             // This index is not selected -> We react when the pointer is pressed (because of drag and drop)
             this._handleSelectEvent(index, evt);
 
-            this.__P_361_0 = true;
+            this.__lastPointerDownHandled = true;
           } else {
             // This index is already selected -> We react when the pointer is released (because of drag and drop)
-            this.__P_361_0 = false;
+            this.__lastPointerDownHandled = false;
           }
         } else if (evt.isRightPressed() && evt.getModifiers() == 0) {
           var selectionModel = this.getSelectionModel();
@@ -104,7 +104,7 @@
           }
         }
 
-        if (evt.isLeftPressed() && !this.__P_361_0) {
+        if (evt.isLeftPressed() && !this.__lastPointerDownHandled) {
           this._handleSelectEvent(index, evt);
         }
       },
@@ -187,4 +187,4 @@
   qx.ui.table.selection.Manager.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Manager.js.map?dt=1608478936898
+//# sourceMappingURL=Manager.js.map?dt=1609082299812

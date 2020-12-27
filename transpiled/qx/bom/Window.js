@@ -41,16 +41,16 @@
       /** Internal blocker instance for all browsers which need an additional
        * blocker for modal windows because they do not support it natively.
        */
-      __P_35_0: null,
+      __blocker: null,
 
       /** Window handle which is currently blocked. */
-      __P_35_1: null,
+      __blockerWindow: null,
 
       /** Timer instance to poll for unblocking if the modal window was closed */
-      __P_35_2: null,
+      __timer: null,
 
       /** Supported options and their mapping to window options */
-      __P_35_3: {
+      __modalOptions: {
         "top": "dialogTop",
         left: "dialogLeft",
         width: "dialogWidth",
@@ -60,7 +60,7 @@
       },
 
       /** Supported options for modeless windows */
-      __P_35_4: {
+      __modelessOptions: {
         "top": 1,
         left: 1,
         width: 1,
@@ -79,7 +79,7 @@
        *
        * @return {Boolean} Capability of open modal windows
        */
-      __P_35_5: function __P_35_5() {
+      __isCapableToOpenModalWindows: function __isCapableToOpenModalWindows() {
         return window.showModalDialog != null;
       },
 
@@ -171,25 +171,25 @@
           useNativeModalDialog = true;
         }
 
-        var configurationString = this.__P_35_6(options, modal && useNativeModalDialog);
+        var configurationString = this.__generateConfigurationString(options, modal && useNativeModalDialog);
 
         if (modal) {
-          if (this.__P_35_5() && useNativeModalDialog) {
+          if (this.__isCapableToOpenModalWindows() && useNativeModalDialog) {
             newWindow = window.showModalDialog(url, [window.self], configurationString);
           } else {
             this.getBlocker().block();
 
-            if (this.__P_35_2 == null) {
-              this.__P_35_2 = new qx.event.Timer(500);
+            if (this.__timer == null) {
+              this.__timer = new qx.event.Timer(500);
 
-              this.__P_35_2.addListener("interval", this.__P_35_7, this);
+              this.__timer.addListener("interval", this.__checkForUnblocking, this);
             }
 
-            this.__P_35_1 = window.open(url, name, configurationString);
+            this.__blockerWindow = window.open(url, name, configurationString);
 
-            this.__P_35_2.restart();
+            this.__timer.restart();
 
-            newWindow = this.__P_35_1;
+            newWindow = this.__blockerWindow;
           }
         } else {
           newWindow = window.open(url, name, configurationString);
@@ -218,21 +218,21 @@
        *
        * @return {String} configuration as string representation
        */
-      __P_35_6: function __P_35_6(options, modality) {
+      __generateConfigurationString: function __generateConfigurationString(options, modality) {
         var configurationString;
         var value;
         var configuration = [];
 
-        if (modality && this.__P_35_5()) {
+        if (modality && this.__isCapableToOpenModalWindows()) {
           for (var key in options) {
-            if (qx.bom.Window.__P_35_3[key]) {
+            if (qx.bom.Window.__modalOptions[key]) {
               var suffix = "";
 
               if (key != "scrollbars" && key != "resizable") {
                 suffix = "px";
               }
 
-              value = qx.bom.Window.__P_35_3[key] + ":" + options[key] + suffix;
+              value = qx.bom.Window.__modalOptions[key] + ":" + options[key] + suffix;
               configuration.push(value);
             } else {
               qx.log.Logger.warn("Option '" + key + "' is not supported for modal windows.");
@@ -242,7 +242,7 @@
           configurationString = configuration.join(";");
         } else {
           for (var key in options) {
-            if (qx.bom.Window.__P_35_4[key]) {
+            if (qx.bom.Window.__modelessOptions[key]) {
               if (qx.lang.Type.isBoolean(options[key])) {
                 value = key + "=" + (options[key] ? "yes" : "no");
               } else {
@@ -265,11 +265,11 @@
        * Interval method which checks if the native window was closed to also
        * stop the associated timer.
        */
-      __P_35_7: function __P_35_7() {
-        if (this.isClosed(this.__P_35_1)) {
+      __checkForUnblocking: function __checkForUnblocking() {
+        if (this.isClosed(this.__blockerWindow)) {
           this.getBlocker().unblock();
 
-          this.__P_35_2.stop();
+          this.__timer.stop();
         }
       },
 
@@ -286,11 +286,11 @@
        * @return {qx.bom.Blocker?null} Blocker instance or null if no blocker is used
        */
       getBlocker: function getBlocker() {
-        if (this.__P_35_0 == null) {
-          this.__P_35_0 = new qx.bom.Blocker();
+        if (this.__blocker == null) {
+          this.__blocker = new qx.bom.Blocker();
         }
 
-        return this.__P_35_0;
+        return this.__blocker;
       },
 
       /**
@@ -378,4 +378,4 @@
   qx.bom.Window.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Window.js.map?dt=1608478912901
+//# sourceMappingURL=Window.js.map?dt=1609082271524

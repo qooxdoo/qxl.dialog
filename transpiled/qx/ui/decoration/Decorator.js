@@ -74,7 +74,7 @@
     implement: [qx.ui.decoration.IDecorator],
     include: [qx.ui.decoration.MBackgroundColor, qx.ui.decoration.MBorderRadius, qx.ui.decoration.MBoxShadow, qx.ui.decoration.MDoubleBorder, qx.ui.decoration.MLinearBackgroundGradient, qx.ui.decoration.MBorderImage, qx.ui.decoration.MTransition],
     members: {
-      __P_240_0: false,
+      __initialized: false,
 
       /**
        * Returns the configured padding minus the border width.
@@ -140,7 +140,7 @@
           }
         }
 
-        this.__P_240_0 = true;
+        this.__initialized = true;
         return styles;
       },
       // overridden
@@ -182,7 +182,7 @@
       },
       // overridden
       _isInitialized: function _isInitialized() {
-        return this.__P_240_0;
+        return this.__initialized;
       },
 
       /**
@@ -211,7 +211,7 @@
         }));
 
         for (var i = 0; i < propertyValues.length; i++) {
-          this.__P_240_1(propertyValues[i], items);
+          this.__extendArray(propertyValues[i], items);
         }
 
         return propertyValues;
@@ -222,7 +222,7 @@
       * @param array {Array} Incoming array. Has to contain at least one element.
       * @param to {Integer} Desired length. Must be greater than or equal to the the length of arr.
       */
-      __P_240_1: function __P_240_1(array, to) {
+      __extendArray: function __extendArray(array, to) {
         var initial = array.length;
 
         while (array.length < to) {
@@ -234,4 +234,4 @@
   qx.ui.decoration.Decorator.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Decorator.js.map?dt=1608478928538
+//# sourceMappingURL=Decorator.js.map?dt=1609082289978

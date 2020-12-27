@@ -45,10 +45,10 @@
       this.setColumnWidth("auto");
     },
     members: {
-      __P_212_0: null,
+      __computedWidth: null,
       // overridden
       renderLayout: function renderLayout(left, top, width, height) {
-        this.__P_212_0 = width;
+        this.__computedWidth = width;
       },
 
       /**
@@ -56,7 +56,7 @@
        * @return {Integer} Computed column width
        */
       getComputedWidth: function getComputedWidth() {
-        return this.__P_212_0;
+        return this.__computedWidth;
       },
 
       /**
@@ -115,4 +115,4 @@
   qx.ui.core.ColumnData.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ColumnData.js.map?dt=1608478926903
+//# sourceMappingURL=ColumnData.js.map?dt=1609082288063

@@ -58,34 +58,34 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
       this.setName(machineName); // Initialize the states object
 
-      this.__P_422_0 = {}; // The first state added will become the start state
+      this.__states = {}; // The first state added will become the start state
 
-      this.__P_422_1 = null; // Initialize the saved-states stack
+      this.__startState = null; // Initialize the saved-states stack
 
-      this.__P_422_2 = []; // Initialize the pending event queue
+      this.__savedStates = []; // Initialize the pending event queue
 
-      this.__P_422_3 = []; // Initialize the blocked events queue
+      this.__eventQueue = []; // Initialize the blocked events queue
 
-      this.__P_422_4 = []; // Create the friendlyToObject" object.  Each object has as its property
+      this.__blockedEvents = []; // Create the friendlyToObject" object.  Each object has as its property
       // name, the friendly name of the object; and as its property value, the
       // object itself.
 
-      this.__P_422_5 = {}; // Create the "friendlyToHash" object.  Each object has as its property
+      this.__friendlyToObject = {}; // Create the "friendlyToHash" object.  Each object has as its property
       // name, the friendly name of the object; and as its property value, the
       // hash code of the object.
 
-      this.__P_422_6 = {}; // Create the "hashToFriendly" object.  Each object has as its property
+      this.__friendlyToHash = {}; // Create the "hashToFriendly" object.  Each object has as its property
       // name, the hash code of the object; and as its property value, the
       // friendly name of the object.
 
-      this.__P_422_7 = {}; // Friendly names can be added to groups, for easy manipulation of
+      this.__hashToFriendly = {}; // Friendly names can be added to groups, for easy manipulation of
       // enabling and disabling groups of widgets.  Track which friendly names
       // are in which group.
 
-      this.__P_422_8 = {}; // We also need to be able to map back from friendly name to the groups it
+      this.__groupToFriendly = {}; // We also need to be able to map back from friendly name to the groups it
       // is in.
 
-      this.__P_422_9 = {};
+      this.__friendlyToGroups = {};
     },
     statics: {
       /**
@@ -220,18 +220,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
     },
     members: {
-      __P_422_0: null,
-      __P_422_1: null,
-      __P_422_3: null,
-      __P_422_4: null,
-      __P_422_2: null,
-      __P_422_5: null,
-      __P_422_6: null,
-      __P_422_7: null,
-      __P_422_8: null,
-      __P_422_9: null,
-      __P_422_10: false,
-      __P_422_11: true,
+      __states: null,
+      __startState: null,
+      __eventQueue: null,
+      __blockedEvents: null,
+      __savedStates: null,
+      __friendlyToObject: null,
+      __friendlyToHash: null,
+      __hashToFriendly: null,
+      __groupToFriendly: null,
+      __friendlyToGroups: null,
+      __bEventProcessingInProgress: false,
+      __bTerminated: true,
 
       /**
        * Checks whether the finite state machine is terminated or not.
@@ -239,7 +239,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @return {Boolean} If the finite state machine is terminated.
        */
       isTerminated: function isTerminated() {
-        return this.__P_422_11;
+        return this.__bTerminated;
       },
 
       /**
@@ -263,18 +263,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         var stateName = state.getName(); // Ensure that the state name doesn't already exist
 
-        if (stateName in this.__P_422_0) {
+        if (stateName in this.__states) {
           throw new Error("State " + stateName + " already exists");
         } // Is this the first state being added?
 
 
-        if (this.__P_422_1 == null) {
+        if (this.__startState == null) {
           // Yup.  Save this state as the start state.
-          this.__P_422_1 = stateName;
+          this.__startState = stateName;
         } // Add the new state object to the finite state machine
 
 
-        this.__P_422_0[stateName] = state;
+        this.__states[stateName] = state;
       },
 
       /**
@@ -308,9 +308,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         var stateName = state.getName(); // Save the old state object, so we can return it to be disposed
 
-        var oldState = this.__P_422_0[stateName]; // Replace the old state with the new state object.
+        var oldState = this.__states[stateName]; // Replace the old state with the new state object.
 
-        this.__P_422_0[stateName] = state; // Did they request that the old state be disposed?
+        this.__states[stateName] = state; // Did they request that the old state be disposed?
 
         if (bDispose) {
           // Yup.  Mark it to be disposed.
@@ -337,9 +337,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       addObject: function addObject(friendlyName, obj, groupNames) {
         var hash = qx.core.ObjectRegistry.toHashCode(obj);
-        this.__P_422_6[friendlyName] = hash;
-        this.__P_422_7[hash] = friendlyName;
-        this.__P_422_5[friendlyName] = obj; // If no groupNames are specified, we're done.
+        this.__friendlyToHash[friendlyName] = hash;
+        this.__hashToFriendly[hash] = friendlyName;
+        this.__friendlyToObject[friendlyName] = obj; // If no groupNames are specified, we're done.
 
         if (!groupNames) {
           return;
@@ -356,22 +356,22 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         for (var i = 0; i < groupNames.length; i++) {
           var groupName = groupNames[i]; // If the group name doesn't yet exist...
 
-          if (!this.__P_422_8[groupName]) {
+          if (!this.__groupToFriendly[groupName]) {
             // ... then create it.
-            this.__P_422_8[groupName] = {};
+            this.__groupToFriendly[groupName] = {};
           } // Add the friendly name to the list of names in this group
 
 
-          this.__P_422_8[groupName][friendlyName] = true; // If the friendly name group mapping doesn't yet exist...
+          this.__groupToFriendly[groupName][friendlyName] = true; // If the friendly name group mapping doesn't yet exist...
 
-          if (!this.__P_422_9[friendlyName]) {
+          if (!this.__friendlyToGroups[friendlyName]) {
             // ... then create it.
-            this.__P_422_9[friendlyName] = [];
+            this.__friendlyToGroups[friendlyName] = [];
           } // Append this group name to the list of groups this friendly name is
           // in
 
 
-          this.__P_422_9[friendlyName].push(groupName);
+          this.__friendlyToGroups[friendlyName].push(groupName);
         }
       },
 
@@ -389,16 +389,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         var groupName;
         var objName;
         var bGroupEmpty;
-        hash = this.__P_422_6[friendlyName]; // Delete references to any groups this friendly name was in
+        hash = this.__friendlyToHash[friendlyName]; // Delete references to any groups this friendly name was in
 
-        if (this.__P_422_9[friendlyName]) {
-          for (var i = 0; i < this.__P_422_9[friendlyName].length; i++) {
-            groupName = this.__P_422_9[friendlyName][i];
-            delete this.__P_422_8[groupName][friendlyName]; // Is the group empty now?
+        if (this.__friendlyToGroups[friendlyName]) {
+          for (var i = 0; i < this.__friendlyToGroups[friendlyName].length; i++) {
+            groupName = this.__friendlyToGroups[friendlyName][i];
+            delete this.__groupToFriendly[groupName][friendlyName]; // Is the group empty now?
 
             bGroupEmpty = true;
 
-            for (objName in this.__P_422_8[groupName]) {
+            for (objName in this.__groupToFriendly[groupName]) {
               // The group is not empty. That's all we wanted to know.
               bGroupEmpty = false;
               break;
@@ -407,17 +407,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
             if (bGroupEmpty) {
               // ... then we can delete the entire entry
-              delete this.__P_422_8[groupName];
+              delete this.__groupToFriendly[groupName];
             }
           }
 
-          delete this.__P_422_9[friendlyName];
+          delete this.__friendlyToGroups[friendlyName];
         } // Delete the friendly name
 
 
-        delete this.__P_422_7[hash];
-        delete this.__P_422_6[friendlyName];
-        delete this.__P_422_5[friendlyName];
+        delete this.__hashToFriendly[hash];
+        delete this.__friendlyToHash[friendlyName];
+        delete this.__friendlyToObject[friendlyName];
       },
 
       /**
@@ -433,7 +433,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *   object has been associated with that name.
        */
       getObject: function getObject(friendlyName) {
-        return this.__P_422_5[friendlyName];
+        return this.__friendlyToObject[friendlyName];
       },
 
       /**
@@ -449,7 +449,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       getFriendlyName: function getFriendlyName(obj) {
         var hash = obj ? qx.core.ObjectRegistry.toHashCode(obj) : null;
-        return hash ? this.__P_422_7[hash] : null;
+        return hash ? this.__hashToFriendly[hash] : null;
       },
 
       /**
@@ -467,7 +467,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       getGroupObjects: function getGroupObjects(groupName) {
         var a = [];
 
-        for (var name in this.__P_422_8[groupName]) {
+        for (var name in this.__groupToFriendly[groupName]) {
           a.push(name);
         }
 
@@ -479,11 +479,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *
        */
       displayAllObjects: function displayAllObjects() {
-        for (var friendlyName in this.__P_422_6) {
-          var hash = this.__P_422_6[friendlyName];
+        for (var friendlyName in this.__friendlyToHash) {
+          var hash = this.__friendlyToHash[friendlyName];
           var obj = this.getObject(friendlyName);
           this.debug(friendlyName + " => " + hash);
-          this.debug("  " + hash + " => " + this.__P_422_7[hash]);
+          this.debug("  " + hash + " => " + this.__hashToFriendly[hash]);
           this.debug("  " + friendlyName + " => " + this.getObject(friendlyName));
           this.debug("  " + this.getObject(friendlyName) + " => " + this.getFriendlyName(obj));
         }
@@ -508,16 +508,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       _getInternalData: function _getInternalData() {
         return {
-          "states": this.__P_422_0,
-          "startState": this.__P_422_1,
-          "eventQueue": this.__P_422_3,
-          "blockedEvents": this.__P_422_4,
-          "savedStates": this.__P_422_2,
-          "friendlyToObject": this.__P_422_5,
-          "friendlyToHash": this.__P_422_6,
-          "hashToFriendly": this.__P_422_7,
-          "groupToFriendly": this.__P_422_8,
-          "friendlyToGroups": this.__P_422_9
+          "states": this.__states,
+          "startState": this.__startState,
+          "eventQueue": this.__eventQueue,
+          "blockedEvents": this.__blockedEvents,
+          "savedStates": this.__savedStates,
+          "friendlyToObject": this.__friendlyToObject,
+          "friendlyToHash": this.__friendlyToHash,
+          "hashToFriendly": this.__hashToFriendly,
+          "groupToFriendly": this.__groupToFriendly,
+          "friendlyToGroups": this.__friendlyToGroups
         };
       },
 
@@ -529,8 +529,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @throws {Error} If the machine stared with not available state.
        */
       start: function start() {
-        this.__P_422_11 = false;
-        var stateName = this.__P_422_1;
+        this.__bTerminated = false;
+        var stateName = this.__startState;
 
         if (stateName == null) {
           throw new Error("Machine started with no available states");
@@ -547,21 +547,21 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           this.debug(this.getName() + "#" + stateName + "#actionsBeforeOnentry");
         }
 
-        this.__P_422_0[stateName].getAutoActionsBeforeOnentry()(this); // Run the entry function for the new state, if one is specified
+        this.__states[stateName].getAutoActionsBeforeOnentry()(this); // Run the entry function for the new state, if one is specified
 
 
         if (debugFunctions) {
           this.debug(this.getName() + "#" + stateName + "#entry");
         }
 
-        this.__P_422_0[stateName].getOnentry()(this, null); // Run the actionsAfterOnentry actions for the initial state
+        this.__states[stateName].getOnentry()(this, null); // Run the actionsAfterOnentry actions for the initial state
 
 
         if (debugFunctions) {
           this.debug(this.getName() + "#" + stateName + "#actionsAfterOnentry");
         }
 
-        this.__P_422_0[stateName].getAutoActionsAfterOnentry()(this);
+        this.__states[stateName].getAutoActionsAfterOnentry()(this);
       },
 
       /**
@@ -591,19 +591,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       pushState: function pushState(state) {
         // See if there's room on the state stack for a new state
-        if (this.__P_422_2.length >= this.getMaxSavedStates()) {
+        if (this.__savedStates.length >= this.getMaxSavedStates()) {
           // Nope.  Programmer error.
           throw new Error("Saved-state stack is full");
         }
 
         if (state === true) {
           // Push the current state onto the saved-state stack
-          this.__P_422_2.push(this.getState());
+          this.__savedStates.push(this.getState());
         } else if (state) {
-          this.__P_422_2.push(state);
+          this.__savedStates.push(state);
         } else {
           // Push the previous state onto the saved-state stack
-          this.__P_422_2.push(this.getPreviousState());
+          this.__savedStates.push(this.getPreviousState());
         }
       },
 
@@ -616,12 +616,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        */
       popState: function popState() {
         // Is there anything on the saved-state stack?
-        if (this.__P_422_2.length == 0) {
+        if (this.__savedStates.length == 0) {
           // Nope. Programmer error.
           throw new Error("Saved-state stack is empty");
         }
 
-        return this.__P_422_2.pop();
+        return this.__savedStates.pop();
       },
 
       /**
@@ -636,7 +636,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       postponeEvent: function postponeEvent(event) {
         // Add this event to the blocked event queue, so it will be passed to the
         // next state upon transition.
-        this.__P_422_4.unshift(event);
+        this.__blockedEvents.unshift(event);
       },
 
       /**
@@ -656,10 +656,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         // Add the event to the event queue
         if (bAddAtHead) {
           // Put event at the head of the queue
-          this.__P_422_3.push(event);
+          this.__eventQueue.push(event);
         } else {
           // Put event at the tail of the queue
-          this.__P_422_3.unshift(event);
+          this.__eventQueue.unshift(event);
         }
 
         if (this.getDebugFlags() & qx.util.fsm.FiniteStateMachine.DebugFlags.EVENTS) {
@@ -680,7 +680,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @param event {qx.event.type.Event} The event that was dispatched.
        */
       eventListener: function eventListener(event) {
-        if (this.__P_422_11) {
+        if (this.__bTerminated) {
           this.debug(this.getName() + ": Cannot listen to event '" + event.getType() + "', because the finite state machine is not running.");
           return;
         } // Events are enqueued upon receipt.  Some events are then processed
@@ -694,7 +694,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         this.enqueueEvent(e, false); // Process events
 
-        this.__P_422_12();
+        this.__processEvents();
       },
 
       /**
@@ -714,7 +714,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        *
        */
       fireImmediateEvent: function fireImmediateEvent(type, target, data) {
-        if (this.__P_422_11) {
+        if (this.__bTerminated) {
           this.debug(this.getName() + ": Cannot listen to event '" + type + "', because the finite state machine is not running.");
           return;
         }
@@ -759,23 +759,23 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * Process all of the events on the event queue.
        *
        */
-      __P_422_12: function __P_422_12() {
+      __processEvents: function __processEvents() {
         // eventListener() can potentially be called while we're processing
         // events
-        if (this.__P_422_10) {
+        if (this.__bEventProcessingInProgress) {
           // We were processing already, so don't process concurrently.
           return;
         } // Track that we're processing events
 
 
-        this.__P_422_10 = true; // Process each of the events on the event queue
+        this.__bEventProcessingInProgress = true; // Process each of the events on the event queue
 
-        while (this.__P_422_3.length > 0) {
+        while (this.__eventQueue.length > 0) {
           // Pull the next event from the pending event queue
-          var event = this.__P_422_3.pop(); // Run the finite state machine with this event
+          var event = this.__eventQueue.pop(); // Run the finite state machine with this event
 
 
-          var bDispose = this.__P_422_13(event); // If we didn't block (and re-queue) the event, dispose it.
+          var bDispose = this.__run(event); // If we didn't block (and re-queue) the event, dispose it.
 
 
           if (bDispose) {
@@ -784,7 +784,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         } // We're no longer processing events
 
 
-        this.__P_422_10 = false;
+        this.__bEventProcessingInProgress = false;
       },
 
       /**
@@ -807,7 +807,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
        * @throws {Error} If the state stack is empty and the next state is POP_STATE_STACK
        * @throws {Error} If the next state is invalid.
        */
-      __P_422_13: function __P_422_13(event) {
+      __run: function __run(event) {
         // For use in generated functions...
         // State name variables
         var thisState;
@@ -838,7 +838,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         thisState = this.getState(); // Get the current State object
 
-        currentState = this.__P_422_0[thisState]; // Get a list of the transitions available from this state
+        currentState = this.__states[thisState]; // Get a list of the transitions available from this state
 
         transitions = currentState.transitions; // Determine how to handle this event
 
@@ -892,7 +892,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               this.debug(this.getName() + ": Event '" + event.getType() + "'" + " blocked.  Re-queuing.");
             }
 
-            this.__P_422_4.unshift(event);
+            this.__blockedEvents.unshift(event);
 
             return false;
 
@@ -942,7 +942,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
           if (typeof nextState == "string") {
             // We found a literal state name.  Ensure it exists.
-            if (!nextState in this.__P_422_0) {
+            if (!nextState in this.__states) {
               throw new Error("Attempt to transition to nonexistent state " + nextState);
             } // It exists.  Track it being the next state.
 
@@ -959,18 +959,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
               case qx.util.fsm.FiniteStateMachine.StateChange.POP_STATE_STACK:
                 // Switch to the state at the top of the state stack.
-                if (this.__P_422_2.length == 0) {
+                if (this.__savedStates.length == 0) {
                   throw new Error("Attempt to transition to POP_STATE_STACK while state stack is empty.");
                 } // Pop the state stack to retrieve the state to transition to
 
 
-                nextState = this.__P_422_2.pop();
+                nextState = this.__savedStates.pop();
                 this.setNextState(nextState);
                 break;
 
               case qx.util.fsm.FiniteStateMachine.StateChange.TERMINATE:
                 // Terminate fsm
-                this.__P_422_11 = true;
+                this.__bTerminated = true;
                 this.setNextState(null);
                 break;
 
@@ -1022,7 +1022,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           } // It the fsm has terminated, stop right here
 
 
-          if (this.__P_422_11) {
+          if (this.__bTerminated) {
             if (debugFunctions) {
               this.debug(this.getName() + "#" + "TERMINATED");
             }
@@ -1032,7 +1032,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           } // Reset currentState to the new state object
 
 
-          currentState = this.__P_422_0[this.getNextState()]; // set previousState and state, and clear nextState, for transition
+          currentState = this.__states[this.getNextState()]; // set previousState and state, and clear nextState, for transition
 
           this.setPreviousState(thisState);
           this.setState(this.getNextState());
@@ -1059,10 +1059,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
           currentState.getAutoActionsAfterOnentry()(this); // Add any blocked events back onto the pending event queue
 
-          for (var i = 0; i < this.__P_422_4.length; i++) {
-            e = this.__P_422_4.pop();
+          for (var i = 0; i < this.__blockedEvents.length; i++) {
+            e = this.__blockedEvents.pop();
 
-            this.__P_422_3.unshift(e);
+            this.__eventQueue.unshift(e);
           }
 
           if (debugTransitions) {
@@ -1081,14 +1081,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
     },
     destruct: function destruct() {
-      this._disposeArray("__P_422_3");
+      this._disposeArray("__eventQueue");
 
-      this._disposeArray("__P_422_4");
+      this._disposeArray("__blockedEvents");
 
-      this.__P_422_2 = this.__P_422_0 = null;
+      this.__savedStates = this.__states = null;
     }
   });
   qx.util.fsm.FiniteStateMachine.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=FiniteStateMachine.js.map?dt=1608478941281
+//# sourceMappingURL=FiniteStateMachine.js.map?dt=1609082305141

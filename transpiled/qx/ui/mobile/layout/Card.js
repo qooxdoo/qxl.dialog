@@ -89,7 +89,7 @@
     */
     construct: function construct() {
       qx.ui.mobile.layout.Abstract.constructor.call(this);
-      this.__P_312_0 = new qx.ui.mobile.layout.CardAnimation();
+      this.__cardAnimation = new qx.ui.mobile.layout.CardAnimation();
     },
 
     /*
@@ -136,12 +136,12 @@
      *****************************************************************************
      */
     members: {
-      __P_312_1: null,
-      __P_312_2: null,
-      __P_312_3: null,
-      __P_312_4: null,
-      __P_312_5: null,
-      __P_312_0: null,
+      __nextWidget: null,
+      __currentWidget: null,
+      __inAnimation: null,
+      __animation: null,
+      __reverse: null,
+      __cardAnimation: null,
       // overridden
       _getCssClasses: function _getCssClasses() {
         return ["layout-card", "qx-vbox"];
@@ -175,7 +175,7 @@
        * @param value {qx.ui.mobile.layout.CardAnimation} the new CardAnimation object.
        */
       setCardAnimation: function setCardAnimation(value) {
-        this.__P_312_0 = value;
+        this.__cardAnimation = value;
       },
 
       /**
@@ -183,7 +183,7 @@
        * @return {qx.ui.mobile.layout.CardAnimation} the current CardAnimation object.
        */
       getCardAnimation: function getCardAnimation() {
-        return this.__P_312_0;
+        return this.__cardAnimation;
       },
 
       /**
@@ -193,17 +193,17 @@
        * @param properties {Map} The layout properties to set. Key / value pairs.
        */
       _showWidget: function _showWidget(widget, properties) {
-        if (this.__P_312_1 == widget) {
+        if (this.__nextWidget == widget) {
           return;
         }
 
-        if (this.__P_312_3) {
-          this.__P_312_6();
+        if (this.__inAnimation) {
+          this.__stopAnimation();
         }
 
-        this.__P_312_1 = widget;
+        this.__nextWidget = widget;
 
-        if (this.__P_312_2 && this.getShowAnimation() && qx.core.Environment.get("css.transform.3d")) {
+        if (this.__currentWidget && this.getShowAnimation() && qx.core.Environment.get("css.transform.3d")) {
           properties = properties || {}; // both are explicit identity checks for null
 
           if (properties.animation === null || this.getCardAnimation().getMap()[properties.animation] === null) {
@@ -212,17 +212,17 @@
             return;
           }
 
-          this.__P_312_4 = properties.animation || this.getDefaultAnimation();
+          this.__animation = properties.animation || this.getDefaultAnimation();
 
           if (properties.action && properties.action === "back") {
-            this.__P_312_5 = true;
+            this.__reverse = true;
           } else {
             properties.reverse = properties.reverse === null ? false : properties.reverse;
-            this.__P_312_5 = properties.reverse;
+            this.__reverse = properties.reverse;
           }
 
           qx.bom.AnimationFrame.request(function () {
-            this.__P_312_7(widget);
+            this.__startAnimation(widget);
           }, this);
         } else {
           this._swapWidget();
@@ -233,15 +233,15 @@
        * Excludes the current widget and sets the next widget to the current widget.
        */
       _swapWidget: function _swapWidget() {
-        if (this.__P_312_2) {
-          this.__P_312_2.removeCssClass("active");
+        if (this.__currentWidget) {
+          this.__currentWidget.removeCssClass("active");
 
-          this.__P_312_2.exclude();
+          this.__currentWidget.exclude();
         }
 
-        this.__P_312_2 = this.__P_312_1;
+        this.__currentWidget = this.__nextWidget;
 
-        this.__P_312_2.addCssClass("active");
+        this.__currentWidget.addCssClass("active");
       },
 
       /**
@@ -283,30 +283,30 @@
        *
        * @param widget {qx.ui.mobile.core.Widget} The target widget
        */
-      __P_312_7: function __P_312_7(widget) {
+      __startAnimation: function __startAnimation(widget) {
         if (widget.isDisposed()) {
           return;
         } // Fix size of current and next widget, then start animation.
 
 
-        this.__P_312_3 = true;
-        this.fireDataEvent("animationStart", [this.__P_312_2, widget]);
+        this.__inAnimation = true;
+        this.fireDataEvent("animationStart", [this.__currentWidget, widget]);
 
-        var fromElement = this.__P_312_2.getContainerElement();
+        var fromElement = this.__currentWidget.getContainerElement();
 
         var toElement = widget.getContainerElement();
         qx.event.Registration.addListener(fromElement, "animationEnd", this._onAnimationEnd, this);
         qx.event.Registration.addListener(toElement, "animationEnd", this._onAnimationEnd, this);
 
-        var fromCssClasses = this.__P_312_8("out");
+        var fromCssClasses = this.__getAnimationClasses("out");
 
-        var toCssClasses = this.__P_312_8("in");
+        var toCssClasses = this.__getAnimationClasses("in");
 
         this._widget.addCssClass("animationParent");
 
-        var toElementAnimation = this.__P_312_0.getAnimation(this.__P_312_4, "in", this.__P_312_5);
+        var toElementAnimation = this.__cardAnimation.getAnimation(this.__animation, "in", this.__reverse);
 
-        var fromElementAnimation = this.__P_312_0.getAnimation(this.__P_312_4, "out", this.__P_312_5);
+        var fromElementAnimation = this.__cardAnimation.getAnimation(this.__animation, "out", this.__reverse);
 
         qx.bom.element.Class.addClasses(toElement, toCssClasses);
         qx.bom.element.Class.addClasses(fromElement, fromCssClasses);
@@ -320,30 +320,30 @@
        * @param evt {qx.event.type.Event} The causing event
        */
       _onAnimationEnd: function _onAnimationEnd(evt) {
-        this.__P_312_6();
+        this.__stopAnimation();
 
-        this.fireDataEvent("animationEnd", [this.__P_312_2, this.__P_312_1]);
+        this.fireDataEvent("animationEnd", [this.__currentWidget, this.__nextWidget]);
       },
 
       /**
        * Stops the animation for the page transition.
        */
-      __P_312_6: function __P_312_6() {
-        if (this.__P_312_3) {
-          var fromElement = this.__P_312_2.getContainerElement();
+      __stopAnimation: function __stopAnimation() {
+        if (this.__inAnimation) {
+          var fromElement = this.__currentWidget.getContainerElement();
 
-          var toElement = this.__P_312_1.getContainerElement();
+          var toElement = this.__nextWidget.getContainerElement();
 
           qx.event.Registration.removeListener(fromElement, "animationEnd", this._onAnimationEnd, this);
           qx.event.Registration.removeListener(toElement, "animationEnd", this._onAnimationEnd, this);
-          qx.bom.element.Class.removeClasses(fromElement, this.__P_312_8("out"));
-          qx.bom.element.Class.removeClasses(toElement, this.__P_312_8("in"));
+          qx.bom.element.Class.removeClasses(fromElement, this.__getAnimationClasses("out"));
+          qx.bom.element.Class.removeClasses(toElement, this.__getAnimationClasses("in"));
 
           this._swapWidget();
 
           this._widget.removeCssClass("animationParent");
 
-          this.__P_312_3 = false;
+          this.__inAnimation = false;
         }
       },
 
@@ -354,10 +354,10 @@
        * @param direction {String} The direction of the animation. <code>in</code> or <code>out</code>.
        * @return {String[]} The CSS classes for the set animation.
        */
-      __P_312_8: function __P_312_8(direction) {
-        var classes = ["animationChild", this.__P_312_4, direction];
+      __getAnimationClasses: function __getAnimationClasses(direction) {
+        var classes = ["animationChild", this.__animation, direction];
 
-        if (this.__P_312_5) {
+        if (this.__reverse) {
           classes.push("reverse");
         }
 
@@ -365,10 +365,10 @@
       }
     },
     destruct: function destruct() {
-      this._disposeObjects("__P_312_0");
+      this._disposeObjects("__cardAnimation");
     }
   });
   qx.ui.mobile.layout.Card.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Card.js.map?dt=1608478933893
+//# sourceMappingURL=Card.js.map?dt=1609082296124

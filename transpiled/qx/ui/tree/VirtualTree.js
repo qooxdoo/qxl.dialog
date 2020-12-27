@@ -376,34 +376,34 @@
        * @type {qx.data.Array} The internal lookup table data structure to get the model item
        * from a row.
        */
-      __P_368_0: null,
+      __lookupTable: null,
 
       /** @type {Array} HashMap which contains all open nodes. */
-      __P_368_1: null,
+      __openNodes: null,
 
       /**
        * @type {Array} The internal data structure to get the nesting level from a
        * row.
        */
-      __P_368_2: null,
+      __nestingLevel: null,
 
       /**
        * @type {qx.util.DeferredCall} Adds this instance to the widget queue on a
        * deferred call.
        */
-      __P_368_3: null,
+      __deferredCall: null,
 
       /** @type {Integer} Holds the max item width from a rendered widget. */
       _itemWidth: 0,
 
       /** @type {Array} internal parent chain form the last selected node */
-      __P_368_4: null,
+      __parentChain: null,
 
       /** 
        * @type {String|null} the name of the model property which represents the
        *   open state of a branch.
        */
-      __P_368_5: null,
+      __openProperty: null,
 
       /*
       ---------------------------------------------------------------------------
@@ -429,7 +429,7 @@
       },
       // Interface implementation
       openNode: function openNode(node) {
-        this.__P_368_6(node);
+        this.__openNode(node);
 
         this.buildLookupTable();
       },
@@ -458,14 +458,14 @@
        * @param node {qx.core.Object} Node to open.
        */
       openNodeAndParents: function openNodeAndParents(node) {
-        this.__P_368_7(this.getModel(), node);
+        this.__openNodeAndAllParents(this.getModel(), node);
 
         this.buildLookupTable();
       },
       // Interface implementation
       closeNode: function closeNode(node) {
-        if (this.__P_368_1.includes(node)) {
-          qx.lang.Array.remove(this.__P_368_1, node);
+        if (this.__openNodes.includes(node)) {
+          qx.lang.Array.remove(this.__openNodes, node);
           this.fireDataEvent("close", node);
           this.buildLookupTable();
         }
@@ -481,7 +481,7 @@
       },
       // Interface implementation
       isNodeOpen: function isNodeOpen(node) {
-        return this.__P_368_1.includes(node);
+        return this.__openNodes.includes(node);
       },
 
       /**
@@ -494,7 +494,7 @@
        */
       openViaModelChanges: function openViaModelChanges(openProperty) {
         // Save the open property
-        this.__P_368_5 = openProperty; // if no name is provided, just remove any prior open-close controller
+        this.__openProperty = openProperty; // if no name is provided, just remove any prior open-close controller
 
         if (!openProperty) {
           if (this._openCloseController) {
@@ -514,7 +514,7 @@
        * Getter for the open property
        */
       getOpenProperty: function getOpenProperty() {
-        return this.__P_368_5;
+        return this.__openProperty;
       },
 
       /*
@@ -527,9 +527,9 @@
        * Initializes the virtual tree.
        */
       _init: function _init() {
-        this.__P_368_0 = new qx.data.Array();
-        this.__P_368_1 = [];
-        this.__P_368_2 = [];
+        this.__lookupTable = new qx.data.Array();
+        this.__openNodes = [];
+        this.__nestingLevel = [];
 
         this._initLayer();
       },
@@ -552,7 +552,7 @@
       },
       // Interface implementation
       getLookupTable: function getLookupTable() {
-        return this.__P_368_0;
+        return this.__lookupTable;
       },
 
       /**
@@ -573,7 +573,7 @@
        * @return {var|null} the row's model data.
        */
       _getDataFromRow: function _getDataFromRow(row) {
-        return this.__P_368_0.getItem(row);
+        return this.__lookupTable.getItem(row);
       },
 
       /**
@@ -582,7 +582,7 @@
        * @return {qx.data.Array} The selectable items.
        */
       _getSelectables: function _getSelectables() {
-        return this.__P_368_0;
+        return this.__lookupTable;
       },
 
       /**
@@ -592,7 +592,7 @@
        * @return {Array} All open nodes.
        */
       getOpenNodes: function getOpenNodes() {
-        return this.__P_368_1;
+        return this.__openNodes;
       },
       // Interface implementation
       isNode: function isNode(item) {
@@ -600,7 +600,7 @@
       },
       // Interface implementation
       getLevel: function getLevel(row) {
-        return this.__P_368_2[row];
+        return this.__nestingLevel[row];
       },
       // Interface implementation
       hasChildren: function hasChildren(node) {
@@ -681,12 +681,12 @@
       },
       // property apply
       _applyModel: function _applyModel(value, old) {
-        this.__P_368_1 = [];
+        this.__openNodes = [];
 
         if (value != null) {
           value.addListener("changeBubble", this._onChangeBubble, this);
 
-          this.__P_368_6(value);
+          this.__openNode(value);
         } // If the model changes, an existing OpenCloseController is no longer
         // valid, so dispose it. The user should call openViaModelChanges again.
 
@@ -701,7 +701,7 @@
           old.removeListener("changeBubble", this._onChangeBubble, this);
         }
 
-        this.__P_368_8();
+        this.__applyModelChanges();
       },
       // property apply
       _applyDelegate: function _applyDelegate(value, old) {
@@ -744,8 +744,8 @@
             }
           }
 
-          if (this.__P_368_0.indexOf(item) != -1) {
-            this.__P_368_8();
+          if (this.__lookupTable.indexOf(item) != -1) {
+            this.__applyModelChanges();
           }
         }
       },
@@ -756,13 +756,13 @@
        * @param event {qx.event.type.Event} The event.
        */
       _onUpdated: function _onUpdated(event) {
-        if (this.__P_368_3 == null) {
-          this.__P_368_3 = new qx.util.DeferredCall(function () {
+        if (this.__deferredCall == null) {
+          this.__deferredCall = new qx.util.DeferredCall(function () {
             qx.ui.core.queue.Widget.add(this);
           }, this);
         }
 
-        this.__P_368_3.schedule();
+        this.__deferredCall.schedule();
       },
 
       /**
@@ -773,7 +773,7 @@
       _onOpen: function _onOpen(event) {
         var row = event.getRow();
 
-        var item = this.__P_368_0.getItem(row);
+        var item = this.__lookupTable.getItem(row);
 
         if (this.isNode(item)) {
           if (this.isNodeOpen(item)) {
@@ -859,7 +859,7 @@
        */
       _beforeApplySelection: function _beforeApplySelection(newSelection) {
         if (newSelection.length === 0 && this.getSelectionMode() === "one") {
-          var visibleParent = this.__P_368_9();
+          var visibleParent = this.__getVisibleParent();
 
           var row = this.getLookupTable().indexOf(visibleParent);
 
@@ -877,9 +877,9 @@
         var selection = this.getSelection();
 
         if (selection.getLength() > 0 && this.getSelectionMode() === "one") {
-          this.__P_368_10(selection.getItem(0));
+          this.__buildParentChain(selection.getItem(0));
         } else {
-          this.__P_368_4 = [];
+          this.__parentChain = [];
         }
       },
 
@@ -893,7 +893,7 @@
        * Helper method to apply model changes. Normally build the lookup table and
        * apply the default selection.
        */
-      __P_368_8: function __P_368_8() {
+      __applyModelChanges: function __applyModelChanges() {
         this.buildLookupTable();
 
         this._applyDefaultSelection();
@@ -911,7 +911,7 @@
 
         this._itemWidth = 0;
         var lookupTable = [];
-        this.__P_368_2 = [];
+        this.__nestingLevel = [];
         var nestedLevel = -1;
         var root = this.getModel();
 
@@ -920,24 +920,24 @@
             nestedLevel++;
             lookupTable.push(root);
 
-            this.__P_368_2.push(nestedLevel);
+            this.__nestingLevel.push(nestedLevel);
           }
 
           if (this.isNodeOpen(root)) {
-            var visibleChildren = this.__P_368_11(root, nestedLevel);
+            var visibleChildren = this.__getVisibleChildrenFrom(root, nestedLevel);
 
             lookupTable = lookupTable.concat(visibleChildren);
           }
         }
 
-        if (!qx.lang.Array.equals(this.__P_368_0.toArray(), lookupTable)) {
+        if (!qx.lang.Array.equals(this.__lookupTable.toArray(), lookupTable)) {
           this._provider.removeBindings();
 
-          this.__P_368_0.removeAll();
+          this.__lookupTable.removeAll();
 
-          this.__P_368_0.append(lookupTable);
+          this.__lookupTable.append(lookupTable);
 
-          this.__P_368_12();
+          this.__updateRowCount();
 
           this._updateSelection();
         }
@@ -952,7 +952,7 @@
        * @param nestedLevel {Integer} The nested level from the start node.
        * @return {Array} All visible children form the parent.
        */
-      __P_368_11: function __P_368_11(node, nestedLevel) {
+      __getVisibleChildrenFrom: function __getVisibleChildrenFrom(node, nestedLevel) {
         var visible = [];
         nestedLevel++;
 
@@ -984,18 +984,18 @@
           }
 
           if (this.isNode(child)) {
-            this.__P_368_2.push(nestedLevel);
+            this.__nestingLevel.push(nestedLevel);
 
             visible.push(child);
 
             if (this.isNodeOpen(child)) {
-              var visibleChildren = this.__P_368_11(child, nestedLevel);
+              var visibleChildren = this.__getVisibleChildrenFrom(child, nestedLevel);
 
               visible = visible.concat(visibleChildren);
             }
           } else {
             if (this.isShowLeafs()) {
-              this.__P_368_2.push(nestedLevel);
+              this.__nestingLevel.push(nestedLevel);
 
               visible.push(child);
             }
@@ -1013,9 +1013,9 @@
        *
        * @param node {qx.core.Object} Node to set to open nodes.
        */
-      __P_368_6: function __P_368_6(node) {
-        if (!this.__P_368_1.includes(node)) {
-          this.__P_368_1.push(node);
+      __openNode: function __openNode(node) {
+        if (!this.__openNodes.includes(node)) {
+          this.__openNodes.push(node);
 
           this.fireDataEvent("open", node);
         }
@@ -1031,9 +1031,9 @@
        * @return {Boolean} <code>True</code> when the targetNode and his
        *  parents could opened, <code>false</code> otherwise.
        */
-      __P_368_7: function __P_368_7(startNode, targetNode) {
+      __openNodeAndAllParents: function __openNodeAndAllParents(startNode, targetNode) {
         if (startNode === targetNode) {
-          this.__P_368_6(targetNode);
+          this.__openNode(targetNode);
 
           return true;
         }
@@ -1051,10 +1051,10 @@
         for (var i = 0; i < children.getLength(); i++) {
           var child = children.getItem(i);
 
-          var result = this.__P_368_7(child, targetNode);
+          var result = this.__openNodeAndAllParents(child, targetNode);
 
           if (result === true) {
-            this.__P_368_6(child);
+            this.__openNode(child);
 
             return true;
           }
@@ -1066,8 +1066,8 @@
       /**
        * Helper method to update the row count.
        */
-      __P_368_12: function __P_368_12() {
-        this.getPane().getRowConfig().setItemCount(this.__P_368_0.getLength());
+      __updateRowCount: function __updateRowCount() {
+        this.getPane().getRowConfig().setItemCount(this.__lookupTable.getLength());
         this.getPane().fullUpdate();
       },
 
@@ -1082,20 +1082,20 @@
        * @internal
        */
       getParent: function getParent(item) {
-        var index = this.__P_368_0.indexOf(item);
+        var index = this.__lookupTable.indexOf(item);
 
         if (index < 0) {
           return null;
         }
 
-        var level = this.__P_368_2[index];
+        var level = this.__nestingLevel[index];
 
         while (index > 0) {
           index--;
-          var levelBefore = this.__P_368_2[index];
+          var levelBefore = this.__nestingLevel[index];
 
           if (levelBefore < level) {
-            return this.__P_368_0.getItem(index);
+            return this.__lookupTable.getItem(index);
           }
         }
 
@@ -1107,12 +1107,12 @@
        *
        * @param item {var} Item to build parent chain.
        */
-      __P_368_10: function __P_368_10(item) {
-        this.__P_368_4 = [];
+      __buildParentChain: function __buildParentChain(item) {
+        this.__parentChain = [];
         var parent = this.getParent(item);
 
         while (parent != null) {
-          this.__P_368_4.unshift(parent);
+          this.__parentChain.unshift(parent);
 
           parent = this.getParent(parent);
         }
@@ -1123,21 +1123,21 @@
        *
        * @return {var} The first visible node.
        */
-      __P_368_9: function __P_368_9() {
-        if (this.__P_368_4 == null) {
+      __getVisibleParent: function __getVisibleParent() {
+        if (this.__parentChain == null) {
           return this.getModel();
         }
 
         var lookupTable = this.getLookupTable();
 
-        var parent = this.__P_368_4.pop();
+        var parent = this.__parentChain.pop();
 
         while (parent != null) {
           if (lookupTable.contains(parent)) {
             return parent;
           }
 
-          parent = this.__P_368_4.pop();
+          parent = this.__parentChain.pop();
         }
 
         return this.getModel();
@@ -1160,10 +1160,10 @@
         }
       }
 
-      if (!qx.core.ObjectRegistry.inShutDown && this.__P_368_3 != null) {
-        this.__P_368_3.cancel();
+      if (!qx.core.ObjectRegistry.inShutDown && this.__deferredCall != null) {
+        this.__deferredCall.cancel();
 
-        this.__P_368_3.dispose();
+        this.__deferredCall.dispose();
       }
 
       var model = this.getModel();
@@ -1178,12 +1178,12 @@
 
       this._provider.dispose();
 
-      this.__P_368_0.dispose();
+      this.__lookupTable.dispose();
 
-      this._layer = this._provider = this.__P_368_0 = this.__P_368_1 = this.__P_368_3 = null;
+      this._layer = this._provider = this.__lookupTable = this.__openNodes = this.__deferredCall = null;
     }
   });
   qx.ui.tree.VirtualTree.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=VirtualTree.js.map?dt=1608478937603
+//# sourceMappingURL=VirtualTree.js.map?dt=1609082300576
