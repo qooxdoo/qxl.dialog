@@ -12,16 +12,16 @@
      See the LICENSE file in the project's top-level directory for details.
 
    Authors:
-   *  Christian Boulanger (cboulanger)
-   *  Derrell Lipman (derrell)
-  
+     *  Christian Boulanger (cboulanger)
+     *  Derrell Lipman (derrell)
+
 ************************************************************************ */
 
 /**
  * Multi-column form renderer. This extends, and is is based on
  * qxl.dialog.FormRenderer by Christian Boulanger.
  */
-qx.Class.define("qxl.dialog.MultiColumnFormRenderer", 
+qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
 {
   extend : qxl.dialog.FormRenderer,
 
@@ -63,11 +63,11 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
             colSpan : 2
           });
       }
-      
+
       /*
        * add the items
-       */ 
-      for (i = 0; i < items.length; i++) 
+       */
+      for (i = 0; i < items.length; i++)
       {
         /*
          * current item
@@ -102,7 +102,7 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
         {
           /*
            * create horizontal radio group for a small
-           * number of radio buttons 
+           * number of radio buttons
            */
           if (item.getUserData("orientation") == "horizontal")
           {
@@ -111,9 +111,9 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
           else
           {
             widget = this._createWidgetForRadioGroup(item);
-          }       
+          }
         }
-        
+
         /*
          * other form widgets
          */
@@ -121,7 +121,7 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
         {
           widget = item;
         }
-        
+
         /*
          * Excluded form elements, used for full-width
          * labels. this should be implemented differently,
@@ -156,7 +156,7 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
             });
           this._getLayout().getCellWidget(row, col).setAlignX("left");
         }
-        
+
         /*
          * If the label is null, use the full width for the widget.
          *
@@ -195,14 +195,14 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
               rowSpan : rowspan
             });
         }
-        
+
         /*
          * normal case: label in column col, form element in column col+1
          */
         else
         {
           label = this._createLabel(names[i], item);
-          label.setRich(true);          
+          label.setRich(true);
           this._add(
             label,
             {
@@ -218,12 +218,12 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
               rowSpan : rowspan
             });
         }
-        
+
         /*
          * increment row
          */
         this._row += rowspan;
-        
+
         /*
          * focus the first item
          */

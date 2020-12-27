@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+TESTCAFE_ARGS=${1:-"--app-init-delay 20000 --sf chrome"}
+
+# install dependencies
+echo "Checking dependencies..."
+[ -d node_modules/@qooxdoo/compiler ]||npm install @qooxdoo/compiler --no-save --no-package-lock
+[ -d node_modules/testcafe ] ||npm install testcafe --no-save --no-package-lock
+
+# start the server and wait for "Web server started" message
+( qx serve --target=$QX_TARGET & ) | while read output; do
+  echo "$output"
+  if [[ $output == *"Web server started"* ]]; then break; fi;
+done
+
+echo "Running tests... with '$TESTCAFE_ARGS'"
+testcafe $TESTCAFE_ARGS tests/testcafe.js
+
+# stop the server
+kill -9 $(pgrep "qx serve")

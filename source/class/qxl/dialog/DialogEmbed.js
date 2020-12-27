@@ -4,12 +4,16 @@
    https://github.com/qooxdoo/qxl.dialog
 
    Copyright:
-     2007-2019 Christian Boulanger and others
+     2007-2020 Christian Boulanger and others
 
    License:
      LGPL: http://www.gnu.org/licenses/lgpl.html
      EPL: http://www.eclipse.org/org/documents/epl-v10.php
      See the LICENSE file in the project's top-level directory for details.
+
+   Authors:
+     *  Christian Boulanger (cboulanger)
+     *  Derrell Lipman (derrell)
 
 ************************************************************************ */
 
@@ -29,7 +33,7 @@
 qx.Class.define("qxl.dialog.DialogEmbed", {
   extend: qx.ui.container.Composite,
   include: [ qxl.dialog.MDialog ],
-  
+
   statics: {
     /**
      * Returns a dialog instance by type

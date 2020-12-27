@@ -3,11 +3,7 @@ compiled/
 qx_packages/
 
 # other stuff
-qooxdoo/
 node_modules/
 npm-debug.log
 .DS_Store
-.c9
-.c9revisions
-.vscode
 .idea

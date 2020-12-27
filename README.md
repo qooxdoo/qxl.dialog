@@ -1,13 +1,6 @@
 # Qooxdoo Dialog Widgets
 
-[![Build Status](https://travis-ci.com/qooxdoo/qxl.dialog.svg?branch=master)](https://travis-ci.com/qooxdoo/qxl.dialog)
-
->Notes: The code of this package originates from the
-[cboulanger/qx-contrib](https://github.com/cboulanger/qx-contrib-Dialog)
-repository and has been moved to the new namespace `qxl.dialog`. It only works
-with the new JavaScript compiler and qooxdoo version 6. See
-[below](#migrating-from-cboulangerqx-contrib-dialog) for instructions how to
-migrate your code.
+![Build and Deploy](https://github.com/qooxdoo/qxl.dialog/workflows/Build%20and%20Deploy/badge.svg)
 
 A set of often used dialog widgets for the qooxdoo framework.
 
@@ -18,9 +11,11 @@ A set of often used dialog widgets for the qooxdoo framework.
 - Select
 - Progress
 
-The package also provides support for user-defined forms and wizards. These more
-complex widgets, however, are likely to be moved into a separate package
-eventually.
+The package also provides support for user-defined forms and wizards.
+
+> If you are migrating from
+[cboulanger/qx-contrib](https://github.com/cboulanger/qx-contrib-Dialog), see
+[below](#migrating-from-cboulangerqx-contrib-dialog).
 
 Demo: https://qooxdoo.github.io/qxl.dialog
 
@@ -29,7 +24,7 @@ API Viewer: https://www.qooxdoo.org/qxl.dialog/apiviewer/index.html#qxl.dialog
 See the code of the [Demo app](source/class/qxl/dialog/demo/Application.js) for
 examples how to use the widgets.
 
-## Installation
+## Install from package
 
 To install the package into an existing qooxdoo application, execute in its
 root directory:
@@ -38,14 +33,14 @@ root directory:
 qx pkg install qooxdoo/qxl.dialog
 ```
 
-### Install icon theme
+## Install icon theme
 
-From v1.3.0 on, the contrib allows you to use custom icons for
-the dialogs. However, this means that the icons will not work out
-of the box. You must extend your own icon theme from [one
-of the shipped icon themes](source/class/qxl/dialog/theme/icon). 
-or copy over the `@asset()` declarations and alias definitions from one 
-of these themes into your own icon theme. 
+The package allows you to use custom icons for the dialogs. However,
+this means that **the icons used in the dialogs will not work
+out of the box**. You must extend your own icon theme from [one
+of the shipped icon themes](source/class/qxl/dialog/theme/icon).
+or copy over the `@asset()` declarations and alias definitions
+from one of these themes into your own icon theme.
 
 You can also use your own choice of icons by writing an icon theme which
 defines defining the aliases `dialog.icon.(ok|cancel|info|warning|error)`
@@ -53,29 +48,48 @@ with the paths to the icons. Those paths also need to be put
 into a `@asset` compiler hint. See, for example, [this theme
 class](source/class/qxl/dialog/theme/icon/IcoMoonFree.js).
 
-## Testing
+## Install for development / use development version
 
-To run the tests, first start the built-in server with
+Fork on GitHub and clone your fork, or if you are interested
+in current master only, clone it directly using `git clone
+https://github.com/qooxdoo/qxl.dialog.git`. 
 
-```bash
-qx serve --target=build
+Then, in your application, uninstall the package version
+if you had installed it, and install the repo version:
+
+```shell
+npx qx remove qooxdoo/qxl.dialog # only necessary if installed
+npx qx install --from-path=./path/to/qxl.dialog
 ```
 
-Once the message `Web server started` ... appears, open a new terminal and start
-the tests with `npm test`. Once the tests have succeeded, you can kill the
-server process in the first tab.
+## Testing / Demo
+
+To install the dependencies and run the tests, simply do
+
+```shell
+./test
+```
+
+Afterwards, you can run the demo locally with `npx qx serve`.
 
 ## Migrating from cboulanger/qx-contrib-Dialog
 
 To migrate code that has used the cboulanger/qx-contrib-Dialog package, you need 
 to do the following steps:
 
-- `qx pkg remove cboulanger/qx-contrib-Dialog`
-- `qx pkg install qooxdoo/qxl.dialog`
-- search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dialog/` 
+```shell
+npx qx pkg remove cboulanger/qx-contrib-Dialog
+npx qx pkg install qooxdoo/qxl.dialog
+```
+
+Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dialog/` 
 (check each search/replace manually to avoid false positives )
 
 ## Changelog
+
+### v3.1.0
+@derrell: Refactoring of `qxl.dialog.Form` to add extensibility.   
+
 ### v3.0.0
 Moved package from cboulanger/qx-contrib-Dialog and changed namespace to `qxl.dialog`
 
