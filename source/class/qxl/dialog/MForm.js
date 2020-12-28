@@ -211,7 +211,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
      *
      * @param handlers {Map}
      *   Handler functions for this form element. `initElement` is
-     *   mandatory; `attToFormController` and `postProcess` are
+     *   mandatory; `addToFormController` and `postProcess` are
      *   optional.
      *
      *   All handlers are called in the context of the
