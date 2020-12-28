@@ -79,7 +79,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
      https://github.com/qooxdoo/qxl.dialog
   
      Copyright:
-       2007-2018 Christian Boulanger and others
+       2007-2020 Christian Boulanger and others
   
      License:
        LGPL: http://www.gnu.org/licenses/lgpl.html
@@ -853,4 +853,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.dialog.MForm.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MForm.js.map?dt=1609100248686
+//# sourceMappingURL=MForm.js.map?dt=1609157749801

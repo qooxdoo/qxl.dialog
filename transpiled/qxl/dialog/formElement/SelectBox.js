@@ -26,6 +26,10 @@
        EPL: http://www.eclipse.org/org/documents/epl-v10.php
        See the LICENSE file in the project's top-level directory for details.
   
+     Authors:
+       *  Christian Boulanger (cboulanger)
+       *  Derrell Lipman (derrell)
+  
   ************************************************************************ */
   qx.Class.define("qxl.dialog.formElement.SelectBox", {
     statics: {
@@ -69,4 +73,4 @@
   qxl.dialog.formElement.SelectBox.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=SelectBox.js.map?dt=1609100249383
+//# sourceMappingURL=SelectBox.js.map?dt=1609157750542

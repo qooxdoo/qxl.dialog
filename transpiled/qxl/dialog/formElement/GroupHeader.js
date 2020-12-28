@@ -24,6 +24,10 @@
        EPL: http://www.eclipse.org/org/documents/epl-v10.php
        See the LICENSE file in the project's top-level directory for details.
   
+     Authors:
+       *  Christian Boulanger (cboulanger)
+       *  Derrell Lipman (derrell)
+  
   ************************************************************************ */
   qx.Class.define("qxl.dialog.formElement.GroupHeader", {
     statics: {
@@ -46,4 +50,4 @@
   qxl.dialog.formElement.GroupHeader.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=GroupHeader.js.map?dt=1609100249290
+//# sourceMappingURL=GroupHeader.js.map?dt=1609157750446

@@ -9,11 +9,11 @@
   "clazz": {
     "location": {
       "start": {
-        "line": 19,
+        "line": 23,
         "column": 0
       },
       "end": {
-        "line": 47,
+        "line": 51,
         "column": 3
       }
     },
@@ -37,11 +37,11 @@
     "register": {
       "location": {
         "start": {
-          "line": 23,
+          "line": 27,
           "column": 4
         },
         "end": {
-          "line": 26,
+          "line": 30,
           "column": 5
         }
       },
@@ -51,11 +51,11 @@
     "_registration": {
       "location": {
         "start": {
-          "line": 28,
+          "line": 32,
           "column": 4
         },
         "end": {
-          "line": 45,
+          "line": 49,
           "column": 5
         }
       },

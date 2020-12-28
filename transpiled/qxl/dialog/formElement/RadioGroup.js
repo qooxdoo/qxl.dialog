@@ -25,6 +25,10 @@
        EPL: http://www.eclipse.org/org/documents/epl-v10.php
        See the LICENSE file in the project's top-level directory for details.
   
+     Authors:
+       *  Christian Boulanger (cboulanger)
+       *  Derrell Lipman (derrell)
+  
   ************************************************************************ */
   qx.Class.define("qxl.dialog.formElement.RadioGroup", {
     statics: {
@@ -77,4 +81,4 @@
   qxl.dialog.formElement.RadioGroup.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=RadioGroup.js.map?dt=1609100249365
+//# sourceMappingURL=RadioGroup.js.map?dt=1609157750524

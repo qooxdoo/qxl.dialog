@@ -268,4 +268,4 @@
   qx.ui.table.cellrenderer.AbstractImage.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=AbstractImage.js.map?dt=1609100241315
+//# sourceMappingURL=AbstractImage.js.map?dt=1609157741225

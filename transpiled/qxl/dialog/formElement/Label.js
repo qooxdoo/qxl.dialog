@@ -24,6 +24,10 @@
        EPL: http://www.eclipse.org/org/documents/epl-v10.php
        See the LICENSE file in the project's top-level directory for details.
   
+     Authors:
+       *  Christian Boulanger (cboulanger)
+       *  Derrell Lipman (derrell)
+  
   ************************************************************************ */
   qx.Class.define("qxl.dialog.formElement.Label", {
     statics: {
@@ -43,4 +47,4 @@
   qxl.dialog.formElement.Label.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Label.js.map?dt=1609100249303
+//# sourceMappingURL=Label.js.map?dt=1609157750459

@@ -9,11 +9,11 @@
   "clazz": {
     "location": {
       "start": {
-        "line": 29,
+        "line": 33,
         "column": 0
       },
       "end": {
-        "line": 320,
+        "line": 324,
         "column": 3
       }
     },
@@ -65,11 +65,11 @@
     "getInstanceByType": {
       "location": {
         "start": {
-          "line": 36,
+          "line": 40,
           "column": 4
         },
         "end": {
-          "line": 42,
+          "line": 46,
           "column": 5
         }
       },
@@ -106,11 +106,11 @@
     "callback": {
       "location": {
         "start": {
-          "line": 52,
+          "line": 56,
           "column": 4
         },
         "end": {
-          "line": 55,
+          "line": 59,
           "column": 5
         }
       },
@@ -131,11 +131,11 @@
     "context": {
       "location": {
         "start": {
-          "line": 60,
+          "line": 64,
           "column": 4
         },
         "end": {
-          "line": 63,
+          "line": 67,
           "column": 5
         }
       },
@@ -156,11 +156,11 @@
     "image": {
       "location": {
         "start": {
-          "line": 69,
+          "line": 73,
           "column": 4
         },
         "end": {
-          "line": 73,
+          "line": 77,
           "column": 5
         }
       },
@@ -182,11 +182,11 @@
     "message": {
       "location": {
         "start": {
-          "line": 78,
+          "line": 82,
           "column": 4
         },
         "end": {
-          "line": 82,
+          "line": 86,
           "column": 5
         }
       },
@@ -208,11 +208,11 @@
     "allowCancel": {
       "location": {
         "start": {
-          "line": 87,
+          "line": 91,
           "column": 4
         },
         "end": {
-          "line": 91,
+          "line": 95,
           "column": 5
         }
       },
@@ -234,11 +234,11 @@
     "cancelOnEscape": {
       "location": {
         "start": {
-          "line": 97,
+          "line": 101,
           "column": 4
         },
         "end": {
-          "line": 100,
+          "line": 104,
           "column": 5
         }
       },
@@ -261,11 +261,11 @@
     "ok": {
       "location": {
         "start": {
-          "line": 108,
+          "line": 112,
           "column": 4
         },
         "end": {
-          "line": 108,
+          "line": 112,
           "column": 29
         }
       },
@@ -289,11 +289,11 @@
     "cancel": {
       "location": {
         "start": {
-          "line": 114,
+          "line": 118,
           "column": 4
         },
         "end": {
-          "line": 114,
+          "line": 118,
           "column": 33
         }
       },
@@ -319,11 +319,11 @@
     "_container": {
       "location": {
         "start": {
-          "line": 122,
+          "line": 126,
           "column": 4
         },
         "end": {
-          "line": 122,
+          "line": 126,
           "column": 20
         }
       },
@@ -347,11 +347,11 @@
     "_buttons": {
       "location": {
         "start": {
-          "line": 128,
+          "line": 132,
           "column": 4
         },
         "end": {
-          "line": 128,
+          "line": 132,
           "column": 18
         }
       },
@@ -375,11 +375,11 @@
     "_image": {
       "location": {
         "start": {
-          "line": 134,
+          "line": 138,
           "column": 4
         },
         "end": {
-          "line": 134,
+          "line": 138,
           "column": 16
         }
       },
@@ -403,11 +403,11 @@
     "_message": {
       "location": {
         "start": {
-          "line": 140,
+          "line": 144,
           "column": 4
         },
         "end": {
-          "line": 140,
+          "line": 144,
           "column": 18
         }
       },
@@ -431,11 +431,11 @@
     "_okButton": {
       "location": {
         "start": {
-          "line": 146,
+          "line": 150,
           "column": 4
         },
         "end": {
-          "line": 146,
+          "line": 150,
           "column": 19
         }
       },
@@ -459,11 +459,11 @@
     "_cancelButton": {
       "location": {
         "start": {
-          "line": 152,
+          "line": 156,
           "column": 4
         },
         "end": {
-          "line": 152,
+          "line": 156,
           "column": 23
         }
       },
@@ -487,11 +487,11 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 158,
+          "line": 162,
           "column": 4
         },
         "end": {
-          "line": 160,
+          "line": 164,
           "column": 5
         }
       },
@@ -509,11 +509,11 @@
     "_createDialogContainer": {
       "location": {
         "start": {
-          "line": 166,
+          "line": 170,
           "column": 4
         },
         "end": {
-          "line": 169,
+          "line": 173,
           "column": 5
         }
       },
@@ -539,11 +539,11 @@
     "_createButtonPane": {
       "location": {
         "start": {
-          "line": 175,
+          "line": 179,
           "column": 4
         },
         "end": {
-          "line": 183,
+          "line": 187,
           "column": 5
         }
       },
@@ -569,11 +569,11 @@
     "_createOkButton": {
       "location": {
         "start": {
-          "line": 189,
+          "line": 193,
           "column": 4
         },
         "end": {
-          "line": 207,
+          "line": 211,
           "column": 5
         }
       },
@@ -599,11 +599,11 @@
     "_createCancelButton": {
       "location": {
         "start": {
-          "line": 214,
+          "line": 218,
           "column": 4
         },
         "end": {
-          "line": 236,
+          "line": 240,
           "column": 5
         }
       },
@@ -629,11 +629,11 @@
     "_applyImage": {
       "location": {
         "start": {
-          "line": 244,
+          "line": 248,
           "column": 4
         },
         "end": {
-          "line": 247,
+          "line": 251,
           "column": 5
         }
       },
@@ -681,11 +681,11 @@
     "_applyMessage": {
       "location": {
         "start": {
-          "line": 255,
+          "line": 259,
           "column": 4
         },
         "end": {
-          "line": 258,
+          "line": 262,
           "column": 5
         }
       },
@@ -733,11 +733,11 @@
     "getDialogContainer": {
       "location": {
         "start": {
-          "line": 264,
+          "line": 268,
           "column": 4
         },
         "end": {
-          "line": 269,
+          "line": 273,
           "column": 5
         }
       },
@@ -763,11 +763,11 @@
     "promise": {
       "location": {
         "start": {
-          "line": 276,
+          "line": 280,
           "column": 4
         },
         "end": {
-          "line": 283,
+          "line": 287,
           "column": 5
         }
       },
@@ -793,11 +793,11 @@
     "_handleOk": {
       "location": {
         "start": {
-          "line": 288,
+          "line": 292,
           "column": 4
         },
         "end": {
-          "line": 295,
+          "line": 299,
           "column": 5
         }
       },
@@ -815,11 +815,11 @@
     "_handleCancel": {
       "location": {
         "start": {
-          "line": 301,
+          "line": 305,
           "column": 4
         },
         "end": {
-          "line": 308,
+          "line": 312,
           "column": 5
         }
       },
@@ -837,11 +837,11 @@
     "_handleEscape": {
       "location": {
         "start": {
-          "line": 314,
+          "line": 318,
           "column": 4
         },
         "end": {
-          "line": 318,
+          "line": 322,
           "column": 5
         }
       },

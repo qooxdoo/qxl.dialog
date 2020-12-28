@@ -48,12 +48,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
      https://github.com/qooxdoo/qxl.dialog
   
      Copyright:
-       2007-2019 Christian Boulanger and others
+       2007-2020 Christian Boulanger and others
   
      License:
        LGPL: http://www.gnu.org/licenses/lgpl.html
        EPL: http://www.eclipse.org/org/documents/epl-v10.php
        See the LICENSE file in the project's top-level directory for details.
+  
+     Authors:
+       *  Christian Boulanger (cboulanger)
+       *  Derrell Lipman (derrell)
   
   ************************************************************************ */
 
@@ -438,4 +442,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qxl.dialog.Dialog.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Dialog.js.map?dt=1609100247837
+//# sourceMappingURL=Dialog.js.map?dt=1609157748847

@@ -4936,4 +4936,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qx.dev.unit.Sinon.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Sinon.js.map?dt=1609100222937
+//# sourceMappingURL=Sinon.js.map?dt=1609157719591
