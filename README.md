@@ -87,7 +87,7 @@ Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dia
 
 ## Changelog
 
-### v3.1.0
+### v3.1.0 (Enhancements by @derrell)
 - Refactored `qxl.dialog.Dialog` and `qxl.dialog.Form`
   - The mass of functionality for Dialog and Form now resides in
     mixins, MDialog and MForm. The MDialog mixin is included by two
@@ -126,7 +126,9 @@ Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dia
 - Fixed the non-functioning `labelColumnWidth`
 
 ### v3.0.0
-Moved package from cboulanger/qx-contrib-Dialog and changed namespace to `qxl.dialog`
+
+- Moved package from cboulanger/qx-contrib-Dialog
+  and changed namespace to `qxl.dialog`
 
 ### v2.0.0
 - Dropped support for qx v5.0 and the python generator

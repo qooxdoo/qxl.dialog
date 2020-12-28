@@ -192,21 +192,21 @@ qx.Class.define("qxl.dialog.demo.Application",
 
         createWarning: function (caption, button) {
           let dlg = qxl.dialog.Dialog
-            .warning("I warned you!")
+            .warning("This is a warning!")
             .set({caption});
           this._replaceOwnedObject(button, dlg, "dialog");
         },
 
         createError: function (caption, button) {
           let dlg = qxl.dialog.Dialog
-            .error("Error, error, error, errr....!")
+            .error("This is an error!")
             .set({caption});
           this._replaceOwnedObject(button, dlg, "dialog");
         },
 
         createConfirm: function (caption, button) {
           let dlg = qxl.dialog.Dialog
-            .confirm("Do you really want to erase your hard drive?")
+            .confirm("Proceed with the some action?")
             .set({caption});
           this._replaceOwnedObject(button, dlg, "dialog1");
 
@@ -220,7 +220,7 @@ qx.Class.define("qxl.dialog.demo.Application",
 
         createPrompt: function (caption, button) {
           let dlg = qxl.dialog.Dialog
-            .prompt("Please enter the root password for your server")
+            .prompt("Please enter a message")
             .set({caption});
           this._replaceOwnedObject(button, dlg, "dialog1");
           dlg.promise()
@@ -268,13 +268,13 @@ qx.Class.define("qxl.dialog.demo.Application",
          */
         createSelect: function (caption, button) {
           let dlg1 = qxl.dialog.Dialog
-            .select("Select the type of record to create:")
+            .select("Select an option:")
             .set({
               caption: caption,
               options: [
-                {label: "Database record", value: "database"},
-                {label: "World record", value: "world"},
-                {label: "Pop record", value: "pop"}
+                {label: "Option A", value: "a"},
+                {label: "Option B", value: "b"},
+                {label: "Option C", value: "c"}
               ]
             });
           this._replaceOwnedObject(button, dlg1, "dialog1");
@@ -465,7 +465,7 @@ qx.Class.define("qxl.dialog.demo.Application",
               var renderer = new qxl.dialog.MultiColumnFormRenderer(form);
               var layout = new qx.ui.layout.Grid();
               const col = renderer.column;
-              
+
               layout.setSpacing(6);
 
               layout.setColumnMaxWidth(col(0), this.getLabelColumnWidth());
