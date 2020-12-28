@@ -230,14 +230,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         this._replaceOwnedObject(button, dlg, "dialog");
       },
       createWarning: function createWarning(caption, button) {
-        var dlg = qxl.dialog.Dialog.warning("I warned you!").set({
+        var dlg = qxl.dialog.Dialog.warning("This is a warning!").set({
           caption: caption
         });
 
         this._replaceOwnedObject(button, dlg, "dialog");
       },
       createError: function createError(caption, button) {
-        var dlg = qxl.dialog.Dialog.error("Error, error, error, errr....!").set({
+        var dlg = qxl.dialog.Dialog.error("This is an error!").set({
           caption: caption
         });
 
@@ -246,7 +246,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       createConfirm: function createConfirm(caption, button) {
         var _this2 = this;
 
-        var dlg = qxl.dialog.Dialog.confirm("Do you really want to erase your hard drive?").set({
+        var dlg = qxl.dialog.Dialog.confirm("Proceed with the some action?").set({
           caption: caption
         });
 
@@ -263,7 +263,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       createPrompt: function createPrompt(caption, button) {
         var _this3 = this;
 
-        var dlg = qxl.dialog.Dialog.prompt("Please enter the root password for your server").set({
+        var dlg = qxl.dialog.Dialog.prompt("Please enter a message").set({
           caption: caption
         });
 
@@ -323,17 +323,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       createSelect: function createSelect(caption, button) {
         var _this5 = this;
 
-        var dlg1 = qxl.dialog.Dialog.select("Select the type of record to create:").set({
+        var dlg1 = qxl.dialog.Dialog.select("Select an option:").set({
           caption: caption,
           options: [{
-            label: "Database record",
-            value: "database"
+            label: "Option A",
+            value: "a"
           }, {
-            label: "World record",
-            value: "world"
+            label: "Option B",
+            value: "b"
           }, {
-            label: "Pop record",
-            value: "pop"
+            label: "Option C",
+            value: "c"
           }]
         });
 
@@ -841,4 +841,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.dialog.demo.Application.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Application.js.map?dt=1609157707906
+//# sourceMappingURL=Application.js.map?dt=1609162528406

@@ -387,4 +387,4 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   qx.theme.manager.Decoration.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Decoration.js.map?dt=1609157728090
+//# sourceMappingURL=Decoration.js.map?dt=1609162542974
