@@ -277,7 +277,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
        *
        * @param handlers {Map}
        *   Handler functions for this form element. `initElement` is
-       *   mandatory; `attToFormController` and `postProcess` are
+       *   mandatory; `addToFormController` and `postProcess` are
        *   optional.
        *
        *   All handlers are called in the context of the
@@ -853,4 +853,4 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   qxl.dialog.MForm.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MForm.js.map?dt=1609162653813
+//# sourceMappingURL=MForm.js.map?dt=1609190164405

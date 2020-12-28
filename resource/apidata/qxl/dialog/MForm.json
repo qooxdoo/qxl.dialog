@@ -342,9 +342,9 @@
           },
           {
             "name": "@param",
-            "body": "handlers {Map}\n   Handler functions for this form element. `initElement` is\n   mandatory; `attToFormController` and `postProcess` are\n   optional.\n   All handlers are called in the context of the\n   `qxl.dialog.Form` or `qxl.dialog.FormEmbed`. The `fieldType`\n   argument has already been down-cased upon call.\n   - initElement(fieldType, fieldData)\n     Instantiate and initialize the form field to be used on the form.",
+            "body": "handlers {Map}\n   Handler functions for this form element. `initElement` is\n   mandatory; `addToFormController` and `postProcess` are\n   optional.\n   All handlers are called in the context of the\n   `qxl.dialog.Form` or `qxl.dialog.FormEmbed`. The `fieldType`\n   argument has already been down-cased upon call.\n   - initElement(fieldType, fieldData)\n     Instantiate and initialize the form field to be used on the form.",
             "paramName": "handlers",
-            "description": "\n   Handler functions for this form element. `initElement` is\n   mandatory; `attToFormController` and `postProcess` are\n   optional.\n   All handlers are called in the context of the\n   `qxl.dialog.Form` or `qxl.dialog.FormEmbed`. The `fieldType`\n   argument has already been down-cased upon call.\n   - initElement(fieldType, fieldData)\n     Instantiate and initialize the form field to be used on the form.",
+            "description": "\n   Handler functions for this form element. `initElement` is\n   mandatory; `addToFormController` and `postProcess` are\n   optional.\n   All handlers are called in the context of the\n   `qxl.dialog.Form` or `qxl.dialog.FormEmbed`. The `fieldType`\n   argument has already been down-cased upon call.\n   - initElement(fieldType, fieldData)\n     Instantiate and initialize the form field to be used on the form.",
             "type": "Map"
           },
           {
