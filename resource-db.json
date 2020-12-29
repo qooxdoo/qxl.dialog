@@ -5384,6 +5384,46 @@
       "qx/website/scss/indigo.scss": {
         "resourcePath": "resourcePath"
       },
+      "qx/decoration/Classic/colorselector/brightness-field.png": {
+        "resourcePath": "resourcePath",
+        "width": 19,
+        "height": 256
+      },
+      "qx/decoration/Classic/colorselector/brightness-handle.gif": {
+        "resourcePath": "resourcePath",
+        "width": 35,
+        "height": 11
+      },
+      "qx/decoration/Classic/colorselector/huesaturation-field.jpg": {
+        "resourcePath": "resourcePath",
+        "width": 256,
+        "height": 256
+      },
+      "qx/decoration/Classic/colorselector/huesaturation-handle.gif": {
+        "resourcePath": "resourcePath",
+        "width": 11,
+        "height": 11
+      },
+      "qx/decoration/Classic/cursors/alias.gif": {
+        "resourcePath": "resourcePath",
+        "width": 19,
+        "height": 15
+      },
+      "qx/decoration/Classic/cursors/copy.gif": {
+        "resourcePath": "resourcePath",
+        "width": 19,
+        "height": 15
+      },
+      "qx/decoration/Classic/cursors/move.gif": {
+        "resourcePath": "resourcePath",
+        "width": 13,
+        "height": 9
+      },
+      "qx/decoration/Classic/cursors/nodrop.gif": {
+        "resourcePath": "resourcePath",
+        "width": 20,
+        "height": 20
+      },
       "qx/decoration/Classic/arrows/down-invert.gif": {
         "resourcePath": "resourcePath",
         "width": 7,
@@ -5504,46 +5544,6 @@
         "width": 7,
         "height": 4
       },
-      "qx/decoration/Classic/colorselector/brightness-field.png": {
-        "resourcePath": "resourcePath",
-        "width": 19,
-        "height": 256
-      },
-      "qx/decoration/Classic/colorselector/brightness-handle.gif": {
-        "resourcePath": "resourcePath",
-        "width": 35,
-        "height": 11
-      },
-      "qx/decoration/Classic/colorselector/huesaturation-field.jpg": {
-        "resourcePath": "resourcePath",
-        "width": 256,
-        "height": 256
-      },
-      "qx/decoration/Classic/colorselector/huesaturation-handle.gif": {
-        "resourcePath": "resourcePath",
-        "width": 11,
-        "height": 11
-      },
-      "qx/decoration/Classic/cursors/alias.gif": {
-        "resourcePath": "resourcePath",
-        "width": 19,
-        "height": 15
-      },
-      "qx/decoration/Classic/cursors/copy.gif": {
-        "resourcePath": "resourcePath",
-        "width": 19,
-        "height": 15
-      },
-      "qx/decoration/Classic/cursors/move.gif": {
-        "resourcePath": "resourcePath",
-        "width": 13,
-        "height": 9
-      },
-      "qx/decoration/Classic/cursors/nodrop.gif": {
-        "resourcePath": "resourcePath",
-        "width": 20,
-        "height": 20
-      },
       "qx/decoration/Classic/datechooser/last-month-invert.png": {
         "resourcePath": "resourcePath",
         "width": 16,
@@ -5583,6 +5583,26 @@
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
+      },
+      "qx/decoration/Classic/menu/checkbox-invert.gif": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 7
+      },
+      "qx/decoration/Classic/menu/checkbox.gif": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 7
+      },
+      "qx/decoration/Classic/menu/radiobutton-invert.gif": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 5
+      },
+      "qx/decoration/Classic/menu/radiobutton.gif": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 5
       },
       "qx/decoration/Classic/form/checkbox-checked-disabled.png": {
         "resourcePath": "resourcePath",
@@ -5798,26 +5818,6 @@
         "resourcePath": "resourcePath",
         "width": 14,
         "height": 14
-      },
-      "qx/decoration/Classic/menu/checkbox-invert.gif": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 7
-      },
-      "qx/decoration/Classic/menu/checkbox.gif": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 7
-      },
-      "qx/decoration/Classic/menu/radiobutton-invert.gif": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 5
-      },
-      "qx/decoration/Classic/menu/radiobutton.gif": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 5
       },
       "qx/decoration/Classic/shadow/shadow-b.png": {
         "resourcePath": "resourcePath",
@@ -6167,6 +6167,191 @@
         "resourcePath": "resourcePath",
         "width": 20,
         "height": 20
+      },
+      "qx/decoration/Modern/groupbox/groupbox-b.png": {
+        "resourcePath": "resourcePath",
+        "width": 4,
+        "height": 4
+      },
+      "qx/decoration/Modern/groupbox/groupbox-bl.png": {
+        "resourcePath": "resourcePath",
+        "width": 4,
+        "height": 4
+      },
+      "qx/decoration/Modern/groupbox/groupbox-br.png": {
+        "resourcePath": "resourcePath",
+        "width": 4,
+        "height": 4
+      },
+      "qx/decoration/Modern/groupbox/groupbox-c.png": {
+        "resourcePath": "resourcePath",
+        "width": 40,
+        "height": 51
+      },
+      "qx/decoration/Modern/groupbox/groupbox-l.png": {
+        "resourcePath": "resourcePath",
+        "width": 4,
+        "height": 51
+      },
+      "qx/decoration/Modern/groupbox/groupbox-r.png": {
+        "resourcePath": "resourcePath",
+        "width": 4,
+        "height": 51
+      },
+      "qx/decoration/Modern/groupbox/groupbox-t.png": {
+        "resourcePath": "resourcePath",
+        "width": 4,
+        "height": 4
+      },
+      "qx/decoration/Modern/groupbox/groupbox-tl.png": {
+        "resourcePath": "resourcePath",
+        "width": 4,
+        "height": 4
+      },
+      "qx/decoration/Modern/groupbox/groupbox-tr.png": {
+        "resourcePath": "resourcePath",
+        "width": 4,
+        "height": 4
+      },
+      "qx/decoration/Modern/groupbox/groupbox.png": {
+        "resourcePath": "resourcePath",
+        "width": 255,
+        "height": 59
+      },
+      "qx/decoration/Modern/menu/background.png": {
+        "resourcePath": "resourcePath",
+        "width": 40,
+        "height": 49
+      },
+      "qx/decoration/Modern/menu/bar-background.png": {
+        "resourcePath": "resourcePath",
+        "width": 40,
+        "height": 20
+      },
+      "qx/decoration/Modern/menu/checkbox-invert.gif": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 7
+      },
+      "qx/decoration/Modern/menu/checkbox.gif": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 7
+      },
+      "qx/decoration/Modern/menu/radiobutton-invert.gif": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 5
+      },
+      "qx/decoration/Modern/menu/radiobutton.gif": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 5
+      },
+      "qx/decoration/Modern/pane/pane-b.png": {
+        "resourcePath": "resourcePath",
+        "width": 6,
+        "height": 6
+      },
+      "qx/decoration/Modern/pane/pane-bl.png": {
+        "resourcePath": "resourcePath",
+        "width": 6,
+        "height": 6
+      },
+      "qx/decoration/Modern/pane/pane-br.png": {
+        "resourcePath": "resourcePath",
+        "width": 6,
+        "height": 6
+      },
+      "qx/decoration/Modern/pane/pane-c.png": {
+        "resourcePath": "resourcePath",
+        "width": 40,
+        "height": 238
+      },
+      "qx/decoration/Modern/pane/pane-l.png": {
+        "resourcePath": "resourcePath",
+        "width": 6,
+        "height": 238
+      },
+      "qx/decoration/Modern/pane/pane-r.png": {
+        "resourcePath": "resourcePath",
+        "width": 6,
+        "height": 238
+      },
+      "qx/decoration/Modern/pane/pane-t.png": {
+        "resourcePath": "resourcePath",
+        "width": 6,
+        "height": 6
+      },
+      "qx/decoration/Modern/pane/pane-tl.png": {
+        "resourcePath": "resourcePath",
+        "width": 6,
+        "height": 6
+      },
+      "qx/decoration/Modern/pane/pane-tr.png": {
+        "resourcePath": "resourcePath",
+        "width": 6,
+        "height": 6
+      },
+      "qx/decoration/Modern/pane/pane.png": {
+        "resourcePath": "resourcePath",
+        "width": 185,
+        "height": 250
+      },
+      "qx/decoration/Modern/scrollbar/scrollbar-bg-horizontal.png": {
+        "resourcePath": "resourcePath",
+        "width": 76,
+        "height": 15
+      },
+      "qx/decoration/Modern/scrollbar/scrollbar-bg-pressed-horizontal.png": {
+        "resourcePath": "resourcePath",
+        "width": 19,
+        "height": 10
+      },
+      "qx/decoration/Modern/scrollbar/scrollbar-bg-pressed-vertical.png": {
+        "resourcePath": "resourcePath",
+        "width": 10,
+        "height": 19
+      },
+      "qx/decoration/Modern/scrollbar/scrollbar-bg-vertical.png": {
+        "resourcePath": "resourcePath",
+        "width": 15,
+        "height": 76
+      },
+      "qx/decoration/Modern/scrollbar/scrollbar-button-bg-horizontal.png": {
+        "resourcePath": "resourcePath",
+        "width": 12,
+        "height": 10
+      },
+      "qx/decoration/Modern/scrollbar/scrollbar-button-bg-vertical.png": {
+        "resourcePath": "resourcePath",
+        "width": 10,
+        "height": 12
+      },
+      "qx/decoration/Modern/scrollbar/scrollbar-down.png": {
+        "resourcePath": "resourcePath",
+        "width": 6,
+        "height": 4
+      },
+      "qx/decoration/Modern/scrollbar/scrollbar-left.png": {
+        "resourcePath": "resourcePath",
+        "width": 4,
+        "height": 6
+      },
+      "qx/decoration/Modern/scrollbar/scrollbar-right.png": {
+        "resourcePath": "resourcePath",
+        "width": 4,
+        "height": 6
+      },
+      "qx/decoration/Modern/scrollbar/scrollbar-up.png": {
+        "resourcePath": "resourcePath",
+        "width": 6,
+        "height": 4
+      },
+      "qx/decoration/Modern/scrollbar/slider-knob-background.png": {
+        "resourcePath": "resourcePath",
+        "width": 12,
+        "height": 10
       },
       "qx/decoration/Modern/form/button-b.png": {
         "resourcePath": "resourcePath",
@@ -6922,191 +7107,6 @@
         "resourcePath": "resourcePath",
         "width": 6,
         "height": 2
-      },
-      "qx/decoration/Modern/groupbox/groupbox-b.png": {
-        "resourcePath": "resourcePath",
-        "width": 4,
-        "height": 4
-      },
-      "qx/decoration/Modern/groupbox/groupbox-bl.png": {
-        "resourcePath": "resourcePath",
-        "width": 4,
-        "height": 4
-      },
-      "qx/decoration/Modern/groupbox/groupbox-br.png": {
-        "resourcePath": "resourcePath",
-        "width": 4,
-        "height": 4
-      },
-      "qx/decoration/Modern/groupbox/groupbox-c.png": {
-        "resourcePath": "resourcePath",
-        "width": 40,
-        "height": 51
-      },
-      "qx/decoration/Modern/groupbox/groupbox-l.png": {
-        "resourcePath": "resourcePath",
-        "width": 4,
-        "height": 51
-      },
-      "qx/decoration/Modern/groupbox/groupbox-r.png": {
-        "resourcePath": "resourcePath",
-        "width": 4,
-        "height": 51
-      },
-      "qx/decoration/Modern/groupbox/groupbox-t.png": {
-        "resourcePath": "resourcePath",
-        "width": 4,
-        "height": 4
-      },
-      "qx/decoration/Modern/groupbox/groupbox-tl.png": {
-        "resourcePath": "resourcePath",
-        "width": 4,
-        "height": 4
-      },
-      "qx/decoration/Modern/groupbox/groupbox-tr.png": {
-        "resourcePath": "resourcePath",
-        "width": 4,
-        "height": 4
-      },
-      "qx/decoration/Modern/groupbox/groupbox.png": {
-        "resourcePath": "resourcePath",
-        "width": 255,
-        "height": 59
-      },
-      "qx/decoration/Modern/menu/background.png": {
-        "resourcePath": "resourcePath",
-        "width": 40,
-        "height": 49
-      },
-      "qx/decoration/Modern/menu/bar-background.png": {
-        "resourcePath": "resourcePath",
-        "width": 40,
-        "height": 20
-      },
-      "qx/decoration/Modern/menu/checkbox-invert.gif": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 7
-      },
-      "qx/decoration/Modern/menu/checkbox.gif": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 7
-      },
-      "qx/decoration/Modern/menu/radiobutton-invert.gif": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 5
-      },
-      "qx/decoration/Modern/menu/radiobutton.gif": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 5
-      },
-      "qx/decoration/Modern/pane/pane-b.png": {
-        "resourcePath": "resourcePath",
-        "width": 6,
-        "height": 6
-      },
-      "qx/decoration/Modern/pane/pane-bl.png": {
-        "resourcePath": "resourcePath",
-        "width": 6,
-        "height": 6
-      },
-      "qx/decoration/Modern/pane/pane-br.png": {
-        "resourcePath": "resourcePath",
-        "width": 6,
-        "height": 6
-      },
-      "qx/decoration/Modern/pane/pane-c.png": {
-        "resourcePath": "resourcePath",
-        "width": 40,
-        "height": 238
-      },
-      "qx/decoration/Modern/pane/pane-l.png": {
-        "resourcePath": "resourcePath",
-        "width": 6,
-        "height": 238
-      },
-      "qx/decoration/Modern/pane/pane-r.png": {
-        "resourcePath": "resourcePath",
-        "width": 6,
-        "height": 238
-      },
-      "qx/decoration/Modern/pane/pane-t.png": {
-        "resourcePath": "resourcePath",
-        "width": 6,
-        "height": 6
-      },
-      "qx/decoration/Modern/pane/pane-tl.png": {
-        "resourcePath": "resourcePath",
-        "width": 6,
-        "height": 6
-      },
-      "qx/decoration/Modern/pane/pane-tr.png": {
-        "resourcePath": "resourcePath",
-        "width": 6,
-        "height": 6
-      },
-      "qx/decoration/Modern/pane/pane.png": {
-        "resourcePath": "resourcePath",
-        "width": 185,
-        "height": 250
-      },
-      "qx/decoration/Modern/scrollbar/scrollbar-bg-horizontal.png": {
-        "resourcePath": "resourcePath",
-        "width": 76,
-        "height": 15
-      },
-      "qx/decoration/Modern/scrollbar/scrollbar-bg-pressed-horizontal.png": {
-        "resourcePath": "resourcePath",
-        "width": 19,
-        "height": 10
-      },
-      "qx/decoration/Modern/scrollbar/scrollbar-bg-pressed-vertical.png": {
-        "resourcePath": "resourcePath",
-        "width": 10,
-        "height": 19
-      },
-      "qx/decoration/Modern/scrollbar/scrollbar-bg-vertical.png": {
-        "resourcePath": "resourcePath",
-        "width": 15,
-        "height": 76
-      },
-      "qx/decoration/Modern/scrollbar/scrollbar-button-bg-horizontal.png": {
-        "resourcePath": "resourcePath",
-        "width": 12,
-        "height": 10
-      },
-      "qx/decoration/Modern/scrollbar/scrollbar-button-bg-vertical.png": {
-        "resourcePath": "resourcePath",
-        "width": 10,
-        "height": 12
-      },
-      "qx/decoration/Modern/scrollbar/scrollbar-down.png": {
-        "resourcePath": "resourcePath",
-        "width": 6,
-        "height": 4
-      },
-      "qx/decoration/Modern/scrollbar/scrollbar-left.png": {
-        "resourcePath": "resourcePath",
-        "width": 4,
-        "height": 6
-      },
-      "qx/decoration/Modern/scrollbar/scrollbar-right.png": {
-        "resourcePath": "resourcePath",
-        "width": 4,
-        "height": 6
-      },
-      "qx/decoration/Modern/scrollbar/scrollbar-up.png": {
-        "resourcePath": "resourcePath",
-        "width": 6,
-        "height": 4
-      },
-      "qx/decoration/Modern/scrollbar/slider-knob-background.png": {
-        "resourcePath": "resourcePath",
-        "width": 12,
-        "height": 10
       },
       "qx/decoration/Modern/shadow/shadow-b.png": {
         "resourcePath": "resourcePath",
@@ -17208,51 +17208,6 @@
         "width": 16,
         "height": 16
       },
-      "qx/icon/Tango/16/places/folder-open.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/places/folder-remote.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/places/folder.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/places/network-server.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/places/network-workgroup.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/places/user-desktop.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/places/user-home.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/places/user-trash-full.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
-      "qx/icon/Tango/16/places/user-trash.png": {
-        "resourcePath": "resourcePath",
-        "width": 16,
-        "height": 16
-      },
       "qx/icon/Tango/16/mimetypes/archive.png": {
         "resourcePath": "resourcePath",
         "width": 16,
@@ -17318,6 +17273,51 @@
         "width": 16,
         "height": 16
       },
+      "qx/icon/Tango/16/places/folder-open.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/places/folder-remote.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/places/folder.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/places/network-server.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/places/network-workgroup.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/places/user-desktop.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/places/user-home.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/places/user-trash-full.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
+      "qx/icon/Tango/16/places/user-trash.png": {
+        "resourcePath": "resourcePath",
+        "width": 16,
+        "height": 16
+      },
       "qx/icon/Tango/16/status/dialog-error.png": {
         "resourcePath": "resourcePath",
         "width": 16,
@@ -17377,256 +17377,6 @@
         "resourcePath": "resourcePath",
         "width": 16,
         "height": 16
-      },
-      "qx/icon/Tango/22/apps/internet-blog.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/internet-download-manager.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/internet-feed-reader.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/internet-mail.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/internet-messenger.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/internet-telephony.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/internet-transfer.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/internet-web-browser.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/media-audio-player.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/media-photo-album.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/media-video-player.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-address-book.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-calendar.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-chart.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-database.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-draw.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-graphics.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-layout.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-presentation.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-project.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-spreadsheet.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-web.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/office-writer.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-accessibility.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-clock.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-display.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-font.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-keyboard.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-locale.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-network.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-security.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-sound.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-theme.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-users.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/preferences-wallpaper.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-archiver.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-calculator.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-character-map.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-color-chooser.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-dictionary.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-graphics-viewer.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-help.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-keyring.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-log-viewer.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-network-manager.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-notes.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-statistics.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-system-monitor.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-terminal.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
-      },
-      "qx/icon/Tango/22/apps/utilities-text-editor.png": {
-        "resourcePath": "resourcePath",
-        "width": 22,
-        "height": 22
       },
       "qx/icon/Tango/22/actions/address-book-new.png": {
         "resourcePath": "resourcePath",
@@ -18114,6 +17864,256 @@
         "height": 22
       },
       "qx/icon/Tango/22/actions/zoom-out.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/internet-blog.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/internet-download-manager.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/internet-feed-reader.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/internet-mail.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/internet-messenger.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/internet-telephony.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/internet-transfer.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/internet-web-browser.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/media-audio-player.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/media-photo-album.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/media-video-player.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-address-book.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-calendar.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-chart.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-database.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-draw.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-graphics.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-layout.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-presentation.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-project.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-spreadsheet.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-web.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/office-writer.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-accessibility.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-clock.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-display.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-font.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-keyboard.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-locale.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-network.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-security.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-sound.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-theme.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-users.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/preferences-wallpaper.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-archiver.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-calculator.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-character-map.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-color-chooser.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-dictionary.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-graphics-viewer.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-help.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-keyring.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-log-viewer.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-network-manager.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-notes.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-statistics.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-system-monitor.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-terminal.png": {
+        "resourcePath": "resourcePath",
+        "width": 22,
+        "height": 22
+      },
+      "qx/icon/Tango/22/apps/utilities-text-editor.png": {
         "resourcePath": "resourcePath",
         "width": 22,
         "height": 22

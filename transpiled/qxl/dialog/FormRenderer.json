@@ -23,7 +23,7 @@
       "@description": [
         {
           "name": "@description",
-          "body": "<p>A single row renderer for {@link qx.ui.form.Form}. T adapted\n for the {@link qxl.dialog.Form} widget. Main difference is that\n the form allows text-only labels without a corresponding form\n element which can serve, for example, for explanatory text.</p>"
+          "body": "<p>A single row renderer for {@link qx.ui.form.Form}, adapted\n for the {@link qxl.dialog.Form} widget. Main difference is that\n the form allows text-only labels without a corresponding form\n element which can serve, for example, for explanatory text.</p>"
         }
       ]
     }
