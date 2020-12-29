@@ -15,7 +15,7 @@
 
 
 /**
- * A single row renderer for {@link qx.ui.form.Form}. T adapted
+ * A single row renderer for {@link qx.ui.form.Form}, adapted
  * for the {@link qxl.dialog.Form} widget. Main difference is that
  * the form allows text-only labels without a corresponding form
  * element which can serve, for example, for explanatory text.
