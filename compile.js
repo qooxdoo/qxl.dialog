@@ -22,7 +22,7 @@ qx.Class.define("qxl.apiviewer.compile.CompilerApi", {
     // see https://github.com/microsoft/playwright/blob/master/docs/api.md
     __appTesting: async function (data) {
       let result = data.getData ? data.getData() : {};
-      const createTestCafe = require('testcafe');
+      const createTestCafe = this.require('testcafe');
       const testcafe = await createTestCafe('localhost');
       try {
         const runner = testcafe.createRunner();
