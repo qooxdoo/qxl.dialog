@@ -21,8 +21,14 @@ jobs:
       - name: Build
         run:  npx qx compile --target=build -v --clean
 
+      - name: Test
+        run:  npx qx test --target=build -v 
+
+      - name: Deploy
+        run:  npx qx deploy
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./compiled/build
+          publish_dir: ./html
