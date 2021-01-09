@@ -28,7 +28,7 @@ qx.Class.define("qxl.apiviewer.compile.CompilerApi", {
         const runner = testcafe.createRunner();
         const failedCount = await runner
           .src(['tests/testcafe.js'])
-          .browsers(['chrome', 'firefox'])
+          .browsers(['chrome:headless', 'firefox:headless'])
           .run();
         console.log('Tests failed: ' + failedCount);
         result.setExitCode(failedCount);
