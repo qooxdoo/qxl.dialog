@@ -4,7 +4,7 @@
       "title": "Dialog Package Demo",
       "class": "qxl.dialog.demo.Application",
       "theme": "qxl.dialog.theme.Theme",
-      "name": "qxl.dialog.demo",
+      "name": "dialog",
       "default": true
     },
     {
@@ -26,6 +26,8 @@
         "qxl.apiviewer.exclude": [
           "qxl.apiviewer.*",
           "qxl.versionlabel.*",
+          "qx.*",
+          "q",
           "qxWeb"
         ]
       }
@@ -52,7 +54,8 @@
     },
     {
       "type": "build",
-      "outputPath": "compiled/build"
+      "outputPath": "compiled/build",
+      "deployPath": "html"
     }
   ],
   "defaultTarget": "source",
