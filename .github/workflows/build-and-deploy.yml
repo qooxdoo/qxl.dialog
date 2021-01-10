@@ -16,16 +16,14 @@ jobs:
           persist-credentials: false
 
       - name: Install
-        run: npm install @qooxdoo/compiler --no-save
-
-      - name: Build
-        run:  npx qx compile --target=build -v --clean
-
+        run: npm install @qooxdoo/compiler --no-save --no-package-lock
+      
+      # test is only possible in source mode because qx.debug has to be true
       - name: Test
-        run:  npx qx test --target=build -v 
+        run:  npx qx test  -v 
 
-      - name: Deploy
-        run:  npx qx deploy
+      - name: Build and Deploy
+        run:  npx qx deploy --target=build -v --clean
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

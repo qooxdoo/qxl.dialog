@@ -55,7 +55,7 @@ test(`Prompt`, async t => {
     .click(okLabel1)
     .expect(popupWindow1.visible).notOk()
     .expect(popupWindow2.visible).ok()
-    .expect(displayedText).ok()
+    .expect(displayedText.exists).ok()
     .click(okLabel2)
     .expect(popupWindow1.visible).notOk()
 });

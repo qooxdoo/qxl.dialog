@@ -67,7 +67,7 @@ npx qx install --from-path=./path/to/qxl.dialog
 To install the dependencies and run the tests, simply do
 
 ```shell
-./test
+npx qx test
 ```
 
 Afterwards, you can run the demo locally with `npx qx serve`.
