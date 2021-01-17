@@ -28,11 +28,11 @@ qx.Class.define("qxl.dialog.formElement.GroupHeader",
 
     _registration : {
       initElement : function(fieldType, fieldData, key) {
-        let formElement = new qx.ui.form.TextField(); // dummy
-        formElement.setUserData("excluded",true);
-        this._form.addGroupHeader(fieldData.value);
-        return formElement;
-      }.bind(this)
+        this._form.addGroupHeader(fieldData.label);
+
+        // Headers don't return a form object
+        return undefined;
+      }
     }
   }
 });
