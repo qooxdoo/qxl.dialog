@@ -497,7 +497,13 @@ qx.Mixin.define("qxl.dialog.MForm", {
         // Instantiate and initialize the form element
         formElement =
           qxl.dialog.MForm._registeredFormElements[fieldType]
-            .initElement(fieldType, fieldData, key);
+            .initElement.call(this, fieldType, fieldData, key);
+
+        // Headers don't return a form element
+        if (! formElement)
+        {
+          continue;
+        }
 
         // Save the key
         formElement.setUserData("key", key);
