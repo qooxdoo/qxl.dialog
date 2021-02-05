@@ -52,8 +52,8 @@ qx.Class.define("qxl.dialog.formElement.TextField",
          * either the form level or at the field level using the
          * allowBrowserAutocomplete key.
          */
-        if ( typeof fieldData.allowBrowserAutocomplete == "boolean" ) {
-          if ( ! fieldData.allowBrowserAutocomplete ) {
+        if (typeof fieldData.allowBrowserAutocomplete == "boolean") {
+          if (!fieldData.allowBrowserAutocomplete) {
             //turn off autocomplete
             formElement.getContentElement().setAttribute(
             "autocomplete", "new-password");
@@ -61,7 +61,7 @@ qx.Class.define("qxl.dialog.formElement.TextField",
             // leave autocomplete alone.
             // Note: Password field above sets attribute
           }
-        } else if ( ! this.getAllowBrowserAutocomplete() ) {
+        } else if (!this.getAllowBrowserAutocomplete()) {
           //turn off autocomplete
           formElement.getContentElement().setAttribute(
             "autocomplete", "new-password");

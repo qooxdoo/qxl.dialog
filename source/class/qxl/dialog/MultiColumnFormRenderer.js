@@ -35,26 +35,24 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
      * convenience function allowing the application to more easily specify
      * the column numbers when establishing the layout, in terms of the column
      * numbers that the application uses.
+     * @param col
      */
-    column : function(col)
-    {
+    column : function(col) {
       return col * 2;
     },
 
     // overridden
-    addItems : function(items, names, title)
-    {
-      var             i;
-      var             row;
-      var             col;
-      var             rowspan;
-      var             widget;
+    addItems : function(items, names, title) {
+      var i;
+      var row;
+      var col;
+      var rowspan;
+      var widget;
 
       /*
        * add the header
        */
-      if (title != null)
-      {
+      if (title !== null) {
         this._add(
           this._createHeader(title),
           {
@@ -67,8 +65,7 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
       /*
        * add the items
        */
-      for (i = 0; i < items.length; i++)
-      {
+      for (i = 0; i < items.length; i++) {
         /*
          * current item
          */
@@ -78,18 +75,14 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
 
         // If there is user data containing the row/column info, use it
         row = item.getUserData("row");
-        if (typeof row != "number")
-        {
+        if (typeof row != "number") {
           row = this._row;
         }
         col = item.getUserData("column");
-        if (typeof col != "number")
-        {
+        if (typeof col != "number") {
           col = this._col;
-        }
-        else
-        {
-          col *= 2;             // user columns don't deal with label:widget
+        } else {
+          col *= 2; // user columns don't deal with label:widget
         }
         rowspan = item.getUserData("rowspan") || 1;
         this._row = row;
@@ -98,28 +91,21 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
         /*
          * radio group
          */
-        if (item instanceof qx.ui.form.RadioGroup)
-        {
+        if (item instanceof qx.ui.form.RadioGroup) {
           /*
            * create horizontal radio group for a small
            * number of radio buttons
            */
-          if (item.getUserData("orientation") == "horizontal")
-          {
+          if (item.getUserData("orientation") == "horizontal") {
             widget = this._createHBoxForRadioGroup(item);
-          }
-          else
-          {
+          } else {
             widget = this._createWidgetForRadioGroup(item);
           }
-        }
-
+        } else {
         /*
          * other form widgets
          */
-        else
-        {
-          widget = item;
+        widget = item;
         }
 
         /*
@@ -127,8 +113,7 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
          * labels. this should be implemented differently,
          * though
          */
-        if (names[i] && item.getUserData("excluded"))
-        {
+        if (names[i] && item.getUserData("excluded")) {
           var label = new qx.ui.basic.Label(names[i]);
           label.setRich(true);
           this._add(
@@ -139,14 +124,11 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
               rowSpan : rowspan,
               colSpan : 2
             });
-        }
-
+        } else if (item instanceof qx.ui.form.CheckBox) {
         /**
          * If CheckBox, assign the whole width to the widget.
          */
-        else if (item instanceof qx.ui.form.CheckBox)
-        {
-          this._add(
+        this._add(
             widget,
             {
               row     : row,
@@ -155,8 +137,7 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
               colSpan : 2
             });
           this._getLayout().getCellWidget(row, col).setAlignX("left");
-        }
-
+        } else if (item.getUserData("combineWithLabelColumn") && !names[i]) {
         /*
          * If the label is null, use the full width for the widget.
          *
@@ -170,9 +151,7 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
          * Instead, allow a means of using this that is backwards compatible,
          * should it ever be made to work
          */
-        else if (item.getUserData("combineWithLabelColumn") && ! names[i])
-        {
-          this._add(
+        this._add(
             widget,
             {
               row     : row,
@@ -180,28 +159,22 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
               rowSpan : rowspan,
               colSpan : 2
             });
-        }
-
+        } else if (!names[i]) {
         /*
          * Instead, just elide the label
          */
-        else if (! names[i])
-        {
-          this._add(
+        this._add(
             widget,
             {
               row     : row,
               column  : col + 1,
               rowSpan : rowspan
             });
-        }
-
+        } else {
         /*
          * normal case: label in column col, form element in column col+1
          */
-        else
-        {
-          label = this._createLabel(names[i], item);
+        label = this._createLabel(names[i], item);
           label.setRich(true);
           this._add(
             label,
@@ -227,8 +200,7 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
         /*
          * focus the first item
          */
-        if (i == 0)
-        {
+        if (i == 0) {
           widget.addListener("appear", widget.focus, widget);
         }
       }

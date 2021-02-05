@@ -68,7 +68,7 @@ qx.Class.define("qxl.dialog.Dialog", {
      */
     alert: function(message="", callback=null, context=null, caption="") {
       return new qxl.dialog.Alert({
-        message, callback, context, caption, image: "qxl.dialog.icon.info",
+        message, callback, context, caption, image: "qxl.dialog.icon.info"
       }).show();
     },
 
@@ -96,7 +96,7 @@ qx.Class.define("qxl.dialog.Dialog", {
      */
     warning(message="", callback=null, context=null, caption="") {
       return new qxl.dialog.Alert({
-        message, callback, context, caption, image: "qxl.dialog.icon.warning",
+        message, callback, context, caption, image: "qxl.dialog.icon.warning"
       }).show();
     },
 
@@ -114,7 +114,6 @@ qx.Class.define("qxl.dialog.Dialog", {
 
     /**
      * Shortcut for prompt dialog
-     * @param caption {String} The caption of the dialog window
      * @param message {String} The message to display
      * @param callback {Function} The callback function
      * @param context {Object} The context to use with the callback function
@@ -137,7 +136,7 @@ qx.Class.define("qxl.dialog.Dialog", {
      * @param caption {String?} The caption of the dialog window
      * @return {qxl.dialog.Select} The widget instance
      */
-    select(message="", options=null,callback=null, context=null,allowCancel=true, caption="") {
+    select(message="", options=null, callback=null, context=null, allowCancel=true, caption="") {
       let defaultOptions = [
         {label: qx.core.Init.getApplication().tr("Yes"), value: true},
         {label: qx.core.Init.getApplication().tr("No"), value: false}
@@ -208,7 +207,7 @@ qx.Class.define("qxl.dialog.Dialog", {
       let bounds = this.getBounds();
       this.set({
         marginTop: Math.round((qx.bom.Document.getHeight() - bounds.height)/2),
-        marginLeft: Math.round( (qx.bom.Document.getWidth() - bounds.width)/2)
+        marginLeft: Math.round((qx.bom.Document.getWidth() - bounds.width)/2)
       });
     });
     this._createWidgetContent(properties);

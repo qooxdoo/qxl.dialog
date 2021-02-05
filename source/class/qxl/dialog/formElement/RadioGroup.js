@@ -62,7 +62,7 @@ qx.Class.define("qxl.dialog.formElement.RadioGroup",
           converter: function (selection) {
             let value = selection[0].getUserData("value");
             return value;
-          }.bind(this)
+          }
         });
       }
     }

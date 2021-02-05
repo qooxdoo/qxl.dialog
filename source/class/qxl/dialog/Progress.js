@@ -110,6 +110,8 @@ qx.Class.define("qxl.dialog.Progress", {
   members: {
     /**
      * Applies the 'show' property
+     * @param value
+     * @param old
      */
     _applyShow: function(value, old) {
       if (value === true) {
@@ -121,6 +123,8 @@ qx.Class.define("qxl.dialog.Progress", {
 
     /**
      * Applies the 'progress' property
+     * @param value
+     * @param old
      */
     _applyProgress: function(value, old) {
       if (value == 100) {
@@ -134,6 +138,8 @@ qx.Class.define("qxl.dialog.Progress", {
 
     /**
      * Adds new text to the log
+     * @param value
+     * @param old
      */
     _applyNewLogText: function(value, old) {
       if (value) {
@@ -144,6 +150,8 @@ qx.Class.define("qxl.dialog.Progress", {
 
     /**
      * Apply the OK Button text
+     * @param value
+     * @param old
      */
     _applyOkButtonText: function(value, old) {
       if (value === null) {

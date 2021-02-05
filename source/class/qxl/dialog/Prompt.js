@@ -131,6 +131,8 @@ qx.Class.define("qxl.dialog.Prompt", {
 
     /**
      * Applies the 'placeholder' property
+     * @param value
+     * @param old
      */
     _applyPlaceholder: function(value, old) {
       this._textField.setPlaceholder(value);
@@ -138,6 +140,8 @@ qx.Class.define("qxl.dialog.Prompt", {
 
     /**
      * Applies the 'filter' property
+     * @param value
+     * @param old
      */
     _applyFilter: function(value, old) {
       this._textField.setFilter(value);
@@ -145,6 +149,8 @@ qx.Class.define("qxl.dialog.Prompt", {
 
     /**
      * Applies the 'maxLength' propery
+     * @param value
+     * @param old
      */
     _applyMaxLength: function(value, old) {
       this._textField.setMaxLength(value);
