@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 756,
+        "line": 751,
         "column": 3
       }
     },
@@ -317,11 +317,11 @@
     "registerFormElementHandlers": {
       "location": {
         "start": {
-          "line": 278,
+          "line": 280,
           "column": 4
         },
         "end": {
-          "line": 285,
+          "line": 286,
           "column": 5
         }
       },
@@ -335,30 +335,30 @@
         "@param": [
           {
             "name": "@param",
-            "body": "fieldType {String}\n   The field type, later to be used as the `type` member when setting\n   the `fieldData` property.",
+            "body": "fieldType {String}\n   The field type, later to be used as the <code>type</code> member when setting\n   the <code>fieldData</code> property.",
             "paramName": "fieldType",
-            "description": "\n   The field type, later to be used as the `type` member when setting\n   the `fieldData` property.",
+            "description": "\n   The field type, later to be used as the <code>type</code> member when setting\n   the <code>fieldData</code> property.",
             "type": "String"
           },
           {
             "name": "@param",
-            "body": "handlers {Map}\n   Handler functions for this form element. `initElement` is\n   mandatory; `addToFormController` and `postProcess` are\n   optional.\n   All handlers are called in the context of the\n   `qxl.dialog.Form` or `qxl.dialog.FormEmbed`. The `fieldType`\n   argument has already been down-cased upon call.\n   - initElement(fieldType, fieldData)\n     Instantiate and initialize the form field to be used on the form.",
+            "body": "handlers {Map}\n   Handler functions for this form element. <code>initElement</code> is\n   mandatory; <code>addToFormController</code> and <code>postProcess</code> are\n   optional.\n   All handlers are called in the context of the\n   <code>qxl.dialog.Form</code> or <code>qxl.dialog.FormEmbed</code>. The <code>fieldType</code>\n   argument has already been down-cased upon call.\n   - initElement(fieldType, fieldData)\n     Instantiate and initialize the form field to be used on the form.",
             "paramName": "handlers",
-            "description": "\n   Handler functions for this form element. `initElement` is\n   mandatory; `addToFormController` and `postProcess` are\n   optional.\n   All handlers are called in the context of the\n   `qxl.dialog.Form` or `qxl.dialog.FormEmbed`. The `fieldType`\n   argument has already been down-cased upon call.\n   - initElement(fieldType, fieldData)\n     Instantiate and initialize the form field to be used on the form.",
+            "description": "\n   Handler functions for this form element. <code>initElement</code> is\n   mandatory; <code>addToFormController</code> and <code>postProcess</code> are\n   optional.\n   All handlers are called in the context of the\n   <code>qxl.dialog.Form</code> or <code>qxl.dialog.FormEmbed</code>. The <code>fieldType</code>\n   argument has already been down-cased upon call.\n   - initElement(fieldType, fieldData)\n     Instantiate and initialize the form field to be used on the form.",
             "type": "Map"
           },
           {
             "name": "@param",
-            "body": "fieldType {String}\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map. This field is case-insensitive.",
+            "body": "fieldType {String}\n       Field type name, as used in the <code>type</code> member in the <code>fieldData</code>\n       property's provided map. This field is case-insensitive.",
             "paramName": "fieldType",
-            "description": "\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map. This field is case-insensitive.",
+            "description": "\n       Field type name, as used in the <code>type</code> member in the <code>fieldData</code>\n       property's provided map. This field is case-insensitive.",
             "type": "String"
           },
           {
             "name": "@param",
-            "body": "fieldData {Map}\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "body": "fieldData {Map}\n       The data, provided to the member of the <code>fieldData</code> property's\n       map, for this specific field",
             "paramName": "fieldData",
-            "description": "\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "description": "\n       The data, provided to the member of the <code>fieldData</code> property's\n       map, for this specific field",
             "type": "Map"
           },
           {
@@ -370,16 +370,16 @@
           },
           {
             "name": "@param",
-            "body": "fieldType {String}\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map. This field is case-insensitive.",
+            "body": "fieldType {String}\n       Field type name, as used in the <code>type</code> member in the <code>fieldData</code>\n       property's provided map. This field is case-insensitive.",
             "paramName": "fieldType",
-            "description": "\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map. This field is case-insensitive.",
+            "description": "\n       Field type name, as used in the <code>type</code> member in the <code>fieldData</code>\n       property's provided map. This field is case-insensitive.",
             "type": "String"
           },
           {
             "name": "@param",
-            "body": "fieldData {Map}\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "body": "fieldData {Map}\n       The data, provided to the member of the <code>fieldData</code> property's\n       map, for this specific field",
             "paramName": "fieldData",
-            "description": "\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "description": "\n       The data, provided to the member of the <code>fieldData</code> property's\n       map, for this specific field",
             "type": "Map"
           },
           {
@@ -391,30 +391,30 @@
           },
           {
             "name": "@param",
-            "body": "formElement {qx.ui.form.IForm}\n       The form element returned by `initElement`\n   - postProcess(fieldType, fieldData, key, formElement)\n     Accomplish any field-specific configuration. This handler may be\n     undefined.",
+            "body": "formElement {qx.ui.form.IForm}\n       The form element returned by <code>initElement</code>\n   - postProcess(fieldType, fieldData, key, formElement)\n     Accomplish any field-specific configuration. This handler may be\n     undefined.",
             "paramName": "formElement",
-            "description": "\n       The form element returned by `initElement`\n   - postProcess(fieldType, fieldData, key, formElement)\n     Accomplish any field-specific configuration. This handler may be\n     undefined.",
+            "description": "\n       The form element returned by <code>initElement</code>\n   - postProcess(fieldType, fieldData, key, formElement)\n     Accomplish any field-specific configuration. This handler may be\n     undefined.",
             "type": "qx.ui.form.IForm"
           },
           {
             "name": "@param",
-            "body": "fieldType {String}\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map",
+            "body": "fieldType {String}\n       Field type name, as used in the <code>type</code> member in the <code>fieldData</code>\n       property's provided map",
             "paramName": "fieldType",
-            "description": "\n       Field type name, as used in the `type` member in the `fieldData`\n       property's provided map",
+            "description": "\n       Field type name, as used in the <code>type</code> member in the <code>fieldData</code>\n       property's provided map",
             "type": "String"
           },
           {
             "name": "@param",
-            "body": "fieldData {Map}\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "body": "fieldData {Map}\n       The data, provided to the member of the <code>fieldData</code> property's\n       map, for this specific field",
             "paramName": "fieldData",
-            "description": "\n       The data, provided to the member of the `fieldData` property's\n       map, for this specific field",
+            "description": "\n       The data, provided to the member of the <code>fieldData</code> property's\n       map, for this specific field",
             "type": "Map"
           },
           {
             "name": "@param",
-            "body": "formElement {qx.ui.form.IForm}\n       The form element returned by `initElement`",
+            "body": "formElement {qx.ui.form.IForm}\n       The form element returned by <code>initElement</code>",
             "paramName": "formElement",
-            "description": "\n       The form element returned by `initElement`",
+            "description": "\n       The form element returned by <code>initElement</code>",
             "type": "qx.ui.form.IForm"
           },
           {
@@ -428,9 +428,9 @@
         "@return": [
           {
             "name": "@return",
-            "body": "{qx.ui.form.IForm}\n       The form element to be added to the form\n   - addToFormController(fieldType, fieldData, formElement, key)\n     Add the form element to the form controller `this._formController`,\n     providing any appropriate converters, etc., for this form element.",
+            "body": "{qx.ui.form.IForm}\n       The form element to be added to the form\n   - addToFormController(fieldType, fieldData, formElement, key)\n     Add the form element to the form controller <code>this._formController</code>,\n     providing any appropriate converters, etc., for this form element.",
             "type": "qx.ui.form.IForm",
-            "description": "\n       The form element to be added to the form\n   - addToFormController(fieldType, fieldData, formElement, key)\n     Add the form element to the form controller `this._formController`,\n     providing any appropriate converters, etc., for this form element."
+            "description": "\n       The form element to be added to the form\n   - addToFormController(fieldType, fieldData, formElement, key)\n     Add the form element to the form controller <code>this._formController</code>,\n     providing any appropriate converters, etc., for this form element."
           }
         ]
       },
@@ -440,11 +440,11 @@
     "_registeredFormElements": {
       "location": {
         "start": {
-          "line": 288,
+          "line": 289,
           "column": 4
         },
         "end": {
-          "line": 288,
+          "line": 289,
           "column": 32
         }
       },
@@ -462,11 +462,11 @@
     "_internalFormElements": {
       "location": {
         "start": {
-          "line": 290,
+          "line": 291,
           "column": 4
         },
         "end": {
-          "line": 303,
+          "line": 304,
           "column": 5
         }
       },
@@ -478,11 +478,11 @@
     "_formContainer": {
       "location": {
         "start": {
-          "line": 307,
+          "line": 308,
           "column": 4
         },
         "end": {
-          "line": 307,
+          "line": 308,
           "column": 24
         }
       },
@@ -492,11 +492,11 @@
     "_form": {
       "location": {
         "start": {
-          "line": 308,
+          "line": 309,
           "column": 4
         },
         "end": {
-          "line": 308,
+          "line": 309,
           "column": 15
         }
       },
@@ -506,11 +506,11 @@
     "_formValidator": {
       "location": {
         "start": {
-          "line": 309,
+          "line": 310,
           "column": 4
         },
         "end": {
-          "line": 309,
+          "line": 310,
           "column": 24
         }
       },
@@ -520,11 +520,11 @@
     "_formController": {
       "location": {
         "start": {
-          "line": 310,
+          "line": 311,
           "column": 4
         },
         "end": {
-          "line": 310,
+          "line": 311,
           "column": 25
         }
       },
@@ -534,11 +534,11 @@
     "_formElements": {
       "location": {
         "start": {
-          "line": 311,
+          "line": 312,
           "column": 4
         },
         "end": {
-          "line": 311,
+          "line": 312,
           "column": 24
         }
       },
@@ -548,7 +548,7 @@
     "_init": {
       "location": {
         "start": {
-          "line": 313,
+          "line": 314,
           "column": 4
         },
         "end": {
@@ -592,11 +592,11 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 350,
+          "line": 351,
           "column": 4
         },
         "end": {
-          "line": 409,
+          "line": 410,
           "column": 5
         }
       },
@@ -606,6 +606,14 @@
             "name": "@description",
             "body": "<p>Create the main content of the widget</p>"
           }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "properties",
+            "paramName": "properties",
+            "type": ""
+          }
         ]
       },
       "type": "function",
@@ -614,11 +622,11 @@
     "_applyFormData": {
       "location": {
         "start": {
-          "line": 417,
+          "line": 418,
           "column": 4
         },
         "end": {
-          "line": 703,
+          "line": 700,
           "column": 5
         }
       },
@@ -664,11 +672,11 @@
     "_applyLabelColumnWidth": {
       "location": {
         "start": {
-          "line": 710,
+          "line": 707,
           "column": 4
         },
         "end": {
-          "line": 723,
+          "line": 718,
           "column": 5
         }
       },
@@ -682,10 +690,9 @@
         "@param": [
           {
             "name": "@param",
-            "body": "formData {Map} The form data map",
-            "paramName": "formData",
-            "description": " The form data map",
-            "type": "Map"
+            "body": "width",
+            "paramName": "width",
+            "type": ""
           },
           {
             "name": "@param",
@@ -708,11 +715,11 @@
     "_onFormReady": {
       "location": {
         "start": {
-          "line": 732,
+          "line": 727,
           "column": 4
         },
         "end": {
-          "line": 738,
+          "line": 733,
           "column": 5
         }
       },
@@ -739,11 +746,11 @@
     "_handleOk": {
       "location": {
         "start": {
-          "line": 744,
+          "line": 739,
           "column": 4
         },
         "end": {
-          "line": 754,
+          "line": 749,
           "column": 5
         }
       },

@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 324,
+        "line": 326,
         "column": 3
       }
     },
@@ -487,11 +487,11 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 162,
+          "line": 163,
           "column": 4
         },
         "end": {
-          "line": 164,
+          "line": 165,
           "column": 5
         }
       },
@@ -501,6 +501,14 @@
             "name": "@description",
             "body": "<p>Create the content of the qxl.dialog.\n Extending classes must implement this method.</p>"
           }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "properties",
+            "paramName": "properties",
+            "type": ""
+          }
         ]
       },
       "type": "function",
@@ -509,11 +517,11 @@
     "_createDialogContainer": {
       "location": {
         "start": {
-          "line": 170,
+          "line": 171,
           "column": 4
         },
         "end": {
-          "line": 173,
+          "line": 174,
           "column": 5
         }
       },
@@ -539,11 +547,11 @@
     "_createButtonPane": {
       "location": {
         "start": {
-          "line": 179,
+          "line": 180,
           "column": 4
         },
         "end": {
-          "line": 187,
+          "line": 188,
           "column": 5
         }
       },
@@ -569,11 +577,11 @@
     "_createOkButton": {
       "location": {
         "start": {
-          "line": 193,
+          "line": 195,
           "column": 4
         },
         "end": {
-          "line": 211,
+          "line": 213,
           "column": 5
         }
       },
@@ -582,6 +590,14 @@
           {
             "name": "@description",
             "body": "<p>Create an OK button</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "noFocus",
+            "paramName": "noFocus",
+            "type": ""
           }
         ],
         "@return": [
@@ -599,11 +615,11 @@
     "_createCancelButton": {
       "location": {
         "start": {
-          "line": 218,
+          "line": 220,
           "column": 4
         },
         "end": {
-          "line": 240,
+          "line": 242,
           "column": 5
         }
       },
@@ -629,11 +645,11 @@
     "_applyImage": {
       "location": {
         "start": {
-          "line": 248,
+          "line": 250,
           "column": 4
         },
         "end": {
-          "line": 251,
+          "line": 253,
           "column": 5
         }
       },
@@ -681,11 +697,11 @@
     "_applyMessage": {
       "location": {
         "start": {
-          "line": 259,
+          "line": 261,
           "column": 4
         },
         "end": {
-          "line": 262,
+          "line": 264,
           "column": 5
         }
       },
@@ -733,11 +749,11 @@
     "getDialogContainer": {
       "location": {
         "start": {
-          "line": 268,
+          "line": 270,
           "column": 4
         },
         "end": {
-          "line": 273,
+          "line": 275,
           "column": 5
         }
       },
@@ -763,11 +779,11 @@
     "promise": {
       "location": {
         "start": {
-          "line": 280,
+          "line": 282,
           "column": 4
         },
         "end": {
-          "line": 287,
+          "line": 289,
           "column": 5
         }
       },
@@ -793,11 +809,11 @@
     "_handleOk": {
       "location": {
         "start": {
-          "line": 292,
+          "line": 294,
           "column": 4
         },
         "end": {
-          "line": 299,
+          "line": 301,
           "column": 5
         }
       },
@@ -815,11 +831,11 @@
     "_handleCancel": {
       "location": {
         "start": {
-          "line": 305,
+          "line": 307,
           "column": 4
         },
         "end": {
-          "line": 312,
+          "line": 314,
           "column": 5
         }
       },
@@ -837,11 +853,11 @@
     "_handleEscape": {
       "location": {
         "start": {
-          "line": 318,
+          "line": 320,
           "column": 4
         },
         "end": {
-          "line": 322,
+          "line": 324,
           "column": 5
         }
       },

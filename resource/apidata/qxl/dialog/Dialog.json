@@ -15,7 +15,7 @@
         "column": 0
       },
       "end": {
-        "line": 319,
+        "line": 318,
         "column": 3
       }
     },
@@ -422,11 +422,11 @@
     "prompt": {
       "location": {
         "start": {
-          "line": 126,
+          "line": 125,
           "column": 4
         },
         "end": {
-          "line": 128,
+          "line": 127,
           "column": 5
         }
       },
@@ -438,13 +438,6 @@
           }
         ],
         "@param": [
-          {
-            "name": "@param",
-            "body": "caption {String} The caption of the dialog window",
-            "paramName": "caption",
-            "description": " The caption of the dialog window",
-            "type": "String"
-          },
           {
             "name": "@param",
             "body": "message {String} The message to display",
@@ -497,11 +490,11 @@
     "select": {
       "location": {
         "start": {
-          "line": 140,
+          "line": 139,
           "column": 4
         },
         "end": {
-          "line": 148,
+          "line": 147,
           "column": 5
         }
       },
@@ -576,11 +569,11 @@
     "form": {
       "location": {
         "start": {
-          "line": 159,
+          "line": 158,
           "column": 4
         },
         "end": {
-          "line": 162,
+          "line": 161,
           "column": 5
         }
       },
@@ -646,11 +639,11 @@
     "registerFormElementHandlers": {
       "location": {
         "start": {
-          "line": 165,
+          "line": 164,
           "column": 4
         },
         "end": {
-          "line": 165,
+          "line": 164,
           "column": 78
         }
       },
@@ -662,11 +655,11 @@
   "construct": {
     "location": {
       "start": {
-        "line": 174,
+        "line": 173,
         "column": 13
       },
       "end": {
-        "line": 223,
+        "line": 222,
         "column": 3
       }
     },
@@ -696,11 +689,11 @@
     "show": {
       "location": {
         "start": {
-          "line": 230,
+          "line": 229,
           "column": 4
         },
         "end": {
-          "line": 235,
+          "line": 234,
           "column": 5
         }
       },
@@ -723,11 +716,11 @@
     "useBlocker": {
       "location": {
         "start": {
-          "line": 240,
+          "line": 239,
           "column": 4
         },
         "end": {
-          "line": 243,
+          "line": 242,
           "column": 5
         }
       },
@@ -748,11 +741,11 @@
     "blockerColor": {
       "location": {
         "start": {
-          "line": 248,
+          "line": 247,
           "column": 4
         },
         "end": {
-          "line": 251,
+          "line": 250,
           "column": 5
         }
       },
@@ -773,11 +766,11 @@
     "blockerOpacity": {
       "location": {
         "start": {
-          "line": 256,
+          "line": 255,
           "column": 4
         },
         "end": {
-          "line": 259,
+          "line": 258,
           "column": 5
         }
       },
@@ -897,11 +890,11 @@
     "__previousFocus": {
       "location": {
         "start": {
-          "line": 267,
+          "line": 266,
           "column": 4
         },
         "end": {
-          "line": 267,
+          "line": 266,
           "column": 25
         }
       },
@@ -919,11 +912,11 @@
     "show": {
       "location": {
         "start": {
-          "line": 274,
+          "line": 273,
           "column": 4
         },
         "end": {
-          "line": 298,
+          "line": 297,
           "column": 5
         }
       },
@@ -953,11 +946,11 @@
     "hide": {
       "location": {
         "start": {
-          "line": 305,
+          "line": 304,
           "column": 4
         },
         "end": {
-          "line": 317,
+          "line": 316,
           "column": 5
         }
       },
@@ -997,6 +990,14 @@
           {
             "name": "@description",
             "body": "<p>Create the content of the qxl.dialog.\n Extending classes must implement this method.</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "properties",
+            "paramName": "properties",
+            "type": ""
           }
         ]
       }
@@ -1064,6 +1065,14 @@
           {
             "name": "@description",
             "body": "<p>Create an OK button</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "noFocus",
+            "paramName": "noFocus",
+            "type": ""
           }
         ],
         "@return": [

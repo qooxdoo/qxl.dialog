@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 163,
+        "line": 169,
         "column": 3
       }
     },
@@ -184,11 +184,11 @@
     "_applyPlaceholder": {
       "location": {
         "start": {
-          "line": 135,
+          "line": 137,
           "column": 4
         },
         "end": {
-          "line": 137,
+          "line": 139,
           "column": 5
         }
       },
@@ -197,6 +197,20 @@
           {
             "name": "@description",
             "body": "<p>Applies the 'placeholder' property</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "value",
+            "paramName": "value",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "old",
+            "paramName": "old",
+            "type": ""
           }
         ]
       },
@@ -209,11 +223,11 @@
     "_applyFilter": {
       "location": {
         "start": {
-          "line": 142,
+          "line": 146,
           "column": 4
         },
         "end": {
-          "line": 144,
+          "line": 148,
           "column": 5
         }
       },
@@ -222,6 +236,20 @@
           {
             "name": "@description",
             "body": "<p>Applies the 'filter' property</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "value",
+            "paramName": "value",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "old",
+            "paramName": "old",
+            "type": ""
           }
         ]
       },
@@ -234,11 +262,11 @@
     "_applyMaxLength": {
       "location": {
         "start": {
-          "line": 149,
+          "line": 155,
           "column": 4
         },
         "end": {
-          "line": 151,
+          "line": 157,
           "column": 5
         }
       },
@@ -247,6 +275,20 @@
           {
             "name": "@description",
             "body": "<p>Applies the 'maxLength' propery</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "value",
+            "paramName": "value",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "old",
+            "paramName": "old",
+            "type": ""
           }
         ]
       },
@@ -259,11 +301,11 @@
     "_handleOk": {
       "location": {
         "start": {
-          "line": 156,
+          "line": 162,
           "column": 4
         },
         "end": {
-          "line": 161,
+          "line": 167,
           "column": 5
         }
       },

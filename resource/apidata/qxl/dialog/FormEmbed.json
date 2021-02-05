@@ -118,6 +118,14 @@
             "name": "@description",
             "body": "<p>Create the main content of the widget</p>"
           }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "properties",
+            "paramName": "properties",
+            "type": ""
+          }
         ]
       }
     },
@@ -181,10 +189,9 @@
         "@param": [
           {
             "name": "@param",
-            "body": "formData {Map} The form data map",
-            "paramName": "formData",
-            "description": " The form data map",
-            "type": "Map"
+            "body": "width",
+            "paramName": "width",
+            "type": ""
           },
           {
             "name": "@param",

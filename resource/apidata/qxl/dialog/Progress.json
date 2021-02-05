@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 249,
+        "line": 257,
         "column": 3
       }
     },
@@ -251,11 +251,11 @@
     "_applyShow": {
       "location": {
         "start": {
-          "line": 114,
+          "line": 116,
           "column": 4
         },
         "end": {
-          "line": 120,
+          "line": 122,
           "column": 5
         }
       },
@@ -265,6 +265,20 @@
             "name": "@description",
             "body": "<p>Applies the 'show' property</p>"
           }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "value",
+            "paramName": "value",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "old",
+            "paramName": "old",
+            "type": ""
+          }
         ]
       },
       "type": "function",
@@ -273,11 +287,11 @@
     "_applyProgress": {
       "location": {
         "start": {
-          "line": 125,
+          "line": 129,
           "column": 4
         },
         "end": {
-          "line": 133,
+          "line": 137,
           "column": 5
         }
       },
@@ -286,6 +300,20 @@
           {
             "name": "@description",
             "body": "<p>Applies the 'progress' property</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "value",
+            "paramName": "value",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "old",
+            "paramName": "old",
+            "type": ""
           }
         ]
       },
@@ -298,11 +326,11 @@
     "_applyNewLogText": {
       "location": {
         "start": {
-          "line": 138,
+          "line": 144,
           "column": 4
         },
         "end": {
-          "line": 143,
+          "line": 149,
           "column": 5
         }
       },
@@ -311,6 +339,20 @@
           {
             "name": "@description",
             "body": "<p>Adds new text to the log</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "value",
+            "paramName": "value",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "old",
+            "paramName": "old",
+            "type": ""
           }
         ]
       },
@@ -323,11 +365,11 @@
     "_applyOkButtonText": {
       "location": {
         "start": {
-          "line": 148,
+          "line": 156,
           "column": 4
         },
         "end": {
-          "line": 156,
+          "line": 164,
           "column": 5
         }
       },
@@ -336,6 +378,20 @@
           {
             "name": "@description",
             "body": "<p>Apply the OK Button text</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "value",
+            "paramName": "value",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "old",
+            "paramName": "old",
+            "type": ""
           }
         ]
       },
@@ -348,11 +404,11 @@
     "_progressBar": {
       "location": {
         "start": {
-          "line": 157,
+          "line": 165,
           "column": 4
         },
         "end": {
-          "line": 157,
+          "line": 165,
           "column": 22
         }
       },
@@ -362,11 +418,11 @@
     "_logView": {
       "location": {
         "start": {
-          "line": 158,
+          "line": 166,
           "column": 4
         },
         "end": {
-          "line": 158,
+          "line": 166,
           "column": 18
         }
       },
@@ -376,11 +432,11 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 164,
+          "line": 172,
           "column": 4
         },
         "end": {
-          "line": 230,
+          "line": 238,
           "column": 5
         }
       },
@@ -403,11 +459,11 @@
     "_handleCancel": {
       "location": {
         "start": {
-          "line": 238,
+          "line": 246,
           "column": 4
         },
         "end": {
-          "line": 247,
+          "line": 255,
           "column": 5
         }
       },

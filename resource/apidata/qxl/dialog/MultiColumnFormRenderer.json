@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 237,
+        "line": 209,
         "column": 3
       }
     },
@@ -59,7 +59,7 @@
     "column": {
       "location": {
         "start": {
-          "line": 39,
+          "line": 40,
           "column": 4
         },
         "end": {
@@ -73,6 +73,14 @@
             "name": "@description",
             "body": "<p>Renderer columns each consume multiple layout (grid) columns. This is a\n convenience function allowing the application to more easily specify\n the column numbers when establishing the layout, in terms of the column\n numbers that the application uses.</p>"
           }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "col",
+            "paramName": "col",
+            "type": ""
+          }
         ]
       },
       "type": "function",
@@ -85,7 +93,7 @@
           "column": 4
         },
         "end": {
-          "line": 235,
+          "line": 207,
           "column": 5
         }
       },

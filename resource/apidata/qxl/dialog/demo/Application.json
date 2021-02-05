@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 761,
+        "line": 764,
         "column": 5
       }
     },
@@ -154,11 +154,11 @@
     "createDialogChain": {
       "location": {
         "start": {
-          "line": 237,
+          "line": 239,
           "column": 8
         },
         "end": {
-          "line": 264,
+          "line": 266,
           "column": 9
         }
       },
@@ -168,6 +168,20 @@
             "name": "@description",
             "body": "<p>Example for nested callbacks</p>"
           }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "caption",
+            "paramName": "caption",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "button",
+            "paramName": "button",
+            "type": ""
+          }
         ]
       },
       "type": "function",
@@ -176,11 +190,11 @@
     "createSelect": {
       "location": {
         "start": {
-          "line": 269,
+          "line": 273,
           "column": 8
         },
         "end": {
-          "line": 289,
+          "line": 293,
           "column": 9
         }
       },
@@ -190,6 +204,20 @@
             "name": "@description",
             "body": "<p>Offer a selection of choices to the user</p>"
           }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "caption",
+            "paramName": "caption",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "button",
+            "paramName": "button",
+            "type": ""
+          }
         ]
       },
       "type": "function",
@@ -198,11 +226,11 @@
     "createForm": {
       "location": {
         "start": {
-          "line": 291,
+          "line": 295,
           "column": 8
         },
         "end": {
-          "line": 377,
+          "line": 380,
           "column": 9
         }
       },
@@ -212,11 +240,11 @@
     "createFormEmbedded": {
       "location": {
         "start": {
-          "line": 379,
+          "line": 382,
           "column": 8
         },
         "end": {
-          "line": 500,
+          "line": 501,
           "column": 9
         }
       },
@@ -226,11 +254,11 @@
     "createWizard": {
       "location": {
         "start": {
-          "line": 502,
+          "line": 503,
           "column": 8
         },
         "end": {
-          "line": 609,
+          "line": 610,
           "column": 9
         }
       },
@@ -240,11 +268,11 @@
     "createLogin": {
       "location": {
         "start": {
-          "line": 614,
+          "line": 617,
           "column": 8
         },
         "end": {
-          "line": 638,
+          "line": 641,
           "column": 9
         }
       },
@@ -254,6 +282,20 @@
             "name": "@description",
             "body": "<p>Creates a sample login widget</p>"
           }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "caption",
+            "paramName": "caption",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "button",
+            "paramName": "button",
+            "type": ""
+          }
         ]
       },
       "type": "function",
@@ -262,11 +304,11 @@
     "checkCredentials": {
       "location": {
         "start": {
-          "line": 652,
+          "line": 655,
           "column": 8
         },
         "end": {
-          "line": 658,
+          "line": 661,
           "column": 9
         }
       },
@@ -301,11 +343,11 @@
     "finalCallback": {
       "location": {
         "start": {
-          "line": 665,
+          "line": 668,
           "column": 8
         },
         "end": {
-          "line": 677,
+          "line": 680,
           "column": 9
         }
       },
@@ -335,11 +377,11 @@
     "createProgress": {
       "location": {
         "start": {
-          "line": 679,
+          "line": 682,
           "column": 8
         },
         "end": {
-          "line": 702,
+          "line": 705,
           "column": 9
         }
       },
@@ -349,11 +391,11 @@
     "createProgressWithLog": {
       "location": {
         "start": {
-          "line": 704,
+          "line": 707,
           "column": 8
         },
         "end": {
-          "line": 759,
+          "line": 762,
           "column": 9
         }
       },
