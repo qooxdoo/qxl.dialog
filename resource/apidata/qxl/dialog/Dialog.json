@@ -15,7 +15,7 @@
         "column": 0
       },
       "end": {
-        "line": 318,
+        "line": 317,
         "column": 3
       }
     },
@@ -659,7 +659,7 @@
         "column": 13
       },
       "end": {
-        "line": 222,
+        "line": 210,
         "column": 3
       }
     },
@@ -689,11 +689,11 @@
     "show": {
       "location": {
         "start": {
-          "line": 229,
+          "line": 217,
           "column": 4
         },
         "end": {
-          "line": 234,
+          "line": 222,
           "column": 5
         }
       },
@@ -716,11 +716,11 @@
     "useBlocker": {
       "location": {
         "start": {
-          "line": 239,
+          "line": 227,
           "column": 4
         },
         "end": {
-          "line": 242,
+          "line": 230,
           "column": 5
         }
       },
@@ -741,11 +741,11 @@
     "blockerColor": {
       "location": {
         "start": {
-          "line": 247,
+          "line": 235,
           "column": 4
         },
         "end": {
-          "line": 250,
+          "line": 238,
           "column": 5
         }
       },
@@ -766,11 +766,11 @@
     "blockerOpacity": {
       "location": {
         "start": {
-          "line": 255,
+          "line": 243,
           "column": 4
         },
         "end": {
-          "line": 258,
+          "line": 246,
           "column": 5
         }
       },
@@ -890,11 +890,11 @@
     "__previousFocus": {
       "location": {
         "start": {
-          "line": 266,
+          "line": 254,
           "column": 4
         },
         "end": {
-          "line": 266,
+          "line": 254,
           "column": 25
         }
       },
@@ -912,11 +912,11 @@
     "show": {
       "location": {
         "start": {
-          "line": 273,
+          "line": 261,
           "column": 4
         },
         "end": {
-          "line": 297,
+          "line": 285,
           "column": 5
         }
       },
@@ -946,11 +946,11 @@
     "hide": {
       "location": {
         "start": {
-          "line": 304,
+          "line": 292,
           "column": 4
         },
         "end": {
-          "line": 316,
+          "line": 304,
           "column": 5
         }
       },
@@ -8421,6 +8421,19 @@
         ]
       }
     }
+  },
+  "destruct": {
+    "location": {
+      "start": {
+        "line": 312,
+        "column": 12
+      },
+      "end": {
+        "line": 316,
+        "column": 3
+      }
+    },
+    "jsdoc": {}
   },
   "events": {
     "ok": {
