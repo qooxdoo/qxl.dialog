@@ -348,7 +348,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * Create the main content of the widget
      * @param properties
      */
-    _createWidgetContent: function (properties) {
+    _createWidgetContent: function (properties = {}) {
       /*
        * Handle properties that must be set before _applyFormData
        */
