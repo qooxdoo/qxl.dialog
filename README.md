@@ -48,11 +48,25 @@ with the paths to the icons. Those paths also need to be put
 into a `@asset` compiler hint. See, for example, [this theme
 class](source/class/qxl/dialog/theme/icon/IcoMoonFree.js).
 
-## Install for development / use development version
+## Development version / testing
+
+To install the dependencies for a standalone development/ demo version, execute
+
+```shell
+npm install --no-save --no-package-lock node-sass @qooxdoo/compiler
+```
+
+Afterwards, you can run the demo locally with `npx qx serve`.
+
+To run the tests, execute `npx qx test`. The tests install the TestCafé Browser
+automation tools, which might require some additional security-related setup on
+MacOS.
+
+## Use development version in your app
 
 Fork on GitHub and clone your fork, or if you are interested
 in current master only, clone it directly using `git clone
-https://github.com/qooxdoo/qxl.dialog.git`. 
+https://github.com/qooxdoo/qxl.dialog.git`.
 
 Then, in your application, uninstall the package version
 if you had installed it, and install the repo version:
@@ -61,16 +75,6 @@ if you had installed it, and install the repo version:
 npx qx remove qooxdoo/qxl.dialog # only necessary if installed
 npx qx install --from-path=./path/to/qxl.dialog
 ```
-
-## Testing / Demo
-
-To install the dependencies and run the tests, simply do
-
-```shell
-npx qx test
-```
-
-Afterwards, you can run the demo locally with `npx qx serve`.
 
 ## Migrating from cboulanger/qx-contrib-Dialog
 
@@ -86,6 +90,12 @@ Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dia
 (check each search/replace manually to avoid false positives )
 
 ## Changelog
+
+### v3.1.2
+- Bug fix by @peuter: https://github.com/qooxdoo/qxl.dialog/commit/6a221
+
+### v3.1.1 
+- Moved qx dependency to v6.0.0
 
 ### v3.1.0 (Enhancements by @derrell)
 - Refactored `qxl.dialog.Dialog` and `qxl.dialog.Form`

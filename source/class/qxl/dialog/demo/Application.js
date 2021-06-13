@@ -233,6 +233,8 @@ qx.Class.define("qxl.dialog.demo.Application",
 
         /**
          * Example for nested callbacks
+         * @param caption
+         * @param button
          */
         createDialogChain: function (caption, button) {
           let dlg1 = qxl.dialog.Dialog
@@ -265,6 +267,8 @@ qx.Class.define("qxl.dialog.demo.Application",
 
         /**
          * Offer a selection of choices to the user
+         * @param caption
+         * @param button
          */
         createSelect: function (caption, button) {
           let dlg1 = qxl.dialog.Dialog
@@ -317,8 +321,7 @@ qx.Class.define("qxl.dialog.demo.Application",
                     {"label": "Home", "value": 1}
                   ],
                   "events": {
-                    "changeSelection": function(e)
-                    {
+                    "changeSelection": function(e) {
                       const selection = e.getData();
                       for (let i = 0; i < selection.length; i++) {
                         qxl.dialog.Dialog.alert(
@@ -456,8 +459,6 @@ qx.Class.define("qxl.dialog.demo.Application",
               }
             };
 
-//          let form = qxl.dialog.DialogEmbed.form("Please fill in the form", formData);
-          let _this = this;
           let form = new qxl.dialog.FormEmbed({
             message : "Please fill in the form",
             formData : formData,
@@ -610,6 +611,8 @@ qx.Class.define("qxl.dialog.demo.Application",
 
         /**
          * Creates a sample login widget
+         * @param caption
+         * @param button
          */
         createLogin: function (caption, button) {
           let loginWidget = new qxl.dialog.Login({

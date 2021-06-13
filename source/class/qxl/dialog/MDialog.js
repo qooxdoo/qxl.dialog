@@ -158,6 +158,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
     /**
      * Create the content of the qxl.dialog.
      * Extending classes must implement this method.
+     * @param properties
      */
     _createWidgetContent: function(properties) {
       this.error("_createWidgetContent not implemented!");
@@ -188,6 +189,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
 
     /**
      * Create an OK button
+     * @param noFocus
      * @return {qx.ui.form.Button}
      */
     _createOkButton: function(noFocus=false) {

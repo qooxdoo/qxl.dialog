@@ -53,7 +53,7 @@ qx.Class.define("qxl.dialog.formElement.SelectBox",
           converter: function (selection) {
             let value = selection[0].getModel().getValue();
             return value;
-          }.bind(this)
+          }
         });
       }
     }

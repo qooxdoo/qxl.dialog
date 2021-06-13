@@ -40,7 +40,20 @@ qx.Class.define("qxl.dialog.DialogEmbed", {
      * @param type {String} The dialog type to get
      * @return {qxl.dialog.Dialog}
      */
-    getInstanceByType: qxl.dialog.MDialog.getInstanceByType
+    getInstanceByType: qxl.dialog.MDialog.getInstanceByType,
+    /**
+     * Shortcut for form dialog. Cannot be reused.
+     * @param message {String} The message to display
+     * @param formData {Map} Map of form data. See {@link qxl.dialog.Form.formData}
+     * @param callback {Function?} The callback function
+     * @param context {Object?} The context to use with the callback function
+     * @param caption {String?} The caption of the dialog window
+     * @return {qxl.dialog.Form} The widget instance
+     */
+    form: function(message, formData, callback=null, context=null, caption="") {
+      qx.core.Assert.assertMap(formData);
+      return new qxl.dialog.FormEmbed({message, formData, allowCancel: true, callback, context});
+    }
   },
 
   /**
@@ -62,22 +75,6 @@ qx.Class.define("qxl.dialog.DialogEmbed", {
     }
     // escape key
     qx.core.Init.getApplication().getRoot().addListener("keyup", this._handleEscape, this);
-  },
-
-  statics :
-  {
-    /**
-     * Shortcut for form dialog. Cannot be reused.
-     * @param message {String} The message to display
-     * @param formData {Map} Map of form data. See {@link qxl.dialog.Form.formData}
-     * @param callback {Function?} The callback function
-     * @param context {Object?} The context to use with the callback function
-     * @param caption {String?} The caption of the dialog window
-     * @return {qxl.dialog.Form} The widget instance
-     */
-    form: function(message, formData, callback=null, context=null, caption="") {
-      qx.core.Assert.assertMap(formData);
-      return new qxl.dialog.FormEmbed({message, formData, allowCancel: true, callback, context});
-    }
   }
+
 });
