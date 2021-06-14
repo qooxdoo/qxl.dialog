@@ -5,6 +5,9 @@ qx_packages/
 # other stuff
 node_modules/
 npm-debug.log
+package*.json
+.pnpm*
+pnpm*
 .DS_Store
 .idea
 /html
