@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 764,
+        "line": 945,
         "column": 5
       }
     },
@@ -47,7 +47,7 @@
           "column": 8
         },
         "end": {
-          "line": 173,
+          "line": 178,
           "column": 9
         }
       },
@@ -70,11 +70,11 @@
     "_replaceOwnedObject": {
       "location": {
         "start": {
-          "line": 176,
+          "line": 181,
           "column": 8
         },
         "end": {
-          "line": 182,
+          "line": 187,
           "column": 9
         }
       },
@@ -84,11 +84,11 @@
     "createAlert": {
       "location": {
         "start": {
-          "line": 184,
+          "line": 189,
           "column": 8
         },
         "end": {
-          "line": 191,
+          "line": 196,
           "column": 9
         }
       },
@@ -98,11 +98,11 @@
     "createWarning": {
       "location": {
         "start": {
-          "line": 193,
+          "line": 198,
           "column": 8
         },
         "end": {
-          "line": 198,
+          "line": 203,
           "column": 9
         }
       },
@@ -112,11 +112,11 @@
     "createError": {
       "location": {
         "start": {
-          "line": 200,
+          "line": 205,
           "column": 8
         },
         "end": {
-          "line": 205,
+          "line": 210,
           "column": 9
         }
       },
@@ -126,11 +126,11 @@
     "createConfirm": {
       "location": {
         "start": {
-          "line": 207,
+          "line": 212,
           "column": 8
         },
         "end": {
-          "line": 219,
+          "line": 224,
           "column": 9
         }
       },
@@ -140,11 +140,11 @@
     "createPrompt": {
       "location": {
         "start": {
-          "line": 221,
+          "line": 226,
           "column": 8
         },
         "end": {
-          "line": 232,
+          "line": 237,
           "column": 9
         }
       },
@@ -154,11 +154,11 @@
     "createDialogChain": {
       "location": {
         "start": {
-          "line": 239,
+          "line": 244,
           "column": 8
         },
         "end": {
-          "line": 266,
+          "line": 271,
           "column": 9
         }
       },
@@ -190,11 +190,11 @@
     "createSelect": {
       "location": {
         "start": {
-          "line": 273,
+          "line": 278,
           "column": 8
         },
         "end": {
-          "line": 293,
+          "line": 298,
           "column": 9
         }
       },
@@ -226,11 +226,11 @@
     "createForm": {
       "location": {
         "start": {
-          "line": 295,
+          "line": 300,
           "column": 8
         },
         "end": {
-          "line": 380,
+          "line": 385,
           "column": 9
         }
       },
@@ -240,11 +240,25 @@
     "createFormEmbedded": {
       "location": {
         "start": {
-          "line": 382,
+          "line": 387,
           "column": 8
         },
         "end": {
-          "line": 501,
+          "line": 506,
+          "column": 9
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "createTabbedFormEmbedded": {
+      "location": {
+        "start": {
+          "line": 508,
+          "column": 8
+        },
+        "end": {
+          "line": 682,
           "column": 9
         }
       },
@@ -254,11 +268,11 @@
     "createWizard": {
       "location": {
         "start": {
-          "line": 503,
+          "line": 684,
           "column": 8
         },
         "end": {
-          "line": 610,
+          "line": 791,
           "column": 9
         }
       },
@@ -268,11 +282,11 @@
     "createLogin": {
       "location": {
         "start": {
-          "line": 617,
+          "line": 798,
           "column": 8
         },
         "end": {
-          "line": 641,
+          "line": 822,
           "column": 9
         }
       },
@@ -304,11 +318,11 @@
     "checkCredentials": {
       "location": {
         "start": {
-          "line": 655,
+          "line": 836,
           "column": 8
         },
         "end": {
-          "line": 661,
+          "line": 842,
           "column": 9
         }
       },
@@ -343,11 +357,11 @@
     "finalCallback": {
       "location": {
         "start": {
-          "line": 668,
+          "line": 849,
           "column": 8
         },
         "end": {
-          "line": 680,
+          "line": 861,
           "column": 9
         }
       },
@@ -377,11 +391,11 @@
     "createProgress": {
       "location": {
         "start": {
-          "line": 682,
+          "line": 863,
           "column": 8
         },
         "end": {
-          "line": 705,
+          "line": 886,
           "column": 9
         }
       },
@@ -391,11 +405,11 @@
     "createProgressWithLog": {
       "location": {
         "start": {
-          "line": 707,
+          "line": 888,
           "column": 8
         },
         "end": {
-          "line": 762,
+          "line": 943,
           "column": 9
         }
       },
