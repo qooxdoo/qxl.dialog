@@ -28,16 +28,28 @@ qx.Class.define("qxl.dialog.formElement.RadioGroup",
 
     _registration : {
       initElement : function(fieldType, fieldData, key) {
-        let formElement = new qx.ui.form.RadioGroup();
+        let layout;             // default uses VBox
+        if (fieldData.orientation == "horizontal")
+        {
+          layout = new qx.ui.layout.HBox(4);
+        }
+        else if (fieldData.layout)
+        {
+          layout = fieldData.layout;
+        }
+        let formElement = new qx.ui.form.RadioButtonGroup(layout);
         if (fieldData.orientation) {
           formElement.setUserData("orientation", fieldData.orientation);
         }
-        fieldData.options.forEach(function (item) {
+        fieldData.options.forEach(function (item, index) {
           let radioButton = new qx.ui.form.RadioButton(item.label);
           radioButton.setUserData(
-          "value",
-          item.value !== undefined ? item.value : item.label
-          );
+            "value",
+            item.value !== undefined ? item.value : item.label
+            );
+          if (index === 0 && "tabIndex" in item) {
+            radioButton.setTabIndex(item.tabIndex);
+          }
           formElement.add(radioButton);
         }, this);
         return formElement;
