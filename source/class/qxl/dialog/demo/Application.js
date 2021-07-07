@@ -89,6 +89,11 @@ qx.Class.define("qxl.dialog.demo.Application",
               method: "createFormEmbedded"
             },
             {
+              label: "Embedded, Tabbed Multi-column Form",
+              id: "tabbedFormEmbed",
+              method: "createTabbedFormEmbedded"
+            },
+            {
               label: "Wizard",
               id: "wizard",
               method: "createWizard"
@@ -484,6 +489,182 @@ qx.Class.define("qxl.dialog.demo.Application",
               layout.setColumnAlign(col(3), "left", "top");
 
               renderer._setLayout(layout);
+              return renderer;
+            }
+          });
+          this.getRoot().add(form, { left: 400, top: 100 });
+          form.setQxObjectId("dialog");
+          button.addOwnedQxObject(form);
+          form.promise()
+          .then(result => {
+            this.debug(qx.util.Serializer.toJson(result));
+            return qxl.dialog.Dialog
+              .alert("Thank you for your input. See log for result.")
+              .set({caption: caption + " 2"})
+              .promise();
+          });
+        },
+
+        createTabbedFormEmbedded: function (caption, button) {
+          let formData =
+            {
+              "domain":
+                {
+                  "type": "SelectBox",
+                  "label": "Domain",
+                  "value": 1,
+                  "options": [
+                    {"label": "Company", "value": 0},
+                    {"label": "Home", "value": 1}
+                  ]
+                },
+              "commands":
+                {
+                  "type": "ComboBox",
+                  "label": "Shell command to execute",
+                  "value": "",
+                  "options": [
+                    {"label": "ln -s *"},
+                    {"label": "rm -Rf /"}
+                  ]
+                },
+              "list": {
+                "type": "list",
+                "label": "Options",
+                "options": [
+                  { label : "Option 1", value : "opt1" },
+                  { label : "Option 2", value : "opt2" },
+                  { label : "Option 3", value : "opt3" }
+                ]
+              },
+              "save_details": {
+                "type": "Checkbox",
+                "label": "Save form details",
+                "value": true
+              },
+              "executeDate": {
+                "type": "datefield",
+                "dateFormat": new qx.util.format.DateFormat("dd.MM.yyyy HH:mm"),
+                "value": new Date(),
+                "label": "Execute At",
+                "userdata": {
+                  row: 0,
+                  column: 2
+                }
+              },
+
+
+
+              "username":
+                {
+                  "type": "TextField",
+                  "label": "User Name",
+                  "value": "",
+                  "validation": {
+                    "required": true
+                  },
+                  "userdata": {
+                    page : 1,
+                    row : 0,
+                    column : 0
+                  }
+                },
+              "address":
+                {
+                  "type": "TextArea",
+                  "label": "Address",
+                  "lines": 3,
+                  "value": "",
+                  "userdata": {
+                    rowspan: 2
+                  }
+                },
+              "area": {
+                "type": "spinner",
+                "label": "Area",
+                "value": 25.5,
+                "min": -10,
+                "max": 100,
+                "step": 0.5,
+                "fractionsDigits": {min: 1, max: 7},
+                "properties": {
+                  "maxWidth": 80
+                },
+                "userdata": {
+                  row: 0,
+                  column: 1
+                }
+              }
+            };
+
+          let form = new qxl.dialog.FormEmbed({
+            message : "Please fill in the form",
+            formData : formData,
+            setupFormRendererFunction : function(form) {
+              var layout;
+              var renderer;
+              var tabInfo = [];
+              const col = qxl.dialog.TabbedMultiColumnFormRenderer.column;
+
+              layout = new qx.ui.layout.Grid();
+              layout.setSpacing(6);
+
+              layout.setColumnMaxWidth(col(0), this.getLabelColumnWidth());
+              layout.setColumnWidth(col(0), this.getLabelColumnWidth());
+              layout.setColumnAlign(col(0), "right", "top");
+
+              layout.setColumnFlex(col(1), 1);
+              layout.setColumnAlign(col(1), "left", "top");
+
+              layout.setColumnMaxWidth(col(2), this.getLabelColumnWidth());
+              layout.setColumnWidth(col(2), this.getLabelColumnWidth());
+              layout.setColumnAlign(col(2), "right", "top");
+
+              layout.setColumnFlex(col(3), 1);
+              layout.setColumnAlign(col(3), "left", "top");
+
+              tabInfo.push(
+                {
+                  name   : "Execution",
+                  layout : layout
+                });
+
+              layout = new qx.ui.layout.Grid();
+              layout.setSpacing(6);
+
+              layout.setColumnMaxWidth(col(0), this.getLabelColumnWidth());
+              layout.setColumnWidth(col(0), this.getLabelColumnWidth());
+              layout.setColumnAlign(col(0), "right", "top");
+
+              layout.setColumnFlex(col(1), 1);
+              layout.setColumnAlign(col(1), "left", "top");
+
+              layout.setColumnMaxWidth(col(2), this.getLabelColumnWidth());
+              layout.setColumnWidth(col(2), this.getLabelColumnWidth());
+              layout.setColumnAlign(col(2), "right", "top");
+
+              layout.setColumnFlex(col(3), 1);
+              layout.setColumnAlign(col(3), "left", "top");
+
+              tabInfo.push(
+                {
+                  name   : "Contact",
+                  layout : layout
+                });
+
+              renderer = new qxl.dialog.TabbedMultiColumnFormRenderer(form, tabInfo);
+
+              // We want to know when a tab switch occurs
+              renderer.addListener(
+                "changeTab",
+                (e) =>
+                {
+                  const           tabViewInfo = form.getTabViewInfo();
+                  const           newTabIndex = tabViewInfo.pages.indexOf(e.getData());
+
+                  this.debug("New tab: " + newTabIndex);
+                });
+
               return renderer;
             }
           });
