@@ -57,9 +57,38 @@ qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer",
         this._pages.push(page);
       });
 
+    // Notify our listeners when a user selects a new tab. (We do
+    // *not* notify our listeners when the tab changes during form
+    // rendering.)
+    this._tabView.addListener(
+      "changeSelection",
+      (e) =>
+      {
+        if (! this.__bInternalChange)
+        {
+          this.fireDataEvent("changeTab", e.getData()[0]);
+        }
+      });
+
     // Now that we're initialized, restore the render function and call it.
     this._render = render;
     this._render();
+
+    // Make the tabview available via the form
+    form.getTabViewInfo =
+      () =>
+      {
+        return (
+          {
+            tabView : this._tabView,
+            pages   : this._pages
+          });
+      };
+  },
+
+  events :
+  {
+    changeTab : "qx.event.type.Data"
   },
 
   statics :
@@ -87,6 +116,9 @@ qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer",
     /** Currently selected page index */
     _pageIndex : 0,
 
+    /** Prevent changeTab event while adding items */
+    __bInternalChange : false,
+
     // overridden
     addItems : function(items, names, title) {
       let             i;
@@ -98,6 +130,9 @@ qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer",
       let             rowspan;
       let             widget;
       let             label;
+
+      // Prevent changeTab event while we're in here
+      this.__bInternalChange = true;
 
       /*
        * add the header
@@ -275,6 +310,13 @@ qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer",
           widget.addListener("appear", widget.focus, widget);
         }
       }
+
+      // Always switch back to page 0 after form is rendered
+      page = this._pages[0];
+      this._tabView.setValue(page);
+
+      // Re-enable changeTab events for when user selects a tab
+      this.__bInternalChange = false;
     }
   }
 });
