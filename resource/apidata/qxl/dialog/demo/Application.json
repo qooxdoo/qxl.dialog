@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 945,
+        "line": 955,
         "column": 5
       }
     },
@@ -21,7 +21,7 @@
       "@description": [
         {
           "name": "@description",
-          "body": "<p>This is the main application class of your custom application \"dialog\"</p>"
+          "body": "<p>qxl.dialog demo</p>"
         }
       ],
       "@asset": [
@@ -70,11 +70,11 @@
     "_replaceOwnedObject": {
       "location": {
         "start": {
-          "line": 181,
+          "line": 180,
           "column": 8
         },
         "end": {
-          "line": 187,
+          "line": 194,
           "column": 9
         }
       },
@@ -84,21 +84,7 @@
     "createAlert": {
       "location": {
         "start": {
-          "line": 189,
-          "column": 8
-        },
-        "end": {
           "line": 196,
-          "column": 9
-        }
-      },
-      "type": "function",
-      "access": "public"
-    },
-    "createWarning": {
-      "location": {
-        "start": {
-          "line": 198,
           "column": 8
         },
         "end": {
@@ -109,7 +95,7 @@
       "type": "function",
       "access": "public"
     },
-    "createError": {
+    "createWarning": {
       "location": {
         "start": {
           "line": 205,
@@ -123,14 +109,28 @@
       "type": "function",
       "access": "public"
     },
-    "createConfirm": {
+    "createError": {
       "location": {
         "start": {
           "line": 212,
           "column": 8
         },
         "end": {
-          "line": 224,
+          "line": 217,
+          "column": 9
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "createConfirm": {
+      "location": {
+        "start": {
+          "line": 219,
+          "column": 8
+        },
+        "end": {
+          "line": 231,
           "column": 9
         }
       },
@@ -140,11 +140,11 @@
     "createPrompt": {
       "location": {
         "start": {
-          "line": 226,
+          "line": 233,
           "column": 8
         },
         "end": {
-          "line": 237,
+          "line": 244,
           "column": 9
         }
       },
@@ -154,11 +154,11 @@
     "createDialogChain": {
       "location": {
         "start": {
-          "line": 244,
+          "line": 251,
           "column": 8
         },
         "end": {
-          "line": 271,
+          "line": 278,
           "column": 9
         }
       },
@@ -190,11 +190,11 @@
     "createSelect": {
       "location": {
         "start": {
-          "line": 278,
+          "line": 285,
           "column": 8
         },
         "end": {
-          "line": 298,
+          "line": 305,
           "column": 9
         }
       },
@@ -226,11 +226,11 @@
     "createForm": {
       "location": {
         "start": {
-          "line": 300,
+          "line": 307,
           "column": 8
         },
         "end": {
-          "line": 385,
+          "line": 391,
           "column": 9
         }
       },
@@ -240,11 +240,11 @@
     "createFormEmbedded": {
       "location": {
         "start": {
-          "line": 387,
+          "line": 393,
           "column": 8
         },
         "end": {
-          "line": 506,
+          "line": 514,
           "column": 9
         }
       },
@@ -254,11 +254,11 @@
     "createTabbedFormEmbedded": {
       "location": {
         "start": {
-          "line": 508,
+          "line": 516,
           "column": 8
         },
         "end": {
-          "line": 682,
+          "line": 692,
           "column": 9
         }
       },
@@ -268,11 +268,11 @@
     "createWizard": {
       "location": {
         "start": {
-          "line": 684,
+          "line": 694,
           "column": 8
         },
         "end": {
-          "line": 791,
+          "line": 801,
           "column": 9
         }
       },
@@ -282,11 +282,11 @@
     "createLogin": {
       "location": {
         "start": {
-          "line": 798,
+          "line": 808,
           "column": 8
         },
         "end": {
-          "line": 822,
+          "line": 832,
           "column": 9
         }
       },
@@ -318,11 +318,11 @@
     "checkCredentials": {
       "location": {
         "start": {
-          "line": 836,
+          "line": 846,
           "column": 8
         },
         "end": {
-          "line": 842,
+          "line": 852,
           "column": 9
         }
       },
@@ -357,11 +357,11 @@
     "finalCallback": {
       "location": {
         "start": {
-          "line": 849,
+          "line": 859,
           "column": 8
         },
         "end": {
-          "line": 861,
+          "line": 871,
           "column": 9
         }
       },
@@ -391,11 +391,11 @@
     "createProgress": {
       "location": {
         "start": {
-          "line": 863,
+          "line": 873,
           "column": 8
         },
         "end": {
-          "line": 886,
+          "line": 896,
           "column": 9
         }
       },
@@ -405,11 +405,11 @@
     "createProgressWithLog": {
       "location": {
         "start": {
-          "line": 888,
+          "line": 898,
           "column": 8
         },
         "end": {
-          "line": 943,
+          "line": 953,
           "column": 9
         }
       },
