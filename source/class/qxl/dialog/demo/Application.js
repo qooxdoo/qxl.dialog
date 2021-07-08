@@ -15,7 +15,7 @@
 
 
 /**
- * This is the main application class of your custom application "dialog"
+ * qxl.dialog demo
  * @asset(dialog/*)
  * @require(qxl.dialog.Dialog)
  */
@@ -177,11 +177,18 @@ qx.Class.define("qxl.dialog.demo.Application",
           this.getRoot().add(button_panel, {left: 100, top: 100});
         },
 
-
         _replaceOwnedObject: function(owner, obj, id="dialog") {
           try {
-            owner.removeOwnedQxObject(id);
-          } catch (e) {} // ignore error
+            const obj = owner.getQxObject(id);
+            if (obj) {
+              console.log(`Removing "${id}..."`);
+              owner.removeOwnedQxObject(id);
+              obj.hide();
+              obj.dispose();
+            }
+          } catch (e) {
+            console.log(`Ignoring error  "${e.message}"`);
+          }
           obj.setQxObjectId(id);
           owner.addOwnedQxObject(obj);
         },
@@ -372,8 +379,7 @@ qx.Class.define("qxl.dialog.demo.Application",
 
           let form = qxl.dialog.Dialog.form("Please fill in the form", formData).set({caption});
           form.setLabelColumnWidth(200);
-          form.setQxObjectId("dialog");
-          button.addOwnedQxObject(form);
+          this._replaceOwnedObject(button, form, "dialog");
           form.promise()
           .then(result => {
             this.debug(qx.util.Serializer.toJson(result));
@@ -463,8 +469,11 @@ qx.Class.define("qxl.dialog.demo.Application",
                 }
               }
             };
-
-          let form = new qxl.dialog.FormEmbed({
+          if (this.__embeddedForm) {
+            this.__embeddedForm.hide();
+            this.__embeddedForm.dispose();
+          }
+          let form = this.__embeddedForm = new qxl.dialog.FormEmbed({
             message : "Please fill in the form",
             formData : formData,
             setupFormRendererFunction : function(form) {
@@ -492,9 +501,8 @@ qx.Class.define("qxl.dialog.demo.Application",
               return renderer;
             }
           });
+          this._replaceOwnedObject(button, form, "dialog");
           this.getRoot().add(form, { left: 400, top: 100 });
-          form.setQxObjectId("dialog");
-          button.addOwnedQxObject(form);
           form.promise()
           .then(result => {
             this.debug(qx.util.Serializer.toJson(result));
@@ -596,8 +604,11 @@ qx.Class.define("qxl.dialog.demo.Application",
                 }
               }
             };
-
-          let form = new qxl.dialog.FormEmbed({
+          if (this.__embeddedForm) {
+            this.__embeddedForm.hide();
+            this.__embeddedForm.dispose();
+          }
+          let form = this.__embeddedForm = new qxl.dialog.FormEmbed({
             message : "Please fill in the form",
             formData : formData,
             setupFormRendererFunction : function(form) {
@@ -668,9 +679,8 @@ qx.Class.define("qxl.dialog.demo.Application",
               return renderer;
             }
           });
+          this._replaceOwnedObject(button, form, "dialog");
           this.getRoot().add(form, { left: 400, top: 100 });
-          form.setQxObjectId("dialog");
-          button.addOwnedQxObject(form);
           form.promise()
           .then(result => {
             this.debug(qx.util.Serializer.toJson(result));
