@@ -91,6 +91,9 @@ Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dia
 
 ## Changelog
 
+### v3.2.0
+- Added embedded tabbed multi-column form feature by @derrell
+
 ### v3.1.2
 - Bug fix by @peuter: https://github.com/qooxdoo/qxl.dialog/commit/6a221
 
