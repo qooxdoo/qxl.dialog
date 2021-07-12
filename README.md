@@ -13,10 +13,6 @@ A set of often used dialog widgets for the qooxdoo framework.
 
 The package also provides support for user-defined forms and wizards.
 
-> If you are migrating from
-[cboulanger/qx-contrib](https://github.com/cboulanger/qx-contrib-Dialog), see
-[below](#migrating-from-cboulangerqx-contrib-dialog).
-
 Demo: https://qooxdoo.github.io/qxl.dialog
 
 API Viewer: https://www.qooxdoo.org/qxl.dialog/apiviewer/index.html#qxl.dialog
@@ -53,7 +49,7 @@ class](source/class/qxl/dialog/theme/icon/IcoMoonFree.js).
 To install the dependencies for a standalone development/ demo version, execute
 
 ```shell
-npm install --no-save --no-package-lock node-sass @qooxdoo/compiler
+npm install --no-save --no-package-lock @qooxdoo/compiler
 ```
 
 Afterwards, you can run the demo locally with `npx qx serve`.
@@ -74,16 +70,6 @@ if you had installed it, and install the repo version:
 ```shell
 npx qx remove qooxdoo/qxl.dialog # only necessary if installed
 npx qx install --from-path=./path/to/qxl.dialog
-```
-
-## Migrating from cboulanger/qx-contrib-Dialog
-
-To migrate code that has used the cboulanger/qx-contrib-Dialog package, you need 
-to do the following steps:
-
-```shell
-npx qx pkg remove cboulanger/qx-contrib-Dialog
-npx qx pkg install qooxdoo/qxl.dialog
 ```
 
 Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dialog/` 
