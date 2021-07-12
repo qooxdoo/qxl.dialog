@@ -128,7 +128,7 @@ qx.Class.define("qxl.dialog.demo.Application",
           button_panel.add(title);
 
           // check box
-          let blockerCheckBox = new qx.ui.form.CheckBox("Use coloured blocker (like < v.1.3)");
+          let blockerCheckBox = new qx.ui.form.CheckBox("Use coloured blocker");
           blockerCheckBox.addListener("changeValue", function (e) {
             qxl.dialog.Dialog.useBlocker(e.getData());
           });
@@ -172,6 +172,12 @@ qx.Class.define("qxl.dialog.demo.Application",
             if (button_data.enabled !== undefined) {
               button.setEnabled(button_data.enabled);
             }
+            blockerCheckBox.addListener("changeValue", function (e) {
+              button.getOwnedQxObjects().forEach(dialog => {
+                dialog.hide();
+                dialog.dispose();
+              });
+            });
             button_panel.add(button);
           }, this);
           this.getRoot().add(button_panel, {left: 100, top: 100});
@@ -199,21 +205,21 @@ qx.Class.define("qxl.dialog.demo.Application",
             .set({caption});
 
           // next line is for automated UI tests only, not needed for "normal" usage
-          this._replaceOwnedObject(button, dlg, "dialog");
+          this._replaceOwnedObject(button, dlg);
         },
 
         createWarning: function (caption, button) {
           let dlg = qxl.dialog.Dialog
             .warning("This is a warning!")
             .set({caption});
-          this._replaceOwnedObject(button, dlg, "dialog");
+          this._replaceOwnedObject(button, dlg);
         },
 
         createError: function (caption, button) {
           let dlg = qxl.dialog.Dialog
             .error("This is an error!")
             .set({caption});
-          this._replaceOwnedObject(button, dlg, "dialog");
+          this._replaceOwnedObject(button, dlg);
         },
 
         createConfirm: function (caption, button) {
