@@ -27,7 +27,7 @@
  * @require(qx.util.Validate)
  */
 qx.Mixin.define("qxl.dialog.MForm", {
-  construct : function(properties) {
+  construct(properties) {
     this._init();
   },
 
@@ -35,10 +35,9 @@ qx.Mixin.define("qxl.dialog.MForm", {
     /**
      * Allow disabling autocomplete on all text and password fields
      */
-    allowBrowserAutocomplete :
-    {
-      check : "Boolean",
-      init  : true
+    allowBrowserAutocomplete: {
+      check: "Boolean",
+      init: true,
     },
 
     /**
@@ -97,7 +96,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
       check: "Map",
       nullable: true,
       event: "changeFormData",
-      apply: "_applyFormData"
+      apply: "_applyFormData",
     },
 
     /**
@@ -106,7 +105,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
     model: {
       check: "qx.core.Object",
       nullable: true,
-      event: "changeModel"
+      event: "changeModel",
     },
 
     /**
@@ -116,7 +115,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
       check: "Integer",
       nullable: false,
       init: 100,
-      apply: "_applyLabelColumnWidth"
+      apply: "_applyLabelColumnWidth",
     },
 
     /**
@@ -124,11 +123,10 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * single-column form renderer is automatically instantiated and
      * configured. The function is passed a single argument, the form object.
      */
-    setupFormRendererFunction :
-    {
-      check : "Function",
-      nullable : true,
-      init : null
+    setupFormRendererFunction: {
+      check: "Function",
+      nullable: true,
+      init: null,
     },
 
     /**
@@ -138,11 +136,10 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * form fields should be placed, and the form object itself
      * (this).
      */
-    beforeFormFunction :
-    {
-      check : "Function",
-      nullable : true,
-      init : null
+    beforeFormFunction: {
+      check: "Function",
+      nullable: true,
+      init: null,
     },
 
     /*
@@ -154,12 +151,11 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * not work properly if the context property is not yet set at the time at
      * the form is created.
      */
-    formReadyFunction :
-    {
-      check : "Function",
-      nullable : true,
-      init : null,
-      event : "formReadyFunctionChanged"
+    formReadyFunction: {
+      check: "Function",
+      nullable: true,
+      init: null,
+      event: "formReadyFunctionChanged",
     },
 
     /**
@@ -168,11 +164,10 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * one two arguments: the container in which the form fields should be
      * placed, and the form object itself (this).
      */
-    afterFormFunction :
-    {
-      check : "Function",
-      nullable : true,
-      init : null
+    afterFormFunction: {
+      check: "Function",
+      nullable: true,
+      init: null,
     },
 
     /**
@@ -181,11 +176,10 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * two arguments: the container in which the buttons were placed, and the
      * form object itself (this).
      */
-    afterButtonsFunction :
-    {
-      check : "Function",
-      nullable : true,
-      init : null
+    afterButtonsFunction: {
+      check: "Function",
+      nullable: true,
+      init: null,
     },
 
     /*
@@ -193,15 +187,14 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * function is called with one argument: the form object itself
      * (this).
      */
-    finalizeFunction :
-    {
-      check : "Function",
-      nullable : true,
-      init : null
-    }
+    finalizeFunction: {
+      check: "Function",
+      nullable: true,
+      init: null,
+    },
   },
 
-  statics : {
+  statics: {
     /* eslint-disable jsdoc/check-param-names */
     /**
      * Register a form element to be used within a qxl.dialog form.
@@ -277,7 +270,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
      *       The user-provided name for this form field
      */
     /* eslint-enable jsdoc/check-param-names */
-    registerFormElementHandlers : function(fieldType, handlers) {
+    registerFormElementHandlers(fieldType, handlers) {
       // Downcase the field type as it is case-insensitive
       fieldType = fieldType.toLowerCase();
 
@@ -286,22 +279,22 @@ qx.Mixin.define("qxl.dialog.MForm", {
     },
 
     /** Map of registered form element handlers, keyed by fieldType */
-    _registeredFormElements : {},
+    _registeredFormElements: {},
 
-    _internalFormElements : {
-      checkbox      : qxl.dialog.formElement.CheckBox,
-      combobox      : qxl.dialog.formElement.ComboBox,
-      datefield     : qxl.dialog.formElement.DateField,
-      groupheader   : qxl.dialog.formElement.GroupHeader,
-      label         : qxl.dialog.formElement.Label,
-      list          : qxl.dialog.formElement.List,
-      passwordfield : qxl.dialog.formElement.PasswordField,
-      radiogroup    : qxl.dialog.formElement.RadioGroup,
-      selectbox     : qxl.dialog.formElement.SelectBox,
-      spiinner      : qxl.dialog.formElement.Spinner,
-      textarea      : qxl.dialog.formElement.TextArea,
-      textfield     : qxl.dialog.formElement.TextField
-    }
+    _internalFormElements: {
+      checkbox: qxl.dialog.formElement.CheckBox,
+      combobox: qxl.dialog.formElement.ComboBox,
+      datefield: qxl.dialog.formElement.DateField,
+      groupheader: qxl.dialog.formElement.GroupHeader,
+      label: qxl.dialog.formElement.Label,
+      list: qxl.dialog.formElement.List,
+      passwordfield: qxl.dialog.formElement.PasswordField,
+      radiogroup: qxl.dialog.formElement.RadioGroup,
+      selectbox: qxl.dialog.formElement.SelectBox,
+      spiinner: qxl.dialog.formElement.Spinner,
+      textarea: qxl.dialog.formElement.TextArea,
+      textfield: qxl.dialog.formElement.TextField,
+    },
   },
 
   members: {
@@ -309,9 +302,9 @@ qx.Mixin.define("qxl.dialog.MForm", {
     _form: null,
     _formValidator: null,
     _formController: null,
-    _formElements : null,
+    _formElements: null,
 
-    _init : function() {
+    _init() {
       // Initialize form instances to an empty map which will be updated as
       // formItems are added.  After the formData has been applied, this
       // property will contain a map containing the form item instances, with
@@ -340,7 +333,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * Return the form
      * @return {qx.ui.form.Form}
      */
-    getForm: function () {
+    getForm() {
       return this._form;
     },
 
@@ -348,7 +341,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * Create the main content of the widget
      * @param properties
      */
-    _createWidgetContent: function (properties = {}) {
+    _createWidgetContent(properties = {}) {
       /*
        * Handle properties that must be set before _applyFormData
        */
@@ -368,7 +361,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
       this._message.setMinWidth(200);
       this._message.setAllowStretchX(true);
       hbox.add(this._message, {
-        flex: 1
+        flex: 1,
       });
 
       /*
@@ -382,7 +375,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
       let formTag = new qxl.dialog.FormTag();
       this._formContainer = new qx.ui.container.Composite();
       this._formContainer.setLayout(new qx.ui.layout.Grow());
-      formTag.add(this._formContainer, {flex: 1});
+      formTag.add(this._formContainer, { flex: 1 });
       container.add(formTag, { flex: 1 });
 
       /*
@@ -404,7 +397,10 @@ qx.Mixin.define("qxl.dialog.MForm", {
        * If requested, call the after-buttons function
        */
       if (typeof properties.afterButtonsFunction == "function") {
-        properties.afterButtonsFunction.bind(properties.context)(buttonPane, this);
+        properties.afterButtonsFunction.bind(properties.context)(
+          buttonPane,
+          this
+        );
       }
       this.add(container);
     },
@@ -415,7 +411,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * @param old {Map|null} The old value
      * @lint ignoreDeprecated(alert,eval)
      */
-    _applyFormData: function (formData, old) {
+    _applyFormData(formData, old) {
       if (!this._formElements) {
         // KLUDGE for issue #10068: The constructor of this mixin
         // isn't being called earlier enough.
@@ -426,15 +422,13 @@ qx.Mixin.define("qxl.dialog.MForm", {
         try {
           this.getModel().removeAllBindings();
           this._formController.dispose();
-        } catch (e) {
-        }
+        } catch (e) {}
       }
       if (this._form) {
         try {
           this._form.getValidationManager().removeAllBindings();
           this._form.dispose();
-        } catch (e) {
-        }
+        } catch (e) {}
       }
       this._formContainer.removeAll();
       if (!formData) {
@@ -446,9 +440,8 @@ qx.Mixin.define("qxl.dialog.MForm", {
       }
       let modelData = {};
       for (let key of Object.getOwnPropertyNames(formData)) {
-        modelData[key] = formData[key].value !== undefined ?
-        formData[key].value :
-        null;
+        modelData[key] =
+          formData[key].value !== undefined ? formData[key].value : null;
       }
       let model = qx.data.marshal.Json.createModel(modelData);
       this.setModel(model);
@@ -473,13 +466,14 @@ qx.Mixin.define("qxl.dialog.MForm", {
       } else {
         this.addListenerOnce(
           "formReadyFunctionChanged",
-          function() {
+          function () {
             f = this.getFormReadyFunction();
             if (f) {
               f.call(this.getContext(), this._form, this);
             }
           },
-          this.getContext());
+          this.getContext()
+        );
       }
 
       for (let key of Object.getOwnPropertyNames(formData)) {
@@ -496,9 +490,9 @@ qx.Mixin.define("qxl.dialog.MForm", {
         }
 
         // Instantiate and initialize the form element
-        formElement =
-          qxl.dialog.MForm._registeredFormElements[fieldType]
-            .initElement.call(this, fieldType, fieldData, key);
+        formElement = qxl.dialog.MForm._registeredFormElements[
+          fieldType
+        ].initElement.call(this, fieldType, fieldData, key);
 
         // Headers don't return a form element
         if (!formElement) {
@@ -509,10 +503,19 @@ qx.Mixin.define("qxl.dialog.MForm", {
         formElement.setUserData("key", key);
 
         // Add the form element to the form controller, if needed for the type
-        if (qxl.dialog.MForm._registeredFormElements[fieldType].addToFormController) {
+        if (
           qxl.dialog.MForm._registeredFormElements[fieldType]
-            .addToFormController.call(
-              this, fieldType, fieldData, key, formElement);
+            .addToFormController
+        ) {
+          qxl.dialog.MForm._registeredFormElements[
+            fieldType
+          ].addToFormController.call(
+            this,
+            fieldType,
+            fieldData,
+            key,
+            formElement
+          );
         }
 
         /**
@@ -532,19 +535,23 @@ qx.Mixin.define("qxl.dialog.MForm", {
                 validator = qx.util.Validate[validator]();
               } else if (validator.charAt(0) === "/") {
                 validator = qx.util.Validate.regExp(
-                new RegExp(validator.substr(1, validator.length - 2)),
-                fieldData.validation.errorMessage
+                  new RegExp(validator.substr(1, validator.length - 2)),
+                  fieldData.validation.errorMessage
                 );
               } else {
                 this.error("Invalid string validator.");
               }
-            } else if (!(validator instanceof qx.ui.form.validation.AsyncValidator) && typeof validator !== "function") {
+            } else if (
+              !(validator instanceof qx.ui.form.validation.AsyncValidator) &&
+              typeof validator !== "function"
+            ) {
               this.error("Invalid validator.");
             }
           }
           // async validation
-          if (qx.lang.Type.isString(fieldData.validation.proxy) &&
-          qx.lang.Type.isString(fieldData.validation.method)
+          if (
+            qx.lang.Type.isString(fieldData.validation.proxy) &&
+            qx.lang.Type.isString(fieldData.validation.method)
           ) {
             /**
              * fieldData.validation.proxy
@@ -570,12 +577,17 @@ qx.Mixin.define("qxl.dialog.MForm", {
                 if (!validatorObj.__asyncInProgress) {
                   validatorObj.__asyncInProgress = true;
                   proxy(method, [value], function (valid) {
-                    validatorObj.setValid(valid, message || this.tr("Value is invalid"));
+                    validatorObj.setValid(
+                      valid,
+                      message || this.tr("Value is invalid")
+                    );
                     validatorObj.__asyncInProgress = false;
                   });
                 }
               };
-              validator = new qx.ui.form.validation.AsyncValidator(validationFunc);
+              validator = new qx.ui.form.validation.AsyncValidator(
+                validationFunc
+              );
             }
           }
         }
@@ -610,18 +622,23 @@ qx.Mixin.define("qxl.dialog.MForm", {
         }
 
         // Do any required post-processing
-        if ("postProcess" in qxl.dialog.MForm._registeredFormElements[fieldType]) {
-          qxl.dialog.MForm._registeredFormElements[fieldType]
-            .postProcess.call(
-              this, fieldType, fieldData, key, formElement);
+        if (
+          "postProcess" in qxl.dialog.MForm._registeredFormElements[fieldType]
+        ) {
+          qxl.dialog.MForm._registeredFormElements[fieldType].postProcess.call(
+            this,
+            fieldType,
+            fieldData,
+            key,
+            formElement
+          );
         }
 
-         // generic userdata settings
+        // generic userdata settings
         if (typeof fieldData.userdata == "object") {
-          Object.keys(fieldData.userdata).forEach(
-            function(key) {
-              formElement.setUserData(key, fieldData.userdata[key]);
-            });
+          Object.keys(fieldData.userdata).forEach(function (key) {
+            formElement.setUserData(key, fieldData.userdata[key]);
+          });
         }
 
         /**
@@ -632,21 +649,30 @@ qx.Mixin.define("qxl.dialog.MForm", {
             let func;
             try {
               switch (typeof fieldData.events[type]) {
-              case "string": /** @deprecated */
-                // A string allows transferring this handler via JSON.
-                func = eval("(" + fieldData.events[type] + ")"); // eval is evil, I know.
-                break;
+                case "string" /** @deprecated */:
+                  // A string allows transferring this handler via JSON.
+                  func = eval("(" + fieldData.events[type] + ")"); // eval is evil, I know.
+                  break;
 
-              case "function":
-                func = fieldData.events[type];
-                break;
+                case "function":
+                  func = fieldData.events[type];
+                  break;
 
-              default:
-                throw new Error("Event handler must be a string eval()'ed to a function (deprecated), or a function");
+                default:
+                  throw new Error(
+                    "Event handler must be a string eval()'ed to a function (deprecated), or a function"
+                  );
               }
+
               formElement.addListener(type, func, formElement);
             } catch (e) {
-              this.warn("Invalid '" + type + "' event handler for form element '" + key + "'.");
+              this.warn(
+                "Invalid '" +
+                  type +
+                  "' event handler for form element '" +
+                  key +
+                  "'."
+              );
             }
           }
         }
@@ -666,7 +692,6 @@ qx.Mixin.define("qxl.dialog.MForm", {
         this._formElements[key] = formElement;
       }
 
-
       /*
        * render the form
        */
@@ -674,7 +699,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
 
       setupFormRenderer = this.getSetupFormRendererFunction();
       if (!setupFormRenderer) {
-        setupFormRenderer = function(form) {
+        setupFormRenderer = function (form) {
           var view;
 
           view = new qxl.dialog.FormRenderer(this._form);
@@ -704,13 +729,15 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * @param width
      * @param old {Map|null} The old value
      */
-    _applyLabelColumnWidth : function(width, old) {
+    _applyLabelColumnWidth(width, old) {
       var view;
 
       // If the form renderer is the default one and has already been applied...
-      if (!this.getSetupFormRendererFunction() &&
-          this._formContainer &&
-          this._formContainer.getChildren().length > 0) {
+      if (
+        !this.getSetupFormRendererFunction() &&
+        this._formContainer &&
+        this._formContainer.getChildren().length > 0
+      ) {
         view = this._formContainer.getChildren()[0];
         view.getLayout().setColumnWidth(0, width);
         view.getLayout().setColumnMaxWidth(0, width);
@@ -724,11 +751,11 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * validity of the current form.
      * @param form {qx.ui.form.Form} The form to bind
      */
-    _onFormReady: function (form) {
+    _onFormReady(form) {
       form.getValidationManager().bind("valid", this._okButton, "enabled", {
-        converter: function (value) {
+        converter(value) {
           return value || false;
-        }
+        },
       });
     },
 
@@ -736,16 +763,16 @@ qx.Mixin.define("qxl.dialog.MForm", {
      * Handle click on ok button. Calls callback with the result map
      * @override
      */
-    _handleOk: function () {
+    _handleOk() {
       this.hide();
       this.fireEvent("ok");
       if (this.getCallback()) {
         this.getCallback().call(
-        this.getContext(),
-        qx.util.Serializer.toNativeObject(this.getModel())
+          this.getContext(),
+          qx.util.Serializer.toNativeObject(this.getModel())
         );
       }
       this.resetCallback();
-    }
-  }
+    },
+  },
 });

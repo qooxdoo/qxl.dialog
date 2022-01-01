@@ -1,7 +1,18 @@
 import { Selector, ClientFunction } from 'testcafe';
 
-export const getPageHTML = ClientFunction(() => document.documentElement.outerHTML);
-export const IdSelector = Selector(id => document.querySelector(`[data-qx-object-id='${id}']`));
+/**
+ * Given an absolute object id, return its DOM element
+ * @param {String} id
+ * @return {Element}
+ */
+export const IdSelector = Selector(id => qx.core.Id.getQxObject(id).getContentElement().getDomElement());
+
+/**
+ * Given a TestCafé Selector object, return an enhanced selector with some qooxdoo-specific methods
+ * @param {Selector} selector
+ * @return {Selector}
+ * @constructor
+ */
 export const QxSelector = (selector) => {
   // browser-side methods
   selector = selector.addCustomMethods({
@@ -12,7 +23,7 @@ export const QxSelector = (selector) => {
      * @param id
      * @returns {String}
      */
-    absoluteIdOf : function(domNode, id){
+    absoluteIdOf(domNode, id){
       return qx.core.Id.getAbsoluteIdOf(qx.ui.core.Widget.getWidgetByElement(domNode).getObject(id));
     },
     /**
@@ -21,7 +32,7 @@ export const QxSelector = (selector) => {
      * @param key
      * @returns {*|var}
      */
-    getQxProperty: function(domNode, key){
+    getQxProperty(domNode, key){
       return qx.ui.core.Widget.getWidgetByElement(domNode).get(key);
     }
   });

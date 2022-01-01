@@ -13,7 +13,6 @@
 
 ************************************************************************ */
 
-
 /**
  * A dialog that alerts the user to something.
  *
@@ -24,7 +23,7 @@ qx.Class.define("qxl.dialog.Alert", {
     /**
      * Create the main content of the widget
      */
-    _createWidgetContent: function() {
+    _createWidgetContent() {
       let container = this._createDialogContainer();
       this.add(container);
       let hbox = new qx.ui.container.Composite(new qx.ui.layout.HBox(10));
@@ -34,16 +33,18 @@ qx.Class.define("qxl.dialog.Alert", {
       ).set({
         scale: true,
         height: 32,
-        width: 32
+        width: 32,
       });
+
       hbox.add(this._image);
       this._message = new qx.ui.basic.Label();
       this._message.setRich(true);
       this._message.setWidth(200);
       this._message.setAllowStretchX(true);
       hbox.add(this._message, {
-        flex: 1
+        flex: 1,
       });
+
       let buttonPane = this._createButtonPane();
       let okButton = this._createOkButton();
       buttonPane.add(okButton);
@@ -53,10 +54,10 @@ qx.Class.define("qxl.dialog.Alert", {
     /**
      * @override
      */
-     _handleEscape: function(e) {
-       if (e.getKeyCode() === 27) {
-         this._handleOk();
-       }
-     }
-  }
+    _handleEscape(e) {
+      if (e.getKeyCode() === 27) {
+        this._handleOk();
+      }
+    },
+  },
 });

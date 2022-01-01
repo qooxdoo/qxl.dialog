@@ -17,33 +17,35 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.PasswordField",
-{
-  statics :
-  {
-    register : function() {
+qx.Class.define("qxl.dialog.formElement.PasswordField", {
+  statics: {
+    register() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "passwordfield", this._registration);
+        "passwordfield",
+        this._registration
+      );
     },
 
-    _registration : {
-      initElement : function(fieldType, fieldData, key) {
+    _registration: {
+      initElement(fieldType, fieldData, key) {
         let formElement = new qx.ui.form.PasswordField();
-        formElement.getContentElement().setAttribute("autocomplete", "password");
+        formElement
+          .getContentElement()
+          .setAttribute("autocomplete", "password");
         formElement.setLiveUpdate(true);
         return formElement;
       },
 
-      addToFormController : function(fieldType, fieldData, key, formElement) {
+      addToFormController(fieldType, fieldData, key, formElement) {
         this._formController.addTarget(formElement, "value", key, true, null, {
           converter: function (value) {
             this._form.getValidationManager().validate();
             return value;
-          }.bind(this)
+          }.bind(this),
         });
       },
 
-      postProcess : function(fieldType, fieldData, key, formElement) {
+      postProcess(fieldType, fieldData, key, formElement) {
         /*
          * This allows changing the default autocomplete behavior to disable
          * autocomplete on all text and password fields unless allowed at
@@ -53,18 +55,20 @@ qx.Class.define("qxl.dialog.formElement.PasswordField",
         if (typeof fieldData.allowBrowserAutocomplete == "boolean") {
           if (!fieldData.allowBrowserAutocomplete) {
             //turn off autocomplete
-            formElement.getContentElement().setAttribute(
-            "autocomplete", "new-password");
+            formElement
+              .getContentElement()
+              .setAttribute("autocomplete", "new-password");
           } else {
             // leave autocomplete alone.
             // Note: Password field above sets attribute
           }
         } else if (!this.getAllowBrowserAutocomplete()) {
           //turn off autocomplete
-          formElement.getContentElement().setAttribute(
-            "autocomplete", "new-password");
+          formElement
+            .getContentElement()
+            .setAttribute("autocomplete", "new-password");
         }
-      }
-    }
-  }
+      },
+    },
+  },
 });

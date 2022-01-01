@@ -13,7 +13,6 @@
 
 ************************************************************************ */
 
-
 /**
  * A wizard-type widget that constructs the wizard pages on-the-fly, using
  * functionality from qxl.dialog.Form.
@@ -26,7 +25,7 @@ qx.Class.define("qxl.dialog.Wizard", {
      */
     pageData: {
       check: "Array",
-      apply: "_applyPageData"
+      apply: "_applyPageData",
     },
 
     /**
@@ -35,7 +34,7 @@ qx.Class.define("qxl.dialog.Wizard", {
     page: {
       check: "Integer",
       apply: "_applyPage",
-      init: 0
+      init: 0,
     },
 
     /**
@@ -45,7 +44,7 @@ qx.Class.define("qxl.dialog.Wizard", {
     allowBack: {
       check: "Boolean",
       init: false,
-      event: "changeAllowBack"
+      event: "changeAllowBack",
     },
 
     /**
@@ -55,7 +54,7 @@ qx.Class.define("qxl.dialog.Wizard", {
     allowNext: {
       check: "Boolean",
       init: false,
-      event: "changeAllowNext"
+      event: "changeAllowNext",
     },
 
     /**
@@ -67,8 +66,8 @@ qx.Class.define("qxl.dialog.Wizard", {
     allowFinish: {
       check: "Boolean",
       init: false,
-      event: "changeAllowFinish"
-    }
+      event: "changeAllowFinish",
+    },
   },
 
   members: {
@@ -79,7 +78,7 @@ qx.Class.define("qxl.dialog.Wizard", {
     /**
      * Create the main content of the widget
      */
-    _createWidgetContent: function() {
+    _createWidgetContent() {
       let container = this._createDialogContainer();
       container.setPadding(0);
       container.setLayout(new qx.ui.layout.VBox(0));
@@ -91,13 +90,15 @@ qx.Class.define("qxl.dialog.Wizard", {
       this._message.setMinWidth(100);
       this._message.setAllowGrowX(true);
       hbox.add(this._message, {
-        flex: 1
+        flex: 1,
       });
+
       let line = new qx.ui.core.Widget();
       line.setHeight(2);
       line.setBackgroundColor("gray");
       container.add(line);
-      let formContainer = (this._formContainer = new qx.ui.container.Composite());
+      let formContainer = (this._formContainer =
+        new qx.ui.container.Composite());
       formContainer.setPadding(16);
       formContainer.setLayout(new qx.ui.layout.Grow());
       formContainer.setMinWidth(300);
@@ -141,17 +142,18 @@ qx.Class.define("qxl.dialog.Wizard", {
      * the wizard buttons.
      * @param form {qx.ui.form.Form} The form to bind
      */
-    _onFormReady: function(form) {
+    _onFormReady(form) {
       let _this = this;
       form.getValidationManager().bind("valid", this._nextButton, "enabled", {
-        converter: function(value) {
+        converter(value) {
           return Boolean(value && _this.getAllowNext());
-        }
+        },
       });
+
       form.getValidationManager().bind("valid", this._finishButton, "enabled", {
-        converter: function(value) {
+        converter(value) {
           return Boolean(value && _this.getAllowFinish());
-        }
+        },
       });
     },
 
@@ -161,13 +163,13 @@ qx.Class.define("qxl.dialog.Wizard", {
      * @param pageData {Array} The new page data
      * @param old {Array} The old page data
      */
-    _applyPageData: function(pageData, old) {
+    _applyPageData(pageData, old) {
       this._backButton.setEnabled(false);
       this._nextButton.setEnabled(false);
       this._finishButton.setEnabled(false);
       if (pageData) {
         let modelData = {};
-        pageData.forEach(function(pData) {
+        pageData.forEach(function (pData) {
           let formData = pData.formData;
           for (let key of Object.getOwnPropertyNames(formData)) {
             modelData[key] = formData[key].value || null;
@@ -187,7 +189,7 @@ qx.Class.define("qxl.dialog.Wizard", {
      * @param page {Integer} The new page
      * @param old {Integer} The old page
      */
-    _applyPage: function(page, old) {
+    _applyPage(page, old) {
       let pageData = this.getPageData()[page];
       this.setFormData(null);
       delete pageData.pageData;
@@ -204,7 +206,7 @@ qx.Class.define("qxl.dialog.Wizard", {
     /**
      * Starts the wizard
      */
-    start: function() {
+    start() {
       this.show();
       this.setPage(0);
     },
@@ -212,7 +214,7 @@ qx.Class.define("qxl.dialog.Wizard", {
     /**
      * Goes to the previous wizard button
      */
-    goBack: function() {
+    goBack() {
       let page = this.getPage();
       if (page === 0) {
         this.error("Cannot go back!");
@@ -223,7 +225,7 @@ qx.Class.define("qxl.dialog.Wizard", {
     /**
      * Goes to the next wizard page
      */
-    goForward: function() {
+    goForward() {
       let page = this.getPage();
       if (page > this.getPageData().length - 2) {
         this.error("Cannot go forward!");
@@ -234,7 +236,7 @@ qx.Class.define("qxl.dialog.Wizard", {
     /**
      * Finishes the wizard. Calls callback with the result data map
      */
-    finish: function() {
+    finish() {
       this.hide();
       if (this.getCallback()) {
         this.getCallback().call(
@@ -243,6 +245,6 @@ qx.Class.define("qxl.dialog.Wizard", {
         );
       }
       this.resetCallback();
-    }
-  }
+    },
+  },
 });

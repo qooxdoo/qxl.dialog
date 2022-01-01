@@ -17,17 +17,17 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.Spinner",
-{
-  statics :
-  {
-    register : function() {
+qx.Class.define("qxl.dialog.formElement.Spinner", {
+  statics: {
+    register() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "spinner", this._registration);
+        "spinner",
+        this._registration
+      );
     },
 
-    _registration : {
-      initElement : function(fieldType, fieldData, key) {
+    _registration: {
+      initElement(fieldType, fieldData, key) {
         let formElement = new qx.ui.form.Spinner();
         if (fieldData.min) {
           formElement.setMinimum(fieldData.min);
@@ -52,14 +52,14 @@ qx.Class.define("qxl.dialog.formElement.Spinner",
         return formElement;
       },
 
-      addToFormController : function(fieldType, fieldData, key, formElement) {
+      addToFormController(fieldType, fieldData, key, formElement) {
         this._formController.addTarget(formElement, "value", key, true, null, {
           converter: function (value) {
             this._form.getValidationManager().validate();
             return value;
-          }.bind(this)
+          }.bind(this),
         });
-      }
-    }
-  }
+      },
+    },
+  },
 });

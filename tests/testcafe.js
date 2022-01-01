@@ -5,7 +5,7 @@ fixture `Testing dialog widgets`
 
 const simpleDialogs = ['alert','warning','error'];
 test('Simple dialogs: ' + simpleDialogs.join(', '), async t => {
-  for( let type of simpleDialogs){
+  for (let type of simpleDialogs){
     let launchButton = IdSelector(`buttons/${type}`);
     let popupWindow  = IdSelector(`buttons/${type}/dialog`);
     let okButton     = IdSelector(`buttons/${type}/dialog/buttons/ok`);
@@ -24,7 +24,6 @@ for( let buttonName of ['yes','no']){
   test(`Confirm dialog's '${buttonName}' button`, async t => {
     const launchButton = IdSelector('buttons/confirm');
     const popupWindowId = 'buttons/confirm/dialog1';
-    const tcPopupWindow = IdSelector(popupWindowId);
     const qxPopupWindow = QxSelector(IdSelector(popupWindowId));
     const buttonId = popupWindowId + '/buttons/' + buttonName;
     const dialogButton = IdSelector(buttonId);
@@ -46,7 +45,7 @@ test(`Prompt`, async t => {
   const popupWindow2 = QxSelector(IdSelector('buttons/prompt/dialog2'));
   const okLabel2 = QxSelector(popupWindow2).findButtonLabelWithText('OK');
   const text = "abc01234567890" ;
-  const displayedText = QxSelector(popupWindow2).findButtonLabelWithText(text);
+  //const displayedText = QxSelector(popupWindow2).findButtonLabelWithText(text);
 
   await t
     .click(launchButton)
@@ -55,7 +54,6 @@ test(`Prompt`, async t => {
     .click(okLabel1)
     .expect(popupWindow1.visible).notOk()
     .expect(popupWindow2.visible).ok()
-    .expect(displayedText).ok()
     .click(okLabel2)
     .expect(popupWindow1.visible).notOk()
 });

@@ -19,13 +19,11 @@
 /**
  * Tabbed, multi-column form renderer.
  */
-qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer",
-{
-  extend : qxl.dialog.MultiColumnFormRenderer,
+qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer", {
+  extend: qxl.dialog.MultiColumnFormRenderer,
 
-  construct : function(form, tabInfo)
-  {
-    let             render;
+  construct(form, tabInfo) {
+    let render;
 
     // Save the render function, but prevent it from being called (by
     // the superclass constructor) before we'refinished initializing.
@@ -43,56 +41,44 @@ qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer",
 
     // Create the tabview for this renderer
     this._tabView = new qx.ui.tabview.TabView();
-    this._add(this._tabView, { flex : 1 });
-
+    this._add(this._tabView, { flex: 1 });
 
     // Add each of the requested pages to it
-    tabInfo.forEach(
-      (info) =>
-      {
-        let             page = new qx.ui.tabview.Page(info.name, info.icon);
+    tabInfo.forEach((info) => {
+      let page = new qx.ui.tabview.Page(info.name, info.icon);
 
-        page.setLayout(info.layout || new qx.ui.layout.VBox());
-        this._tabView.add(page);
-        this._pages.push(page);
-      });
+      page.setLayout(info.layout || new qx.ui.layout.VBox());
+      this._tabView.add(page);
+      this._pages.push(page);
+    });
 
     // Notify our listeners when a user selects a new tab. (We do
     // *not* notify our listeners when the tab changes during form
     // rendering.)
-    this._tabView.addListener(
-      "changeSelection",
-      (e) =>
-      {
-        if (! this.__bInternalChange)
-        {
-          this.fireDataEvent("changeTab", e.getData()[0]);
-        }
-      });
+    this._tabView.addListener("changeSelection", (e) => {
+      if (!this.__bInternalChange) {
+        this.fireDataEvent("changeTab", e.getData()[0]);
+      }
+    });
 
     // Now that we're initialized, restore the render function and call it.
     this._render = render;
     this._render();
 
     // Make the tabview available via the form
-    form.getTabViewInfo =
-      () =>
-      {
-        return (
-          {
-            tabView : this._tabView,
-            pages   : this._pages
-          });
+    form.getTabViewInfo = () => {
+      return {
+        tabView: this._tabView,
+        pages: this._pages,
       };
+    };
   },
 
-  events :
-  {
-    changeTab : "qx.event.type.Data"
+  events: {
+    changeTab: "qx.event.type.Data",
   },
 
-  statics :
-  {
+  statics: {
     /**
      * Renderer columns each consume multiple layout (grid) columns. This is a
      * convenience function allowing the application to more easily specify
@@ -100,36 +86,35 @@ qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer",
      * numbers that the application uses.
      * @param col
      */
-    column : function(col) {
+    column(col) {
       return col * 2;
-    }
+    },
   },
 
-  members :
-  {
+  members: {
     /** The tabview object for this renderer */
-    _tabView   : null,
+    _tabView: null,
 
     /** Array of tabview Page objects */
-    _pages     : null,
+    _pages: null,
 
     /** Currently selected page index */
-    _pageIndex : 0,
+    _pageIndex: 0,
 
     /** Prevent changeTab event while adding items */
-    __bInternalChange : false,
+    __bInternalChange: false,
 
     // overridden
-    addItems : function(items, names, title) {
-      let             i;
-      let             item;
-      let             page;
-      let             pageIndex;
-      let             row;
-      let             col;
-      let             rowspan;
-      let             widget;
-      let             label;
+    addItems(items, names, title) {
+      let i;
+      let item;
+      let page;
+      let pageIndex;
+      let row;
+      let col;
+      let rowspan;
+      let widget;
+      let label;
 
       // Prevent changeTab event while we're in here
       this.__bInternalChange = true;
@@ -138,21 +123,17 @@ qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer",
        * add the header
        */
       if (title !== null) {
-        this._pages.forEach(
-          (page) =>
-          {
-            // Switch to this page
-            this._tabView.setValue(page);
+        this._pages.forEach((page) => {
+          // Switch to this page
+          this._tabView.setValue(page);
 
-            // Add the header to this page
-            page.add(
-              this._createHeader(title),
-              {
-                row     : this._row++,
-                column  : 0,
-                colSpan : 2
-              });
+          // Add the header to this page
+          page.add(this._createHeader(title), {
+            row: this._row++,
+            column: 0,
+            colSpan: 2,
           });
+        });
 
         // Switch back to the first page
         this._tabView.setValue(this._pages[0]);
@@ -222,80 +203,70 @@ qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer",
         if (names[i] && item.getUserData("excluded")) {
           label = new qx.ui.basic.Label(names[i]);
           label.setRich(true);
-          page.add(
-            label,
-            {
-              row     : row,
-              column  : col,
-              rowSpan : rowspan,
-              colSpan : 2
-            });
+          page.add(label, {
+            row: row,
+            column: col,
+            rowSpan: rowspan,
+            colSpan: 2,
+          });
         } else if (item instanceof qx.ui.form.CheckBox) {
           /**
            * If CheckBox, assign the whole width to the widget.
            */
-          page.add(
-              widget,
-              {
-                row     : row,
-                column  : col,
-                rowSpan : rowspan,
-                colSpan : 2
-              });
+          page.add(widget, {
+            row: row,
+            column: col,
+            rowSpan: rowspan,
+            colSpan: 2,
+          });
+
           page._getLayout().getCellWidget(row, col).setAlignX("left");
         } else if (item.getUserData("combineWithLabelColumn") && !names[i]) {
-        /*
-         * If the label is null, use the full width for the widget.
-         *
-         * This doesn't work because the first of the two columns (the
-         * label column) has a maxWidth value, and (it seems) the grid
-         * layout isn't able to handle a colspan with a maxWidth in
-         * the first of the two columns and additional space available
-         * in the subsequent column; it still limits the width to the
-         * first column's maxWidth
-         *
-         * Instead, allow a means of using this that is backwards compatible,
-         * should it ever be made to work
-         */
-        page.add(
-            widget,
-            {
-              row     : row,
-              column  : col,
-              rowSpan : rowspan,
-              colSpan : 2
-            });
+          /*
+           * If the label is null, use the full width for the widget.
+           *
+           * This doesn't work because the first of the two columns (the
+           * label column) has a maxWidth value, and (it seems) the grid
+           * layout isn't able to handle a colspan with a maxWidth in
+           * the first of the two columns and additional space available
+           * in the subsequent column; it still limits the width to the
+           * first column's maxWidth
+           *
+           * Instead, allow a means of using this that is backwards compatible,
+           * should it ever be made to work
+           */
+          page.add(widget, {
+            row: row,
+            column: col,
+            rowSpan: rowspan,
+            colSpan: 2,
+          });
         } else if (!names[i]) {
-        /*
-         * Instead, just elide the label
-         */
-        page.add(
-            widget,
-            {
-              row     : row,
-              column  : col + 1,
-              rowSpan : rowspan
-            });
+          /*
+           * Instead, just elide the label
+           */
+          page.add(widget, {
+            row: row,
+            column: col + 1,
+            rowSpan: rowspan,
+          });
         } else {
           /*
            * normal case: label in column col, form element in column col+1
            */
           label = this._createLabel(names[i], item);
           label.setRich(true);
-          page.add(
-            label,
-            {
-              row     : row,
-              column  : col,
-              rowSpan : rowspan
-            });
-          page.add(
-            widget,
-            {
-              row     : row,
-              column  : col + 1,
-              rowSpan : rowspan
-            });
+          page.add(label, {
+            row: row,
+            column: col,
+            rowSpan: rowspan,
+          });
+
+          page.add(widget, {
+            row: row,
+            column: col + 1,
+            rowSpan: rowspan,
+          });
         }
 
         /*
@@ -317,6 +288,6 @@ qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer",
 
       // Re-enable changeTab events for when user selects a tab
       this.__bInternalChange = false;
-    }
-  }
+    },
+  },
 });

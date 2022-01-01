@@ -17,7 +17,6 @@
 
 ************************************************************************ */
 
-
 /**
  * Mixin that provides base functionality for Window and embedded dialog
  * @ignore(qxl.dialog.alert)
@@ -37,13 +36,13 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * @param type {String} The dialog type to get
      * @return {qxl.dialog.Dialog}
      */
-    getInstanceByType: function(type) {
+    getInstanceByType(type) {
       try {
-        return new (qxl.dialog[qx.lang.String.firstUp(type)])();
+        return new qxl.dialog[qx.lang.String.firstUp(type)]();
       } catch (e) {
         throw new Error(type + " is not a valid dialog type");
       }
-    }
+    },
   },
 
   properties: {
@@ -55,7 +54,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      */
     callback: {
       check: "Function",
-      nullable: true
+      nullable: true,
     },
 
     /**
@@ -63,7 +62,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      */
     context: {
       check: "Object",
-      nullable: true
+      nullable: true,
     },
 
     /**
@@ -73,7 +72,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
     image: {
       check: "String",
       nullable: true,
-      apply: "_applyImage"
+      apply: "_applyImage",
     },
 
     /**
@@ -82,7 +81,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
     message: {
       check: "String",
       nullable: true,
-      apply: "_applyMessage"
+      apply: "_applyMessage",
     },
 
     /**
@@ -91,7 +90,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
     allowCancel: {
       check: "Boolean",
       init: true,
-      event: "changeAllowCancel"
+      event: "changeAllowCancel",
     },
 
     /**
@@ -100,8 +99,8 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      */
     cancelOnEscape: {
       check: "Boolean",
-      init: true
-    }
+      init: true,
+    },
   },
 
   events: {
@@ -115,7 +114,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * Dispatched when user clicks on the "Cancel" Button
      * @type {String}
      */
-    cancel: "qx.event.type.Event"
+    cancel: "qx.event.type.Event",
   },
 
   members: {
@@ -160,7 +159,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * Extending classes must implement this method.
      * @param properties
      */
-    _createWidgetContent: function(properties) {
+    _createWidgetContent(properties) {
       this.error("_createWidgetContent not implemented!");
     },
 
@@ -168,8 +167,10 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * Creates the default container (VBox)
      * @return {qx.ui.container.Composite}
      */
-    _createDialogContainer: function() {
-      this._container = new qx.ui.container.Composite(new qx.ui.layout.VBox(10));
+    _createDialogContainer() {
+      this._container = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox(10)
+      );
       return this._container;
     },
 
@@ -177,7 +178,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * Creates the button pane (HBox)
      * @return {qx.ui.container.Composite}
      */
-    _createButtonPane: function() {
+    _createButtonPane() {
       let buttons = new qx.ui.container.Composite(new qx.ui.layout.HBox(5));
       buttons.getLayout().setAlignX("center");
       if (qx.core.Environment.get("module.objectid") === true) {
@@ -192,14 +193,15 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * @param noFocus
      * @return {qx.ui.form.Button}
      */
-    _createOkButton: function(noFocus=false) {
+    _createOkButton(noFocus = false) {
       let okButton = (this._okButton = new qx.ui.form.Button(this.tr("OK")));
       okButton.setIcon("qxl.dialog.icon.ok");
       okButton.getChildControl("icon").set({
         width: 16,
         height: 16,
-        scale: true
+        scale: true,
       });
+
       okButton.setAllowStretchX(false);
       okButton.addListener("execute", this._handleOk, this);
       if (!noFocus) {
@@ -217,23 +219,26 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * if allowCancel property is set to true.
      * @return {qx.ui.form.Button}
      */
-    _createCancelButton: function() {
+    _createCancelButton() {
       let cancelButton = (this._cancelButton = new qx.ui.form.Button(
         this.tr("Cancel")
       ));
+
       cancelButton.setAllowStretchX(false);
       cancelButton.setIcon("qxl.dialog.icon.cancel");
       cancelButton.getChildControl("icon").set({
         width: 16,
         height: 16,
-        scale: true
+        scale: true,
       });
+
       cancelButton.addListener("execute", this._handleCancel, this);
       this.bind("allowCancel", cancelButton, "visibility", {
-        converter: function(value) {
+        converter(value) {
           return value ? "visible" : "excluded";
-        }
+        },
       });
+
       if (qx.core.Environment.get("module.objectid") === true) {
         cancelButton.setQxObjectId("cancel");
         this.getQxObject("buttons").addOwnedQxObject(cancelButton);
@@ -247,7 +252,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * @param old {String|null} old The previous value
      * @return {void}
      */
-    _applyImage: function(value, old) {
+    _applyImage(value, old) {
       this._image.setSource(value);
       this._image.setVisibility(value ? "visible" : "excluded");
     },
@@ -258,7 +263,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * @param old {String|null} old The previous value
      * @return {void}
      */
-    _applyMessage: function(value, old) {
+    _applyMessage(value, old) {
       this._message.setValue(value);
       this._message.setVisibility(value ? "visible" : "excluded");
     },
@@ -267,7 +272,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * Returns the widgets that is the container of the dialog
      * @return {qx.ui.core.LayoutItem}
      */
-    getDialogContainer: function() {
+    getDialogContainer() {
       if (!this._container) {
         return this._createDialogContainer();
       }
@@ -279,19 +284,23 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * @return {Promise} A promise that resolves with the result of the dialog
      * action
      */
-    promise: function() {
-      return new Promise(function(resolve, reject) {
-        this.setCallback(function(value) {
-          this.resetCallback();
-          resolve(value);
-        }.bind(this));
-      }.bind(this));
+    promise() {
+      return new Promise(
+        function (resolve, reject) {
+          this.setCallback(
+            function (value) {
+              this.resetCallback();
+              resolve(value);
+            }.bind(this)
+          );
+        }.bind(this)
+      );
     },
 
     /**
      * Handle click on ok button. Calls callback with a "true" argument
      */
-    _handleOk: function() {
+    _handleOk() {
       this.hide();
       this.fireEvent("ok");
       if (this.getCallback()) {
@@ -304,7 +313,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * Handle click on cancel button. Calls callback with
      * an "undefined" argument
      */
-    _handleCancel: function() {
+    _handleCancel() {
       this.hide();
       this.fireEvent("cancel");
       if (this.isAllowCancel() && this.getCallback()) {
@@ -317,10 +326,15 @@ qx.Mixin.define("qxl.dialog.MDialog", {
      * Handles the press on the 'Escape' key
      * @param  e {qx.event.type.KeyInput}
      */
-    _handleEscape: function(e) {
-      if (this.isCancelOnEscape() && e.getKeyCode() === 27 && this.getContentElement() && this.isSeeable()) {
+    _handleEscape(e) {
+      if (
+        this.isCancelOnEscape() &&
+        e.getKeyCode() === 27 &&
+        this.getContentElement() &&
+        this.isSeeable()
+      ) {
         this._handleCancel();
       }
-    }
-  }
+    },
+  },
 });

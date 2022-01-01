@@ -17,22 +17,22 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.GroupHeader",
-{
-  statics :
-  {
-    register : function() {
+qx.Class.define("qxl.dialog.formElement.GroupHeader", {
+  statics: {
+    register() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "groupheader", this._registration);
+        "groupheader",
+        this._registration
+      );
     },
 
-    _registration : {
-      initElement : function(fieldType, fieldData, key) {
+    _registration: {
+      initElement(fieldType, fieldData, key) {
         this._form.addGroupHeader(fieldData.label);
 
         // Headers don't return a form object
         return undefined;
-      }
-    }
-  }
+      },
+    },
+  },
 });

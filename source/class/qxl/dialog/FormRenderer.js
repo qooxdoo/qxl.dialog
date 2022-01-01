@@ -13,7 +13,6 @@
 
 ************************************************************************ */
 
-
 /**
  * A single row renderer for {@link qx.ui.form.Form}, adapted
  * for the {@link qxl.dialog.Form} widget. Main difference is that
@@ -30,17 +29,17 @@ qx.Class.define("qxl.dialog.FormRenderer", {
      */
     labelSuffix: {
       refine: true,
-      init: ":"
+      init: ":",
     },
 
     /**
      * The text that is displayed after the label and the label suffix
      * if a field is mandatory
      */
-    requiredSuffix :{
-      refine : true,
-      init : "<span style='color:#e5004b'>*</span>"
-    }
+    requiredSuffix: {
+      refine: true,
+      init: "<span style='color:#e5004b'>*</span>",
+    },
   },
 
   members: {
@@ -56,15 +55,14 @@ qx.Class.define("qxl.dialog.FormRenderer", {
      * @param names {String[]} An array of names for the form items.
      * @param title {String?} A title of the group you are adding.
      */
-    addItems: function(items, names, title) {
+    addItems(items, names, title) {
       if (title !== null) {
-        this._add(
-          this._createHeader(title), {
-            row: this._row,
-            column: 0,
-            colSpan: 2
-          }
-        );
+        this._add(this._createHeader(title), {
+          row: this._row,
+          column: 0,
+          colSpan: 2,
+        });
+
         this._row++;
       }
       for (let i = 0; i < items.length; i++) {
@@ -86,31 +84,33 @@ qx.Class.define("qxl.dialog.FormRenderer", {
           this._add(label, {
             row: this._row,
             column: 0,
-            colSpan: 2
+            colSpan: 2,
           });
         } else if (item instanceof qx.ui.form.CheckBox) {
           this._add(widget, {
             row: this._row,
             column: 0,
-            colSpan: 2
+            colSpan: 2,
           });
+
           this._getLayout().getCellWidget(this._row, 0).setAlignX("left");
         } else if (!names[i]) {
           this._add(widget, {
             row: this._row,
             column: 0,
-            colSpan: 2
+            colSpan: 2,
           });
         } else {
           label = this._createLabel(names[i], item);
           label.setRich(true);
           this._add(label, {
             row: this._row,
-            column: 0
+            column: 0,
           });
+
           this._add(widget, {
             row: this._row,
-            column: 1
+            column: 1,
           });
         }
         this._row++;
@@ -124,7 +124,7 @@ qx.Class.define("qxl.dialog.FormRenderer", {
      * @return {qx.ui.container.Composite} A composite containing the items of
      *   the RadioGroup.
      */
-    _createWidgetForRadioGroup: function(group) {
+    _createWidgetForRadioGroup(group) {
       let widget = new qx.ui.container.Composite(new qx.ui.layout.VBox(5));
       let items = group.getItems();
       for (let i = 0; i < items.length; i++) {
@@ -143,13 +143,13 @@ qx.Class.define("qxl.dialog.FormRenderer", {
      * @return {qx.ui.container.Composite} A composite containing the items of
      *   the RadioGroup.
      */
-    _createHBoxForRadioGroup: function(group) {
+    _createHBoxForRadioGroup(group) {
       let widget = new qx.ui.container.Composite(new qx.ui.layout.HBox(5));
       let items = group.getItems();
       for (let i = 0; i < items.length; i++) {
         widget.add(items[i]);
       }
       return widget;
-    }
-  }
+    },
+  },
 });

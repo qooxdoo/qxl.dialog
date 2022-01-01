@@ -22,18 +22,17 @@
  */
 qx.Class.define("qxl.dialog.Form", {
   extend: qxl.dialog.Dialog,
-  include: [ qxl.dialog.MForm ],
+  include: [qxl.dialog.MForm],
 
-  members :
-  {
+  members: {
     /**
      * Create OK Button
      * unlike our superclass, we do not add an appear listener to focus OK
      * @override
      * @return {qx.ui.form.Button}
      */
-    _createOkButton: function () {
+    _createOkButton() {
       return this.base(arguments, true);
-    }
-  }
+    },
+  },
 });

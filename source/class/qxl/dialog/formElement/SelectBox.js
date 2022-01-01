@@ -17,45 +17,52 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.SelectBox",
-{
-  statics :
-  {
-    register : function() {
+qx.Class.define("qxl.dialog.formElement.SelectBox", {
+  statics: {
+    register() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "selectbox", this._registration);
+        "selectbox",
+        this._registration
+      );
     },
 
-    _registration : {
-      initElement : function(fieldType, fieldData, key) {
+    _registration: {
+      initElement(fieldType, fieldData, key) {
         let formElement = new qx.ui.form.SelectBox();
         let model = qx.data.marshal.Json.createModel(fieldData.options);
         new qx.data.controller.List(model, formElement, "label");
         return formElement;
       },
 
-      addToFormController : function(fieldType, fieldData, key, formElement) {
-        this._formController.addTarget(formElement, "selection", key, true, {
-          converter: function (value) {
-            let selected = null;
-            let selectables = formElement.getSelectables();
-            selectables.forEach(function (selectable) {
-              if (selectable.getModel().getValue() === value) {
-                selected = selectable;
+      addToFormController(fieldType, fieldData, key, formElement) {
+        this._formController.addTarget(
+          formElement,
+          "selection",
+          key,
+          true,
+          {
+            converter: function (value) {
+              let selected = null;
+              let selectables = formElement.getSelectables();
+              selectables.forEach(function (selectable) {
+                if (selectable.getModel().getValue() === value) {
+                  selected = selectable;
+                }
+              }, this);
+              if (!selected) {
+                return [selectables[0]];
               }
-            }, this);
-            if (!selected) {
-              return [selectables[0]];
-            }
-            return [selected];
-          }.bind(this)
-        }, {
-          converter: function (selection) {
-            let value = selection[0].getModel().getValue();
-            return value;
+              return [selected];
+            }.bind(this),
+          },
+          {
+            converter(selection) {
+              let value = selection[0].getModel().getValue();
+              return value;
+            },
           }
-        });
-      }
-    }
-  }
+        );
+      },
+    },
+  },
 });

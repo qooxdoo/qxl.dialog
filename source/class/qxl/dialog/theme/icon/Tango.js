@@ -26,15 +26,14 @@
  * @asset(qx/icon/Tango/48/status/dialog-warning.png)
  * @asset(qx/icon/Tango/16/apps/office-calendar.png)
  */
-qx.Theme.define("qxl.dialog.theme.icon.Tango",
-{
-  title : "Tango",
-  aliases : {
-    "icon" : "qx/icon/Tango",
-    "qxl.dialog.icon.cancel" : "qx/icon/Tango/22/actions/dialog-cancel.png",
-    "qxl.dialog.icon.ok"     : "qx/icon/Tango/22/actions/dialog-ok.png",
-    "qxl.dialog.icon.info"   : "qx/icon/Tango/48/status/dialog-information.png",
-    "qxl.dialog.icon.error"  : "qx/icon/Tango/48/status/dialog-error.png",
-    "qxl.dialog.icon.warning" : "qx/icon/Tango/48/status/dialog-warning.png"
-  }
+qx.Theme.define("qxl.dialog.theme.icon.Tango", {
+  title: "Tango",
+  aliases: {
+    icon: "qx/icon/Tango",
+    "qxl.dialog.icon.cancel": "qx/icon/Tango/22/actions/dialog-cancel.png",
+    "qxl.dialog.icon.ok": "qx/icon/Tango/22/actions/dialog-ok.png",
+    "qxl.dialog.icon.info": "qx/icon/Tango/48/status/dialog-information.png",
+    "qxl.dialog.icon.error": "qx/icon/Tango/48/status/dialog-error.png",
+    "qxl.dialog.icon.warning": "qx/icon/Tango/48/status/dialog-warning.png",
+  },
 });

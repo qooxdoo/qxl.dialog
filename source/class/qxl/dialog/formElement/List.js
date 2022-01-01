@@ -17,17 +17,14 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.List",
-{
-  statics :
-  {
-    register : function() {
-      qxl.dialog.Dialog.registerFormElementHandlers(
-        "list", this._registration);
+qx.Class.define("qxl.dialog.formElement.List", {
+  statics: {
+    register() {
+      qxl.dialog.Dialog.registerFormElementHandlers("list", this._registration);
     },
 
-    _registration : {
-      initElement : function(fieldType, fieldData, key) {
+    _registration: {
+      initElement(fieldType, fieldData, key) {
         let formElement = new qx.ui.form.List();
         if (fieldData.selectionMode) {
           formElement.setSelectionMode(fieldData.selectionMode);
@@ -45,32 +42,39 @@ qx.Class.define("qxl.dialog.formElement.List",
         return formElement;
       },
 
-      addToFormController : function(fieldType, fieldData, key, formElement) {
-      this._formController.addTarget(
-        formElement, "selection", key, true, {
-          "converter" : function(value) {
-            var selected=[];
-            var selectables = formElement.getSelectables();
-            selectables.forEach(function(selectable) {
-              if ((value instanceof Array ||
-                   value instanceof qx.data.Array) &&
-                  value.includes(selectable.getModel().getValue())) {
-                selected.push(selectable);
-              }
-            });
+      addToFormController(fieldType, fieldData, key, formElement) {
+        this._formController.addTarget(
+          formElement,
+          "selection",
+          key,
+          true,
+          {
+            converter(value) {
+              var selected = [];
+              var selectables = formElement.getSelectables();
+              selectables.forEach(function (selectable) {
+                if (
+                  (value instanceof Array || value instanceof qx.data.Array) &&
+                  value.includes(selectable.getModel().getValue())
+                ) {
+                  selected.push(selectable);
+                }
+              });
 
-            return selected;
+              return selected;
+            },
+          },
+          {
+            converter(selection) {
+              var value = [];
+              selection.forEach(function (selected) {
+                value.push(selected.getModel().getValue());
+              });
+              return value;
+            },
           }
-        }, {
-          "converter" : function(selection) {
-            var value = [];
-            selection.forEach(function (selected) {
-              value.push(selected.getModel().getValue());
-            });
-            return value;
-          }
-        });
-      }
-    }
-  }
+        );
+      },
+    },
+  },
 });

@@ -13,7 +13,6 @@
 
 ************************************************************************ */
 
-
 /**
  * A dialog widget used to confirm a question or proposed course of action
  */
@@ -25,10 +24,11 @@ qx.Class.define("qxl.dialog.Confirm", {
      * be part of any subclass extending this widget.
      * @return {Object}
      */
-    getInstance: function() {
+    getInstance() {
       return this.superclass.getInstance(this.classname);
-    }
+    },
   },
+
   properties: {
     /**
      * Label used for the "yes button"
@@ -37,7 +37,7 @@ qx.Class.define("qxl.dialog.Confirm", {
       check: "String",
       nullable: false,
       init: "Yes",
-      event: "changeYesButtonLabel"
+      event: "changeYesButtonLabel",
     },
 
     /**
@@ -47,7 +47,7 @@ qx.Class.define("qxl.dialog.Confirm", {
       check: "String",
       nullable: true,
       init: "qxl.dialog.icon.ok",
-      event: "changeYesButtonIcon"
+      event: "changeYesButtonIcon",
     },
 
     /**
@@ -57,7 +57,7 @@ qx.Class.define("qxl.dialog.Confirm", {
       check: "String",
       nullable: false,
       init: "No",
-      event: "changeNoButtonLabel"
+      event: "changeNoButtonLabel",
     },
 
     /**
@@ -67,7 +67,7 @@ qx.Class.define("qxl.dialog.Confirm", {
       check: "String",
       nullable: true,
       init: "qxl.dialog.icon.cancel",
-      event: "changeNoButtonIcon"
+      event: "changeNoButtonIcon",
     },
 
     /**
@@ -75,8 +75,8 @@ qx.Class.define("qxl.dialog.Confirm", {
      */
     allowCancel: {
       refine: true,
-      init: false
-    }
+      init: false,
+    },
   },
 
   members: {
@@ -86,7 +86,7 @@ qx.Class.define("qxl.dialog.Confirm", {
     /**
      * Create the main content of the widget
      */
-    _createWidgetContent: function() {
+    _createWidgetContent() {
       let container = this._createDialogContainer();
       let hbox = new qx.ui.container.Composite(new qx.ui.layout.HBox(10));
       container.add(hbox);
@@ -111,8 +111,9 @@ qx.Class.define("qxl.dialog.Confirm", {
       yesButton.getChildControl("icon").set({
         width: 16,
         height: 16,
-        scale: true
+        scale: true,
       });
+
       yesButton.setLabel(this.tr("yes"));
       // no button
       let noButton = (this._noButton = new qx.ui.form.Button());
@@ -124,8 +125,9 @@ qx.Class.define("qxl.dialog.Confirm", {
       noButton.getChildControl("icon").set({
         width: 16,
         height: 16,
-        scale: true
+        scale: true,
       });
+
       noButton.setLabel(this.tr("no"));
       let cancelButton = this._createCancelButton();
       buttonPane.add(yesButton);
@@ -148,7 +150,7 @@ qx.Class.define("qxl.dialog.Confirm", {
      * Handle click on yes button. Calls callback with
      * a "true" value
      */
-    _handleYes: function() {
+    _handleYes() {
       this.hide();
       if (this.getCallback()) {
         this.getCallback().call(this.getContext(), true);
@@ -160,11 +162,11 @@ qx.Class.define("qxl.dialog.Confirm", {
      * Handle click on no button. Calls callback with
      * a "false" value
      */
-    _handleNo: function() {
+    _handleNo() {
       this.hide();
       if (this.getCallback()) {
         this.getCallback().call(this.getContext(), false);
       }
-    }
-  }
+    },
+  },
 });

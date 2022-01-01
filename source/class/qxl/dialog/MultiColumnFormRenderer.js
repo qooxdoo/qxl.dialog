@@ -21,14 +21,12 @@
  * Multi-column form renderer. This extends, and is is based on
  * qxl.dialog.FormRenderer by Christian Boulanger.
  */
-qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
-{
-  extend : qxl.dialog.FormRenderer,
+qx.Class.define("qxl.dialog.MultiColumnFormRenderer", {
+  extend: qxl.dialog.FormRenderer,
 
-  members :
-  {
-    _row : 0,
-    _col : 0,
+  members: {
+    _row: 0,
+    _col: 0,
 
     /**
      * Renderer columns each consume multiple layout (grid) columns. This is a
@@ -37,12 +35,12 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
      * numbers that the application uses.
      * @param col
      */
-    column : function(col) {
+    column(col) {
       return col * 2;
     },
 
     // overridden
-    addItems : function(items, names, title) {
+    addItems(items, names, title) {
       var i;
       var row;
       var col;
@@ -53,13 +51,11 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
        * add the header
        */
       if (title !== null) {
-        this._add(
-          this._createHeader(title),
-          {
-            row     : this._row++,
-            column  : 0,
-            colSpan : 2
-          });
+        this._add(this._createHeader(title), {
+          row: this._row++,
+          column: 0,
+          colSpan: 2,
+        });
       }
 
       /*
@@ -102,10 +98,10 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
             widget = this._createWidgetForRadioGroup(item);
           }
         } else {
-        /*
-         * other form widgets
-         */
-        widget = item;
+          /*
+           * other form widgets
+           */
+          widget = item;
         }
 
         /*
@@ -116,80 +112,70 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
         if (names[i] && item.getUserData("excluded")) {
           var label = new qx.ui.basic.Label(names[i]);
           label.setRich(true);
-          this._add(
-            label,
-            {
-              row     : row,
-              column  : col,
-              rowSpan : rowspan,
-              colSpan : 2
-            });
+          this._add(label, {
+            row: row,
+            column: col,
+            rowSpan: rowspan,
+            colSpan: 2,
+          });
         } else if (item instanceof qx.ui.form.CheckBox) {
-        /**
-         * If CheckBox, assign the whole width to the widget.
-         */
-        this._add(
-            widget,
-            {
-              row     : row,
-              column  : col,
-              rowSpan : rowspan,
-              colSpan : 2
-            });
+          /**
+           * If CheckBox, assign the whole width to the widget.
+           */
+          this._add(widget, {
+            row: row,
+            column: col,
+            rowSpan: rowspan,
+            colSpan: 2,
+          });
+
           this._getLayout().getCellWidget(row, col).setAlignX("left");
         } else if (item.getUserData("combineWithLabelColumn") && !names[i]) {
-        /*
-         * If the label is null, use the full width for the widget.
-         *
-         * This doesn't work because the first of the two columns (the
-         * label column) has a maxWidth value, and (it seems) the grid
-         * layout isn't able to handle a colspan with a maxWidth in
-         * the first of the two columns and additional space available
-         * in the subsequent column; it still limits the width to the
-         * first column's maxWidth
-         *
-         * Instead, allow a means of using this that is backwards compatible,
-         * should it ever be made to work
-         */
-        this._add(
-            widget,
-            {
-              row     : row,
-              column  : col,
-              rowSpan : rowspan,
-              colSpan : 2
-            });
+          /*
+           * If the label is null, use the full width for the widget.
+           *
+           * This doesn't work because the first of the two columns (the
+           * label column) has a maxWidth value, and (it seems) the grid
+           * layout isn't able to handle a colspan with a maxWidth in
+           * the first of the two columns and additional space available
+           * in the subsequent column; it still limits the width to the
+           * first column's maxWidth
+           *
+           * Instead, allow a means of using this that is backwards compatible,
+           * should it ever be made to work
+           */
+          this._add(widget, {
+            row: row,
+            column: col,
+            rowSpan: rowspan,
+            colSpan: 2,
+          });
         } else if (!names[i]) {
-        /*
-         * Instead, just elide the label
-         */
-        this._add(
-            widget,
-            {
-              row     : row,
-              column  : col + 1,
-              rowSpan : rowspan
-            });
+          /*
+           * Instead, just elide the label
+           */
+          this._add(widget, {
+            row: row,
+            column: col + 1,
+            rowSpan: rowspan,
+          });
         } else {
-        /*
-         * normal case: label in column col, form element in column col+1
-         */
-        label = this._createLabel(names[i], item);
+          /*
+           * normal case: label in column col, form element in column col+1
+           */
+          label = this._createLabel(names[i], item);
           label.setRich(true);
-          this._add(
-            label,
-            {
-              row     : row,
-              column  : col,
-              rowSpan : rowspan
-            });
-          this._add(
-            widget,
-            {
-              row     : row,
-              column  : col + 1,
-              rowSpan : rowspan
-            });
+          this._add(label, {
+            row: row,
+            column: col,
+            rowSpan: rowspan,
+          });
+
+          this._add(widget, {
+            row: row,
+            column: col + 1,
+            rowSpan: rowspan,
+          });
         }
 
         /*
@@ -204,6 +190,6 @@ qx.Class.define("qxl.dialog.MultiColumnFormRenderer",
           widget.addListener("appear", widget.focus, widget);
         }
       }
-    }
-  }
+    },
+  },
 });

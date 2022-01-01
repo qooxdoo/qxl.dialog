@@ -17,21 +17,21 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.Label",
-{
-  statics :
-  {
-    register : function() {
+qx.Class.define("qxl.dialog.formElement.Label", {
+  statics: {
+    register() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "label", this._registration);
+        "label",
+        this._registration
+      );
     },
 
-    _registration : {
-      initElement : function(fieldType, fieldData, key) {
+    _registration: {
+      initElement(fieldType, fieldData, key) {
         let formElement = new qx.ui.form.TextField(); // dummy
         formElement.setUserData("excluded", true);
         return formElement;
-      }
-    }
-  }
+      },
+    },
+  },
 });

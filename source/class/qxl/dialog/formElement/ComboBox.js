@@ -17,17 +17,17 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.ComboBox",
-{
-  statics :
-  {
-    register : function() {
+qx.Class.define("qxl.dialog.formElement.ComboBox", {
+  statics: {
+    register() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "combobox", this._registration);
+        "combobox",
+        this._registration
+      );
     },
 
-    _registration : {
-      initElement : function(fieldType, fieldData, key) {
+    _registration: {
+      initElement(fieldType, fieldData, key) {
         let formElement = new qx.ui.form.ComboBox();
         fieldData.options.forEach(function (item) {
           let listItem = new qx.ui.form.ListItem(item.label, item.icon);
@@ -36,14 +36,14 @@ qx.Class.define("qxl.dialog.formElement.ComboBox",
         return formElement;
       },
 
-      addToFormController : function(fieldType, fieldData, key, formElement) {
+      addToFormController(fieldType, fieldData, key, formElement) {
         this._formController.addTarget(formElement, "value", key, true, null, {
           converter: function (value) {
             this._form.getValidationManager().validate();
             return value;
-          }.bind(this)
+          }.bind(this),
         });
-      }
-    }
-  }
+      },
+    },
+  },
 });

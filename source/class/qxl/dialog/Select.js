@@ -13,29 +13,27 @@
 
 ************************************************************************ */
 
-
 /**
  * Dialog that offers the user a choice of alternative buttons to select from.
  */
 qx.Class.define("qxl.dialog.Select", {
   extend: qxl.dialog.Dialog,
   properties: {
-
     /**
      * An array of maps [ { label: "Foo", icon : "icon/22/...", value : "foo" },...]
      */
     options: {
       check: "Array",
       nullable: false,
-      event: "changeOptions"
-    }
+      event: "changeOptions",
+    },
   },
 
   members: {
     /**
      * Create the main content of the widget
      */
-    _createWidgetContent: function() {
+    _createWidgetContent() {
       let container = this._createDialogContainer();
       this.add(container);
       let hbox = new qx.ui.container.Composite(new qx.ui.layout.HBox(10));
@@ -45,31 +43,42 @@ qx.Class.define("qxl.dialog.Select", {
       this._message.setWidth(200);
       this._message.setAllowStretchX(true);
       hbox.add(this._message, {
-        flex: 1
+        flex: 1,
       });
+
       let buttonPane = this._createButtonPane();
-      this.addListener("changeOptions", function(event) {
-        if (qx.core.Environment.get("module.objectid") === true) {
-          buttonPane.getOwnedQxObjects().map(obj => buttonPane.removeOwnedQxObject(obj));
-        }
-        buttonPane.removeAll();
-        let options = event.getData();
-        options.forEach(function(option) {
-          let button = new qx.ui.form.Button(option.label, option.icon);
-          button.setAllowStretchX(true);
-          let value = String(option.value);
-          button.addListener("execute", function() {
-            this._handleSelection(value);
-          }, this);
-          buttonPane.add(button);
+      this.addListener(
+        "changeOptions",
+        function (event) {
           if (qx.core.Environment.get("module.objectid") === true) {
-            button.setQxObjectId(value);
-            buttonPane.addOwnedQxObject(button, value);
+            buttonPane
+              .getOwnedQxObjects()
+              .map((obj) => buttonPane.removeOwnedQxObject(obj));
           }
-        }, this);
-        let cancelButton = this._createCancelButton();
-        buttonPane.add(cancelButton);
-      }, this);
+          buttonPane.removeAll();
+          let options = event.getData();
+          options.forEach(function (option) {
+            let button = new qx.ui.form.Button(option.label, option.icon);
+            button.setAllowStretchX(true);
+            let value = String(option.value);
+            button.addListener(
+              "execute",
+              function () {
+                this._handleSelection(value);
+              },
+              this
+            );
+            buttonPane.add(button);
+            if (qx.core.Environment.get("module.objectid") === true) {
+              button.setQxObjectId(value);
+              buttonPane.addOwnedQxObject(button, value);
+            }
+          }, this);
+          let cancelButton = this._createCancelButton();
+          buttonPane.add(cancelButton);
+        },
+        this
+      );
       container.add(buttonPane);
     },
 
@@ -78,11 +87,11 @@ qx.Class.define("qxl.dialog.Select", {
      * the value set in the options map.
      * @param value {var} The passed value
      */
-    _handleSelection: function(value) {
+    _handleSelection(value) {
       this.hide();
       if (this.getCallback()) {
         this.getCallback().call(this.getContext(), value);
       }
-    }
-  }
+    },
+  },
 });

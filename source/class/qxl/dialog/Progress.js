@@ -13,25 +13,23 @@
 
 ************************************************************************ */
 
-
 /**
  * A widget with a progress bar and an optional log for messages.
  */
 qx.Class.define("qxl.dialog.Progress", {
   extend: qxl.dialog.Dialog,
   properties: {
-
     /**
      * The percentage of the progress, 0-100
      */
     progress: {
-      check: function(value) {
+      check(value) {
         return qx.lang.Type.isNumber(value) && value >= 0 && value <= 100;
       },
       init: 0,
       nullable: false,
       event: "changeProgress",
-      apply: "_applyProgress"
+      apply: "_applyProgress",
     },
 
     /**
@@ -40,7 +38,7 @@ qx.Class.define("qxl.dialog.Progress", {
     logContent: {
       check: "String",
       init: "",
-      event: "changeLogContent"
+      event: "changeLogContent",
     },
 
     /**
@@ -50,7 +48,7 @@ qx.Class.define("qxl.dialog.Progress", {
       check: "String",
       nullable: false,
       event: "changeNewLogText",
-      apply: "_applyNewLogText"
+      apply: "_applyNewLogText",
     },
 
     /**
@@ -61,7 +59,7 @@ qx.Class.define("qxl.dialog.Progress", {
       check: "Boolean",
       nullable: false,
       init: true,
-      event: "changeShowProgressBar"
+      event: "changeShowProgressBar",
     },
 
     /**
@@ -72,7 +70,7 @@ qx.Class.define("qxl.dialog.Progress", {
       check: "Boolean",
       nullable: false,
       init: false,
-      event: "changeShowLog"
+      event: "changeShowLog",
     },
 
     /**
@@ -84,7 +82,7 @@ qx.Class.define("qxl.dialog.Progress", {
       nullable: true,
       init: null,
       event: "changeOkButtonText",
-      apply: "_applyOkButtonText"
+      apply: "_applyOkButtonText",
     },
 
     /**
@@ -94,7 +92,7 @@ qx.Class.define("qxl.dialog.Progress", {
     hideWhenCompleted: {
       check: "Boolean",
       nullable: false,
-      init: true
+      init: true,
     },
 
     /**
@@ -104,16 +102,17 @@ qx.Class.define("qxl.dialog.Progress", {
     hideWhenCancelled: {
       check: "Boolean",
       nullable: false,
-      init: true
-    }
+      init: true,
+    },
   },
+
   members: {
     /**
      * Applies the 'show' property
      * @param value
      * @param old
      */
-    _applyShow: function(value, old) {
+    _applyShow(value, old) {
       if (value === true) {
         this.show();
       } else if (value === false) {
@@ -126,7 +125,7 @@ qx.Class.define("qxl.dialog.Progress", {
      * @param value
      * @param old
      */
-    _applyProgress: function(value, old) {
+    _applyProgress(value, old) {
       if (value == 100) {
         if (this.isHideWhenCompleted()) {
           this._handleOk();
@@ -141,7 +140,7 @@ qx.Class.define("qxl.dialog.Progress", {
      * @param value
      * @param old
      */
-    _applyNewLogText: function(value, old) {
+    _applyNewLogText(value, old) {
       if (value) {
         let content = this.getLogContent();
         this.setLogContent(content ? content + "\n" + value : value);
@@ -153,7 +152,7 @@ qx.Class.define("qxl.dialog.Progress", {
      * @param value
      * @param old
      */
-    _applyOkButtonText: function(value, old) {
+    _applyOkButtonText(value, old) {
       if (value === null) {
         this._okButton.setVisibility("excluded");
         return;
@@ -169,7 +168,7 @@ qx.Class.define("qxl.dialog.Progress", {
      * Create the content of the qxl.dialog.
      * Extending classes must implement this method.
      */
-    _createWidgetContent: function() {
+    _createWidgetContent() {
       let container = this._createDialogContainer();
       container.set({ width: 300 });
       let hbox = new qx.ui.container.Composite(new qx.ui.layout.HBox(10));
@@ -178,45 +177,53 @@ qx.Class.define("qxl.dialog.Progress", {
       this._progressBar = new qx.ui.indicator.ProgressBar();
       this._progressBar.set({
         maxHeight: 20,
-        alignY: "middle"
+        alignY: "middle",
       });
+
       this.bind("progress", this._progressBar, "value");
       hbox.add(this._progressBar, {
-        flex: 1
+        flex: 1,
       });
+
       this._createButtonPane(); // only for object ids, not used in layout
       this._cancelButton = this._createCancelButton();
       this._cancelButton.set({
         icon: null,
         maxHeight: 20,
         alignY: "middle",
-        visibility: "excluded"
+        visibility: "excluded",
       });
+
       hbox.add(this._cancelButton);
       this.bind("showProgressBar", hbox, "visibility", {
-        converter: function(v) {
+        converter(v) {
           return v ? "visible" : "excluded";
-        }
+        },
       });
+
       this._message = new qx.ui.basic.Label();
       this._message.set({
         rich: true,
-        textAlign: "center"
+        textAlign: "center",
       });
+
       container.add(this._message);
       this._logView = new qx.ui.form.TextArea();
       this._logView.set({
         visibility: "excluded",
-        height: 200
+        height: 200,
       });
+
       container.add(this._logView, {
-        flex: 1
+        flex: 1,
       });
+
       this.bind("showLog", this._logView, "visibility", {
-        converter: function(v) {
+        converter(v) {
           return v ? "visible" : "excluded";
-        }
+        },
       });
+
       this.bind("logContent", this._logView, "value");
       this._logView.bind("value", this, "logContent");
       this._okButton = this._createOkButton();
@@ -224,15 +231,17 @@ qx.Class.define("qxl.dialog.Progress", {
         visibility: "excluded",
         enabled: false,
         alignX: "center",
-        icon: null
+        icon: null,
       });
+
       this._progressBar.addListener(
         "complete",
-        function() {
+        function () {
           this._okButton.setEnabled(true);
         },
         this
       );
+
       container.add(this._okButton, {});
       this.add(container);
     },
@@ -243,7 +252,7 @@ qx.Class.define("qxl.dialog.Progress", {
      * @override Overridden to be able to observe hideWhenCancelled
      * property
      */
-    _handleCancel: function() {
+    _handleCancel() {
       if (this.isHideWhenCancelled()) {
         this.hide();
       }
@@ -252,6 +261,6 @@ qx.Class.define("qxl.dialog.Progress", {
         this.getCallback().call(this.getContext());
       }
       this.resetCallback();
-    }
-  }
+    },
+  },
 });

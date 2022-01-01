@@ -13,7 +13,6 @@
 
 ************************************************************************ */
 
-
 /**
  * A dialog for authentication and login.
  *
@@ -28,7 +27,6 @@
 qx.Class.define("qxl.dialog.Login", {
   extend: qxl.dialog.Dialog,
   properties: {
-
     /**
      * A html text that is displayed below the image (if present) and above the
      * login
@@ -36,7 +34,7 @@ qx.Class.define("qxl.dialog.Login", {
     text: {
       check: "String",
       nullable: true,
-      apply: "_applyText"
+      apply: "_applyText",
     },
 
     /**
@@ -47,7 +45,7 @@ qx.Class.define("qxl.dialog.Login", {
       check: "String",
       nullable: true,
       init: "bold",
-      apply: "_applyTextFont"
+      apply: "_applyTextFont",
     },
 
     /**
@@ -61,7 +59,7 @@ qx.Class.define("qxl.dialog.Login", {
      */
     checkCredentials: {
       check: "Function",
-      nullable: false
+      nullable: false,
     },
 
     /**
@@ -71,7 +69,7 @@ qx.Class.define("qxl.dialog.Login", {
       check: "Boolean",
       nullable: false,
       init: false,
-      event: "changeShowForgotPassword"
+      event: "changeShowForgotPassword",
     },
 
     /**
@@ -79,8 +77,8 @@ qx.Class.define("qxl.dialog.Login", {
      * button
      */
     forgotPasswordHandler: {
-      check: "Function"
-    }
+      check: "Function",
+    },
   },
 
   events: {
@@ -93,7 +91,7 @@ qx.Class.define("qxl.dialog.Login", {
      * Data event dispatched when login failed, event data
      * contains a reponse message
      */
-    loginFailure: "qx.event.type.Data"
+    loginFailure: "qx.event.type.Data",
   },
 
   members: {
@@ -106,7 +104,7 @@ qx.Class.define("qxl.dialog.Login", {
      * @param value {String} New value
      * @param old {String} Old value
      */
-    _applyText: function(value, old) {
+    _applyText(value, old) {
       this._text.setValue(value);
       this._text.setVisibility(value ? "visible" : "excluded");
     },
@@ -115,19 +113,19 @@ qx.Class.define("qxl.dialog.Login", {
      * Apply function used by proterty {@link #textFont}
      * @param value {String} New value
      */
-    _applyTextFont: function(value) {
+    _applyTextFont(value) {
       this._text.setFont(value);
     },
 
     /**
      * Create the main content of the widget
      */
-    _createWidgetContent: function() {
+    _createWidgetContent() {
       // wrap fields in form tag to avoid Chrome warnings, see https://github.com/qooxdoo/qxl.dialog/issues/19
       let formTag = new qxl.dialog.FormTag();
       let container = this._createDialogContainer();
       container.getLayout().setAlignX("center");
-      formTag.add(container, {flex:1});
+      formTag.add(container, { flex: 1 });
       this.add(formTag);
       this._image = new qx.ui.basic.Image();
       this._image.setVisibility("excluded");
@@ -153,11 +151,12 @@ qx.Class.define("qxl.dialog.Login", {
         form.add(
           new qx.ui.basic.Label(labels[i]).set({
             allowShrinkX: false,
-            paddingTop: 3
+            paddingTop: 3,
           }),
+
           {
             row: i,
-            column: 0
+            column: 0,
           }
         );
       }
@@ -165,42 +164,50 @@ qx.Class.define("qxl.dialog.Login", {
 
       this._username.addListener(
         "appear",
-        function() {
+        function () {
           this._username.focus();
         },
-        this);
+        this
+      );
 
       this._password = new qx.ui.form.PasswordField();
-      this._password.getContentElement().setAttribute("autocomplete", "password");
+      this._password
+        .getContentElement()
+        .setAttribute("autocomplete", "password");
       this._password.addListener(
         "keypress",
-        function(e) {
+        function (e) {
           if (e.getKeyIdentifier() === "Enter") {
             this._callCheckCredentials();
           }
         },
         this
       );
+
       form.add(
         this._username.set({
           allowShrinkX: false,
-          paddingTop: 3
+          paddingTop: 3,
         }),
+
         {
           row: 0,
-          column: 1
+          column: 1,
         }
       );
+
       form.add(
         this._password.set({
           allowShrinkX: false,
-          paddingTop: 3
+          paddingTop: 3,
         }),
+
         {
           row: 1,
-          column: 1
+          column: 1,
         }
       );
+
       this._message = new qx.ui.basic.Label();
       this._message.setRich(true);
       this._message.setAllowStretchX(true);
@@ -214,6 +221,7 @@ qx.Class.define("qxl.dialog.Login", {
       let loginButton = (this._loginButton = new qx.ui.form.Button(
         this.tr("Login")
       ));
+
       loginButton.setAllowStretchX(false);
       loginButton.addListener("execute", this._callCheckCredentials, this);
 
@@ -224,17 +232,19 @@ qx.Class.define("qxl.dialog.Login", {
       let forgotPasswordButton = new qx.ui.form.Button(
         this.tr("Forgot Password?")
       );
+
       forgotPasswordButton.addListener(
         "click",
-        function() {
+        function () {
           this.getForgotPasswordHandler()();
         },
         this
       );
+
       this.bind("showForgotPassword", forgotPasswordButton, "visibility", {
-        converter: function(v) {
+        converter(v) {
           return v ? "visible" : "excluded";
-        }
+        },
       });
 
       buttonPane.add(loginButton);
@@ -242,8 +252,9 @@ qx.Class.define("qxl.dialog.Login", {
       buttonPane.add(forgotPasswordButton);
       form.add(buttonPane, {
         row: 3,
-        column: 1
+        column: 1,
       });
+
       // object ids
       if (qx.core.Environment.get("module.objectid") === true) {
         form.setQxObjectId("form");
@@ -264,20 +275,20 @@ qx.Class.define("qxl.dialog.Login", {
      * Calls the checkCredentials callback function with username, password and
      * the final callback, bound to the context object.
      */
-    _callCheckCredentials: function() {
+    _callCheckCredentials() {
       this.getCheckCredentials()(
         this._username.getValue(),
         this._password.getValue(),
-        typeof Function.prototype.bind === "function" ?
-          this._handleCheckCredentials.bind(this) :
-          qx.lang.Function.bind(this._handleCheckCredentials, this)
+        typeof Function.prototype.bind === "function"
+          ? this._handleCheckCredentials.bind(this)
+          : qx.lang.Function.bind(this._handleCheckCredentials, this)
       );
     },
 
     /**
      * Handle click on cancel button
      */
-    _handleCancel: function() {
+    _handleCancel() {
       this.hide();
     },
 
@@ -292,21 +303,37 @@ qx.Class.define("qxl.dialog.Login", {
      * @param data {unknown|undefined} Optional second argument wich can contain
      * user information
      */
-    _handleCheckCredentials: function(err, data) {
+    _handleCheckCredentials(err, data) {
       //this._password.setValue("");
       this.setMessage(null);
       if (err) {
         this.fireDataEvent("loginFailure", err);
-        this._username.addListenerOnce("focus", function() {
-          qx.event.Timer.once(function() {
-            this._username.selectAllText();
-          }, this, 100);
-        }, this);
-        this._password.addListenerOnce("focus", function() {
-          qx.event.Timer.once(function() {
-            this._password.selectAllText();
-          }, this, 100);
-        }, this);
+        this._username.addListenerOnce(
+          "focus",
+          function () {
+            qx.event.Timer.once(
+              function () {
+                this._username.selectAllText();
+              },
+              this,
+              100
+            );
+          },
+          this
+        );
+        this._password.addListenerOnce(
+          "focus",
+          function () {
+            qx.event.Timer.once(
+              function () {
+                this._password.selectAllText();
+              },
+              this,
+              100
+            );
+          },
+          this
+        );
       } else {
         this.fireDataEvent("loginSuccess", data);
         this.hide();
@@ -319,10 +346,10 @@ qx.Class.define("qxl.dialog.Login", {
     /**
      * @override
      */
-    hide: function() {
+    hide() {
       this._password.setValue("");
       this.setMessage(null);
       this.base(arguments);
-    }
-  }
+    },
+  },
 });

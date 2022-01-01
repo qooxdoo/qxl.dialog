@@ -17,24 +17,21 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.formElement.RadioGroup",
-{
-  statics :
-  {
-    register : function() {
+qx.Class.define("qxl.dialog.formElement.RadioGroup", {
+  statics: {
+    register() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "radiogroup", this._registration);
+        "radiogroup",
+        this._registration
+      );
     },
 
-    _registration : {
-      initElement : function(fieldType, fieldData, key) {
-        let layout;             // default uses VBox
-        if (fieldData.orientation == "horizontal")
-        {
+    _registration: {
+      initElement(fieldType, fieldData, key) {
+        let layout; // default uses VBox
+        if (fieldData.orientation == "horizontal") {
           layout = new qx.ui.layout.HBox(4);
-        }
-        else if (fieldData.layout)
-        {
+        } else if (fieldData.layout) {
           layout = fieldData.layout;
         }
         let formElement = new qx.ui.form.RadioButtonGroup(layout);
@@ -46,7 +43,8 @@ qx.Class.define("qxl.dialog.formElement.RadioGroup",
           radioButton.setUserData(
             "value",
             item.value !== undefined ? item.value : item.label
-            );
+          );
+
           if (index === 0 && "tabIndex" in item) {
             radioButton.setTabIndex(item.tabIndex);
           }
@@ -55,28 +53,35 @@ qx.Class.define("qxl.dialog.formElement.RadioGroup",
         return formElement;
       },
 
-      addToFormController : function(fieldType, fieldData, key, formElement) {
-        this._formController.addTarget(formElement, "selection", key, true, {
-          converter: function (value) {
-            let selectables = formElement.getSelectables();
-            let selection = [];
-            if (value) {
-              selectables.forEach(function (selectable) {
-                let sValue = selectable.getUserData("value");
-                if (sValue === value) {
-                  selection = [selectable];
-                }
-              }, this);
-            }
-            return selection;
-          }.bind(this)
-        }, {
-          converter: function (selection) {
-            let value = selection[0].getUserData("value");
-            return value;
+      addToFormController(fieldType, fieldData, key, formElement) {
+        this._formController.addTarget(
+          formElement,
+          "selection",
+          key,
+          true,
+          {
+            converter: function (value) {
+              let selectables = formElement.getSelectables();
+              let selection = [];
+              if (value) {
+                selectables.forEach(function (selectable) {
+                  let sValue = selectable.getUserData("value");
+                  if (sValue === value) {
+                    selection = [selectable];
+                  }
+                }, this);
+              }
+              return selection;
+            }.bind(this),
+          },
+          {
+            converter(selection) {
+              let value = selection[0].getUserData("value");
+              return value;
+            },
           }
-        });
-      }
-    }
-  }
+        );
+      },
+    },
+  },
 });

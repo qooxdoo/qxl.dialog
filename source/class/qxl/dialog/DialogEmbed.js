@@ -17,7 +17,6 @@
 
 ************************************************************************ */
 
-
 /**
  * Base class for dialog widgets
  * @ignore(qxl.dialog.alert)
@@ -32,7 +31,7 @@
  */
 qx.Class.define("qxl.dialog.DialogEmbed", {
   extend: qx.ui.container.Composite,
-  include: [ qxl.dialog.MDialog ],
+  include: [qxl.dialog.MDialog],
 
   statics: {
     /**
@@ -50,10 +49,16 @@ qx.Class.define("qxl.dialog.DialogEmbed", {
      * @param caption {String?} The caption of the dialog window
      * @return {qxl.dialog.Form} The widget instance
      */
-    form: function(message, formData, callback=null, context=null, caption="") {
+    form(message, formData, callback = null, context = null, caption = "") {
       qx.core.Assert.assertMap(formData);
-      return new qxl.dialog.FormEmbed({message, formData, allowCancel: true, callback, context});
-    }
+      return new qxl.dialog.FormEmbed({
+        message,
+        formData,
+        allowCancel: true,
+        callback,
+        context,
+      });
+    },
   },
 
   /**
@@ -62,7 +67,7 @@ qx.Class.define("qxl.dialog.DialogEmbed", {
    * corresponding properties will be set. If a string is given, use it
    * as to set the 'message' property.
    */
-  construct: function(properties) {
+  construct(properties) {
     this.base(arguments);
     this.setLayout(new qx.ui.layout.Grow());
     this._createWidgetContent(properties);
@@ -74,7 +79,8 @@ qx.Class.define("qxl.dialog.DialogEmbed", {
       this.setMessage(properties);
     }
     // escape key
-    qx.core.Init.getApplication().getRoot().addListener("keyup", this._handleEscape, this);
-  }
-
+    qx.core.Init.getApplication()
+      .getRoot()
+      .addListener("keyup", this._handleEscape, this);
+  },
 });

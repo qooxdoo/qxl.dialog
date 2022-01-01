@@ -13,7 +13,6 @@
 
 ************************************************************************ */
 
-
 /**
  * Prompts the user with a question or request for information and a text
  * field in which the user can type something. Similar to window.prompt(),
@@ -29,7 +28,7 @@ qx.Class.define("qxl.dialog.Prompt", {
     value: {
       check: "String",
       nullable: true,
-      event: "changeValue"
+      event: "changeValue",
     },
 
     /**
@@ -38,7 +37,7 @@ qx.Class.define("qxl.dialog.Prompt", {
     placeholder: {
       check: "String",
       nullable: true,
-      apply: "_applyPlaceholder"
+      apply: "_applyPlaceholder",
     },
 
     /**
@@ -47,7 +46,7 @@ qx.Class.define("qxl.dialog.Prompt", {
     filter: {
       check: "RegExp",
       nullable: true,
-      apply: "_applyFilter"
+      apply: "_applyFilter",
     },
 
     /**
@@ -56,8 +55,8 @@ qx.Class.define("qxl.dialog.Prompt", {
     maxLength: {
       check: "Integer",
       nullable: true,
-      apply: "_applyMaxLength"
-    }
+      apply: "_applyMaxLength",
+    },
   },
 
   members: {
@@ -66,7 +65,7 @@ qx.Class.define("qxl.dialog.Prompt", {
     /**
      * Create the main content of the widget
      */
-    _createWidgetContent: function() {
+    _createWidgetContent() {
       let container = new qx.ui.container.Composite();
       container.setLayout(new qx.ui.layout.VBox(10));
       this.add(container);
@@ -78,21 +77,23 @@ qx.Class.define("qxl.dialog.Prompt", {
       this._message.setWidth(200);
       this._message.setAllowStretchX(true);
       hbox.add(this._message, {
-        flex: 1
+        flex: 1,
       });
+
       this._textField = new qx.ui.form.TextField();
       this.bind("value", this._textField, "value");
       this._textField.bind("value", this, "value");
       this._textField.addListener(
         "appear",
-        function(e) {
+        function (e) {
           qx.lang.Function.delay(this.focus, 1, this);
         },
         this._textField
       );
+
       this._textField.addListener(
         "keyup",
-        function(e) {
+        function (e) {
           if (e.getKeyCode() === 13) {
             this._handleOk();
           } else if (e.getKeyCode() === 27) {
@@ -101,10 +102,11 @@ qx.Class.define("qxl.dialog.Prompt", {
         },
         this
       );
+
       container.add(this._textField);
       this._textField.addListener(
         "keypress",
-        function(e) {
+        function (e) {
           if (e.getKeyIdentifier().toLowerCase() === "enter") {
             this.hide();
             this.fireEvent("ok");
@@ -118,6 +120,7 @@ qx.Class.define("qxl.dialog.Prompt", {
         },
         this
       );
+
       let buttonPane = this._createButtonPane();
       buttonPane.add(this._createOkButton());
       buttonPane.add(this._createCancelButton());
@@ -134,7 +137,7 @@ qx.Class.define("qxl.dialog.Prompt", {
      * @param value
      * @param old
      */
-    _applyPlaceholder: function(value, old) {
+    _applyPlaceholder(value, old) {
       this._textField.setPlaceholder(value);
     },
 
@@ -143,7 +146,7 @@ qx.Class.define("qxl.dialog.Prompt", {
      * @param value
      * @param old
      */
-    _applyFilter: function(value, old) {
+    _applyFilter(value, old) {
       this._textField.setFilter(value);
     },
 
@@ -152,18 +155,18 @@ qx.Class.define("qxl.dialog.Prompt", {
      * @param value
      * @param old
      */
-    _applyMaxLength: function(value, old) {
+    _applyMaxLength(value, old) {
       this._textField.setMaxLength(value);
     },
 
     /**
      * Handle click on the OK button
      */
-    _handleOk: function() {
+    _handleOk() {
       this.hide();
       if (this.getCallback()) {
         this.getCallback().call(this.getContext(), this.getValue());
       }
-    }
-  }
+    },
+  },
 });

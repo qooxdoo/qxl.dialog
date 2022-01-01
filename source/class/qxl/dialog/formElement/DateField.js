@@ -19,18 +19,18 @@
 
 /**
  * @asset(qx/icon/*)
-*/
-qx.Class.define("qxl.dialog.formElement.DateField",
-{
-  statics :
-  {
-    register : function() {
+ */
+qx.Class.define("qxl.dialog.formElement.DateField", {
+  statics: {
+    register() {
       qxl.dialog.Dialog.registerFormElementHandlers(
-        "datefield", this._registration);
+        "datefield",
+        this._registration
+      );
     },
 
-    _registration : {
-      initElement : function(fieldType, fieldData, key) {
+    _registration: {
+      initElement(fieldType, fieldData, key) {
         let formElement = new qx.ui.form.DateField();
         if (fieldData.dateFormat) {
           formElement.setDateFormat(fieldData.dateFormat);
@@ -38,14 +38,14 @@ qx.Class.define("qxl.dialog.formElement.DateField",
         return formElement;
       },
 
-      addToFormController : function(fieldType, fieldData, key, formElement) {
+      addToFormController(fieldType, fieldData, key, formElement) {
         this._formController.addTarget(formElement, "value", key, true, null, {
           converter: function (value) {
             this._form.getValidationManager().validate();
             return value;
-          }.bind(this)
+          }.bind(this),
         });
-      }
-    }
-  }
+      },
+    },
+  },
 });

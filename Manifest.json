@@ -17,7 +17,7 @@
         "githubUser": "derrell"
       }
     ],
-    "version": "3.2.0"
+    "version": "4.0.0"
   },
   "provides": {
     "namespace": "qxl.dialog",
@@ -27,8 +27,7 @@
     "translation": "source/translation"
   },
   "requires": {
-    "@qooxdoo/framework": "^6.0.0",
-    "@qooxdoo/compiler": "^1.0.0"
+    "@qooxdoo/framework": "^7.0.0 || ^7.0.0-beta"
   },
   "$schema": "https://qooxdoo.org/schema/Manifest-1-0-0.json"
 }

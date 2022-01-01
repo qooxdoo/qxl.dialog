@@ -15,20 +15,18 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.dialog.FormTag",
-{
-  extend : qx.ui.container.Composite,
+qx.Class.define("qxl.dialog.FormTag", {
+  extend: qx.ui.container.Composite,
 
-  construct : function(layout) {
+  construct(layout) {
     this.base(arguments, layout || new qx.ui.layout.VBox());
   },
 
-  members :
-  {
+  members: {
     // overridden
     // Instead of creating a <div> for the content element, use <form>
-    _createContentElement : function() {
+    _createContentElement() {
       return new qx.html.Element("form");
-    }
-  }
+    },
+  },
 });
