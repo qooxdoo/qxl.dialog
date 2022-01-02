@@ -16,7 +16,7 @@ jobs:
           persist-credentials: false
 
       - name: Install
-        run: npm install @qooxdoo/compiler --no-save --no-package-lock
+        run: npm install @qooxdoo/framework@^7.0.0-beta --no-save --no-package-lock
       
       # test is only possible in source mode because qx.debug has to be true
       - name: Test
