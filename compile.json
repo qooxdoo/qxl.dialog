@@ -17,6 +17,7 @@
         "qx.*"
       ],
       "exclude": [
+        "qx.tool.*",
         "qx.test.*",
         "qx.module.Blocker",
         "qx.module.Placement"

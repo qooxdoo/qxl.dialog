@@ -1,6 +1,3 @@
-const fs = require("fs");
-const path = require("path");
-
 qx.Class.define("qxl.apiviewer.compile.CompilerApi", {
   extend: qx.tool.cli.api.CompilerApi,
 
@@ -19,7 +16,6 @@ qx.Class.define("qxl.apiviewer.compile.CompilerApi", {
     },
 
     // Test application in headless Chrome and Firefox
-    // see https://github.com/microsoft/playwright/blob/master/docs/api.md
     __appTesting: async function (data) {
       let result = data.getData ? data.getData() : {};
       const createTestCafe = this.require('testcafe');
