@@ -1,11 +1,27 @@
 {
+  "$schema": "https://qooxdoo.org/schema/compile-1-0-0.json",
+  "environment": {
+    "module.objectid": true
+  },
+  "ignores": [
+    "require",
+    "process",
+    "loadSass",
+    "__dirname"
+  ],
   "applications": [
     {
       "title": "Dialog Package Demo",
       "class": "qxl.dialog.demo.Application",
       "theme": "qxl.dialog.theme.Theme",
       "name": "dialog",
-      "default": true
+      "default": true,
+      "exclude": [
+        "qx.tool.*",
+        "qx.test.*",
+        "qx.module.Blocker",
+        "qx.module.Placement"
+      ]
     },
     {
       "class": "qxl.apiviewer.Application",
@@ -34,9 +50,6 @@
       }
     }
   ],
-  "environment": {
-    "module.objectid": true
-  },
   "targets": [
     {
       "type": "source",
@@ -62,6 +75,5 @@
   "defaultTarget": "source",
   "locales": [
     "en"
-  ],
-  "$schema": "https://qooxdoo.org/schema/compile-1-0-0.json"
+  ]
 }
