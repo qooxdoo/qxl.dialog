@@ -16,15 +16,14 @@ jobs:
           persist-credentials: false
 
       - name: Install
-        run: |
-              npm install @qooxdoo/framework@^7.0.0-beta testcafe --no-save --no-package-lock
+        run:  npm install @qooxdoo/framework@^7.0.0-beta -g
               
       # test is only possible in source mode because qx.debug has to be true
       - name: Test
-        run:  npx qx test  -v 
+        run:  qx test  -v 
 
       - name: Build and Deploy
-        run:  npx qx deploy --target=build -v --clean
+        run:  qx deploy --target=build -v --clean
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
