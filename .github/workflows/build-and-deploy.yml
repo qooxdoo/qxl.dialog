@@ -17,8 +17,7 @@ jobs:
 
       - name: Install
         run: |
-              npm install @qooxdoo/framework@^7.0.0-beta --no-save --no-package-lock
-              npm install --no-save --no-package-lock testcafe
+              npm install @qooxdoo/framework@^7.0.0-beta testcafe --no-save --no-package-lock
               
       # test is only possible in source mode because qx.debug has to be true
       - name: Test
