@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 40,
+        "line": 39,
         "column": 3
       }
     },
@@ -56,11 +56,11 @@
   "aliases": {
     "location": {
       "start": {
-        "line": 32,
+        "line": 31,
         "column": 2
       },
       "end": {
-        "line": 39,
+        "line": 38,
         "column": 3
       }
     },

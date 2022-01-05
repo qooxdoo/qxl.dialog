@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 322,
+        "line": 293,
         "column": 3
       }
     },
@@ -30,26 +30,25 @@
   "construct": {
     "location": {
       "start": {
-        "line": 26,
-        "column": 14
+        "line": 25,
+        "column": 2
       },
       "end": {
-        "line": 87,
+        "line": 75,
         "column": 3
       }
-    },
-    "jsdoc": {}
+    }
   },
   "events": {
     "changeTab": {
       "location": {
         "start": {
-          "line": 91,
+          "line": 78,
           "column": 4
         },
         "end": {
-          "line": 91,
-          "column": 36
+          "line": 78,
+          "column": 35
         }
       },
       "name": "changeTab",
@@ -60,11 +59,11 @@
     "column": {
       "location": {
         "start": {
-          "line": 103,
+          "line": 89,
           "column": 4
         },
         "end": {
-          "line": 105,
+          "line": 91,
           "column": 5
         }
       },
@@ -92,12 +91,12 @@
     "_tabView": {
       "location": {
         "start": {
-          "line": 111,
+          "line": 96,
           "column": 4
         },
         "end": {
-          "line": 111,
-          "column": 21
+          "line": 96,
+          "column": 18
         }
       },
       "jsdoc": {
@@ -114,12 +113,12 @@
     "_pages": {
       "location": {
         "start": {
-          "line": 114,
+          "line": 99,
           "column": 4
         },
         "end": {
-          "line": 114,
-          "column": 21
+          "line": 99,
+          "column": 16
         }
       },
       "jsdoc": {
@@ -136,12 +135,12 @@
     "_pageIndex": {
       "location": {
         "start": {
-          "line": 117,
+          "line": 102,
           "column": 4
         },
         "end": {
-          "line": 117,
-          "column": 18
+          "line": 102,
+          "column": 17
         }
       },
       "jsdoc": {
@@ -158,12 +157,12 @@
     "__bInternalChange": {
       "location": {
         "start": {
-          "line": 120,
+          "line": 105,
           "column": 4
         },
         "end": {
-          "line": 120,
-          "column": 29
+          "line": 105,
+          "column": 28
         }
       },
       "jsdoc": {
@@ -180,11 +179,11 @@
     "addItems": {
       "location": {
         "start": {
-          "line": 123,
+          "line": 108,
           "column": 4
         },
         "end": {
-          "line": 320,
+          "line": 291,
           "column": 5
         }
       },

@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 751,
+        "line": 778,
         "column": 3
       }
     },
@@ -45,14 +45,13 @@
     "location": {
       "start": {
         "line": 30,
-        "column": 14
+        "column": 2
       },
       "end": {
         "line": 32,
         "column": 3
       }
-    },
-    "jsdoc": {}
+    }
   },
   "properties": {
     "allowBrowserAutocomplete": {
@@ -62,7 +61,7 @@
           "column": 4
         },
         "end": {
-          "line": 42,
+          "line": 41,
           "column": 5
         }
       },
@@ -83,11 +82,11 @@
     "formData": {
       "location": {
         "start": {
-          "line": 96,
+          "line": 95,
           "column": 4
         },
         "end": {
-          "line": 101,
+          "line": 100,
           "column": 5
         }
       },
@@ -110,11 +109,11 @@
     "model": {
       "location": {
         "start": {
-          "line": 106,
+          "line": 105,
           "column": 4
         },
         "end": {
-          "line": 110,
+          "line": 109,
           "column": 5
         }
       },
@@ -136,11 +135,11 @@
     "labelColumnWidth": {
       "location": {
         "start": {
-          "line": 115,
+          "line": 114,
           "column": 4
         },
         "end": {
-          "line": 120,
+          "line": 119,
           "column": 5
         }
       },
@@ -164,11 +163,11 @@
     "setupFormRendererFunction": {
       "location": {
         "start": {
-          "line": 127,
+          "line": 126,
           "column": 4
         },
         "end": {
-          "line": 132,
+          "line": 130,
           "column": 5
         }
       },
@@ -189,11 +188,11 @@
     "beforeFormFunction": {
       "location": {
         "start": {
-          "line": 141,
+          "line": 139,
           "column": 4
         },
         "end": {
-          "line": 146,
+          "line": 143,
           "column": 5
         }
       },
@@ -214,11 +213,11 @@
     "formReadyFunction": {
       "location": {
         "start": {
-          "line": 157,
+          "line": 154,
           "column": 4
         },
         "end": {
-          "line": 163,
+          "line": 159,
           "column": 5
         }
       },
@@ -240,11 +239,11 @@
     "afterFormFunction": {
       "location": {
         "start": {
-          "line": 171,
+          "line": 167,
           "column": 4
         },
         "end": {
-          "line": 176,
+          "line": 171,
           "column": 5
         }
       },
@@ -265,11 +264,11 @@
     "afterButtonsFunction": {
       "location": {
         "start": {
-          "line": 184,
+          "line": 179,
           "column": 4
         },
         "end": {
-          "line": 189,
+          "line": 183,
           "column": 5
         }
       },
@@ -290,11 +289,11 @@
     "finalizeFunction": {
       "location": {
         "start": {
-          "line": 196,
+          "line": 190,
           "column": 4
         },
         "end": {
-          "line": 201,
+          "line": 194,
           "column": 5
         }
       },
@@ -317,11 +316,11 @@
     "registerFormElementHandlers": {
       "location": {
         "start": {
-          "line": 280,
+          "line": 273,
           "column": 4
         },
         "end": {
-          "line": 286,
+          "line": 279,
           "column": 5
         }
       },
@@ -440,12 +439,12 @@
     "_registeredFormElements": {
       "location": {
         "start": {
-          "line": 289,
+          "line": 282,
           "column": 4
         },
         "end": {
-          "line": 289,
-          "column": 32
+          "line": 282,
+          "column": 31
         }
       },
       "jsdoc": {
@@ -462,11 +461,11 @@
     "_internalFormElements": {
       "location": {
         "start": {
-          "line": 291,
+          "line": 284,
           "column": 4
         },
         "end": {
-          "line": 304,
+          "line": 297,
           "column": 5
         }
       },
@@ -478,11 +477,11 @@
     "_formContainer": {
       "location": {
         "start": {
-          "line": 308,
+          "line": 301,
           "column": 4
         },
         "end": {
-          "line": 308,
+          "line": 301,
           "column": 24
         }
       },
@@ -492,11 +491,11 @@
     "_form": {
       "location": {
         "start": {
-          "line": 309,
+          "line": 302,
           "column": 4
         },
         "end": {
-          "line": 309,
+          "line": 302,
           "column": 15
         }
       },
@@ -506,11 +505,11 @@
     "_formValidator": {
       "location": {
         "start": {
-          "line": 310,
+          "line": 303,
           "column": 4
         },
         "end": {
-          "line": 310,
+          "line": 303,
           "column": 24
         }
       },
@@ -520,11 +519,11 @@
     "_formController": {
       "location": {
         "start": {
-          "line": 311,
+          "line": 304,
           "column": 4
         },
         "end": {
-          "line": 311,
+          "line": 304,
           "column": 25
         }
       },
@@ -534,12 +533,12 @@
     "_formElements": {
       "location": {
         "start": {
-          "line": 312,
+          "line": 305,
           "column": 4
         },
         "end": {
-          "line": 312,
-          "column": 24
+          "line": 305,
+          "column": 23
         }
       },
       "type": "variable",
@@ -548,11 +547,11 @@
     "_init": {
       "location": {
         "start": {
-          "line": 314,
+          "line": 307,
           "column": 4
         },
         "end": {
-          "line": 337,
+          "line": 330,
           "column": 5
         }
       },
@@ -562,11 +561,11 @@
     "getForm": {
       "location": {
         "start": {
-          "line": 343,
+          "line": 336,
           "column": 4
         },
         "end": {
-          "line": 345,
+          "line": 338,
           "column": 5
         }
       },
@@ -592,11 +591,11 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 351,
+          "line": 344,
           "column": 4
         },
         "end": {
-          "line": 410,
+          "line": 406,
           "column": 5
         }
       },
@@ -622,11 +621,11 @@
     "_applyFormData": {
       "location": {
         "start": {
-          "line": 418,
+          "line": 414,
           "column": 4
         },
         "end": {
-          "line": 700,
+          "line": 725,
           "column": 5
         }
       },
@@ -672,11 +671,11 @@
     "_applyLabelColumnWidth": {
       "location": {
         "start": {
-          "line": 707,
+          "line": 732,
           "column": 4
         },
         "end": {
-          "line": 718,
+          "line": 745,
           "column": 5
         }
       },
@@ -715,11 +714,11 @@
     "_onFormReady": {
       "location": {
         "start": {
-          "line": 727,
+          "line": 754,
           "column": 4
         },
         "end": {
-          "line": 733,
+          "line": 760,
           "column": 5
         }
       },
@@ -746,11 +745,11 @@
     "_handleOk": {
       "location": {
         "start": {
-          "line": 739,
+          "line": 766,
           "column": 4
         },
         "end": {
-          "line": 749,
+          "line": 776,
           "column": 5
         }
       },

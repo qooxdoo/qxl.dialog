@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 72,
+        "line": 74,
         "column": 3
       }
     },
@@ -24,7 +24,7 @@
     "register": {
       "location": {
         "start": {
-          "line": 24,
+          "line": 22,
           "column": 4
         },
         "end": {
@@ -42,7 +42,7 @@
           "column": 4
         },
         "end": {
-          "line": 70,
+          "line": 72,
           "column": 5
         }
       },

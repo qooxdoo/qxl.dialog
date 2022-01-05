@@ -9,11 +9,11 @@
   "clazz": {
     "location": {
       "start": {
-        "line": 21,
+        "line": 20,
         "column": 0
       },
       "end": {
-        "line": 62,
+        "line": 63,
         "column": 3
       }
     },
@@ -31,11 +31,11 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 27,
+          "line": 26,
           "column": 4
         },
         "end": {
-          "line": 51,
+          "line": 52,
           "column": 5
         }
       },
@@ -58,12 +58,12 @@
     "_handleEscape": {
       "location": {
         "start": {
-          "line": 56,
-          "column": 5
+          "line": 57,
+          "column": 4
         },
         "end": {
-          "line": 60,
-          "column": 6
+          "line": 61,
+          "column": 5
         }
       },
       "jsdoc": {

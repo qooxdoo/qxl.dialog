@@ -9,12 +9,12 @@
   "clazz": {
     "location": {
       "start": {
-        "line": 22,
+        "line": 21,
         "column": 0
       },
       "end": {
-        "line": 961,
-        "column": 5
+        "line": 1003,
+        "column": 3
       }
     },
     "jsdoc": {
@@ -43,12 +43,12 @@
     "main": {
       "location": {
         "start": {
-          "line": 38,
-          "column": 8
+          "line": 35,
+          "column": 4
         },
         "end": {
-          "line": 184,
-          "column": 9
+          "line": 200,
+          "column": 5
         }
       },
       "jsdoc": {
@@ -70,12 +70,12 @@
     "_replaceOwnedObject": {
       "location": {
         "start": {
-          "line": 186,
-          "column": 8
+          "line": 202,
+          "column": 4
         },
         "end": {
-          "line": 200,
-          "column": 9
+          "line": 216,
+          "column": 5
         }
       },
       "type": "function",
@@ -84,12 +84,12 @@
     "createAlert": {
       "location": {
         "start": {
-          "line": 202,
-          "column": 8
+          "line": 218,
+          "column": 4
         },
         "end": {
-          "line": 209,
-          "column": 9
+          "line": 223,
+          "column": 5
         }
       },
       "type": "function",
@@ -98,12 +98,12 @@
     "createWarning": {
       "location": {
         "start": {
-          "line": 211,
-          "column": 8
+          "line": 225,
+          "column": 4
         },
         "end": {
-          "line": 216,
-          "column": 9
+          "line": 230,
+          "column": 5
         }
       },
       "type": "function",
@@ -112,12 +112,12 @@
     "createError": {
       "location": {
         "start": {
-          "line": 218,
-          "column": 8
+          "line": 232,
+          "column": 4
         },
         "end": {
-          "line": 223,
-          "column": 9
+          "line": 235,
+          "column": 5
         }
       },
       "type": "function",
@@ -126,12 +126,12 @@
     "createConfirm": {
       "location": {
         "start": {
-          "line": 225,
-          "column": 8
+          "line": 237,
+          "column": 4
         },
         "end": {
-          "line": 237,
-          "column": 9
+          "line": 249,
+          "column": 5
         }
       },
       "type": "function",
@@ -140,12 +140,12 @@
     "createPrompt": {
       "location": {
         "start": {
-          "line": 239,
-          "column": 8
+          "line": 251,
+          "column": 4
         },
         "end": {
-          "line": 250,
-          "column": 9
+          "line": 262,
+          "column": 5
         }
       },
       "type": "function",
@@ -154,12 +154,12 @@
     "createDialogChain": {
       "location": {
         "start": {
-          "line": 257,
-          "column": 8
+          "line": 269,
+          "column": 4
         },
         "end": {
-          "line": 284,
-          "column": 9
+          "line": 299,
+          "column": 5
         }
       },
       "jsdoc": {
@@ -190,12 +190,12 @@
     "createSelect": {
       "location": {
         "start": {
-          "line": 291,
-          "column": 8
+          "line": 306,
+          "column": 4
         },
         "end": {
-          "line": 311,
-          "column": 9
+          "line": 324,
+          "column": 5
         }
       },
       "jsdoc": {
@@ -226,12 +226,12 @@
     "createForm": {
       "location": {
         "start": {
-          "line": 313,
-          "column": 8
+          "line": 326,
+          "column": 4
         },
         "end": {
-          "line": 397,
-          "column": 9
+          "line": 415,
+          "column": 5
         }
       },
       "type": "function",
@@ -240,12 +240,12 @@
     "createFormEmbedded": {
       "location": {
         "start": {
-          "line": 399,
-          "column": 8
+          "line": 417,
+          "column": 4
         },
         "end": {
-          "line": 520,
-          "column": 9
+          "line": 539,
+          "column": 5
         }
       },
       "type": "function",
@@ -254,12 +254,12 @@
     "createTabbedFormEmbedded": {
       "location": {
         "start": {
-          "line": 522,
-          "column": 8
+          "line": 541,
+          "column": 4
         },
         "end": {
-          "line": 698,
-          "column": 9
+          "line": 715,
+          "column": 5
         }
       },
       "type": "function",
@@ -268,12 +268,12 @@
     "createWizard": {
       "location": {
         "start": {
-          "line": 700,
-          "column": 8
+          "line": 717,
+          "column": 4
         },
         "end": {
-          "line": 807,
-          "column": 9
+          "line": 840,
+          "column": 5
         }
       },
       "type": "function",
@@ -282,12 +282,12 @@
     "createLogin": {
       "location": {
         "start": {
-          "line": 814,
-          "column": 8
+          "line": 847,
+          "column": 4
         },
         "end": {
-          "line": 838,
-          "column": 9
+          "line": 872,
+          "column": 5
         }
       },
       "jsdoc": {
@@ -318,12 +318,12 @@
     "checkCredentials": {
       "location": {
         "start": {
-          "line": 852,
-          "column": 8
+          "line": 886,
+          "column": 4
         },
         "end": {
-          "line": 858,
-          "column": 9
+          "line": 892,
+          "column": 5
         }
       },
       "jsdoc": {
@@ -357,12 +357,12 @@
     "finalCallback": {
       "location": {
         "start": {
-          "line": 865,
-          "column": 8
+          "line": 899,
+          "column": 4
         },
         "end": {
-          "line": 877,
-          "column": 9
+          "line": 911,
+          "column": 5
         }
       },
       "jsdoc": {
@@ -391,12 +391,12 @@
     "createProgress": {
       "location": {
         "start": {
-          "line": 879,
-          "column": 8
+          "line": 913,
+          "column": 4
         },
         "end": {
-          "line": 902,
-          "column": 9
+          "line": 939,
+          "column": 5
         }
       },
       "type": "function",
@@ -405,12 +405,12 @@
     "createProgressWithLog": {
       "location": {
         "start": {
-          "line": 904,
-          "column": 8
+          "line": 941,
+          "column": 4
         },
         "end": {
-          "line": 959,
-          "column": 9
+          "line": 1001,
+          "column": 5
         }
       },
       "type": "function",
@@ -1699,7 +1699,7 @@
         "@description": [
           {
             "name": "@description",
-            "body": "<p>Sets multiple properties at once by using a property list or\n sets one property and its value by the first and second argument.\n As a fallback, if no generated property setter could be found, a\n handwritten setter will be searched and invoked if available.</p>"
+            "body": "<p>Sets either multiple properties at once by using a property list or\n sets one property and its value by the first and second argument.\n As a fallback, if no generated property setter could be found, a\n handwritten setter will be searched and invoked if available.</p>"
           }
         ],
         "@param": [

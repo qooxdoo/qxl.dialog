@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 76,
+        "line": 80,
         "column": 3
       }
     },
@@ -24,11 +24,11 @@
     "register": {
       "location": {
         "start": {
-          "line": 24,
+          "line": 22,
           "column": 4
         },
         "end": {
-          "line": 27,
+          "line": 24,
           "column": 5
         }
       },
@@ -38,11 +38,11 @@
     "_registration": {
       "location": {
         "start": {
-          "line": 29,
+          "line": 26,
           "column": 4
         },
         "end": {
-          "line": 74,
+          "line": 78,
           "column": 5
         }
       },

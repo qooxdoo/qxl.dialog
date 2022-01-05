@@ -9,11 +9,11 @@
   "clazz": {
     "location": {
       "start": {
-        "line": 21,
+        "line": 20,
         "column": 0
       },
       "end": {
-        "line": 248,
+        "line": 250,
         "column": 3
       }
     },
@@ -31,11 +31,11 @@
     "pageData": {
       "location": {
         "start": {
-          "line": 27,
+          "line": 26,
           "column": 4
         },
         "end": {
-          "line": 30,
+          "line": 29,
           "column": 5
         }
       },
@@ -55,11 +55,11 @@
     "page": {
       "location": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 4
         },
         "end": {
-          "line": 39,
+          "line": 38,
           "column": 5
         }
       },
@@ -81,11 +81,11 @@
     "allowBack": {
       "location": {
         "start": {
-          "line": 45,
+          "line": 44,
           "column": 4
         },
         "end": {
-          "line": 49,
+          "line": 48,
           "column": 5
         }
       },
@@ -107,11 +107,11 @@
     "allowNext": {
       "location": {
         "start": {
-          "line": 55,
+          "line": 54,
           "column": 4
         },
         "end": {
-          "line": 59,
+          "line": 58,
           "column": 5
         }
       },
@@ -133,11 +133,11 @@
     "allowFinish": {
       "location": {
         "start": {
-          "line": 67,
+          "line": 66,
           "column": 4
         },
         "end": {
-          "line": 71,
+          "line": 70,
           "column": 5
         }
       },
@@ -324,11 +324,11 @@
     "_backButton": {
       "location": {
         "start": {
-          "line": 75,
+          "line": 74,
           "column": 4
         },
         "end": {
-          "line": 75,
+          "line": 74,
           "column": 21
         }
       },
@@ -338,11 +338,11 @@
     "_nextButton": {
       "location": {
         "start": {
-          "line": 76,
+          "line": 75,
           "column": 4
         },
         "end": {
-          "line": 76,
+          "line": 75,
           "column": 21
         }
       },
@@ -352,11 +352,11 @@
     "_finishButton": {
       "location": {
         "start": {
-          "line": 77,
+          "line": 76,
           "column": 4
         },
         "end": {
-          "line": 77,
+          "line": 76,
           "column": 23
         }
       },
@@ -366,11 +366,11 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 82,
+          "line": 81,
           "column": 4
         },
         "end": {
-          "line": 137,
+          "line": 138,
           "column": 5
         }
       },
@@ -394,11 +394,11 @@
     "_onFormReady": {
       "location": {
         "start": {
-          "line": 144,
+          "line": 145,
           "column": 4
         },
         "end": {
-          "line": 156,
+          "line": 158,
           "column": 5
         }
       },
@@ -429,11 +429,11 @@
     "_applyPageData": {
       "location": {
         "start": {
-          "line": 164,
+          "line": 166,
           "column": 4
         },
         "end": {
-          "line": 182,
+          "line": 184,
           "column": 5
         }
       },
@@ -470,11 +470,11 @@
     "_applyPage": {
       "location": {
         "start": {
-          "line": 190,
+          "line": 192,
           "column": 4
         },
         "end": {
-          "line": 202,
+          "line": 204,
           "column": 5
         }
       },
@@ -511,11 +511,11 @@
     "start": {
       "location": {
         "start": {
-          "line": 207,
+          "line": 209,
           "column": 4
         },
         "end": {
-          "line": 210,
+          "line": 212,
           "column": 5
         }
       },
@@ -533,11 +533,11 @@
     "goBack": {
       "location": {
         "start": {
-          "line": 215,
+          "line": 217,
           "column": 4
         },
         "end": {
-          "line": 221,
+          "line": 223,
           "column": 5
         }
       },
@@ -555,11 +555,11 @@
     "goForward": {
       "location": {
         "start": {
-          "line": 226,
+          "line": 228,
           "column": 4
         },
         "end": {
-          "line": 232,
+          "line": 234,
           "column": 5
         }
       },
@@ -577,11 +577,11 @@
     "finish": {
       "location": {
         "start": {
-          "line": 237,
+          "line": 239,
           "column": 4
         },
         "end": {
-          "line": 246,
+          "line": 248,
           "column": 5
         }
       },

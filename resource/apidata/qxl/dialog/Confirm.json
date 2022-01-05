@@ -9,11 +9,11 @@
   "clazz": {
     "location": {
       "start": {
-        "line": 20,
+        "line": 19,
         "column": 0
       },
       "end": {
-        "line": 170,
+        "line": 172,
         "column": 3
       }
     },
@@ -31,11 +31,11 @@
     "getInstance": {
       "location": {
         "start": {
-          "line": 28,
+          "line": 27,
           "column": 4
         },
         "end": {
-          "line": 30,
+          "line": 29,
           "column": 5
         }
       },
@@ -239,7 +239,7 @@
           "column": 4
         },
         "end": {
-          "line": 145,
+          "line": 147,
           "column": 5
         }
       },
@@ -262,11 +262,11 @@
     "_handleYes": {
       "location": {
         "start": {
-          "line": 151,
+          "line": 153,
           "column": 4
         },
         "end": {
-          "line": 157,
+          "line": 159,
           "column": 5
         }
       },
@@ -284,11 +284,11 @@
     "_handleNo": {
       "location": {
         "start": {
-          "line": 163,
+          "line": 165,
           "column": 4
         },
         "end": {
-          "line": 168,
+          "line": 170,
           "column": 5
         }
       },
