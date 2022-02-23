@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 97,
+        "line": 99,
         "column": 3
       }
     },
@@ -63,7 +63,7 @@
           "column": 4
         },
         "end": {
-          "line": 83,
+          "line": 85,
           "column": 5
         }
       },
@@ -86,11 +86,11 @@
     "_handleSelection": {
       "location": {
         "start": {
-          "line": 90,
+          "line": 92,
           "column": 4
         },
         "end": {
-          "line": 95,
+          "line": 97,
           "column": 5
         }
       },
@@ -1757,6 +1757,7 @@
         "@return": [
           {
             "name": "@return",
+            "type": "[[ ObjectMethod Function ]]",
             "desc": "Returns the value for qxObjectId"
           }
         ]
@@ -1781,6 +1782,7 @@
         "@param": [
           {
             "name": "@param",
+            "type": "[[ ObjectMethod Function ]]",
             "paramName": "value",
             "desc": "Value for qxObjectId"
           }

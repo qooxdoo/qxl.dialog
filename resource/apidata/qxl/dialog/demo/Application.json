@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 1003,
+        "line": 1012,
         "column": 3
       }
     },
@@ -47,7 +47,7 @@
           "column": 4
         },
         "end": {
-          "line": 200,
+          "line": 202,
           "column": 5
         }
       },
@@ -70,11 +70,11 @@
     "_replaceOwnedObject": {
       "location": {
         "start": {
-          "line": 202,
+          "line": 204,
           "column": 4
         },
         "end": {
-          "line": 216,
+          "line": 218,
           "column": 5
         }
       },
@@ -84,11 +84,11 @@
     "createAlert": {
       "location": {
         "start": {
-          "line": 218,
+          "line": 220,
           "column": 4
         },
         "end": {
-          "line": 223,
+          "line": 225,
           "column": 5
         }
       },
@@ -98,11 +98,11 @@
     "createWarning": {
       "location": {
         "start": {
-          "line": 225,
+          "line": 227,
           "column": 4
         },
         "end": {
-          "line": 230,
+          "line": 233,
           "column": 5
         }
       },
@@ -112,11 +112,11 @@
     "createError": {
       "location": {
         "start": {
-          "line": 232,
+          "line": 235,
           "column": 4
         },
         "end": {
-          "line": 235,
+          "line": 238,
           "column": 5
         }
       },
@@ -126,11 +126,11 @@
     "createConfirm": {
       "location": {
         "start": {
-          "line": 237,
+          "line": 240,
           "column": 4
         },
         "end": {
-          "line": 249,
+          "line": 254,
           "column": 5
         }
       },
@@ -140,11 +140,11 @@
     "createPrompt": {
       "location": {
         "start": {
-          "line": 251,
+          "line": 256,
           "column": 4
         },
         "end": {
-          "line": 262,
+          "line": 269,
           "column": 5
         }
       },
@@ -154,11 +154,11 @@
     "createDialogChain": {
       "location": {
         "start": {
-          "line": 269,
+          "line": 276,
           "column": 4
         },
         "end": {
-          "line": 299,
+          "line": 306,
           "column": 5
         }
       },
@@ -190,11 +190,11 @@
     "createSelect": {
       "location": {
         "start": {
-          "line": 306,
+          "line": 313,
           "column": 4
         },
         "end": {
-          "line": 324,
+          "line": 331,
           "column": 5
         }
       },
@@ -226,11 +226,11 @@
     "createForm": {
       "location": {
         "start": {
-          "line": 326,
+          "line": 333,
           "column": 4
         },
         "end": {
-          "line": 415,
+          "line": 422,
           "column": 5
         }
       },
@@ -240,11 +240,11 @@
     "createFormEmbedded": {
       "location": {
         "start": {
-          "line": 417,
+          "line": 424,
           "column": 4
         },
         "end": {
-          "line": 539,
+          "line": 546,
           "column": 5
         }
       },
@@ -254,11 +254,11 @@
     "createTabbedFormEmbedded": {
       "location": {
         "start": {
-          "line": 541,
+          "line": 548,
           "column": 4
         },
         "end": {
-          "line": 715,
+          "line": 722,
           "column": 5
         }
       },
@@ -268,11 +268,11 @@
     "createWizard": {
       "location": {
         "start": {
-          "line": 717,
+          "line": 724,
           "column": 4
         },
         "end": {
-          "line": 840,
+          "line": 848,
           "column": 5
         }
       },
@@ -282,11 +282,11 @@
     "createLogin": {
       "location": {
         "start": {
-          "line": 847,
+          "line": 855,
           "column": 4
         },
         "end": {
-          "line": 872,
+          "line": 880,
           "column": 5
         }
       },
@@ -318,11 +318,11 @@
     "checkCredentials": {
       "location": {
         "start": {
-          "line": 886,
+          "line": 894,
           "column": 4
         },
         "end": {
-          "line": 892,
+          "line": 900,
           "column": 5
         }
       },
@@ -357,11 +357,11 @@
     "finalCallback": {
       "location": {
         "start": {
-          "line": 899,
+          "line": 907,
           "column": 4
         },
         "end": {
-          "line": 911,
+          "line": 920,
           "column": 5
         }
       },
@@ -391,11 +391,11 @@
     "createProgress": {
       "location": {
         "start": {
-          "line": 913,
+          "line": 922,
           "column": 4
         },
         "end": {
-          "line": 939,
+          "line": 948,
           "column": 5
         }
       },
@@ -405,11 +405,11 @@
     "createProgressWithLog": {
       "location": {
         "start": {
-          "line": 941,
+          "line": 950,
           "column": 4
         },
         "end": {
-          "line": 1001,
+          "line": 1010,
           "column": 5
         }
       },
@@ -713,69 +713,6 @@
             "body": "{var} Returns the internal id for that binding. This can be used\n   for referencing the binding e.g. for removing. This is not an atomic\n   id so you can't you use it as a hash-map index.",
             "type": "var",
             "description": " Returns the internal id for that binding. This can be used\n   for referencing the binding e.g. for removing. This is not an atomic\n   id so you can't you use it as a hash-map index."
-          }
-        ],
-        "@throws": [
-          {
-            "name": "@throws",
-            "body": "{qx.core.AssertionError} If the event is no data event or\n   there is no property definition for object and property (source and\n   target).",
-            "type": "qx.core.AssertionError",
-            "description": " If the event is no data event or\n   there is no property definition for object and property (source and\n   target)."
-          }
-        ]
-      }
-    },
-    "bindAsync": {
-      "type": "function",
-      "name": "bindAsync",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.data.MBinding",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>The bind method delegates the call to the\n {@link qx.data.SingleValueBinding#bind} function. As source, the current\n object (this) will be used.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "sourcePropertyChain {String} The property chain which represents\n   the source property.",
-            "paramName": "sourcePropertyChain",
-            "description": " The property chain which represents\n   the source property.",
-            "type": "String"
-          },
-          {
-            "name": "@param",
-            "body": "targetObject {qx.core.Object} The object which the source should\n   be bind to.",
-            "paramName": "targetObject",
-            "description": " The object which the source should\n   be bind to.",
-            "type": "qx.core.Object"
-          },
-          {
-            "name": "@param",
-            "body": "targetProperty {String} The property name of the target object.",
-            "paramName": "targetProperty",
-            "description": " The property name of the target object.",
-            "type": "String"
-          },
-          {
-            "name": "@param",
-            "body": "options {Map} A map containing the options. See\n   {@link qx.data.SingleValueBinding#bind} for more\n   information.",
-            "paramName": "options",
-            "description": " A map containing the options. See\n   {@link qx.data.SingleValueBinding#bind} for more\n   information.",
-            "type": "Map"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{qx.Promise} A promise which is resolved when the initial value\n \t has been set on the target.  Note that this does NOT resolve when subsequent\n   values are returned.  The promise value is the internal id for that binding.\n   The id can be used for referencing the binding e.g. for removing. This is not\n   an atomic id so you can't you use it as a hash-map index.",
-            "type": "qx.Promise",
-            "description": " A promise which is resolved when the initial value\n \t has been set on the target.  Note that this does NOT resolve when subsequent\n   values are returned.  The promise value is the internal id for that binding.\n   The id can be used for referencing the binding e.g. for removing. This is not\n   an atomic id so you can't you use it as a hash-map index."
           }
         ],
         "@throws": [
@@ -1705,11 +1642,11 @@
         "@param": [
           {
             "name": "@param",
-            "body": "data {Map | String} a map of property values. The key is the name of the property.",
+            "body": "data {Object | String} a map of property values. The key is the name of the property.",
             "paramName": "data",
             "description": " a map of property values. The key is the name of the property.",
             "type": [
-              "Map",
+              "Object",
               "String"
             ]
           },
@@ -2226,6 +2163,7 @@
         "@return": [
           {
             "name": "@return",
+            "type": "[[ ObjectMethod Function ]]",
             "desc": "Returns the value for qxObjectId"
           }
         ]
@@ -2249,6 +2187,7 @@
         "@param": [
           {
             "name": "@param",
+            "type": "[[ ObjectMethod Function ]]",
             "paramName": "value",
             "desc": "Value for qxObjectId"
           }

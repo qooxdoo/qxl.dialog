@@ -54,6 +54,7 @@
       "nullable": false,
       "init": 0,
       "allowNull": false,
+      "check": "[[ ObjectMethod Function ]]",
       "defaultValue": 0
     },
     "logContent": {
@@ -2132,6 +2133,7 @@
         "@return": [
           {
             "name": "@return",
+            "type": "[[ ObjectMethod Function ]]",
             "desc": "Returns the value for qxObjectId"
           }
         ]
@@ -2156,6 +2158,7 @@
         "@param": [
           {
             "name": "@param",
+            "type": "[[ ObjectMethod Function ]]",
             "paramName": "value",
             "desc": "Value for qxObjectId"
           }
@@ -7659,6 +7662,7 @@
         "@return": [
           {
             "name": "@return",
+            "type": "[[ ObjectMethod Function ]]",
             "desc": "Returns the value for progress"
           }
         ]
@@ -7682,6 +7686,7 @@
         "@param": [
           {
             "name": "@param",
+            "type": "[[ ObjectMethod Function ]]",
             "paramName": "value",
             "desc": "Value for progress"
           }

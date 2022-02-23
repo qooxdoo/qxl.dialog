@@ -3057,6 +3057,7 @@
         "@return": [
           {
             "name": "@return",
+            "type": "[[ ObjectMethod Function ]]",
             "desc": "Returns the value for qxObjectId"
           }
         ]
@@ -3081,6 +3082,7 @@
         "@param": [
           {
             "name": "@param",
+            "type": "[[ ObjectMethod Function ]]",
             "paramName": "value",
             "desc": "Value for qxObjectId"
           }
