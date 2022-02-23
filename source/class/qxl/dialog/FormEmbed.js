@@ -32,7 +32,7 @@ qx.Class.define("qxl.dialog.FormEmbed", {
      * @return {qx.ui.form.Button}
      */
     _createOkButton() {
-      return this.base(arguments, true);
+      return super._createOkButton(true);
     },
   },
 });

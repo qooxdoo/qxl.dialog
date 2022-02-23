@@ -55,6 +55,7 @@ qx.Class.define("qxl.dialog.formElement.SelectBox", {
               return [selected];
             }.bind(this),
           },
+
           {
             converter(selection) {
               let value = selection[0].getModel().getValue();

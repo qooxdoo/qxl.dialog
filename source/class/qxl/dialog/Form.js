@@ -32,7 +32,7 @@ qx.Class.define("qxl.dialog.Form", {
      * @return {qx.ui.form.Button}
      */
     _createOkButton() {
-      return this.base(arguments, true);
+      return super._createOkButton(true);
     },
   },
 });

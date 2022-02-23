@@ -321,6 +321,7 @@ qx.Class.define("qxl.dialog.Login", {
           },
           this
         );
+
         this._password.addListenerOnce(
           "focus",
           function () {
@@ -349,7 +350,7 @@ qx.Class.define("qxl.dialog.Login", {
     hide() {
       this._password.setValue("");
       this.setMessage(null);
-      this.base(arguments);
+      super.hide();
     },
   },
 });

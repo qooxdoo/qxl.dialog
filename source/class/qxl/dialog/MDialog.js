@@ -171,6 +171,7 @@ qx.Mixin.define("qxl.dialog.MDialog", {
       this._container = new qx.ui.container.Composite(
         new qx.ui.layout.VBox(10)
       );
+
       return this._container;
     },
 

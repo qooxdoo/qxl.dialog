@@ -68,7 +68,7 @@ qx.Class.define("qxl.dialog.DialogEmbed", {
    * as to set the 'message' property.
    */
   construct(properties) {
-    this.base(arguments);
+    super();
     this.setLayout(new qx.ui.layout.Grow());
     this._createWidgetContent(properties);
 

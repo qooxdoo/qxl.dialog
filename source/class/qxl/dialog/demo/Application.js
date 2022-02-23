@@ -33,7 +33,7 @@ qx.Class.define("qxl.dialog.demo.Application", {
      * during startup of the application
      */
     main() {
-      this.base(arguments);
+      super.main();
       qx.log.appender.Native;
 
       /*
@@ -174,6 +174,7 @@ qx.Class.define("qxl.dialog.demo.Application", {
       button_panel.add(
         new qx.ui.basic.Label("Try out the following dialog widgets:")
       );
+
       buttons.forEach(function (button_data) {
         let button = new qx.ui.form.Button(button_data.label);
         button.setQxObjectId(button_data.id);
@@ -185,6 +186,7 @@ qx.Class.define("qxl.dialog.demo.Application", {
           },
           this
         );
+
         if (button_data.enabled !== undefined) {
           button.setEnabled(button_data.enabled);
         }
@@ -226,6 +228,7 @@ qx.Class.define("qxl.dialog.demo.Application", {
       let dlg = qxl.dialog.Dialog.warning("This is a warning!").set({
         caption,
       });
+
       this._replaceOwnedObject(button, dlg);
     },
 
@@ -238,12 +241,14 @@ qx.Class.define("qxl.dialog.demo.Application", {
       let dlg = qxl.dialog.Dialog.confirm("Proceed with the some action?").set({
         caption,
       });
+
       this._replaceOwnedObject(button, dlg, "dialog1");
 
       dlg.promise().then((result) => {
         let dlg2 = qxl.dialog.Dialog.alert("Your answer was: " + result).set({
           caption: caption + " 2",
         });
+
         this._replaceOwnedObject(button, dlg2, "dialog2");
       });
     },
@@ -252,11 +257,13 @@ qx.Class.define("qxl.dialog.demo.Application", {
       let dlg = qxl.dialog.Dialog.prompt("Please enter a message").set({
         caption,
       });
+
       this._replaceOwnedObject(button, dlg, "dialog1");
       dlg.promise().then((result) => {
         let dlg2 = qxl.dialog.Dialog.alert("Your answer was: " + result).set({
           caption: caption + " 2",
         });
+
         this._replaceOwnedObject(button, dlg2, "dialog2");
       });
     },
@@ -831,6 +838,7 @@ qx.Class.define("qxl.dialog.demo.Application", {
           qxl.dialog.Dialog.alert(
             "Thank you for your input. See log for result."
           );
+
           this.debug(qx.util.Serializer.toJson(map));
         },
         caption: caption,
@@ -901,6 +909,7 @@ qx.Class.define("qxl.dialog.demo.Application", {
         let loginError = qxl.dialog.Dialog.alert(err).set({
           caption: "Login Error",
         });
+
         this._replaceOwnedObject(this.__loginWidget, loginError, "error");
       } else {
         let loginSuccess = qxl.dialog.Dialog.alert(

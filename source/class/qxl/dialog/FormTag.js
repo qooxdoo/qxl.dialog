@@ -19,7 +19,7 @@ qx.Class.define("qxl.dialog.FormTag", {
   extend: qx.ui.container.Composite,
 
   construct(layout) {
-    this.base(arguments, layout || new qx.ui.layout.VBox());
+    super(layout || new qx.ui.layout.VBox());
   },
 
   members: {

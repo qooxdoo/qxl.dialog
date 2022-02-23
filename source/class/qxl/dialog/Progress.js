@@ -23,7 +23,7 @@ qx.Class.define("qxl.dialog.Progress", {
      * The percentage of the progress, 0-100
      */
     progress: {
-      check: function(value) {
+      check(value) {
         return qx.lang.Type.isNumber(value) && value >= 0 && value <= 100;
       },
       init: 0,

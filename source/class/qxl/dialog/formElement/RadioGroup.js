@@ -74,6 +74,7 @@ qx.Class.define("qxl.dialog.formElement.RadioGroup", {
               return selection;
             }.bind(this),
           },
+
           {
             converter(selection) {
               let value = selection[0].getUserData("value");

@@ -30,7 +30,7 @@ qx.Class.define("qxl.dialog.TabbedMultiColumnFormRenderer", {
     render = this._render;
     this._render = () => {};
 
-    this.base(arguments, form);
+    super(form);
 
     // Replace the grid layout that the superclass instantiated, with
     // a VBox layout

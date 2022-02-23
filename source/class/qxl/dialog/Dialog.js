@@ -219,7 +219,7 @@ qx.Class.define("qxl.dialog.Dialog", {
    * as to set the 'message' property.
    */
   construct(properties) {
-    this.base(arguments);
+    super();
     this.set({
       visibility: "hidden",
       allowClose: false,

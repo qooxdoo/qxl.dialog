@@ -64,6 +64,7 @@ qx.Class.define("qxl.dialog.formElement.List", {
               return selected;
             },
           },
+
           {
             converter(selection) {
               var value = [];

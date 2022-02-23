@@ -581,6 +581,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
                       valid,
                       message || this.tr("Value is invalid")
                     );
+
                     validatorObj.__asyncInProgress = false;
                   });
                 }

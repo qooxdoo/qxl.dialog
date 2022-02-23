@@ -68,6 +68,7 @@ qx.Class.define("qxl.dialog.Select", {
               },
               this
             );
+
             buttonPane.add(button);
             if (qx.core.Environment.get("module.objectid") === true) {
               button.setQxObjectId(value);
@@ -79,6 +80,7 @@ qx.Class.define("qxl.dialog.Select", {
         },
         this
       );
+
       container.add(buttonPane);
     },
 
