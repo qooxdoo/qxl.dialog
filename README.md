@@ -39,7 +39,7 @@ or copy over the `@asset()` declarations and alias definitions
 from one of these themes into your own icon theme.
 
 You can also use your own choice of icons by writing an icon theme which
-defines defining the aliases `dialog.icon.(ok|cancel|info|warning|error)`
+defines defining the aliases `qxl.dialog.icon.(ok|cancel|info|warning|error)`
 with the paths to the icons. Those paths also need to be put
 into a `@asset` compiler hint. See, for example, [this theme
 class](source/class/qxl/dialog/theme/icon/IcoMoonFree.js).
@@ -76,6 +76,9 @@ Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dia
 (check each search/replace manually to avoid false positives )
 
 ## Changelog
+
+### v3.3.0
+- Adds a new function that can be provided by the user, that gives additional capability to manage the container in which form fields are added (https://github.com/qooxdoo/qxl.dialog/pull/17 by @derrell).
 
 ### v3.2.0
 - Added embedded tabbed multi-column form feature by @derrell
