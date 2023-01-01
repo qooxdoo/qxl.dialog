@@ -165,7 +165,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
     /**
      * Function to call just after creating the form's input fields. This
      * allows additional, non-form widgets to be added. The function is called
-     * one two arguments: the container in which the form fields should be
+     * with two arguments: the container in which the form fields should be
      * placed, and the form object itself (this).
      */
     afterFormFunction :
@@ -186,6 +186,23 @@ qx.Mixin.define("qxl.dialog.MForm", {
       check : "Function",
       nullable : true,
       init : null
+    },
+
+    /*
+     * Function to call after the `afterButtonsFunction`, to add the container
+     * containing the buttons and form elements to the form. The function is
+     * called with two arguments: the container in which the form fields are
+     * placed, and the form object itself (this). If this function is
+     * provided, it must add the container or some widget that contains the
+     * container, to the form specified by the second argument. If this
+     * function is not provided, the default behavior of `this.add(container)`
+     * is used.
+     */
+    addContainerFunction :
+    {
+      check    : "Function",
+      nullable : true,
+      init     : null
     },
 
     /*
@@ -406,7 +423,17 @@ qx.Mixin.define("qxl.dialog.MForm", {
       if (typeof properties.afterButtonsFunction == "function") {
         properties.afterButtonsFunction.bind(properties.context)(buttonPane, this);
       }
-      this.add(container);
+
+      /*
+       * Add the container. This funtion can, for example, add it within a
+       * ScrollContainer. That must be done by the application, though, since
+       * the size of the scroll container must be specified.
+       */
+      if (typeof properties.addContainerFunction == "function") {
+        properties.addContainerFunction.bind(properties.context)(container, this);
+      } else {
+        this.add(container);
+      }
     },
 
     /**
