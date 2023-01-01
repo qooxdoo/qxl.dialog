@@ -425,7 +425,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
       }
 
       /*
-       * Add the container. This funtion can, for example, add it within a
+       * Add the container. This function can, for example, add it within a
        * ScrollContainer. That must be done by the application, though, since
        * the size of the scroll container must be specified.
        */
