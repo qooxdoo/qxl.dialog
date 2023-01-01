@@ -161,7 +161,7 @@ qx.Mixin.define("qxl.dialog.MForm", {
     /**
      * Function to call just after creating the form's input fields. This
      * allows additional, non-form widgets to be added. The function is called
-     * one two arguments: the container in which the form fields should be
+     * with two arguments: the container in which the form fields should be
      * placed, and the form object itself (this).
      */
     afterFormFunction: {
@@ -180,6 +180,83 @@ qx.Mixin.define("qxl.dialog.MForm", {
       check: "Function",
       nullable: true,
       init: null,
+    },
+
+    /*
+     * Function to call after the `afterButtonsFunction`, to add the container
+     * containing the buttons and form elements to the form. The function is
+     * called with two arguments: the container in which the form fields are
+     * placed, and the form object itself (this). If this function is
+     * provided, it must add the container or some widget that contains the
+     * container, to the form specified by the second argument. If this
+     * function is not provided, the default behavior of `this.add(container)`
+     * is used.
+     *
+     * Examples:
+     *
+     * If the form is in a window, i.e., qxl.dialog.Form, this function might
+     * be used to have the form take up most of the application space:
+     *
+     * ```
+     *         addContainerFunction : function(container, form)
+     *         {
+     *           // When the form window appears, resize it to slightly less
+     *           // than the application's size
+     *           form.addListenerOnce(
+     *             "appear",
+     *             () =>
+     *             {
+     *               let             root = qx.core.Init.getApplication().getRoot();
+     *               let             rootSize = root.getInnerSize();
+     *               let             scrollContainer = new qx.ui.container.Scroll();
+     *               let             width = rootSize.width - 100;
+     *               let             height = rootSize.height - 100;
+     *
+     *               scrollContainer.set({ width, height });
+     *               scrollContainer.add(container);
+     *               form.add(scrollContainer);
+     *             });
+     *         }
+     * ```
+     *
+     * Alternatively, if the form is embedded, i.e., qxl.dialog.FormEmbed, and
+     * the form is to be placed to the right of a sole other object, which is
+     * a list, this code might be used:
+     *
+     * ```
+     *           addContainerFunction : function(container, form)
+     *           {
+     *             let             scrollContainer = new qx.ui.container.Scroll();
+     *
+     *             scrollContainer.add(container);
+     *             form.add(scrollContainer);
+     *
+     *             // When the scroll container appears, determine the width
+     *             // of the list, and resize the scroll container to use
+     *             // remaining horizontal space for it.
+     *             scrollContainer.addListenerOnce(
+     *               "appear",
+     *               () =>
+     *               {
+     *                 let             layoutParent = form.getLayoutParent();
+     *                 let             parentBounds = layoutParent.getBounds();
+     *                 let             children = layoutParent.getChildren();
+     *                 let             listBounds = children[0].getBounds();
+     *
+     *                 scrollContainer.set(
+     *                   {
+     *                     width  : parentBounds.width - listBounds.width - 20,
+     *                     height : listBounds.height
+     *                   });
+     *               });
+     *           },
+     * ```
+     */
+    addContainerFunction :
+    {
+      check    : "Function",
+      nullable : true,
+      init     : null
     },
 
     /*
@@ -402,7 +479,17 @@ qx.Mixin.define("qxl.dialog.MForm", {
           this
         );
       }
-      this.add(container);
+
+      /*
+       * Add the container. This function can, for example, add it within a
+       * ScrollContainer. That must be done by the application, though, since
+       * the size of the scroll container must be specified.
+       */
+      if (typeof properties.addContainerFunction == "function") {
+        properties.addContainerFunction.bind(properties.context)(container, this);
+      } else {
+        this.add(container);
+      }
     },
 
     /**
