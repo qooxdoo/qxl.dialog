@@ -77,8 +77,11 @@ Then search and replace `dialog.` with `qxl.dialog.` and `dialog/` with `qxl/dia
 
 ## Changelog
 
-### v3.3.0
+### v5.1.0
 - Adds a new function that can be provided by the user, that gives additional capability to manage the container in which form fields are added (https://github.com/qooxdoo/qxl.dialog/pull/17 by @derrell).
+
+### v5.0.0
+- Move to Qooxdoo v.5
 
 ### v3.2.0
 - Added embedded tabbed multi-column form feature by @derrell
