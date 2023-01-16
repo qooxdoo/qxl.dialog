@@ -10,11 +10,13 @@
     "location": {
       "start": {
         "line": 21,
-        "column": 0
+        "column": 0,
+        "index": 558
       },
       "end": {
         "line": 1012,
-        "column": 3
+        "column": 3,
+        "index": 28222
       }
     },
     "jsdoc": {
@@ -44,11 +46,13 @@
       "location": {
         "start": {
           "line": 35,
-          "column": 4
+          "column": 4,
+          "index": 976
         },
         "end": {
           "line": 202,
-          "column": 5
+          "column": 5,
+          "index": 5305
         }
       },
       "jsdoc": {
@@ -71,11 +75,13 @@
       "location": {
         "start": {
           "line": 204,
-          "column": 4
+          "column": 4,
+          "index": 5312
         },
         "end": {
           "line": 218,
-          "column": 5
+          "column": 5,
+          "index": 5731
         }
       },
       "type": "function",
@@ -85,11 +91,13 @@
       "location": {
         "start": {
           "line": 220,
-          "column": 4
+          "column": 4,
+          "index": 5738
         },
         "end": {
           "line": 225,
-          "column": 5
+          "column": 5,
+          "index": 5975
         }
       },
       "type": "function",
@@ -99,11 +107,13 @@
       "location": {
         "start": {
           "line": 227,
-          "column": 4
+          "column": 4,
+          "index": 5982
         },
         "end": {
           "line": 233,
-          "column": 5
+          "column": 5,
+          "index": 6163
         }
       },
       "type": "function",
@@ -113,11 +123,13 @@
       "location": {
         "start": {
           "line": 235,
-          "column": 4
+          "column": 4,
+          "index": 6170
         },
         "end": {
           "line": 238,
-          "column": 5
+          "column": 5,
+          "index": 6330
         }
       },
       "type": "function",
@@ -127,11 +139,13 @@
       "location": {
         "start": {
           "line": 240,
-          "column": 4
+          "column": 4,
+          "index": 6337
         },
         "end": {
           "line": 254,
-          "column": 5
+          "column": 5,
+          "index": 6776
         }
       },
       "type": "function",
@@ -141,11 +155,13 @@
       "location": {
         "start": {
           "line": 256,
-          "column": 4
+          "column": 4,
+          "index": 6783
         },
         "end": {
           "line": 269,
-          "column": 5
+          "column": 5,
+          "index": 7212
         }
       },
       "type": "function",
@@ -155,11 +171,13 @@
       "location": {
         "start": {
           "line": 276,
-          "column": 4
+          "column": 4,
+          "index": 7314
         },
         "end": {
           "line": 306,
-          "column": 5
+          "column": 5,
+          "index": 8496
         }
       },
       "jsdoc": {
@@ -191,11 +209,13 @@
       "location": {
         "start": {
           "line": 313,
-          "column": 4
+          "column": 4,
+          "index": 8610
         },
         "end": {
           "line": 331,
-          "column": 5
+          "column": 5,
+          "index": 9246
         }
       },
       "jsdoc": {
@@ -227,11 +247,13 @@
       "location": {
         "start": {
           "line": 333,
-          "column": 4
+          "column": 4,
+          "index": 9253
         },
         "end": {
           "line": 422,
-          "column": 5
+          "column": 5,
+          "index": 11571
         }
       },
       "type": "function",
@@ -241,11 +263,13 @@
       "location": {
         "start": {
           "line": 424,
-          "column": 4
+          "column": 4,
+          "index": 11578
         },
         "end": {
           "line": 546,
-          "column": 5
+          "column": 5,
+          "index": 14940
         }
       },
       "type": "function",
@@ -255,11 +279,13 @@
       "location": {
         "start": {
           "line": 548,
-          "column": 4
+          "column": 4,
+          "index": 14947
         },
         "end": {
           "line": 722,
-          "column": 5
+          "column": 5,
+          "index": 19777
         }
       },
       "type": "function",
@@ -269,11 +295,13 @@
       "location": {
         "start": {
           "line": 724,
-          "column": 4
+          "column": 4,
+          "index": 19784
         },
         "end": {
           "line": 848,
-          "column": 5
+          "column": 5,
+          "index": 23297
         }
       },
       "type": "function",
@@ -283,11 +311,13 @@
       "location": {
         "start": {
           "line": 855,
-          "column": 4
+          "column": 4,
+          "index": 23400
         },
         "end": {
           "line": 880,
-          "column": 5
+          "column": 5,
+          "index": 24376
         }
       },
       "jsdoc": {
@@ -319,11 +349,13 @@
       "location": {
         "start": {
           "line": 894,
-          "column": 4
+          "column": 4,
+          "index": 25027
         },
         "end": {
           "line": 900,
-          "column": 5
+          "column": 5,
+          "index": 25243
         }
       },
       "jsdoc": {
@@ -358,11 +390,13 @@
       "location": {
         "start": {
           "line": 907,
-          "column": 4
+          "column": 4,
+          "index": 25407
         },
         "end": {
           "line": 920,
-          "column": 5
+          "column": 5,
+          "index": 25887
         }
       },
       "jsdoc": {
@@ -392,11 +426,13 @@
       "location": {
         "start": {
           "line": 922,
-          "column": 4
+          "column": 4,
+          "index": 25894
         },
         "end": {
           "line": 948,
-          "column": 5
+          "column": 5,
+          "index": 26541
         }
       },
       "type": "function",
@@ -406,11 +442,13 @@
       "location": {
         "start": {
           "line": 950,
-          "column": 4
+          "column": 4,
+          "index": 26548
         },
         "end": {
           "line": 1010,
-          "column": 5
+          "column": 5,
+          "index": 28212
         }
       },
       "type": "function",
@@ -451,8 +489,8 @@
         "@return": [
           {
             "name": "@return",
-            "body": "{String | LocalizedString} The translated message or localized string",
-            "type": "String | LocalizedString",
+            "body": "{String|LocalizedString} The translated message or localized string",
+            "type": "String|LocalizedString",
             "description": " The translated message or localized string"
           }
         ]
@@ -507,8 +545,8 @@
         "@return": [
           {
             "name": "@return",
-            "body": "{String | LocalizedString} The translated message or localized string",
-            "type": "String | LocalizedString",
+            "body": "{String|LocalizedString} The translated message or localized string",
+            "type": "String|LocalizedString",
             "description": " The translated message or localized string"
           }
         ]
@@ -556,8 +594,8 @@
         "@return": [
           {
             "name": "@return",
-            "body": "{String | LocalizedString} The translated message or localized string",
-            "type": "String | LocalizedString",
+            "body": "{String|LocalizedString} The translated message or localized string",
+            "type": "String|LocalizedString",
             "description": " The translated message or localized string"
           }
         ]
@@ -619,8 +657,8 @@
         "@return": [
           {
             "name": "@return",
-            "body": "{String | LocalizedString} The translated message or localized string",
-            "type": "String | LocalizedString",
+            "body": "{String|LocalizedString} The translated message or localized string",
+            "type": "String|LocalizedString",
             "description": " The translated message or localized string"
           }
         ]
@@ -692,9 +730,11 @@
           },
           {
             "name": "@param",
-            "body": "targetProperty {String} The property name of the target object.",
+            "body": "targetProperty {String?\"value\"} The property name of the target object,\n   defaults to \"value\".",
             "paramName": "targetProperty",
-            "description": " The property name of the target object.",
+            "description": " The property name of the target object,\n   defaults to \"value\".",
+            "optional": true,
+            "defaultValue": "\"value\"",
             "type": "String"
           },
           {
@@ -1294,6 +1334,57 @@
             "body": "{Boolean} Whether the event default was prevented or not.\n     Returns true, when the event was NOT prevented.",
             "type": "Boolean",
             "description": " Whether the event default was prevented or not.\n     Returns true, when the event was NOT prevented."
+          }
+        ]
+      }
+    },
+    "__trackPendingEvent": {
+      "type": "function",
+      "name": "__trackPendingEvent",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "private",
+      "overriddenFrom": "qx.core.MEvent",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Internal helper method to track promises returned from event handlers</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "{var} result the result from the event handler",
+            "paramName": "result",
+            "description": "the result from the event handler",
+            "type": "var"
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "body": "{qx.Promise|var} the value to return",
+            "type": "qx.Promise|var",
+            "description": " the value to return"
+          }
+        ]
+      }
+    },
+    "waitForPendingEvents": {
+      "type": "function",
+      "name": "waitForPendingEvents",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "public",
+      "overriddenFrom": "qx.core.MEvent",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Waits for all pending events to be resolved</p>"
           }
         ]
       }

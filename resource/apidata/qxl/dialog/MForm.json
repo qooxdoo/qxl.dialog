@@ -10,11 +10,13 @@
     "location": {
       "start": {
         "line": 29,
-        "column": 0
+        "column": 0,
+        "index": 850
       },
       "end": {
-        "line": 779,
-        "column": 3
+        "line": 866,
+        "column": 3,
+        "index": 28589
       }
     },
     "jsdoc": {
@@ -45,11 +47,13 @@
     "location": {
       "start": {
         "line": 30,
-        "column": 2
+        "column": 2,
+        "index": 890
       },
       "end": {
         "line": 32,
-        "column": 3
+        "column": 3,
+        "index": 935
       }
     }
   },
@@ -58,11 +62,13 @@
       "location": {
         "start": {
           "line": 38,
-          "column": 4
+          "column": 4,
+          "index": 1042
         },
         "end": {
           "line": 41,
-          "column": 5
+          "column": 5,
+          "index": 1117
         }
       },
       "jsdoc": {
@@ -83,11 +89,13 @@
       "location": {
         "start": {
           "line": 95,
-          "column": 4
+          "column": 4,
+          "index": 2370
         },
         "end": {
           "line": 100,
-          "column": 5
+          "column": 5,
+          "index": 2491
         }
       },
       "jsdoc": {
@@ -110,11 +118,13 @@
       "location": {
         "start": {
           "line": 105,
-          "column": 4
+          "column": 4,
+          "index": 2550
         },
         "end": {
           "line": 109,
-          "column": 5
+          "column": 5,
+          "index": 2645
         }
       },
       "jsdoc": {
@@ -136,11 +146,13 @@
       "location": {
         "start": {
           "line": 114,
-          "column": 4
+          "column": 4,
+          "index": 2729
         },
         "end": {
           "line": 119,
-          "column": 5
+          "column": 5,
+          "index": 2857
         }
       },
       "jsdoc": {
@@ -164,11 +176,13 @@
       "location": {
         "start": {
           "line": 126,
-          "column": 4
+          "column": 4,
+          "index": 3103
         },
         "end": {
           "line": 130,
-          "column": 5
+          "column": 5,
+          "index": 3202
         }
       },
       "jsdoc": {
@@ -189,11 +203,13 @@
       "location": {
         "start": {
           "line": 139,
-          "column": 4
+          "column": 4,
+          "index": 3507
         },
         "end": {
           "line": 143,
-          "column": 5
+          "column": 5,
+          "index": 3599
         }
       },
       "jsdoc": {
@@ -214,11 +230,13 @@
       "location": {
         "start": {
           "line": 154,
-          "column": 4
+          "column": 4,
+          "index": 4115
         },
         "end": {
           "line": 159,
-          "column": 5
+          "column": 5,
+          "index": 4247
         }
       },
       "jsdoc": {
@@ -240,18 +258,20 @@
       "location": {
         "start": {
           "line": 167,
-          "column": 4
+          "column": 4,
+          "index": 4549
         },
         "end": {
           "line": 171,
-          "column": 5
+          "column": 5,
+          "index": 4640
         }
       },
       "jsdoc": {
         "@description": [
           {
             "name": "@description",
-            "body": "<p>Function to call just after creating the form's input fields. This\n allows additional, non-form widgets to be added. The function is called\n one two arguments: the container in which the form fields should be\n placed, and the form object itself (this).</p>"
+            "body": "<p>Function to call just after creating the form's input fields. This\n allows additional, non-form widgets to be added. The function is called\n with two arguments: the container in which the form fields should be\n placed, and the form object itself (this).</p>"
           }
         ]
       },
@@ -265,11 +285,13 @@
       "location": {
         "start": {
           "line": 179,
-          "column": 4
+          "column": 4,
+          "index": 4930
         },
         "end": {
           "line": 183,
-          "column": 5
+          "column": 5,
+          "index": 5024
         }
       },
       "jsdoc": {
@@ -286,15 +308,44 @@
       "allowNull": true,
       "check": "Function"
     },
+    "addContainerFunction": {
+      "location": {
+        "start": {
+          "line": 255,
+          "column": 4,
+          "index": 8157
+        },
+        "end": {
+          "line": 260,
+          "column": 5,
+          "index": 8265
+        }
+      },
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Function to call after the <code>afterButtonsFunction</code>, to add the container\n containing the buttons and form elements to the form. The function is\n called with two arguments: the container in which the form fields are\n placed, and the form object itself (this). If this function is\n provided, it must add the container or some widget that contains the\n container, to the form specified by the second argument. If this\n function is not provided, the default behavior of <code>this.add(container)</code>\n is used.\n Examples:\n If the form is in a window, i.e., qxl.dialog.Form, this function might\n be used to have the form take up most of the application space:\n <code></code><code>\n         addContainerFunction : function(container, form)\n         {\n\n\n           form.addListenerOnce(\n             \"appear\",\n             () =&gt;\n             {\n               let             root = qx.core.Init.getApplication().getRoot();\n               let             rootSize = root.getInnerSize();\n               let             scrollContainer = new qx.ui.container.Scroll();\n               let             width = rootSize.width - 100;\n               let             height = rootSize.height - 100;\n               scrollContainer.set({ width, height });\n               scrollContainer.add(container);\n               form.add(scrollContainer);\n             });\n         }\n </code><code></code>\n Alternatively, if the form is embedded, i.e., qxl.dialog.FormEmbed, and\n the form is to be placed to the right of a sole other object, which is\n a list, this code might be used:\n <code></code><code>\n           addContainerFunction : function(container, form)\n           {\n             let             scrollContainer = new qx.ui.container.Scroll();\n             scrollContainer.add(container);\n             form.add(scrollContainer);\n\n\n\n             scrollContainer.addListenerOnce(\n               \"appear\",\n               () =&gt;\n               {\n                 let             layoutParent = form.getLayoutParent();\n                 let             parentBounds = layoutParent.getBounds();\n                 let             children = layoutParent.getChildren();\n                 let             listBounds = children[0].getBounds();\n                 scrollContainer.set(\n                   {\n                     width  : parentBounds.width - listBounds.width - 20,\n                     height : listBounds.height\n                   });\n               });\n           },\n </code><code></code></p>"
+          }
+        ]
+      },
+      "name": "addContainerFunction",
+      "propertyType": "new",
+      "nullable": true,
+      "allowNull": true,
+      "check": "Function"
+    },
     "finalizeFunction": {
       "location": {
         "start": {
-          "line": 190,
-          "column": 4
+          "line": 267,
+          "column": 4,
+          "index": 8439
         },
         "end": {
-          "line": 194,
-          "column": 5
+          "line": 271,
+          "column": 5,
+          "index": 8529
         }
       },
       "jsdoc": {
@@ -316,12 +367,14 @@
     "registerFormElementHandlers": {
       "location": {
         "start": {
-          "line": 273,
-          "column": 4
+          "line": 350,
+          "column": 4,
+          "index": 11446
         },
         "end": {
-          "line": 279,
-          "column": 5
+          "line": 356,
+          "column": 5,
+          "index": 11721
         }
       },
       "jsdoc": {
@@ -439,12 +492,14 @@
     "_registeredFormElements": {
       "location": {
         "start": {
-          "line": 282,
-          "column": 4
+          "line": 359,
+          "column": 4,
+          "index": 11799
         },
         "end": {
-          "line": 282,
-          "column": 31
+          "line": 359,
+          "column": 31,
+          "index": 11826
         }
       },
       "jsdoc": {
@@ -461,12 +516,14 @@
     "_internalFormElements": {
       "location": {
         "start": {
-          "line": 284,
-          "column": 4
+          "line": 361,
+          "column": 4,
+          "index": 11833
         },
         "end": {
-          "line": 297,
-          "column": 5
+          "line": 374,
+          "column": 5,
+          "index": 12462
         }
       },
       "type": "variable",
@@ -477,12 +534,14 @@
     "_formContainer": {
       "location": {
         "start": {
-          "line": 301,
-          "column": 4
+          "line": 378,
+          "column": 4,
+          "index": 12487
         },
         "end": {
-          "line": 301,
-          "column": 24
+          "line": 378,
+          "column": 24,
+          "index": 12507
         }
       },
       "type": "variable",
@@ -491,12 +550,14 @@
     "_form": {
       "location": {
         "start": {
-          "line": 302,
-          "column": 4
+          "line": 379,
+          "column": 4,
+          "index": 12513
         },
         "end": {
-          "line": 302,
-          "column": 15
+          "line": 379,
+          "column": 15,
+          "index": 12524
         }
       },
       "type": "variable",
@@ -505,12 +566,14 @@
     "_formValidator": {
       "location": {
         "start": {
-          "line": 303,
-          "column": 4
+          "line": 380,
+          "column": 4,
+          "index": 12530
         },
         "end": {
-          "line": 303,
-          "column": 24
+          "line": 380,
+          "column": 24,
+          "index": 12550
         }
       },
       "type": "variable",
@@ -519,12 +582,14 @@
     "_formController": {
       "location": {
         "start": {
-          "line": 304,
-          "column": 4
+          "line": 381,
+          "column": 4,
+          "index": 12556
         },
         "end": {
-          "line": 304,
-          "column": 25
+          "line": 381,
+          "column": 25,
+          "index": 12577
         }
       },
       "type": "variable",
@@ -533,12 +598,14 @@
     "_formElements": {
       "location": {
         "start": {
-          "line": 305,
-          "column": 4
+          "line": 382,
+          "column": 4,
+          "index": 12583
         },
         "end": {
-          "line": 305,
-          "column": 23
+          "line": 382,
+          "column": 23,
+          "index": 12602
         }
       },
       "type": "variable",
@@ -547,12 +614,14 @@
     "_init": {
       "location": {
         "start": {
-          "line": 307,
-          "column": 4
+          "line": 384,
+          "column": 4,
+          "index": 12609
         },
         "end": {
-          "line": 330,
-          "column": 5
+          "line": 407,
+          "column": 5,
+          "index": 13751
         }
       },
       "type": "function",
@@ -561,12 +630,14 @@
     "getForm": {
       "location": {
         "start": {
-          "line": 336,
-          "column": 4
+          "line": 413,
+          "column": 4,
+          "index": 13830
         },
         "end": {
-          "line": 338,
-          "column": 5
+          "line": 415,
+          "column": 5,
+          "index": 13872
         }
       },
       "jsdoc": {
@@ -591,12 +662,14 @@
     "_createWidgetContent": {
       "location": {
         "start": {
-          "line": 344,
-          "column": 4
+          "line": 421,
+          "column": 4,
+          "index": 13965
         },
         "end": {
-          "line": 406,
-          "column": 5
+          "line": 493,
+          "column": 5,
+          "index": 16573
         }
       },
       "jsdoc": {
@@ -621,12 +694,14 @@
     "_applyFormData": {
       "location": {
         "start": {
-          "line": 414,
-          "column": 4
+          "line": 501,
+          "column": 4,
+          "index": 16766
         },
         "end": {
-          "line": 726,
-          "column": 5
+          "line": 813,
+          "column": 5,
+          "index": 27115
         }
       },
       "jsdoc": {
@@ -671,12 +746,14 @@
     "_applyLabelColumnWidth": {
       "location": {
         "start": {
-          "line": 733,
-          "column": 4
+          "line": 820,
+          "column": 4,
+          "index": 27239
         },
         "end": {
-          "line": 746,
-          "column": 5
+          "line": 833,
+          "column": 5,
+          "index": 27698
         }
       },
       "jsdoc": {
@@ -714,12 +791,14 @@
     "_onFormReady": {
       "location": {
         "start": {
-          "line": 755,
-          "column": 4
+          "line": 842,
+          "column": 4,
+          "index": 28018
         },
         "end": {
-          "line": 761,
-          "column": 5
+          "line": 848,
+          "column": 5,
+          "index": 28202
         }
       },
       "jsdoc": {
@@ -745,12 +824,14 @@
     "_handleOk": {
       "location": {
         "start": {
-          "line": 767,
-          "column": 4
+          "line": 854,
+          "column": 4,
+          "index": 28311
         },
         "end": {
-          "line": 777,
-          "column": 5
+          "line": 864,
+          "column": 5,
+          "index": 28579
         }
       },
       "jsdoc": {
@@ -1384,6 +1465,72 @@
           {
             "name": "@description",
             "body": "Resets the user value of the property <code>afterButtonsFunction</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #afterButtonsFunction}."
+          }
+        ]
+      }
+    },
+    "getAddContainerFunction": {
+      "type": "function",
+      "name": "getAddContainerFunction",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>addContainerFunction</code>.\n\nFor further details take a look at the property definition: {@link #addContainerFunction}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Function",
+            "desc": "Returns the value for addContainerFunction"
+          }
+        ]
+      }
+    },
+    "setAddContainerFunction": {
+      "type": "function",
+      "name": "setAddContainerFunction",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>addContainerFunction</code>.\n\nFor further details take a look at the property definition: {@link #addContainerFunction}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Function",
+            "paramName": "value",
+            "desc": "Value for addContainerFunction"
+          }
+        ]
+      }
+    },
+    "resetAddContainerFunction": {
+      "type": "function",
+      "name": "resetAddContainerFunction",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>addContainerFunction</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #addContainerFunction}."
           }
         ]
       }

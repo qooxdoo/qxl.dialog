@@ -10,11 +10,13 @@
     "location": {
       "start": {
         "line": 20,
-        "column": 0
+        "column": 0,
+        "index": 602
       },
       "end": {
         "line": 250,
-        "column": 3
+        "column": 3,
+        "index": 7199
       }
     },
     "jsdoc": {
@@ -32,11 +34,13 @@
       "location": {
         "start": {
           "line": 26,
-          "column": 4
+          "column": 4,
+          "index": 768
         },
         "end": {
           "line": 29,
-          "column": 5
+          "column": 5,
+          "index": 838
         }
       },
       "jsdoc": {
@@ -56,11 +60,13 @@
       "location": {
         "start": {
           "line": 34,
-          "column": 4
+          "column": 4,
+          "index": 905
         },
         "end": {
           "line": 38,
-          "column": 5
+          "column": 5,
+          "index": 984
         }
       },
       "jsdoc": {
@@ -82,11 +88,13 @@
       "location": {
         "start": {
           "line": 44,
-          "column": 4
+          "column": 4,
+          "index": 1081
         },
         "end": {
           "line": 48,
-          "column": 5
+          "column": 5,
+          "index": 1174
         }
       },
       "jsdoc": {
@@ -108,11 +116,13 @@
       "location": {
         "start": {
           "line": 54,
-          "column": 4
+          "column": 4,
+          "index": 1267
         },
         "end": {
           "line": 58,
-          "column": 5
+          "column": 5,
+          "index": 1360
         }
       },
       "jsdoc": {
@@ -134,11 +144,13 @@
       "location": {
         "start": {
           "line": 66,
-          "column": 4
+          "column": 4,
+          "index": 1629
         },
         "end": {
           "line": 70,
-          "column": 5
+          "column": 5,
+          "index": 1726
         }
       },
       "jsdoc": {
@@ -282,7 +294,7 @@
         "@description": [
           {
             "name": "@description",
-            "body": "<p>Function to call just after creating the form's input fields. This\n allows additional, non-form widgets to be added. The function is called\n one two arguments: the container in which the form fields should be\n placed, and the form object itself (this).</p>"
+            "body": "<p>Function to call just after creating the form's input fields. This\n allows additional, non-form widgets to be added. The function is called\n with two arguments: the container in which the form fields should be\n placed, and the form object itself (this).</p>"
           }
         ]
       }
@@ -299,6 +311,22 @@
           {
             "name": "@description",
             "body": "<p>Function to call just after creating the form's buttons. This allows\n additional, additional widgets to be added. The function is called with\n two arguments: the container in which the buttons were placed, and the\n form object itself (this).</p>"
+          }
+        ]
+      }
+    },
+    "addContainerFunction": {
+      "type": "property",
+      "name": "addContainerFunction",
+      "abstract": false,
+      "mixin": true,
+      "access": "public",
+      "overriddenFrom": "qxl.dialog.MForm",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Function to call after the <code>afterButtonsFunction</code>, to add the container\n containing the buttons and form elements to the form. The function is\n called with two arguments: the container in which the form fields are\n placed, and the form object itself (this). If this function is\n provided, it must add the container or some widget that contains the\n container, to the form specified by the second argument. If this\n function is not provided, the default behavior of <code>this.add(container)</code>\n is used.\n Examples:\n If the form is in a window, i.e., qxl.dialog.Form, this function might\n be used to have the form take up most of the application space:\n <code></code><code>\n         addContainerFunction : function(container, form)\n         {\n\n\n           form.addListenerOnce(\n             \"appear\",\n             () =&gt;\n             {\n               let             root = qx.core.Init.getApplication().getRoot();\n               let             rootSize = root.getInnerSize();\n               let             scrollContainer = new qx.ui.container.Scroll();\n               let             width = rootSize.width - 100;\n               let             height = rootSize.height - 100;\n               scrollContainer.set({ width, height });\n               scrollContainer.add(container);\n               form.add(scrollContainer);\n             });\n         }\n </code><code></code>\n Alternatively, if the form is embedded, i.e., qxl.dialog.FormEmbed, and\n the form is to be placed to the right of a sole other object, which is\n a list, this code might be used:\n <code></code><code>\n           addContainerFunction : function(container, form)\n           {\n             let             scrollContainer = new qx.ui.container.Scroll();\n             scrollContainer.add(container);\n             form.add(scrollContainer);\n\n\n\n             scrollContainer.addListenerOnce(\n               \"appear\",\n               () =&gt;\n               {\n                 let             layoutParent = form.getLayoutParent();\n                 let             parentBounds = layoutParent.getBounds();\n                 let             children = layoutParent.getChildren();\n                 let             listBounds = children[0].getBounds();\n                 scrollContainer.set(\n                   {\n                     width  : parentBounds.width - listBounds.width - 20,\n                     height : listBounds.height\n                   });\n               });\n           },\n </code><code></code></p>"
           }
         ]
       }
@@ -325,11 +353,13 @@
       "location": {
         "start": {
           "line": 74,
-          "column": 4
+          "column": 4,
+          "index": 1751
         },
         "end": {
           "line": 74,
-          "column": 21
+          "column": 21,
+          "index": 1768
         }
       },
       "type": "variable",
@@ -339,11 +369,13 @@
       "location": {
         "start": {
           "line": 75,
-          "column": 4
+          "column": 4,
+          "index": 1774
         },
         "end": {
           "line": 75,
-          "column": 21
+          "column": 21,
+          "index": 1791
         }
       },
       "type": "variable",
@@ -353,11 +385,13 @@
       "location": {
         "start": {
           "line": 76,
-          "column": 4
+          "column": 4,
+          "index": 1797
         },
         "end": {
           "line": 76,
-          "column": 23
+          "column": 23,
+          "index": 1816
         }
       },
       "type": "variable",
@@ -367,11 +401,13 @@
       "location": {
         "start": {
           "line": 81,
-          "column": 4
+          "column": 4,
+          "index": 1884
         },
         "end": {
           "line": 138,
-          "column": 5
+          "column": 5,
+          "index": 4305
         }
       },
       "jsdoc": {
@@ -395,11 +431,13 @@
       "location": {
         "start": {
           "line": 145,
-          "column": 4
+          "column": 4,
+          "index": 4479
         },
         "end": {
           "line": 158,
-          "column": 5
+          "column": 5,
+          "index": 4902
         }
       },
       "jsdoc": {
@@ -430,11 +468,13 @@
       "location": {
         "start": {
           "line": 166,
-          "column": 4
+          "column": 4,
+          "index": 5094
         },
         "end": {
           "line": 184,
-          "column": 5
+          "column": 5,
+          "index": 5721
         }
       },
       "jsdoc": {
@@ -471,11 +511,13 @@
       "location": {
         "start": {
           "line": 192,
-          "column": 4
+          "column": 4,
+          "index": 5893
         },
         "end": {
           "line": 204,
-          "column": 5
+          "column": 5,
+          "index": 6304
         }
       },
       "jsdoc": {
@@ -512,11 +554,13 @@
       "location": {
         "start": {
           "line": 209,
-          "column": 4
+          "column": 4,
+          "index": 6352
         },
         "end": {
           "line": 212,
-          "column": 5
+          "column": 5,
+          "index": 6409
         }
       },
       "jsdoc": {
@@ -534,11 +578,13 @@
       "location": {
         "start": {
           "line": 217,
-          "column": 4
+          "column": 4,
+          "index": 6474
         },
         "end": {
           "line": 223,
-          "column": 5
+          "column": 5,
+          "index": 6622
         }
       },
       "jsdoc": {
@@ -556,11 +602,13 @@
       "location": {
         "start": {
           "line": 228,
-          "column": 4
+          "column": 4,
+          "index": 6681
         },
         "end": {
           "line": 234,
-          "column": 5
+          "column": 5,
+          "index": 6861
         }
       },
       "jsdoc": {
@@ -578,11 +626,13 @@
       "location": {
         "start": {
           "line": 239,
-          "column": 4
+          "column": 4,
+          "index": 6952
         },
         "end": {
           "line": 248,
-          "column": 5
+          "column": 5,
+          "index": 7189
         }
       },
       "jsdoc": {
@@ -1344,6 +1394,72 @@
           {
             "name": "@description",
             "body": "Resets the user value of the property <code>afterButtonsFunction</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #afterButtonsFunction}."
+          }
+        ]
+      }
+    },
+    "getAddContainerFunction": {
+      "type": "function",
+      "name": "getAddContainerFunction",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>addContainerFunction</code>.\n\nFor further details take a look at the property definition: {@link #addContainerFunction}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Function",
+            "desc": "Returns the value for addContainerFunction"
+          }
+        ]
+      }
+    },
+    "setAddContainerFunction": {
+      "type": "function",
+      "name": "setAddContainerFunction",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>addContainerFunction</code>.\n\nFor further details take a look at the property definition: {@link #addContainerFunction}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Function",
+            "paramName": "value",
+            "desc": "Value for addContainerFunction"
+          }
+        ]
+      }
+    },
+    "resetAddContainerFunction": {
+      "type": "function",
+      "name": "resetAddContainerFunction",
+      "abstract": false,
+      "mixin": false,
+      "inherited": true,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>addContainerFunction</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #addContainerFunction}."
           }
         ]
       }
