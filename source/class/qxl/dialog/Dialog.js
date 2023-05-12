@@ -260,17 +260,6 @@ qx.Class.define("qxl.dialog.Dialog", {
 
   properties: {
     /**
-     * Whether the dialog is shown. If true, call the show() method. If false,
-     * call the hide() method.
-     */
-    show: {
-      check: "Boolean",
-      nullable: true,
-      event: "changeShow",
-      apply: "_applyShow",
-    },
-
-    /**
      * Whether to block the ui while the widget is displayed
      */
     useBlocker: {
