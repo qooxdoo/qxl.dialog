@@ -49,7 +49,7 @@ class](source/class/qxl/dialog/theme/icon/IcoMoonFree.js).
 To install the dependencies for a standalone development/ demo version, execute
 
 ```shell
-npm install --no-save --no-package-lock @qooxdoo/compiler
+npm install --no-save --no-package-lock @qooxdoo/framework
 ```
 
 Afterwards, you can run the demo locally with `npx qx serve`.
