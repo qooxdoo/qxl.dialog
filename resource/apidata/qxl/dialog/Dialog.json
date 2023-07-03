@@ -16,9 +16,9 @@
         "index": 839
       },
       "end": {
-        "line": 364,
+        "line": 353,
         "column": 3,
-        "index": 10769
+        "index": 10523
       }
     },
     "jsdoc": {
@@ -172,7 +172,7 @@
           }
         ]
       },
-      "type": "variable",
+      "type": "function",
       "access": "public"
     },
     "alert": {
@@ -672,7 +672,7 @@
         }
       },
       "jsdoc": {},
-      "type": "variable",
+      "type": "function",
       "access": "public"
     }
   },
@@ -712,46 +712,17 @@
     }
   },
   "properties": {
-    "show": {
-      "location": {
-        "start": {
-          "line": 266,
-          "column": 4,
-          "index": 8205
-        },
-        "end": {
-          "line": 271,
-          "column": 5,
-          "index": 8318
-        }
-      },
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Whether the dialog is shown. If true, call the show() method. If false,\n call the hide() method.</p>"
-          }
-        ]
-      },
-      "name": "show",
-      "propertyType": "new",
-      "event": "changeShow",
-      "apply": "_applyShow",
-      "nullable": true,
-      "allowNull": true,
-      "check": "Boolean"
-    },
     "useBlocker": {
       "location": {
         "start": {
-          "line": 276,
+          "line": 265,
           "column": 4,
-          "index": 8402
+          "index": 8156
         },
         "end": {
-          "line": 279,
+          "line": 268,
           "column": 5,
-          "index": 8464
+          "index": 8218
         }
       },
       "jsdoc": {
@@ -771,14 +742,14 @@
     "blockerColor": {
       "location": {
         "start": {
-          "line": 284,
+          "line": 273,
           "column": 4,
-          "index": 8514
+          "index": 8268
         },
         "end": {
-          "line": 287,
+          "line": 276,
           "column": 5,
-          "index": 8579
+          "index": 8333
         }
       },
       "jsdoc": {
@@ -798,14 +769,14 @@
     "blockerOpacity": {
       "location": {
         "start": {
-          "line": 292,
+          "line": 281,
           "column": 4,
-          "index": 8631
+          "index": 8385
         },
         "end": {
-          "line": 295,
+          "line": 284,
           "column": 5,
-          "index": 8694
+          "index": 8448
         }
       },
       "jsdoc": {
@@ -924,14 +895,14 @@
     "__previousFocus": {
       "location": {
         "start": {
-          "line": 302,
+          "line": 291,
           "column": 4,
-          "index": 8798
+          "index": 8552
         },
         "end": {
-          "line": 302,
+          "line": 291,
           "column": 25,
-          "index": 8819
+          "index": 8573
         }
       },
       "jsdoc": {
@@ -948,14 +919,14 @@
     "show": {
       "location": {
         "start": {
-          "line": 309,
+          "line": 298,
           "column": 4,
-          "index": 9006
+          "index": 8760
         },
         "end": {
-          "line": 332,
+          "line": 321,
           "column": 5,
-          "index": 9893
+          "index": 9647
         }
       },
       "jsdoc": {
@@ -984,14 +955,14 @@
     "hide": {
       "location": {
         "start": {
-          "line": 339,
+          "line": 328,
           "column": 4,
-          "index": 10093
+          "index": 9847
         },
         "end": {
-          "line": 351,
+          "line": 340,
           "column": 5,
-          "index": 10443
+          "index": 10197
         }
       },
       "jsdoc": {
@@ -8151,96 +8122,6 @@
         ]
       }
     },
-    "getShow": {
-      "type": "function",
-      "name": "getShow",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "get",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Gets the (computed) value of the property <code>show</code>.\n\nFor further details take a look at the property definition: {@link #show}."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "type": "Boolean",
-            "desc": "Returns the value for show"
-          }
-        ]
-      }
-    },
-    "isShow": {
-      "type": "function",
-      "name": "isShow",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "is",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Gets the (computed) value of the property <code>show</code>.\n\nFor further details take a look at the property definition: {@link #show}."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "type": "Boolean",
-            "desc": "Returns the value for show"
-          }
-        ]
-      }
-    },
-    "setShow": {
-      "type": "function",
-      "name": "setShow",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "set",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Sets the user value of the property <code>show</code>.\n\nFor further details take a look at the property definition: {@link #show}."
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "type": "Boolean",
-            "paramName": "value",
-            "desc": "Value for show"
-          }
-        ]
-      }
-    },
-    "resetShow": {
-      "type": "function",
-      "name": "resetShow",
-      "abstract": false,
-      "mixin": false,
-      "inherited": false,
-      "access": "public",
-      "property": "reset",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "Resets the user value of the property <code>show</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #show}."
-          }
-        ]
-      }
-    },
     "getUseBlocker": {
       "type": "function",
       "name": "getUseBlocker",
@@ -8467,14 +8348,14 @@
   "destruct": {
     "location": {
       "start": {
-        "line": 359,
+        "line": 348,
         "column": 2,
-        "index": 10578
+        "index": 10332
       },
       "end": {
-        "line": 363,
+        "line": 352,
         "column": 3,
-        "index": 10764
+        "index": 10518
       }
     },
     "jsdoc": {}
