@@ -2,20 +2,12 @@
   "version": "2.1",
   "libraries": [
     {
-      "library_name": "Qooxdoo API Viewer",
-      "library_version": "2.0.0",
-      "path": "qx_packages/qooxdoo_qxl_apiviewer_v2_0_0",
-      "uri": "qooxdoo/qxl.apiviewer",
-      "repo_name": "qooxdoo/qxl.apiviewer",
-      "repo_tag": "v2.0.0"
-    },
-    {
       "library_name": "versionlabel",
-      "library_version": "2.0.0",
-      "path": "qx_packages/qooxdoo_qxl_versionlabel_v2_0_0",
+      "library_version": "2.0.2",
+      "path": "qx_packages/qooxdoo_qxl_versionlabel_v2_0_2",
       "uri": "qooxdoo/qxl.versionlabel",
       "repo_name": "qooxdoo/qxl.versionlabel",
-      "repo_tag": "v2.0.0"
+      "repo_tag": "v2.0.2"
     },
     {
       "library_name": "deprecated.qx.io.remote",
@@ -24,6 +16,14 @@
       "uri": "qooxdoo/deprecated.qx.io.remote",
       "repo_name": "qooxdoo/deprecated.qx.io.remote",
       "repo_tag": "v1.0.2"
+    },
+    {
+      "library_name": "Qooxdoo API Viewer",
+      "library_version": "3.0.0",
+      "path": "qx_packages/qooxdoo_qxl_apiviewer_v3_0_0",
+      "uri": "qooxdoo/qxl.apiviewer",
+      "repo_name": "qooxdoo/qxl.apiviewer",
+      "repo_tag": "v3.0.0"
     }
   ]
 }
