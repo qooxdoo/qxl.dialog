@@ -1,5 +1,5 @@
 qx.Class.define("qxl.apiviewer.compile.CompilerApi", {
-  extend: qx.tool.cli.api.CompilerApi,
+  extend: qx.tool.compiler.cli.api.CompilerApi,
 
   members: {
     async load() {
@@ -7,7 +7,7 @@ qx.Class.define("qxl.apiviewer.compile.CompilerApi", {
         "changeCommand",
         function () {
           let command = this.getCommand();
-          if (command instanceof qx.tool.cli.commands.Test) {
+          if (command instanceof qx.tool.compiler.cli.commands.Test) {
             command.addListener("runTests", this.__appTesting, this);
             if (command.setNeedsServer) {
               command.setNeedsServer(true);
